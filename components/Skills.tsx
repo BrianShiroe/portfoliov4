@@ -42,7 +42,7 @@ export function Skills() {
   }, []);
 
   return (
-    <section className="relative w-full border-t-4 border-black bg-zinc-50 py-16 md:py-24 overflow-hidden selection:bg-black selection:text-white font-sans">
+    <section id="skills" className="relative w-full border-t-4 border-black bg-zinc-50 py-16 md:py-24 overflow-hidden selection:bg-black selection:text-white font-sans">
       
       {/* 1. TOP UTILITY BAR (The Extra Detail) */}
       <div className="mx-auto max-w-7xl px-4 md:px-6 mb-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b-2 border-black pb-4">

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export function About() {
   return (
-    <section className="relative w-full bg-zinc-50 py-24 px-4 md:px-6 overflow-hidden font-mono border-t-4 border-black">
+    <section id="about" className="relative w-full bg-zinc-50 py-24 px-4 md:px-6 overflow-hidden font-mono border-t-4 border-black">
       {/* Background Decorative Element */}
       <div className="absolute top-0 right-0 p-8 opacity-[0.03] pointer-events-none hidden lg:block">
         <div className="text-[12rem] font-black leading-none uppercase">Profile</div>

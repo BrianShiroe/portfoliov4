@@ -28,7 +28,7 @@ export function Experience() {
   ];
 
   return (
-    <section className="relative w-full bg-white py-20 px-4 md:px-6 overflow-hidden font-mono border-b-2 border-black">
+    <section id="experience" className="relative w-full bg-white py-20 px-4 md:px-6 overflow-hidden font-mono border-b-2 border-black">
       <div className="mx-auto max-w-5xl relative">
         
         {/* --- HEADER & SUMMARY --- */}

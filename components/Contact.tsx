@@ -18,7 +18,7 @@ export function Contact() {
   ];
 
   return (
-    <section className="relative w-full bg-white py-24 px-4 md:px-6 font-mono border-t-2 border-black overflow-hidden">
+    <section id="contact" className="relative w-full bg-white py-24 px-4 md:px-6 font-mono border-t-2 border-black overflow-hidden">
       <div className="mx-auto max-w-5xl">
         
         {/* --- HEADER --- */}

@@ -36,7 +36,7 @@ export function CurriculumVitae() {
   ];
 
   return (
-    <section className="relative w-full bg-[#fcfcfc] py-12 md:py-24 px-4 md:px-6 font-mono border-t-2 border-black overflow-hidden">
+    <section id="cv" className="relative w-full bg-[#fcfcfc] py-12 md:py-24 px-4 md:px-6 font-mono border-t-2 border-black overflow-hidden">
       <div className="mx-auto max-w-6xl">
         
         {/* --- DYNAMIC HEADER --- */}
