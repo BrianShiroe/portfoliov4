@@ -54,7 +54,7 @@ export function Projects() {
   ];
 
   return (
-    <section className="w-full bg-white px-4 py-24 md:px-6 overflow-hidden font-mono">
+    <section id="projects" className="w-full bg-white px-4 py-24 md:px-6 overflow-hidden font-mono">
       <div className="mx-auto max-w-6xl">
         
         {/* --- SECTION HEADER --- */}
