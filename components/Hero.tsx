@@ -1,51 +1,85 @@
+"use client";
+import { motion } from "framer-motion";
+import { Character } from "./Character";
+
 export function Hero() {
   return (
-    <section className="flex min-h-[85vh] w-full max-w-5xl flex-col items-center justify-center px-6 text-center lg:items-start lg:text-left">
-      {/* VERSION TAG */}
-      <div className="mb-6 inline-block border-2 border-black px-3 py-1 text-xs font-bold uppercase tracking-[0.3em] bg-white text-ink-deep">
-        Version 2026.04 // { "Dubai_UAE" }
+    <section className="flex min-h-[90vh] w-full max-w-6xl flex-col items-center justify-center px-6 lg:flex-row lg:justify-between mx-auto">
+      <div className="flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1">
+        
+        {/* Location Tag with subtle hover scale */}
+        <motion.div 
+          initial={{ opacity: 0, x: -20 }} 
+          animate={{ opacity: 1, x: 0 }}
+          whileHover={{ scale: 1.05, x: 5 }}
+          className="mb-6 cursor-pointer inline-block border-2 border-black bg-ink-deep px-3 py-1 text-[10px] font-bold uppercase tracking-[0.3em] text-white"
+        >
+          LOC: DUBAI_UAE // V.2026.04
+        </motion.div>
+
+        <div className="mb-2">
+          <span className="text-sm font-black uppercase tracking-[0.2em] text-zinc-400 italic">
+            Authorized_User: Brian Haw
+          </span>
+        </div>
+
+        <h1 className="text-gradient-ink text-7xl font-black uppercase tracking-tighter sm:text-8xl md:text-[10rem] leading-[0.8]">
+          Brian <br />
+          <span className="text-ink-deep">Shiroe</span>
+        </h1>
+
+        <div className="mt-8 space-y-4">
+          <motion.h2 
+            whileHover={{ x: 10 }}
+            className="text-2xl font-black uppercase tracking-tight text-ink-deep border-b-4 border-black inline-block cursor-default"
+          >
+            [ Web Developer ]
+          </motion.h2>
+          <p className="max-w-md text-lg font-medium text-ink-soft leading-tight">
+            Building high-performance digital experiences. 
+            Focused on minimalist design and clean code architectures.
+          </p>
+        </div>
+
+        <div className="mt-12 flex flex-col gap-4 w-full sm:w-auto sm:flex-row">
+          {/* Primary Button */}
+          <motion.button 
+            whileHover={{ scale: 1.02, x: -2, y: -2 }}
+            whileTap={{ scale: 0.98, x: 2, y: 2 }}
+            className="retro-border-thick bg-ink-deep px-10 py-4 text-white font-bold uppercase hover:bg-zinc-800"
+          >
+            Enter_System
+          </motion.button>
+          
+          {/* Secondary Button */}
+          <motion.button 
+            whileHover={{ scale: 1.02, x: -2, y: -2 }}
+            whileTap={{ scale: 0.98, x: 2, y: 2 }}
+            className="retro-border-thick bg-white px-10 py-4 text-ink-deep font-bold uppercase hover:bg-zinc-50"
+          >
+            View_Logs
+          </motion.button>
+        </div>
       </div>
 
-      {/* NAME & ALIAS */}
-      <div className="mb-2">
-        <span className="text-sm font-black uppercase tracking-widest text-zinc-400">
-          User: Brian Haw
-        </span>
-      </div>
-      
-      <h1 className="text-gradient-ink text-6xl font-black uppercase tracking-tighter sm:text-8xl md:text-9xl leading-[0.85]">
-        Brian <br /> 
-        <span className="pl-0 lg:pl-4 text-ink-deep">Shiroe</span>
-      </h1>
-
-      {/* POSITION & TAGLINE */}
-      <div className="mt-8 flex flex-col gap-2">
-        <h2 className="text-2xl font-black uppercase tracking-tight text-ink-deep">
-          [ Position: Web Developer ]
-        </h2>
-        <p className="max-w-xl text-lg font-medium leading-relaxed text-ink-soft">
-          Building high-fidelity interfaces with a focus on 
-          <span className="text-ink-deep underline decoration-4 ml-1 italic">
-            brutalist simplicity
-          </span> and modern performance in the heart of Dubai.
-        </p>
-      </div>
-
-      {/* ACTION BUTTONS */}
-      <div className="mt-12 flex flex-col gap-4 w-full sm:w-auto sm:flex-row">
-        <button className="retro-border-thick bg-ink-deep px-10 py-4 text-white font-bold uppercase hover:bg-ink-mid transition-all active:translate-y-1">
-          Enter System
-        </button>
-        <button className="retro-border-thick bg-white px-10 py-4 text-ink-deep font-bold uppercase hover:bg-zinc-50 transition-all active:translate-y-1">
-          Source Code
-        </button>
-      </div>
-
-      {/* DECORATIVE FOOTER SCANLINE EFFECT FOR HERO */}
-      <div className="mt-16 hidden lg:block w-full border-t-2 border-dashed border-zinc-200 pt-4">
-        <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-400">
-          Active_Session: 25.0674° N, 55.2708° E // Local_Time: UAE_GMT+4
-        </p>
+      <div className="mt-16 lg:mt-0 flex flex-col items-center gap-6 order-1 lg:order-2">
+        {/* Character Container with Inversion Hover */}
+        <motion.div 
+          whileHover={{ 
+            backgroundColor: "#000000",
+            transition: { duration: 0.2 }
+          }}
+          className="retro-border-thick group bg-white p-10 cursor-crosshair"
+        >
+          <Character />
+        </motion.div>
+        
+        <div className="flex items-center gap-3">
+          <div className="h-3 w-3 rounded-full bg-green-500 animate-pulse shadow-[0_0_10px_rgba(34,197,94,0.6)]" />
+          <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-ink-soft">
+            Status: Active_In_Dubai
+          </span>
+        </div>
       </div>
     </section>
   );

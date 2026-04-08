@@ -2,46 +2,33 @@
 
 :root {
   --background: #ffffff;
-  /* Gradients of black */
   --ink-deep: #000000;
   --ink-mid: #1a1a1a;
-  --ink-soft: #333333;
-  
-  --retro-border: #000000;
+  --ink-soft: #4a4a4a;
 }
 
 @theme inline {
-  --color-background: var(--background);
   --color-ink-deep: var(--ink-deep);
   --color-ink-mid: var(--ink-mid);
   --color-ink-soft: var(--ink-soft);
-  --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 body {
   background: var(--background);
-  /* Default font color using mid-black for better readability than pure #000 */
   color: var(--ink-mid);
-  font-family: var(--font-geist-mono), monospace;
+  font-family: var(--font-mono), monospace;
+}
+
+/* Retro UI Utilities */
+.retro-border-thick {
+  border: 4px solid var(--ink-deep);
+  box-shadow: 6px 6px 0px 0px var(--ink-deep);
+  transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .text-gradient-ink {
-  background: linear-gradient(180deg, var(--ink-deep) 0%, var(--ink-soft) 100%);
+  background: linear-gradient(180deg, var(--ink-deep) 40%, var(--ink-soft) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-.retro-border-thick {
-  border: 3px solid var(--ink-deep);
-  box-shadow: 5px 5px 0px 0px var(--ink-deep);
-}
-
-.retro-card-hover {
-  transition: all 0.2s ease;
-}
-
-.retro-card-hover:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 8px 8px 0px 0px var(--ink-deep);
 }
