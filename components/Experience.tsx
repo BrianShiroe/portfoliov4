@@ -29,23 +29,15 @@ export function Experience() {
     <section id="experience" className="relative w-full bg-white py-24 px-4 md:px-6 overflow-hidden font-mono border-b-4 border-black">
       <div className="mx-auto max-w-6xl relative">
         
-        {/* --- HEADER & SUMMARY --- */}
-        <div className="mb-20 md:mb-32 grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
-          <div className="lg:col-span-8">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="h-[3px] w-12 bg-black" />
-              <span className="text-[12px] font-black uppercase tracking-widest text-zinc-400">Professional History</span>
-            </div>
-            <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter text-black leading-none">
-              Career_<span className="text-zinc-200">Timeline</span>
-            </h2>
+        {/* --- HEADER --- */}
+        <div className="mb-20 md:mb-32">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="h-[3px] w-12 bg-black" />
+            <span className="text-[12px] font-black uppercase tracking-widest text-zinc-400">Professional History</span>
           </div>
-          <div className="lg:col-span-4 border-l-4 border-black pl-6">
-            <p className="text-[11px] font-black text-zinc-400 uppercase mb-2">Technical Summary</p>
-            <p className="text-sm md:text-base font-bold leading-tight uppercase text-black">
-              Specializing in high-performance eCommerce systems and integrated enterprise solutions for the UAE market.
-            </p>
-          </div>
+          <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter text-black leading-none">
+            Career_<span className="text-zinc-200">Timeline</span>
+          </h2>
         </div>
 
         {/* --- TIMELINE GRID --- */}
