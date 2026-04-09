@@ -3,148 +3,114 @@ import { motion } from "framer-motion";
 
 export function About() {
   const awards = [
-    { title: "Cum Laude", subtitle: "Academic_Excellence", icon: "★" },
-    { title: "Best Thesis", subtitle: "Research_Mastery", icon: "◆" },
-    { title: "Leadership", subtitle: "Guild_Management", icon: "▲" },
+    { title: "Cum Laude", subtitle: "Academic Excellence", icon: "★" },
+    { title: "Best Thesis", subtitle: "Research Mastery", icon: "◆" },
+    { title: "Leadership", subtitle: "Team Management", icon: "▲" },
+  ];
+
+  const details = [
+    { label: "Role", value: "Web Developer" },
+    { label: "Degree", value: "BS Computer Science" },
+    { label: "Base", value: "Dubai, UAE" },
   ];
 
   return (
     <section
       id="about"
-      className="relative w-full bg-zinc-50 py-24 px-4 md:px-6 overflow-hidden font-mono border-t-4 border-black scroll-mt-20"
+      className="relative w-full bg-[#F1F1F1] py-24 px-4 md:px-6 overflow-hidden font-sans border-t-[6px] border-black scroll-mt-20"
     >
-      <div className="mx-auto max-w-6xl relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          {/* --- LEFT COLUMN: DATA & VISUAL AWARDS --- */}
-          <div className="lg:col-span-4 space-y-6">
-            {/* Identity Card */}
-            <div className="border-4 border-black bg-white p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-              <div className="flex items-center gap-3 border-b-2 border-black pb-4 mb-4">
-                <div className="h-3 w-3 bg-black rounded-full animate-pulse" />
-                <span className="text-[10px] font-black uppercase tracking-tighter">
-                  System_Identity
-                </span>
+      <div className="mx-auto max-w-7xl relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+          
+          {/* --- LEFT COLUMN: SYSTEM DATA --- */}
+          <div className="lg:col-span-5 space-y-8">
+            
+            {/* Identity Card - Neobrutalist Style */}
+            <div className="border-[4px] border-black bg-[#FFD100] p-8 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
+              <h3 className="text-2xl font-black uppercase mb-6 border-b-[3px] border-black pb-2">
+                Personal Specs
+              </h3>
+              <div className="space-y-4">
+                {details.map((item) => (
+                  <div key={item.label} className="flex flex-col">
+                    <span className="text-xs font-black uppercase text-black/60">{item.label}</span>
+                    <span className="text-xl font-black uppercase">{item.value}</span>
+                  </div>
+                ))}
               </div>
-              <ul className="space-y-3 text-[11px] uppercase font-bold">
-                <li className="flex justify-between">
-                  <span className="text-zinc-400">Alias:</span>
-                  <span>Brian Shiroe</span>
-                </li>
-                <li className="flex justify-between">
-                  <span className="text-zinc-400">Education:</span>
-                  <span>BSCS_Grad</span>
-                </li>
-                <li className="flex justify-between">
-                  <span className="text-zinc-400">Node:</span>
-                  <span>Dubai_UAE</span>
-                </li>
-              </ul>
             </div>
 
-            {/* AWARDS TERMINAL - HIGH VISIBILITY BLOCK */}
-            <div className="bg-black text-white p-6 shadow-[8px_8px_0px_0px_rgba(200,200,200,1)]">
-              <div className="flex items-center justify-between mb-6">
-                <span className="text-[9px] font-black tracking-[0.3em] text-white uppercase">
-                  System_Accolades
-                </span>
-                <span className="text-[9px] font-black text-green-500">
-                  VERIFIED
-                </span>
-              </div>
-
-              <div className="space-y-6">
-                {awards.map((award, index) => (
-                  <motion.div
+            {/* Accolades Grid - Replacing Terminal Style */}
+            <div className="space-y-4">
+              <h3 className="text-xl font-black uppercase px-2">Key Accolades</h3>
+              <div className="grid grid-cols-1 gap-4">
+                {awards.map((award) => (
+                  <div
                     key={award.title}
-                    initial={{ x: -10, opacity: 0 }}
-                    whileInView={{ x: 0, opacity: 1 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="group flex items-center gap-4"
+                    className="flex items-center gap-4 bg-white border-[3px] border-black p-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all cursor-default"
                   >
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-zinc-800 bg-zinc-900 group-hover:border-white transition-colors">
-                      <span className="text-lg">{award.icon}</span>
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center border-[3px] border-black bg-[#A3E635] text-2xl">
+                      {award.icon}
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-[12px] font-black uppercase tracking-tight group-hover:text-green-400 transition-colors">
+                      <span className="text-lg font-black uppercase leading-none">
                         {award.title}
                       </span>
-                      <span className="text-[8px] font-bold text-zinc-500 uppercase tracking-widest mt-0.5">
+                      <span className="text-xs font-bold text-black/50 uppercase">
                         {award.subtitle}
                       </span>
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
-              </div>
-
-              {/* Decorative scanline effect */}
-              <div className="mt-6 h-1 w-full bg-zinc-900 overflow-hidden">
-                <motion.div
-                  animate={{ x: ["-100%", "100%"] }}
-                  transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
-                  className="h-full w-1/3 bg-zinc-700"
-                />
               </div>
             </div>
           </div>
 
           {/* --- RIGHT COLUMN: THE NARRATIVE --- */}
-          <div className="lg:col-span-8">
+          <div className="lg:col-span-7">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              className="space-y-6"
+              viewport={{ once: true }}
+              className="space-y-8"
             >
-              <div className="inline-block bg-black text-white px-3 py-1 text-[10px] font-black uppercase tracking-widest mb-4">
-                Decrypted_Bio.log
+              <div className="inline-block bg-black text-white px-6 py-2 text-sm font-black uppercase tracking-tighter shadow-[4px_4px_0px_0px_#00E676]">
+                Background.log
               </div>
 
-              <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none text-black">
-                Stuck in the <br />
-                <span className="text-zinc-300">Digital_Loop</span>
+              <h2 className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-[0.85] text-black">
+                SOLVING <br />
+                <span className="text-white drop-shadow-[3px_3px_0px_rgba(0,0,0,1)]" style={{ WebkitTextStroke: '2px black' }}>
+                  COMPLEX
+                </span> <br />
+                PROBLEMS.
               </h2>
 
-              <p className="text-base md:text-lg font-bold text-zinc-600 leading-relaxed uppercase">
-                I am a Web Developer based in Dubai, bridging the gap between{" "}
-                <span className="text-black underline decoration-2">
-                  Computer Science
-                </span>{" "}
-                foundations and high-performance digital products.
+              <p className="text-xl md:text-2xl font-black text-black leading-tight uppercase max-w-2xl">
+                I am a developer based in Dubai, focused on building technical foundations that scale.
               </p>
 
-              <div className="space-y-4 border-l-4 border-black pl-6 md:pl-8 text-sm md:text-base font-medium text-zinc-500">
-                <p>
-                  "I focus on engineering high-performance web products. To me,
-                  development is an immersive process of building clean,
-                  scalable architecture."
+              <div className="space-y-6 text-lg font-bold text-black/70 leading-snug">
+                <p className="border-l-[6px] border-black pl-6">
+                  I specialize in engineering high-performance web products. To me,
+                  development is about building clean, scalable architecture that
+                  solves real business needs without unnecessary friction.
                 </p>
-                <p>
-                  "I am a heavy proponent of AI integration, utilizing neural
-                  tools throughout my workflow and developing custom solutions
-                  when existing models don't meet the project's requirements."
+                <p className="border-l-[6px] border-[#00E676] pl-6">
+                  I integrate advanced automation and AI-driven workflows to 
+                  accelerate production, ensuring every project benefits from 
+                  the most efficient modern tooling available.
                 </p>
               </div>
 
-              {/* FUN FACT TERMINAL */}
-              <div className="mt-12 bg-black text-green-500 p-6 font-mono text-xs leading-relaxed rounded-sm shadow-xl border-t-2 border-green-500/30">
-                <div className="flex gap-2 mb-4 opacity-50">
-                  <span className="h-2 w-2 bg-green-500 rounded-full" />
-                  <span>CMD_PROMPT // FUN_FACT</span>
-                </div>
-                <p className="mb-2 text-white">
-                  <span className="text-green-500">brian@root:~$</span> run
-                  curiosity_check
+              {/* Punchy Quote Block */}
+              <div className="mt-12 bg-white border-[4px] border-black p-8 shadow-[10px_10px_0px_0px_#A3E635]">
+                <p className="text-xl font-black italic uppercase leading-tight">
+                  "I learned to operate a computer before I could even read. 
+                  Building systems isn't just a job—it's how I think."
                 </p>
-                <p className="text-green-400">
-                  [SYSTEM]: Interesting data point found... <br />I learned how
-                  to operate a computer before I could even read. This career
-                  isn't just a choice—it's a fundamental hardware requirement.
-                </p>
-                <motion.span
-                  animate={{ opacity: [1, 0] }}
-                  transition={{ repeat: Infinity, duration: 0.8 }}
-                  className="inline-block w-2 h-4 bg-green-500 ml-1 translate-y-1"
-                />
               </div>
+
             </motion.div>
           </div>
         </div>
