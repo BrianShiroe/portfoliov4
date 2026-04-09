@@ -105,7 +105,7 @@ export function Hero() {
                <div className="h-8 w-[1.5px] bg-black/10" />
                <div className="text-center">
                   <p className="text-[8px] text-zinc-400 font-black uppercase mb-0.5">Deployment</p>
-                  <p className="text-sm md:text-xl font-black italic underline decoration-2 decoration-black underline-offset-4 whitespace-nowrap">UAE_6MO</p>
+                  <p className="text-sm md:text-xl font-black italic underline decoration-2 decoration-black underline-offset-4 whitespace-nowrap">UAE_7MO+</p>
                </div>
                <div className="h-8 w-[1.5px] bg-black/10" />
                <div className="text-center">
