@@ -49,8 +49,15 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${geistMono.variable} scroll-smooth h-full antialiased`}>
-      <body className="min-h-full flex flex-col font-mono bg-white text-black selection:bg-black selection:text-white">
+    <html 
+      lang="en" 
+      className={`${geistMono.variable} scroll-smooth h-full antialiased`}
+      suppressHydrationWarning // Prevents hydration errors from root-level injections
+    >
+      <body 
+        className="min-h-full flex flex-col font-mono bg-white text-black selection:bg-black selection:text-white"
+        suppressHydrationWarning={true} // Fixed: Prevents the "cz-shortcut-listen" extension error
+      >
         <Header />
         {/* Main role for accessibility */}
         <main role="main" className="flex-1">
