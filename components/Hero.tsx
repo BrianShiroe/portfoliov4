@@ -29,7 +29,7 @@ export function Hero() {
         }}
       />
 
-      <div className="relative z-10 mx-auto flex h-full w-full max-w-7xl flex-col items-center justify-between px-4 md:px-6 pt-16 pb-20 md:pt-12 md:pb-12">
+      <div className="relative z-10 mx-auto flex h-full w-full max-w-7xl flex-col items-center justify-between px-4 md:px-6 pb-20 md:pb-12">
         
         <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between w-full gap-6 md:gap-16 flex-grow">
           
