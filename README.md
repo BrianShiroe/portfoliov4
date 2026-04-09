@@ -1,4 +1,4 @@
-# [SYSTEM_INIT]: Brian Shiroe // Portfolio 2026
+# [SYSTEM_INIT]: Brian Shiroe | Portfolio 2026
 
 **Node_Location:** Dubai, UAE  
 **Status:** Active_Deployment  
