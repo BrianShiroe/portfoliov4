@@ -67,7 +67,7 @@ export function Header() {
           <NavigationCore />
           <div className="flex flex-col">
             <span className="text-lg font-black tracking-tighter text-black uppercase leading-none group-hover:text-zinc-600 transition-colors">
-              Brian Haw
+              BrianShiroe
             </span>
             <span className="text-[12px] font-bold text-zinc-400 uppercase tracking-widest leading-none mt-1">
               Web Developer
@@ -85,7 +85,6 @@ export function Header() {
               className="group relative py-2 text-[12px] font-black uppercase tracking-widest text-zinc-500 hover:text-black transition-all duration-300 hover:translate-x-1"
             >
               {item.label}
-              {/* Animated Underline */}
               <span className="absolute bottom-0 left-0 h-[3px] w-0 bg-black transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
@@ -132,10 +131,10 @@ export function Header() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 30, stiffness: 200 }}
-            className="fixed inset-0 h-screen w-full bg-white z-50 flex flex-col p-10 pt-32 font-sans"
+            className="fixed inset-0 h-screen w-full bg-white z-50 flex flex-col p-8 pt-24 font-sans"
           >
-            <div className="flex flex-col gap-6">
-              <span className="text-[11px] text-zinc-400 uppercase font-black tracking-[0.2em] border-b-2 border-zinc-100 pb-4">
+            <div className="flex flex-col gap-4">
+              <span className="text-[10px] text-zinc-400 uppercase font-black tracking-[0.2em] border-b-2 border-zinc-100 pb-2 mb-2">
                 Directory
               </span>
               {navItems.map((item, i) => (
@@ -146,18 +145,18 @@ export function Header() {
                   key={item.label}
                   href={item.href}
                   onClick={(e) => handleScroll(e, item.href)}
-                  className="group text-4xl font-black uppercase tracking-tight text-black flex items-center justify-between hover:translate-x-4 transition-transform duration-300"
+                  className="group text-2xl font-black uppercase tracking-tight text-black flex items-center justify-between hover:translate-x-2 transition-transform duration-300"
                 >
-                  <span className="group-hover:text-zinc-400 transition-colors">{item.label}</span>
+                  <span className="group-hover:text-zinc-500 transition-colors">{item.label}</span>
                   <span className="text-[10px] font-mono text-zinc-300">0{i + 1}</span>
                 </motion.a>
               ))}
             </div>
 
-            <div className="mt-auto flex items-center justify-between pt-10 border-t-4 border-black">
+            <div className="mt-auto flex items-center justify-between pt-8 border-t-2 border-black/10">
                <div className="flex flex-col">
-                  <span className="text-sm font-black uppercase">Based in Dubai</span>
-                  <span className="text-xs text-green-600 font-bold uppercase">Open for Work</span>
+                  <span className="text-xs font-black uppercase">Dubai, UAE</span>
+                  <span className="text-[10px] text-green-600 font-bold uppercase tracking-widest">Available</span>
                </div>
                <NavigationCore />
             </div>

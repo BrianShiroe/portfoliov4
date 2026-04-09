@@ -13,7 +13,7 @@ export function Footer() {
             {/* Identity */}
             <div className="flex flex-col items-center md:items-start text-center md:text-left">
               <span className="font-black text-2xl uppercase tracking-tighter">
-                Brian Haw<span className="text-zinc-600"> / Web Developer</span>
+                BrianShiroe<span className="text-zinc-600"> / Web Developer</span>
               </span>
               <div className="flex items-center gap-3 mt-2">
                 <div className="h-3 w-3 bg-green-500 rounded-full animate-pulse" />
@@ -50,7 +50,7 @@ export function Footer() {
             {/* Metadata */}
             <div className="flex flex-col items-center md:items-end opacity-60">
               <span className="text-xs font-black uppercase tracking-widest">
-                © 2026 // Brian Haw
+                © 2026 // BrianShiroe
               </span>
               <span className="text-xs font-bold mt-1 uppercase text-zinc-500">
                 Web Developer Portfolio

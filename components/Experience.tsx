@@ -114,7 +114,7 @@ export function Experience() {
 
       {/* FOOTER SCALE */}
       <div className="mx-auto max-w-6xl mt-32 pt-10 border-t-4 border-black flex flex-col md:flex-row justify-between items-center gap-6">
-        <span className="text-xs font-black uppercase tracking-[0.2em] text-black">Brian Haw // Professional Experience History</span>
+        <span className="text-xs font-black uppercase tracking-[0.2em] text-black">BrianShiroe // Professional Experience History</span>
         <div className="flex gap-4">
           {[...Array(6)].map((_, i) => (
             <div key={i} className={`h-4 w-4 border-2 border-black ${i < 3 ? 'bg-black' : 'bg-transparent'}`} />
