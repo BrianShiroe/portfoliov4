@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 
 export function About() {
   const awards = [
-    { title: "Cum Laude", subtitle: "Academic_Excellence", icon: "★" },
-    { title: "Best Thesis", subtitle: "Research_Mastery", icon: "◆" },
-    { title: "Leadership", subtitle: "Guild_Management", icon: "▲" },
+    { title: "Cum Laude", subtitle: "Academic Excellence", icon: "★" },
+    { title: "Best Thesis", subtitle: "Research & Analysis", icon: "◆" },
+    { title: "Leadership", subtitle: "Project Coordination", icon: "▲" },
   ];
 
   return (
@@ -15,40 +15,40 @@ export function About() {
     >
       <div className="mx-auto max-w-6xl relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          {/* --- LEFT COLUMN: DATA & VISUAL AWARDS --- */}
+          {/* --- LEFT COLUMN: PROFESSIONAL DATA --- */}
           <div className="lg:col-span-4 space-y-6">
             {/* Identity Card */}
             <div className="border-4 border-black bg-white p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
               <div className="flex items-center gap-3 border-b-2 border-black pb-4 mb-4">
-                <div className="h-3 w-3 bg-black rounded-full animate-pulse" />
-                <span className="text-[10px] font-black uppercase tracking-tighter">
-                  System_Identity
+                <div className="h-3 w-3 bg-black rounded-full" />
+                <span className="text-[14px] font-black uppercase tracking-tight">
+                  Professional Profile
                 </span>
               </div>
-              <ul className="space-y-3 text-[11px] uppercase font-bold">
+              <ul className="space-y-3 text-[14px] uppercase font-bold">
                 <li className="flex justify-between">
-                  <span className="text-zinc-400">Alias:</span>
-                  <span>Brian Shiroe</span>
+                  <span className="text-zinc-400">Name:</span>
+                  <span>Brian Haw</span>
                 </li>
                 <li className="flex justify-between">
                   <span className="text-zinc-400">Education:</span>
-                  <span>BSCS_Grad</span>
+                  <span>Computer Science</span>
                 </li>
                 <li className="flex justify-between">
-                  <span className="text-zinc-400">Node:</span>
-                  <span>Dubai_UAE</span>
+                  <span className="text-zinc-400">Location:</span>
+                  <span>Dubai, UAE</span>
                 </li>
               </ul>
             </div>
 
-            {/* AWARDS TERMINAL - HIGH VISIBILITY BLOCK */}
-            <div className="bg-black text-white p-6 shadow-[8px_8px_0px_0px_rgba(200,200,200,1)]">
+            {/* ACCOLADES BLOCK */}
+            <div className="bg-black text-white p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.1)]">
               <div className="flex items-center justify-between mb-6">
-                <span className="text-[9px] font-black tracking-[0.3em] text-white uppercase">
-                  System_Accolades
+                <span className="text-[12px] font-black tracking-widest text-white uppercase">
+                  Achievements
                 </span>
-                <span className="text-[9px] font-black text-green-500">
-                  VERIFIED
+                <span className="text-[12px] font-black text-zinc-400">
+                  RECOGNIZED
                 </span>
               </div>
 
@@ -61,28 +61,19 @@ export function About() {
                     transition={{ delay: index * 0.1 }}
                     className="group flex items-center gap-4"
                   >
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-zinc-800 bg-zinc-900 group-hover:border-white transition-colors">
-                      <span className="text-lg">{award.icon}</span>
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center border border-zinc-700 bg-zinc-900 group-hover:border-white transition-colors">
+                      <span className="text-xl">{award.icon}</span>
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-[12px] font-black uppercase tracking-tight group-hover:text-green-400 transition-colors">
+                      <span className="text-[15px] font-black uppercase tracking-tight transition-colors">
                         {award.title}
                       </span>
-                      <span className="text-[8px] font-bold text-zinc-500 uppercase tracking-widest mt-0.5">
+                      <span className="text-[11px] font-bold text-zinc-500 uppercase tracking-widest mt-0.5">
                         {award.subtitle}
                       </span>
                     </div>
                   </motion.div>
                 ))}
-              </div>
-
-              {/* Decorative scanline effect */}
-              <div className="mt-6 h-1 w-full bg-zinc-900 overflow-hidden">
-                <motion.div
-                  animate={{ x: ["-100%", "100%"] }}
-                  transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
-                  className="h-full w-1/3 bg-zinc-700"
-                />
               </div>
             </div>
           </div>
@@ -94,55 +85,54 @@ export function About() {
               whileInView={{ opacity: 1, y: 0 }}
               className="space-y-6"
             >
-              <div className="inline-block bg-black text-white px-3 py-1 text-[10px] font-black uppercase tracking-widest mb-4">
-                Decrypted_Bio.log
+              <div className="inline-block bg-black text-white px-4 py-1.5 text-[13px] font-black uppercase tracking-widest mb-4">
+                Professional Bio
               </div>
 
               <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none text-black">
-                Stuck in the <br />
-                <span className="text-zinc-300">Digital_Loop</span>
+                Creating <br />
+                <span className="text-zinc-300">Digital_Solutions</span>
               </h2>
 
-              <p className="text-base md:text-lg font-bold text-zinc-600 leading-relaxed uppercase">
-                I am a Web Developer based in Dubai, bridging the gap between{" "}
-                <span className="text-black underline decoration-2">
-                  Computer Science
-                </span>{" "}
-                foundations and high-performance digital products.
+              <p className="text-lg md:text-xl font-bold text-zinc-700 leading-relaxed uppercase">
+                I am an IT Professional and Web Developer dedicated to helping
+                businesses grow through effective online platforms and efficient
+                digital management.
               </p>
 
-              <div className="space-y-4 border-l-4 border-black pl-6 md:pl-8 text-sm md:text-base font-medium text-zinc-500">
+              <div className="space-y-6 border-l-4 border-black pl-6 md:pl-8 text-base md:text-lg font-medium text-zinc-500 italic">
                 <p>
-                  "I focus on engineering high-performance web products. To me,
-                  development is an immersive process of building clean,
-                  scalable architecture."
+                  "Currently based in Dubai, I manage a wide range of digital
+                  needs—from building user-friendly websites and online stores
+                  to streamlining business operations through professional
+                  system implementation."
                 </p>
                 <p>
-                  "I am a heavy proponent of AI integration, utilizing neural
-                  tools throughout my workflow and developing custom solutions
-                  when existing models don't meet the project's requirements."
+                  "My focus is on providing high-quality support that combines
+                  creative design with practical functionality, ensuring every
+                  project is both visually appealing and easy for users to
+                  navigate."
                 </p>
               </div>
 
-              {/* FUN FACT TERMINAL */}
-              <div className="mt-12 bg-black text-green-500 p-6 font-mono text-xs leading-relaxed rounded-sm shadow-xl border-t-2 border-green-500/30">
-                <div className="flex gap-2 mb-4 opacity-50">
-                  <span className="h-2 w-2 bg-green-500 rounded-full" />
-                  <span>CMD_PROMPT // FUN_FACT</span>
+              {/* CLEAN PROFILE FOOTNOTE */}
+              <div className="mt-12 bg-white border-2 border-black p-6 font-mono text-sm leading-relaxed shadow-lg">
+                <div className="flex gap-2 mb-4">
+                  <span className="h-2 w-2 bg-black rounded-full" />
+                  <span className="text-[12px] font-black uppercase">
+                    Work Ethic
+                  </span>
                 </div>
-                <p className="mb-2 text-white">
-                  <span className="text-green-500">brian@root:~$</span> run
-                  curiosity_check
-                </p>
-                <p className="text-green-400">
-                  [SYSTEM]: Interesting data point found... <br />I learned how
-                  to operate a computer before I could even read. This career
-                  isn't just a choice—it's a fundamental hardware requirement.
+                <p className="text-zinc-800 font-bold uppercase">
+                  I believe in delivering reliable results through clear
+                  communication and careful attention to detail. Whether it is
+                  managing complex data or designing a new site, I am committed
+                  to excellence and helping my team succeed.
                 </p>
                 <motion.span
                   animate={{ opacity: [1, 0] }}
                   transition={{ repeat: Infinity, duration: 0.8 }}
-                  className="inline-block w-2 h-4 bg-green-500 ml-1 translate-y-1"
+                  className="inline-block w-2 h-4 bg-black ml-1 translate-y-1"
                 />
               </div>
             </motion.div>

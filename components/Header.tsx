@@ -2,25 +2,20 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const NeuralCore = () => (
+const NavigationCore = () => (
   <div className="relative h-6 w-6 flex items-center justify-center">
     <motion.div
       animate={{ rotate: 360 }}
-      transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-      className="absolute inset-0 border border-black/30"
+      transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+      className="absolute inset-0 border border-black/20"
     />
     <motion.div
       animate={{
-        scale: [1, 1.15, 1],
-        opacity: [0.3, 1, 0.3],
+        scale: [1, 1.2, 1],
+        opacity: [0.4, 1, 0.4],
       }}
-      transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-      className="h-1.5 w-1.5 bg-black"
-    />
-    <motion.div
-      animate={{ rotate: -360 }}
-      transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-      className="absolute inset-[-3px] border-l-2 border-black/10 rounded-full"
+      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+      className="h-2 w-2 bg-black"
     />
   </div>
 );
@@ -29,16 +24,15 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { label: "Init_00", href: "#home" },
-    { label: "User_ID", href: "#about" },
-    { label: "Specs", href: "#skills" },
-    { label: "Builds", href: "#projects" },
-    { label: "Logs", href: "#experience" },
-    { label: "Registry", href: "#cv" },
-    { label: "Uplink", href: "#contact" },
+    { label: "Home", href: "#home" },
+    { label: "About", href: "#about" },
+    { label: "Services", href: "#skills" },
+    { label: "Projects", href: "#projects" },
+    { label: "History", href: "#experience" },
+    { label: "Resume", href: "#cv" },
+    { label: "Contact", href: "#contact" },
   ];
 
-  // Prevent scroll when mobile menu is open
   useEffect(() => {
     if (isOpen) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "unset";
@@ -53,7 +47,7 @@ export function Header() {
     const targetId = href.replace("#", "");
     const elem = document.getElementById(targetId);
     if (targetId === "home") {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     } else if (elem) {
       elem.scrollIntoView({ behavior: "smooth" });
     }
@@ -61,75 +55,71 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b-2 border-black bg-white/90 backdrop-blur-md font-mono">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 md:px-8 py-4">
+    <header className="sticky top-0 z-50 w-full border-b-4 border-black bg-white/95 backdrop-blur-md font-sans">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
         
         {/* IDENTITY BLOCK */}
         <a
           href="#home"
           onClick={(e) => handleScroll(e, "#home")}
-          className="flex items-center gap-3 md:gap-4 cursor-pointer group shrink-0 z-[60]"
+          className="flex items-center gap-4 cursor-pointer group shrink-0 z-[60]"
         >
-          <NeuralCore />
+          <NavigationCore />
           <div className="flex flex-col">
-            <span className="text-xs md:text-base font-black tracking-tighter text-black uppercase leading-none group-hover:text-zinc-500 transition-colors">
-              Brian_Shiroe
+            <span className="text-lg font-black tracking-tighter text-black uppercase leading-none group-hover:text-zinc-600 transition-colors">
+              Brian Haw
             </span>
-            <span className="text-[7px] md:text-[8px] font-bold text-zinc-400 uppercase tracking-widest leading-none mt-1">
-              Admin_V2.0.6
+            <span className="text-[12px] font-bold text-zinc-400 uppercase tracking-widest leading-none mt-1">
+              Web Developer
             </span>
           </div>
         </a>
 
-        {/* NAVIGATION MATRIX - DESKTOP */}
-        <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+        {/* NAVIGATION - DESKTOP */}
+        <nav className="hidden lg:flex items-center gap-8">
           {navItems.map((item) => (
             <a
               key={item.label}
               href={item.href}
               onClick={(e) => handleScroll(e, item.href)}
-              className="group relative text-[9px] xl:text-[10px] font-black uppercase tracking-widest text-zinc-400 hover:text-black transition-colors"
+              className="group relative py-2 text-[12px] font-black uppercase tracking-widest text-zinc-500 hover:text-black transition-all duration-300 hover:translate-x-1"
             >
-              <span className="absolute -left-2.5 top-0 opacity-0 group-hover:opacity-100 transition-all text-black">
-                [
-              </span>
               {item.label}
-              <span className="absolute -right-2.5 top-0 opacity-0 group-hover:opacity-100 transition-all text-black">
-                ]
-              </span>
+              {/* Animated Underline */}
+              <span className="absolute bottom-0 left-0 h-[3px] w-0 bg-black transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
 
-          {/* GEOLOCATION NODE */}
-          <div className="flex items-center gap-3 border-l border-zinc-200 pl-6 xl:pl-8">
+          {/* LOCATION STATUS */}
+          <div className="flex items-center gap-4 border-l-2 border-zinc-100 pl-8">
             <div className="flex flex-col items-end">
-              <span className="text-[8px] font-black uppercase text-black leading-none">
-                Node_Dubai
+              <span className="text-[12px] font-black uppercase text-black leading-none">
+                Dubai, UAE
               </span>
-              <span className="text-[7px] font-bold text-green-500 uppercase leading-none mt-1">
-                GST // 124ms
+              <span className="text-[10px] font-bold text-green-600 uppercase leading-none mt-1">
+                Available for Hire
               </span>
             </div>
-            <div className="h-2 w-2 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.5)]" />
+            <div className="h-3 w-3 bg-green-500 rounded-full animate-pulse" />
           </div>
         </nav>
 
         {/* MOBILE TRIGGER */}
         <button 
           onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden flex flex-col gap-1.5 px-2 z-[60] relative h-6 w-8 justify-center items-end"
+          className="lg:hidden flex flex-col gap-1.5 px-2 z-[60] relative h-8 w-10 justify-center items-end"
         >
           <motion.div 
-            animate={isOpen ? { rotate: 45, y: 4, width: "24px" } : { rotate: 0, y: 0, width: "24px" }}
-            className="h-0.5 bg-black" 
+            animate={isOpen ? { rotate: 45, y: 6, width: "28px" } : { rotate: 0, y: 0, width: "28px" }}
+            className="h-1 bg-black" 
           />
           <motion.div 
             animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
-            className="h-0.5 w-4 bg-black" 
+            className="h-1 w-5 bg-black" 
           />
           <motion.div 
-            animate={isOpen ? { rotate: -45, y: -4, width: "24px" } : { rotate: 0, y: 0, width: "24px" }}
-            className="h-0.5 bg-black" 
+            animate={isOpen ? { rotate: -45, y: -6, width: "28px" } : { rotate: 0, y: 0, width: "28px" }}
+            className="h-1 bg-black" 
           />
         </button>
       </div>
@@ -141,12 +131,12 @@ export function Header() {
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-0 h-screen w-full bg-white z-50 flex flex-col p-8 pt-24 font-mono"
+            transition={{ type: "spring", damping: 30, stiffness: 200 }}
+            className="fixed inset-0 h-screen w-full bg-white z-50 flex flex-col p-10 pt-32 font-sans"
           >
             <div className="flex flex-col gap-6">
-              <span className="text-[10px] text-zinc-400 uppercase tracking-[0.3em] border-b border-zinc-100 pb-2">
-                Navigation_Protocol
+              <span className="text-[11px] text-zinc-400 uppercase font-black tracking-[0.2em] border-b-2 border-zinc-100 pb-4">
+                Directory
               </span>
               {navItems.map((item, i) => (
                 <motion.a
@@ -156,31 +146,24 @@ export function Header() {
                   key={item.label}
                   href={item.href}
                   onClick={(e) => handleScroll(e, item.href)}
-                  className="text-2xl font-black uppercase tracking-tighter text-black hover:text-zinc-500 flex items-center justify-between"
+                  className="group text-4xl font-black uppercase tracking-tight text-black flex items-center justify-between hover:translate-x-4 transition-transform duration-300"
                 >
-                  {item.label}
-                  <span className="text-[10px] text-zinc-300">0{i}</span>
+                  <span className="group-hover:text-zinc-400 transition-colors">{item.label}</span>
+                  <span className="text-[10px] font-mono text-zinc-300">0{i + 1}</span>
                 </motion.a>
               ))}
             </div>
 
-            <div className="mt-auto flex items-center justify-between pt-8 border-t border-zinc-100">
+            <div className="mt-auto flex items-center justify-between pt-10 border-t-4 border-black">
                <div className="flex flex-col">
-                  <span className="text-[9px] font-black uppercase">Node_Dubai</span>
-                  <span className="text-[8px] text-green-500 font-bold uppercase">Active_Link</span>
+                  <span className="text-sm font-black uppercase">Based in Dubai</span>
+                  <span className="text-xs text-green-600 font-bold uppercase">Open for Work</span>
                </div>
-               <NeuralCore />
+               <NavigationCore />
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* SYSTEM PROGRESS DECORATION */}
-      <div className="absolute bottom-[-2px] left-0 w-full h-[2px] flex">
-        <div className="w-1/6 h-full bg-black" />
-        <div className="w-px h-full bg-white mx-0.5" />
-        <div className="w-full h-full bg-black/5" />
-      </div>
     </header>
   );
 }

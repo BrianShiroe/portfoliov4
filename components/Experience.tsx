@@ -4,101 +4,101 @@ import { motion } from "framer-motion";
 export function Experience() {
   const history = [
     {
-      id: "DEP_02",
       period: "SEP 2025 – PRESENT",
       company: "ITD INNOVATION",
       location: "DUBAI, UAE",
-      role: "Web Developer & Digital Marketing",
-      status: "ACTIVE_DEPLOYMENT",
-      stack: "Next.js / Tailwind / Meta Ads",
-      tasks: ["Fullstack Development", "Digital Strategy", "UI Optimization", "Conversion Tracking"],
-      color: "text-green-600"
+      role: "Web Developer & IT Specialist",
+      status: "CURRENT",
+      stack: "Next.js / Shopify / Odoo ERP",
+      tasks: ["Enterprise Web Systems", "E-Commerce Strategy", "ERP Implementation", "Digital Infrastructure"],
+      color: "text-black"
     },
     {
-      id: "DEP_01",
       period: "MAY 2024 – AUG 2024",
       company: "DPWH - OLONGAPO",
       location: "PHILIPPINES",
-      role: "PHP Web Developer & IT Support Intern",
-      status: "ARCHIVED",
-      stack: "PHP / MySQL / hardware",
-      tasks: ["Backend Logic", "System Troubleshooting", "Infrastructure Support", "Database Management"],
+      role: "PHP Developer & IT Support",
+      status: "COMPLETED",
+      stack: "PHP / MySQL / Network Systems",
+      tasks: ["Backend Architecture", "System Security", "Infrastructure Support", "Database Integrity"],
       color: "text-zinc-400"
     }
   ];
 
   return (
-    <section id="experience" className="relative w-full bg-white py-20 px-4 md:px-6 overflow-hidden font-mono border-b-2 border-black">
-      <div className="mx-auto max-w-5xl relative">
+    <section id="experience" className="relative w-full bg-white py-24 px-4 md:px-6 overflow-hidden font-mono border-b-4 border-black">
+      <div className="mx-auto max-w-6xl relative">
         
         {/* --- HEADER & SUMMARY --- */}
-        <div className="mb-16 md:mb-24 grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+        <div className="mb-20 md:mb-32 grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
           <div className="lg:col-span-8">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="h-[2px] w-8 bg-black" />
-              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-400">Deployment_Logs</span>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-[3px] w-12 bg-black" />
+              <span className="text-[12px] font-black uppercase tracking-widest text-zinc-400">Professional History</span>
             </div>
             <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter text-black leading-none">
-              Career_<span className="text-zinc-100">Path</span>
+              Career_<span className="text-zinc-200">Timeline</span>
             </h2>
           </div>
-          <div className="lg:col-span-4 border-l-2 border-black pl-4">
-            <p className="text-[10px] font-bold text-zinc-400 uppercase mb-1">Core_Directives</p>
-            <p className="text-xs font-bold leading-tight uppercase text-black">
-              Specializing in high-performance web architecture and digital growth strategies within the UAE market.
+          <div className="lg:col-span-4 border-l-4 border-black pl-6">
+            <p className="text-[11px] font-black text-zinc-400 uppercase mb-2">Technical Summary</p>
+            <p className="text-sm md:text-base font-bold leading-tight uppercase text-black">
+              Specializing in high-performance eCommerce systems and integrated enterprise solutions for the UAE market.
             </p>
           </div>
         </div>
 
         {/* --- TIMELINE GRID --- */}
-        <div className="relative border-l border-zinc-200 ml-2 md:ml-0">
+        <div className="relative border-l-4 border-black ml-4 md:ml-0">
           {history.map((job, index) => (
             <motion.div 
-              key={job.id}
-              initial={{ opacity: 0, y: 10 }}
+              key={job.company}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="relative mb-16 last:mb-0 pl-8 md:pl-20 group"
+              className="relative mb-24 last:mb-0 pl-10 md:pl-24 group"
             >
-              {/* Target Node */}
-              <div className="absolute -left-[5.5px] top-1.5 h-3 w-3 rounded-full border border-zinc-300 bg-white flex items-center justify-center transition-colors group-hover:border-black">
-                <div className={`h-1 w-1 rounded-full ${index === 0 ? 'bg-green-500' : 'bg-black'}`} />
+              {/* Timeline Marker */}
+              <div className="absolute -left-[14px] top-2 h-6 w-6 border-4 border-black bg-white flex items-center justify-center transition-transform group-hover:scale-125">
+                <div className={`h-2 w-2 ${index === 0 ? 'bg-black' : 'bg-zinc-200'}`} />
               </div>
               
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-8 items-start">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-12 items-start">
                 
                 {/* Time & Status Column */}
-                <div className="lg:col-span-3 flex flex-col items-start pt-1">
-                  <div className="px-2 py-1 bg-black text-white mb-2 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.1)]">
-                    <span className="text-[10px] font-bold whitespace-nowrap">{job.period}</span>
+                <div className="lg:col-span-3 flex flex-col items-start pt-2">
+                  <div className="px-4 py-2 bg-black text-white mb-3 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.1)]">
+                    <span className="text-xs font-black tracking-widest whitespace-nowrap">{job.period}</span>
                   </div>
                   <div className={`flex items-center gap-2 ${job.color}`}>
-                    <span className="text-[9px] font-black uppercase tracking-widest">{job.status}</span>
-                    {index === 0 && <span className="h-1 w-1 bg-green-500 rounded-full animate-pulse" />}
+                    <span className="text-[10px] font-black uppercase tracking-widest">{job.status}</span>
+                    {index === 0 && <span className="h-2 w-2 bg-black rounded-full animate-ping" />}
                   </div>
                   {job.stack && (
-                    <span className="text-[8px] mt-2 font-bold text-zinc-300 uppercase tracking-tighter">Stack: {job.stack}</span>
+                    <div className="mt-4 p-3 border-2 border-black/5 bg-zinc-50 w-full">
+                      <span className="text-[10px] font-bold text-zinc-500 uppercase leading-none">Stack: {job.stack}</span>
+                    </div>
                   )}
                 </div>
 
                 {/* Company & Role Column */}
                 <div className="lg:col-span-9">
-                  <div className="max-w-2xl">
-                    <div className="flex items-center gap-2 mb-2">
-                       <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">{job.company}</span>
-                       <span className="text-zinc-200 text-[10px]">/</span>
-                       <span className="text-[10px] font-medium text-zinc-400 uppercase tracking-widest">{job.location}</span>
+                  <div className="max-w-3xl">
+                    <div className="flex flex-wrap items-center gap-3 mb-3">
+                       <span className="text-sm font-black text-black uppercase tracking-widest">{job.company}</span>
+                       <span className="text-zinc-300 font-bold">|</span>
+                       <span className="text-sm font-bold text-zinc-400 uppercase tracking-widest">{job.location}</span>
                     </div>
                     
-                    <h3 className="text-2xl md:text-4xl font-black uppercase tracking-tight text-black leading-none mb-6 group-hover:text-zinc-600 transition-colors">
+                    <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-black leading-none mb-8 group-hover:text-zinc-600 transition-colors">
                       {job.role}
                     </h3>
                     
-                    {/* Task Tags */}
-                    <div className="flex flex-wrap gap-2">
+                    {/* Responsibilities */}
+                    <div className="flex flex-wrap gap-3">
                       {job.tasks.map((task) => (
-                        <span key={task} className="text-[8px] md:text-[9px] font-bold uppercase border border-black/10 text-zinc-500 px-2 py-1 hover:bg-zinc-50 hover:text-black transition-all cursor-default">
+                        <span key={task} className="text-[10px] md:text-xs font-black uppercase border-2 border-black px-4 py-2 hover:bg-black hover:text-white transition-all cursor-default shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none">
                           {task}
                         </span>
                       ))}
@@ -113,11 +113,11 @@ export function Experience() {
       </div>
 
       {/* FOOTER SCALE */}
-      <div className="mx-auto max-w-5xl mt-20 pt-6 border-t border-zinc-100 flex justify-between items-center opacity-40">
-        <span className="text-[10px] font-black uppercase tracking-widest text-zinc-400">System_Authenticated // User: Brian_Shiroe</span>
-        <div className="flex gap-2">
-          {[...Array(4)].map((_, i) => (
-            <div key={i} className={`h-1 w-4 ${i === 3 ? 'bg-zinc-100' : 'bg-zinc-400'}`} />
+      <div className="mx-auto max-w-6xl mt-32 pt-10 border-t-4 border-black flex flex-col md:flex-row justify-between items-center gap-6">
+        <span className="text-xs font-black uppercase tracking-[0.2em] text-black">Brian Haw // Professional Experience History</span>
+        <div className="flex gap-4">
+          {[...Array(6)].map((_, i) => (
+            <div key={i} className={`h-4 w-4 border-2 border-black ${i < 3 ? 'bg-black' : 'bg-transparent'}`} />
           ))}
         </div>
       </div>
