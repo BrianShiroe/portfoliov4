@@ -12,7 +12,7 @@ export function Experience() {
       status: "ACTIVE_DEPLOYMENT",
       stack: "Next.js / Tailwind / Meta Ads",
       tasks: ["Fullstack Development", "Digital Strategy", "UI Optimization", "Conversion Tracking"],
-      color: "text-[#00E676]"
+      color: "text-green-600"
     },
     {
       id: "DEP_01",
@@ -23,96 +23,102 @@ export function Experience() {
       status: "ARCHIVED",
       stack: "PHP / MySQL / hardware",
       tasks: ["Backend Logic", "System Troubleshooting", "Infrastructure Support", "Database Management"],
-      color: "text-black/40"
+      color: "text-zinc-400"
     }
   ];
 
   return (
-    <section id="experience" className="relative w-full bg-[#F1F1F1] py-24 px-4 md:px-6 overflow-hidden font-sans border-t-[6px] border-black scroll-mt-20">
-      <div className="mx-auto max-w-7xl relative">
+    <section id="experience" className="relative w-full bg-white py-20 px-4 md:px-6 overflow-hidden font-mono border-b-2 border-black">
+      <div className="mx-auto max-w-5xl relative">
         
-        {/* --- NEOBRUTALIST HEADER --- */}
-        <div className="mb-20 grid grid-cols-1 lg:grid-cols-12 gap-12 items-end border-b-[6px] border-black pb-12">
+        {/* --- HEADER & SUMMARY --- */}
+        <div className="mb-16 md:mb-24 grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
           <div className="lg:col-span-8">
-            <h2 className="text-7xl md:text-9xl font-black uppercase tracking-tighter text-black leading-[0.8]">
-              CAREER <br />
-              <span className="text-white drop-shadow-[4px_4px_0px_rgba(0,0,0,1)]" style={{ WebkitTextStroke: '2px black' }}>HISTORY</span>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="h-[2px] w-8 bg-black" />
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-400">Deployment_Logs</span>
+            </div>
+            <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter text-black leading-none">
+              Career_<span className="text-zinc-100">Path</span>
             </h2>
           </div>
-          <div className="lg:col-span-4 bg-white border-[4px] border-black p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-            <p className="text-sm font-black leading-tight uppercase text-black">
-              Focused on delivering high-performance web architecture and results-driven digital growth strategies.
+          <div className="lg:col-span-4 border-l-2 border-black pl-4">
+            <p className="text-[10px] font-bold text-zinc-400 uppercase mb-1">Core_Directives</p>
+            <p className="text-xs font-bold leading-tight uppercase text-black">
+              Specializing in high-performance web architecture and digital growth strategies within the UAE market.
             </p>
           </div>
         </div>
 
-        {/* --- EXPERIENCE LIST --- */}
-        <div className="space-y-12">
+        {/* --- TIMELINE GRID --- */}
+        <div className="relative border-l border-zinc-200 ml-2 md:ml-0">
           {history.map((job, index) => (
             <motion.div 
               key={job.id}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -4, x: 4 }}
-              className="bg-white border-[4px] border-black p-8 md:p-10 shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] hover:shadow-[14px_14px_0px_0px_#A3E635] transition-all relative overflow-hidden group"
+              className="relative mb-16 last:mb-0 pl-8 md:pl-20 group"
             >
-              {/* Status Indicator */}
-              <div className="absolute top-0 right-0 px-4 py-2 bg-black text-white text-[10px] font-black uppercase tracking-widest">
-                {job.status}
+              {/* Target Node */}
+              <div className="absolute -left-[5.5px] top-1.5 h-3 w-3 rounded-full border border-zinc-300 bg-white flex items-center justify-center transition-colors group-hover:border-black">
+                <div className={`h-1 w-1 rounded-full ${index === 0 ? 'bg-green-500' : 'bg-black'}`} />
               </div>
-
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-8 items-start">
                 
-                {/* Time & Tech Stack Column */}
-                <div className="lg:col-span-3 space-y-4">
-                  <div className="inline-block bg-[#FFD100] border-2 border-black px-3 py-1 text-sm font-black uppercase shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
-                    {job.period}
+                {/* Time & Status Column */}
+                <div className="lg:col-span-3 flex flex-col items-start pt-1">
+                  <div className="px-2 py-1 bg-black text-white mb-2 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.1)]">
+                    <span className="text-[10px] font-bold whitespace-nowrap">{job.period}</span>
                   </div>
-                  <div className="space-y-1">
-                    <p className="text-[10px] font-black text-black/40 uppercase">Technology_Stack</p>
-                    <p className="text-xs font-black uppercase text-black">{job.stack}</p>
+                  <div className={`flex items-center gap-2 ${job.color}`}>
+                    <span className="text-[9px] font-black uppercase tracking-widest">{job.status}</span>
+                    {index === 0 && <span className="h-1 w-1 bg-green-500 rounded-full animate-pulse" />}
                   </div>
+                  {job.stack && (
+                    <span className="text-[8px] mt-2 font-bold text-zinc-300 uppercase tracking-tighter">Stack: {job.stack}</span>
+                  )}
                 </div>
 
                 {/* Company & Role Column */}
                 <div className="lg:col-span-9">
-                    <div className="flex flex-col md:flex-row md:items-center gap-2 mb-4">
-                       <span className="text-xl font-black uppercase text-black/40">{job.company}</span>
-                       <span className="hidden md:block h-2 w-2 bg-black" />
-                       <span className="text-xl font-black uppercase text-black/40">{job.location}</span>
+                  <div className="max-w-2xl">
+                    <div className="flex items-center gap-2 mb-2">
+                       <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">{job.company}</span>
+                       <span className="text-zinc-200 text-[10px]">/</span>
+                       <span className="text-[10px] font-medium text-zinc-400 uppercase tracking-widest">{job.location}</span>
                     </div>
                     
-                    <h3 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-black leading-none mb-8">
+                    <h3 className="text-2xl md:text-4xl font-black uppercase tracking-tight text-black leading-none mb-6 group-hover:text-zinc-600 transition-colors">
                       {job.role}
                     </h3>
                     
-                    {/* Task Grid - High Scanability */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {/* Task Tags */}
+                    <div className="flex flex-wrap gap-2">
                       {job.tasks.map((task) => (
-                        <div key={task} className="flex items-center gap-3 bg-[#F1F1F1] border-2 border-black p-3 hover:bg-[#A3E635] transition-colors group/task">
-                          <div className="h-4 w-4 bg-black group-hover/task:bg-white transition-colors" />
-                          <span className="text-xs font-black uppercase text-black">
-                            {task}
-                          </span>
-                        </div>
+                        <span key={task} className="text-[8px] md:text-[9px] font-bold uppercase border border-black/10 text-zinc-500 px-2 py-1 hover:bg-zinc-50 hover:text-black transition-all cursor-default">
+                          {task}
+                        </span>
                       ))}
                     </div>
+                  </div>
                 </div>
+
               </div>
             </motion.div>
           ))}
         </div>
+      </div>
 
-        {/* FOOTER SCALE */}
-        <div className="mt-20 pt-8 border-t-[4px] border-black flex flex-col md:flex-row justify-between items-center gap-6">
-          <span className="text-xs font-black uppercase text-black">System_Authenticated // User: Brian_Shiroe</span>
-          <div className="flex gap-2">
-             <div className="h-6 w-12 bg-black" />
-             <div className="h-6 w-6 bg-[#A3E635]" />
-             <div className="h-6 w-6 bg-white border-2 border-black" />
-          </div>
+      {/* FOOTER SCALE */}
+      <div className="mx-auto max-w-5xl mt-20 pt-6 border-t border-zinc-100 flex justify-between items-center opacity-40">
+        <span className="text-[10px] font-black uppercase tracking-widest text-zinc-400">System_Authenticated // User: Brian_Shiroe</span>
+        <div className="flex gap-2">
+          {[...Array(4)].map((_, i) => (
+            <div key={i} className={`h-1 w-4 ${i === 3 ? 'bg-zinc-100' : 'bg-zinc-400'}`} />
+          ))}
         </div>
       </div>
     </section>
