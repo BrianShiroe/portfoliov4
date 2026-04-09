@@ -10,16 +10,14 @@ const techClasses = [
   { slug: 'tailwindcss', name: 'Tailwind', type: 'Design', class: 'Rogue', hp: 98, mp: 100 },
   { slug: 'python', name: 'Python', type: 'Backend', class: 'Alchemist', hp: 80, mp: 65 },
   { slug: 'wordpress', name: 'WordPress', type: 'CMS', class: 'Cleric', hp: 90, mp: 55 },
-  { slug: 'vite', name: 'Vite', type: 'Build Tool', class: 'Artisan', hp: 94, mp: 70 },
   { slug: 'javascript', name: 'JavaScript', type: 'Core', class: 'Warlock', hp: 95, mp: 75 },
   { slug: 'html5', name: 'HTML5', type: 'Structure', class: 'Blacksmith', hp: 100, mp: 100 },
   { slug: 'css', name: 'CSS3', type: 'Styling', class: 'Dancer', hp: 98, mp: 95 },
-  { slug: 'figma', name: 'UI/UX Design', type: 'Aesthetics', class: 'Bard', hp: 85, mp: 85 },
 ];
 
 const ExternalIcon = ({ slug }: { slug: string }) => (
   <div 
-    className="h-12 w-12 md:h-16 md:w-16 bg-black group-hover:bg-green-500 transition-colors duration-200"
+    className="h-8 w-8 md:h-16 md:w-16 bg-black group-hover:bg-green-500 transition-colors duration-200"
     style={{
       WebkitMaskImage: `url(https://cdn.simpleicons.org/${slug}/000)`,
       maskImage: `url(https://cdn.simpleicons.org/${slug}/000)`,
@@ -44,8 +42,8 @@ export function Skills() {
   return (
     <section id="skills" className="relative w-full border-t-4 border-black bg-zinc-50 py-16 md:py-24 overflow-hidden selection:bg-black selection:text-white font-sans">
       
-      {/* 1. TOP UTILITY BAR (The Extra Detail) */}
-      <div className="mx-auto max-w-7xl px-4 md:px-6 mb-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b-2 border-black pb-4">
+      {/* 1. TOP UTILITY BAR */}
+      <div className="mx-auto max-w-7xl px-4 md:px-6 mb-8 md:mb-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b-2 border-black pb-4">
         <div className="flex flex-wrap items-center gap-4 md:gap-6">
           <div className="flex items-center gap-2">
             <span className="text-[10px] font-black uppercase text-zinc-400">Local_Node:</span>
@@ -71,7 +69,7 @@ export function Skills() {
       <div className="mx-auto max-w-7xl px-4 md:px-6 relative z-10">
         
         {/* --- HEADER --- */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-24 gap-8">
           <div className="relative">
             <div className="absolute -left-2 -top-2 md:-left-4 md:-top-4 h-8 w-8 md:h-12 md:w-12 border-l-4 border-t-4 border-black" />
             <p className="text-[10px] md:text-xs font-black text-zinc-400 uppercase tracking-[0.3em] md:tracking-[0.5em] mb-2 md:mb-4 ml-2 italic underline decoration-black underline-offset-4">Capability_Inventory // v4.6</p>
@@ -90,8 +88,8 @@ export function Skills() {
           </div>
         </div>
 
-        {/* --- GRID --- */}
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {/* --- GRID (Tightened for Mobile) --- */}
+        <div className="grid grid-cols-2 gap-3 md:gap-6 lg:grid-cols-3 xl:grid-cols-5">
           {techClasses.map((tech, index) => (
             <motion.div 
               key={tech.name}
@@ -99,40 +97,38 @@ export function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
-              className="group relative h-[380px] md:h-[420px] [perspective:1000px] cursor-crosshair"
+              className="group relative h-[240px] md:h-[420px] [perspective:1000px] cursor-crosshair"
             >
               <div className="relative h-full w-full transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                 
                 {/* CARD FRONT */}
-                <div className="absolute inset-0 h-full w-full border-4 border-black bg-white p-5 md:p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] md:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col justify-between [backface-visibility:hidden]">
-                  <div className="flex justify-between items-start border-b-2 border-black pb-2">
-                    <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest">CL_{tech.class}</span>
-                    <span className="text-[10px] font-black text-black">LVL_99</span>
+                <div className="absolute inset-0 h-full w-full border-2 md:border-4 border-black bg-white p-2.5 md:p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col justify-between [backface-visibility:hidden]">
+                  <div className="flex justify-between items-start border-b border-black pb-1.5 md:pb-2">
+                    <span className="text-[7px] md:text-[10px] font-mono text-zinc-400 uppercase tracking-widest truncate">CL_{tech.class}</span>
+                    <span className="text-[7px] md:text-[10px] font-black text-black">LVL_99</span>
                   </div>
 
                   <div className="flex-grow flex items-center justify-center">
-                    <div className="relative border-2 border-zinc-50 p-4 md:p-6 group-hover:border-black transition-colors duration-300 group-hover:bg-zinc-50 shadow-sm group-hover:shadow-none">
+                    <div className="relative border border-zinc-50 p-1.5 md:p-6 group-hover:border-black transition-colors duration-300 group-hover:bg-zinc-50 shadow-sm group-hover:shadow-none">
                       <ExternalIcon slug={tech.slug} />
-                      <div className="absolute -top-1 -left-1 w-2 h-2 bg-black opacity-0 group-hover:opacity-100 transition-opacity" />
-                      <div className="absolute -bottom-1 -right-1 w-2 h-2 bg-black opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
                   </div>
 
-                  <div className="space-y-3 md:space-y-4">
+                  <div className="space-y-1.5 md:space-y-4">
                      <div>
-                        <h3 className="text-xl md:text-2xl font-black uppercase tracking-tighter text-black leading-none mb-1 group-hover:italic transition-all">{tech.name}</h3>
-                        <p className="text-[9px] font-bold text-zinc-400 uppercase tracking-[0.3em]">{tech.type}</p>
+                        <h3 className="text-xs md:text-2xl font-black uppercase tracking-tighter text-black leading-none mb-0.5 group-hover:italic transition-all">{tech.name}</h3>
+                        <p className="text-[6px] md:text-[9px] font-bold text-zinc-400 uppercase tracking-[0.2em]">{tech.type}</p>
                      </div>
-                     <div className="space-y-2">
-                        <div className="flex items-center gap-2">
-                          <span className="w-5 text-[9px] font-black text-zinc-400">HP</span>
-                          <div className="h-1.5 flex-grow bg-zinc-100 overflow-hidden border border-black/5">
+                     <div className="space-y-1 md:space-y-2">
+                        <div className="flex items-center gap-1.5 md:gap-2">
+                          <span className="w-3 md:w-5 text-[6px] md:text-[9px] font-black text-zinc-400">HP</span>
+                          <div className="h-1 md:h-1.5 flex-grow bg-zinc-100 overflow-hidden border border-black/5">
                             <motion.div initial={{ width: 0 }} whileInView={{ width: `${tech.hp}%` }} className="h-full bg-black group-hover:bg-green-500 transition-colors" />
                           </div>
                         </div>
-                        <div className="flex items-center gap-2">
-                          <span className="w-5 text-[9px] font-black text-zinc-400">MP</span>
-                          <div className="h-1.5 flex-grow bg-zinc-100 overflow-hidden border border-black/5">
+                        <div className="flex items-center gap-1.5 md:gap-2">
+                          <span className="w-3 md:w-5 text-[6px] md:text-[9px] font-black text-zinc-400">MP</span>
+                          <div className="h-1 md:h-1.5 flex-grow bg-zinc-100 overflow-hidden border border-black/5">
                             <motion.div initial={{ width: 0 }} whileInView={{ width: `${tech.mp}%` }} className="h-full bg-zinc-300 group-hover:bg-black transition-colors" />
                           </div>
                         </div>
@@ -141,26 +137,20 @@ export function Skills() {
                 </div>
 
                 {/* CARD BACK */}
-                <div className="absolute inset-0 h-full w-full border-4 border-black bg-black p-6 md:p-8 shadow-[6px_6px_0px_0px_rgba(34,197,94,0.3)] md:shadow-[8px_8px_0px_0px_rgba(34,197,94,0.3)] text-white [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                <div className="absolute inset-0 h-full w-full border-2 md:border-4 border-black bg-black p-3 md:p-8 shadow-[4px_4px_0px_0px_rgba(34,197,94,0.3)] md:shadow-[8px_8px_0px_0px_rgba(34,197,94,0.3)] text-white [transform:rotateY(180deg)] [backface-visibility:hidden]">
                     <div className="h-full flex flex-col justify-between font-mono">
-                      <div className="space-y-4">
+                      <div className="space-y-1.5 md:space-y-4">
                         <div className="flex justify-between items-center">
-                           <p className="text-[10px] text-green-500 tracking-tighter animate-pulse">&gt; SYS_LOG_ACTIVE</p>
-                           <span className="text-[8px] text-zinc-600">ID: {index.toString().padStart(3, '0')}</span>
+                           <p className="text-[7px] md:text-[10px] text-green-500 tracking-tighter truncate">&gt; LOG_ACTIVE</p>
+                           <span className="text-[5px] md:text-[8px] text-zinc-600">ID: {index.toString().padStart(3, '0')}</span>
                         </div>
-                        <p className="text-xs md:text-sm uppercase leading-relaxed tracking-tight border-l-2 border-green-500 pl-4 py-1 italic">
-                           Mastery in {tech.name} confirmed. Scalable architectures deployed in Dubai_2026.
+                        <p className="text-[8px] md:text-sm uppercase leading-tight md:leading-relaxed tracking-tight border-l border-green-500 pl-2 md:pl-4 py-0.5 italic">
+                           Mastery confirmed.
                         </p>
-                        <div className="grid grid-cols-2 gap-2 text-[7px] md:text-[8px] text-zinc-500 border border-zinc-800 p-2 uppercase">
-                           <div>Lat: 25.2048° N</div>
-                           <div>Lon: 55.2708° E</div>
-                           <div>Status: Prod</div>
-                           <div>Prot: HTTPS</div>
-                        </div>
                       </div>
-                      <div className="pt-4 border-t border-zinc-800 flex justify-between items-center text-[9px] text-zinc-600">
-                        <span>SRC: SIMPLE_ICONS</span>
-                        <div className="px-2 py-0.5 bg-green-500 text-black font-bold uppercase tracking-tighter">Verified</div>
+                      <div className="pt-1.5 border-t border-zinc-800 flex justify-between items-center text-[6px] md:text-[9px] text-zinc-600">
+                        <span className="truncate">SIMPLE_ICONS</span>
+                        <div className="px-1 py-0.5 bg-green-500 text-black font-bold uppercase tracking-tighter text-[5px] md:text-[8px]">VERIFIED</div>
                       </div>
                     </div>
                 </div>
@@ -169,14 +159,14 @@ export function Skills() {
           ))}
         </div>
 
-        {/* 2. FOOTER EXTRAS: SYSTEM OVERLAY */}
-        <div className="mt-16 md:mt-24 pt-8 md:pt-12 border-t-2 border-black/10 flex flex-col md:flex-row items-center justify-between gap-8 opacity-50 md:grayscale md:hover:grayscale-0 transition-all duration-700">
-           <div className="text-[9px] md:text-[10px] font-mono uppercase tracking-widest text-zinc-400 text-center md:text-left">
-              [ Build_Version: 2026.4.8 // Environment: Production // Developer: Brianshiroe ]
+        {/* --- FOOTER EXTRAS --- */}
+        <div className="mt-12 md:mt-24 pt-8 md:pt-12 border-t-2 border-black/10 flex flex-col md:flex-row items-center justify-between gap-6 opacity-50 transition-all duration-700">
+           <div className="text-[8px] md:text-[10px] font-mono uppercase tracking-widest text-zinc-400 text-center md:text-left">
+             [ Build: 2026.4.9 // Brianshiroe ]
            </div>
            <div className="flex gap-4">
-              <div className="h-1 w-8 bg-black/20 rounded-full" />
-              <div className="h-1 w-16 bg-black/40 rounded-full" />
+              <div className="h-1 w-6 md:w-8 bg-black/20 rounded-full" />
+              <div className="h-1 w-12 md:w-16 bg-black/40 rounded-full" />
               <div className="h-1 w-4 bg-green-500 rounded-full" />
            </div>
         </div>
