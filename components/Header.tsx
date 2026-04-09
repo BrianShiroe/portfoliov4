@@ -29,7 +29,7 @@ export function Header() {
     { label: "Services", href: "#skills" },
     { label: "Projects", href: "#projects" },
     { label: "History", href: "#experience" },
-    { label: "Resume", href: "#cv" },
+    // { label: "Resume", href: "#cv" },
     { label: "Contact", href: "#contact" },
   ];
 
