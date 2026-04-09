@@ -26,14 +26,14 @@ export function Footer() {
             {/* Link Matrix */}
             <div className="flex gap-8 text-[10px] font-black uppercase tracking-[0.2em]">
               <a 
-                href="https://github.com" 
+                href="https://github.com/BrianShiroe" 
                 target="_blank" 
                 className="hover:text-zinc-400 transition-colors border-b border-transparent hover:border-zinc-400"
               >
                 Github
               </a>
               <a 
-                href="https://linkedin.com" 
+                href="https://www.linkedin.com/in/brianshiroe/" 
                 target="_blank" 
                 className="hover:text-zinc-400 transition-colors border-b border-transparent hover:border-zinc-400"
               >
