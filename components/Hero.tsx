@@ -39,13 +39,19 @@ export function Hero() {
               </span>
               <div className="space-y-2.5 font-mono text-[13px] text-zinc-800 uppercase font-bold leading-tight">
                 <p className="flex items-center gap-2 transition-transform hover:translate-x-1">
-                  <span className="h-1 w-1 bg-black" /> ERP Integration
-                </p>
-                <p className="flex items-center gap-2 transition-transform hover:translate-x-1">
                   <span className="h-1 w-1 bg-black" /> Frontend Dev
                 </p>
                 <p className="flex items-center gap-2 transition-transform hover:translate-x-1">
                   <span className="h-1 w-1 bg-black" /> Full-Stack Dev
+                </p>
+                <p className="flex items-center gap-2 transition-transform hover:translate-x-1">
+                  <span className="h-1 w-1 bg-black" /> ERP Integration
+                </p>
+                <p className="flex items-center gap-2 transition-transform hover:translate-x-1">
+                  <span className="h-1 w-1 bg-black" /> Shopify Ecommerce
+                </p>
+                <p className="flex items-center gap-2 transition-transform hover:translate-x-1">
+                  <span className="h-1 w-1 bg-black" /> Wordpress Dev
                 </p>
               </div>
             </div>
@@ -78,8 +84,8 @@ export function Hero() {
             </div>
 
             <p className="max-w-[260px] sm:max-w-sm md:max-w-md text-center text-[10px] md:text-[13px] font-bold text-zinc-600 uppercase tracking-tight leading-snug">
-              7+ months of professional experience in WordPress and
-              Odoo, alongside independent development work with React and
+              7+ months of professional experience in WordPress, Shopify, and
+              Odoo, complemented by personal development in React and
               Next.js.
             </p>
 
@@ -144,21 +150,31 @@ export function Hero() {
       </div>
 
       {/* --- FOOTER: SKILLS TICKER --- */}
-      <div className="absolute bottom-0 z-20 w-full border-t-2 border-black bg-white py-1.5 overflow-hidden flex items-center h-10 md:h-14">
+      <div className="absolute bottom-0 z-20 w-full border-t-2 border-black bg-white py-1 overflow-hidden flex items-center h-10 md:h-14">
         <motion.div
           animate={{ x: [0, -1200] }}
           transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
-          className="flex gap-8 md:gap-16 text-[9px] md:text-[12px] font-black uppercase tracking-widest text-black whitespace-nowrap"
+          className="flex gap-6 md:gap-12 text-[9px] md:text-[12px] font-black uppercase tracking-wide text-black whitespace-nowrap"
         >
           {[...Array(6)].map((_, i) => (
-            <span key={i} className="flex items-center gap-4 md:gap-8">
-              <span>Next.js Framework</span>
+            <span key={i} className="flex items-center gap-2 md:gap-4">
+              <span>Next.js</span>
               <span className="text-zinc-300">//</span>
-              <span>TypeScript Development</span>
+              <span>React.js</span>
+              <span className="text-zinc-300">//</span>
+              <span>TypeScript</span>
+              <span className="text-zinc-300">//</span>
+              <span>JavaScript</span>
+              <span className="text-zinc-300">//</span>
+              <span>Wordpress</span>
               <span className="text-zinc-300">//</span>
               <span>Tailwind Design</span>
               <span className="text-zinc-300">//</span>
-              <span>ERP & Odoo Solutions</span>
+              <span>HTML</span>
+              <span className="text-zinc-300">//</span>
+              <span>CSS</span>
+              <span className="text-zinc-300">//</span>
+              <span>Odoo ERP Integration</span>
               <span className="text-zinc-300">//</span>
               <span className="italic">UAE Based</span>
               <span className="text-zinc-300">//</span>
