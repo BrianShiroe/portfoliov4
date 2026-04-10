@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 // 1. SEO METADATA CONFIGURATION
 export const metadata: Metadata = {
   title: {
-    default: "Brian Shiroe | Web Developer & Designer Dubai",
+    default: "Brian Shiroe | Web Developer Dubai",
     template: "%s | Brian Shiroe",
   },
   description: "Brian Shiroe is a minimalist web developer based in Dubai, UAE, specializing in high-performance digital experiences, React, and Next.js.",
