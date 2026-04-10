@@ -60,8 +60,8 @@ export function Hero() {
           {/* --- CENTER: MAIN HEADING --- */}
           <div className="relative flex flex-col items-center w-full">
             <div className="relative w-full max-w-fit mx-auto">
+              {/* TOP LEFT ARROW ONLY */}
               <div className="absolute -top-3 -left-3 md:-top-10 md:-left-10 w-3 h-3 md:w-5 md:h-5 border-t-2 md:border-t-[3px] border-l-2 md:border-l-[3px] border-black" />
-              <div className="absolute -bottom-3 -right-3 md:-bottom-10 md:-right-10 w-3 h-3 md:w-5 md:h-5 border-b-2 md:border-b-[3px] border-r-2 md:border-r-[3px] border-black" />
 
               <div className="mb-2 md:mb-4 inline-block bg-black px-2 py-1 text-[8px] md:text-[11px] font-bold uppercase tracking-[0.2em] text-white">
                 Web Developer // Dubai
@@ -117,7 +117,7 @@ export function Hero() {
             </div>
           </div>
 
-          {/* --- RIGHT SIDE: CHARACTER BOX (TIME HIDDEN ON MOBILE) --- */}
+          {/* --- RIGHT SIDE: CHARACTER BOX --- */}
           <div className="flex flex-col items-center relative mt-2 lg:mt-0">
             <motion.div
               animate={{ rotate: 360 }}
@@ -131,7 +131,6 @@ export function Hero() {
                   <Character />
                 </div>
 
-                {/* Timer: Only visible on Desktop/Tablet */}
                 <div className="hidden sm:flex w-full border-t-2 border-black/10 pt-4 mt-2 flex-col items-center">
                   <span className="text-xl md:text-2xl font-black text-black tracking-tighter">
                     {time}
