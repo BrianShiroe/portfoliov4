@@ -30,9 +30,7 @@ export function Hero() {
       />
 
       <div className="relative z-10 mx-auto flex h-full w-full max-w-7xl flex-col items-center justify-between px-4 md:px-6 pb-20 md:pb-12">
-        
         <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between w-full gap-6 md:gap-16 flex-grow">
-          
           {/* --- LEFT SIDE: ACTIVE FOCUS (Desktop Only) --- */}
           <div className="hidden xl:flex flex-col gap-8 w-64">
             <div className="space-y-4">
@@ -69,7 +67,7 @@ export function Hero() {
                   Shiroe
                 </span>
               </h1>
-              
+
               <div className="flex items-center justify-center gap-2 md:gap-3 mb-4 md:mb-8">
                 <div className="h-[1px] md:h-[2px] w-4 md:w-8 bg-black/20" />
                 <span className="text-[10px] md:text-sm font-black uppercase tracking-[0.2em] text-black italic whitespace-nowrap">
@@ -80,14 +78,20 @@ export function Hero() {
             </div>
 
             <p className="max-w-[260px] sm:max-w-sm md:max-w-md text-center text-[10px] md:text-[13px] font-bold text-zinc-600 uppercase tracking-tight leading-snug">
-              7+ months experience in WordPress and Odoo, building with React & Next.js.
+              7+ months of professional experience in WordPress and
+              Odoo, alongside independent development work with React and
+              Next.js.
             </p>
 
             <div className="mt-6 md:mt-10 flex flex-col sm:flex-row gap-3 w-full max-w-[240px] sm:max-w-md">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
+                onClick={() =>
+                  document
+                    .getElementById("projects")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
                 className="w-full bg-black text-white py-3 md:py-4 px-6 text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]"
               >
                 Portfolio
@@ -95,7 +99,11 @@ export function Hero() {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                onClick={() =>
+                  document
+                    .getElementById("contact")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
                 className="w-full border-2 border-black bg-white py-3 md:py-4 px-6 text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em] text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)]"
               >
                 Contact
@@ -112,13 +120,11 @@ export function Hero() {
             />
 
             <div className="relative z-10">
-              <motion.div
-                className="bg-white border-2 md:border-4 border-black p-3 md:p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] md:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center overflow-hidden"
-              >
+              <motion.div className="bg-white border-2 md:border-4 border-black p-3 md:p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] md:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center overflow-hidden">
                 <div className="scale-[0.55] sm:scale-75 md:scale-90">
                   <Character />
                 </div>
-                
+
                 {/* Timer: Only visible on Desktop/Tablet */}
                 <div className="hidden sm:flex w-full border-t-2 border-black/10 pt-4 mt-2 flex-col items-center">
                   <span className="text-xl md:text-2xl font-black text-black tracking-tighter">
@@ -126,7 +132,9 @@ export function Hero() {
                   </span>
                   <div className="flex items-center gap-2 mt-1">
                     <span className="h-1.5 w-1.5 bg-green-500 rounded-full animate-pulse" />
-                    <span className="text-[9px] font-black uppercase text-zinc-400 tracking-widest">Local Time</span>
+                    <span className="text-[9px] font-black uppercase text-zinc-400 tracking-widest">
+                      Local Time
+                    </span>
                   </div>
                 </div>
               </motion.div>
