@@ -3,6 +3,7 @@ import { Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
+import { SystemLoader } from "../components/SystemLoader";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -10,17 +11,22 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-// 1. SEO METADATA CONFIGURATION
 export const metadata: Metadata = {
   title: {
     default: "Brian Shiroe | Web Developer Dubai",
     template: "%s | Brian Shiroe",
   },
-  description: "Brian Shiroe is a minimalist web developer based in Dubai, UAE, specializing in high-performance digital experiences, React, and Next.js.",
-  keywords: ["Brian Shiroe", "Web Developer Dubai", "Next.js Developer UAE", "Minimalist Web Design", "Front-end Developer"],
+  description:
+    "Brian Shiroe is a minimalist web developer based in Dubai, UAE, specializing in high-performance digital experiences, React, and Next.js.",
+  keywords: [
+    "Brian Shiroe",
+    "Web Developer Dubai",
+    "Next.js Developer UAE",
+    "Minimalist Web Design",
+    "Front-end Developer",
+  ],
   authors: [{ name: "Brian Shiroe" }],
   creator: "Brian Shiroe",
-  // metadataBase: new URL("https://yourdomain.com"), // Update with your actual domain
   openGraph: {
     type: "website",
     locale: "en_AE",
@@ -40,29 +46,37 @@ export const metadata: Metadata = {
   },
 };
 
-// 2. VIEWPORT CONFIGURATION (Standard for Next.js 15)
 export const viewport: Viewport = {
   themeColor: "#ffffff",
   width: "device-width",
   initialScale: 1,
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html 
-      lang="en" 
+    <html
+      lang="en"
       className={`${geistMono.variable} scroll-smooth h-full antialiased`}
-      suppressHydrationWarning // Prevents hydration errors from root-level injections
+      suppressHydrationWarning
     >
-      <body 
+      <body
         className="min-h-full flex flex-col font-mono bg-white text-black selection:bg-black selection:text-white"
-        suppressHydrationWarning={true} // Fixed: Prevents the "cz-shortcut-listen" extension error
+        suppressHydrationWarning={true}
       >
+        {/* 1. INITIAL SYSTEM BOOT LOADER */}
+        <SystemLoader />
+
+        {/* 2. MAIN SYSTEM INTERFACE */}
         <Header />
-        {/* Main role for accessibility */}
+
         <main role="main" className="flex-1">
           {children}
         </main>
+
         <Footer />
       </body>
     </html>
