@@ -99,7 +99,7 @@ export function Header() {
           })}
         </nav>
 
-        {/* MOBILE TRIGGER - TIGHTER VERSION */}
+        {/* MOBILE TRIGGER */}
         <button 
           onClick={() => setIsOpen(!isOpen)} 
           className="lg:hidden z-[110] flex items-center gap-2 bg-black px-3 py-1.5 rounded-full active:scale-95"
@@ -123,19 +123,25 @@ export function Header() {
           </div>
         </button>
 
-        {/* DESKTOP CTA */}
+        {/* DESKTOP CTA - UPDATED */}
         <div className="hidden lg:block">
           <a 
             href="#contact"
             onClick={(e) => handleScroll(e, "#contact")}
-            className="text-[10px] font-black uppercase px-5 py-2 bg-black text-white rounded-full hover:bg-zinc-800 transition-all"
+            className="group flex items-center gap-2.5 px-2 py-1 transition-all"
           >
-            Hire Me
+            <span className="text-[10px] font-black uppercase tracking-widest text-zinc-400 group-hover:text-black transition-colors">
+              Available for Hire
+            </span>
+            <div className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+            </div>
           </a>
         </div>
       </div>
 
-      {/* MOBILE OVERLAY - ULTRA COMPACT */}
+      {/* MOBILE OVERLAY */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -169,7 +175,6 @@ export function Header() {
               })}
             </div>
 
-            {/* MOBILE FOOTER - SLIMLINE */}
             <div className="mt-auto pt-6 flex flex-col gap-3">
               <div className="flex items-center justify-between bg-zinc-50 px-4 py-3 rounded-xl border border-zinc-100">
                 <div className="flex flex-col">
