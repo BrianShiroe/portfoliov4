@@ -95,23 +95,22 @@ export function About() {
               </h2>
 
               <p className="text-lg md:text-xl font-bold text-zinc-700 leading-relaxed uppercase">
-                I am an IT Professional and Web Developer dedicated to helping
-                businesses grow through effective online platforms and efficient
-                digital management.
+                IT Professional and Web Developer focused on scaling businesses
+                through high-impact online platforms and optimized digital
+                management.
               </p>
 
               <div className="space-y-6 border-l-4 border-black pl-6 md:pl-8 text-base md:text-lg font-medium text-zinc-500 italic">
                 <p>
-                  "Currently based in Dubai, I manage a wide range of digital
-                  needs—from building user-friendly websites and online stores
-                  to streamlining business operations through professional
-                  system implementation."
+                  "Dubai-based expert in high-performance e-commerce and custom
+                  web development. I extend business capabilities beyond the
+                  frontend by implementing Odoo ERP systems to automate and
+                  streamline core operations."
                 </p>
                 <p>
-                  "My focus is on providing high-quality support that combines
-                  creative design with practical functionality, ensuring every
-                  project is both visually appealing and easy for users to
-                  navigate."
+                  "I bridge the gap between creative design and technical
+                  execution, engineering intuitive user experiences that balance
+                  aesthetic appeal with robust, practical functionality."
                 </p>
               </div>
 
@@ -124,10 +123,10 @@ export function About() {
                   </span>
                 </div>
                 <p className="text-zinc-800 font-bold uppercase">
-                  I believe in delivering reliable results through clear
-                  communication and careful attention to detail. Whether it is
-                  managing complex data or designing a new site, I am committed
-                  to excellence and helping my team succeed.
+                  Dedicated to exceeding client expectations through transparent
+                  communication and meticulous detail. I deliver reliable,
+                  data-driven solutions designed for measurable success and
+                  long-term satisfaction.
                 </p>
                 <motion.span
                   animate={{ opacity: [1, 0] }}
