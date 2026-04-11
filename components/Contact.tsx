@@ -25,7 +25,6 @@ export function Contact() {
     setResult(null);
     
     const formData = new FormData(event.currentTarget);
-    // Web3Forms configuration
     formData.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY as string);
 
     const response = await fetch("https://api.web3forms.com/submit", {
@@ -39,7 +38,6 @@ export function Contact() {
       setResult("Message Sent Successfully!");
       (event.target as HTMLFormElement).reset();
     } else {
-      console.log("Error", data);
       setResult("Error sending message. Please try again.");
     }
     setIsSubmitting(false);
@@ -47,7 +45,8 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="relative w-full bg-white py-24 px-4 md:px-6 font-mono border-t-2 border-black overflow-hidden">
+    /* REMOVED border-t-2 border-black */
+    <section id="contact" className="relative w-full bg-white py-24 px-4 md:px-6 font-mono overflow-hidden">
       <div className="mx-auto max-w-6xl">
         
         {/* --- HEADER --- */}
@@ -63,7 +62,7 @@ export function Contact() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
-          {/* --- LEFT: CONTACT DETAILS & STATUS --- */}
+          {/* --- LEFT: CONTACT DETAILS --- */}
           <div className="lg:col-span-5 space-y-12">
             <div className="space-y-8">
               {contactData.map((item, i) => (
@@ -188,7 +187,8 @@ export function Contact() {
         </div>
 
         {/* --- DECORATIVE RULER --- */}
-        <div className="mt-24 pt-8 border-t border-zinc-100 flex flex-col md:flex-row justify-between items-center gap-4 opacity-30">
+        {/* REMOVED border-t border-zinc-100 */}
+        <div className="mt-24 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 opacity-30">
             <p className="text-xs font-black uppercase tracking-[0.5em] text-zinc-400">
               Professional Portfolio // 2026
             </p>
