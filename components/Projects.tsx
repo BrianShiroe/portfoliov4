@@ -65,7 +65,7 @@ export function Projects() {
               Development Portfolio
             </span>
             <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-black leading-none">
-              Web_<span className="text-zinc-200">Projects</span>
+              Top_<span className="text-zinc-200">Projects</span>
             </h2>
           </div>
           <div className="text-left md:text-right">
