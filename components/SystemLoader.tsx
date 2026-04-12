@@ -94,7 +94,7 @@ export function SystemLoader() {
             <div className="relative group">
               <div className="flex flex-col gap-2 border-l-[4px] border-black pl-6">
                 <span className="text-[11px] font-black uppercase text-zinc-500 tracking-[0.4em]">
-                  Lead_Web_Developer
+                  Web_Developer
                 </span>
                 <h1 className="text-4xl font-black uppercase tracking-tighter text-black leading-none">
                   BrianShiroe<span className="animate-pulse">_</span>

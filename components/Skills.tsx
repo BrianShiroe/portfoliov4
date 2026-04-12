@@ -38,18 +38,19 @@ export function Skills() {
           <div className="relative">
             <div className="absolute -left-2 -top-2 md:-left-4 md:-top-4 h-8 w-8 md:h-12 md:w-12 border-l-4 border-t-4 border-black" />
             <p className="text-[11px] md:text-sm font-black text-zinc-500 uppercase tracking-[0.2em] mb-2 md:mb-4 ml-2">Area of Expertise</p>
-            <h2 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase tracking-tighter text-black leading-[0.8] md:leading-[0.75]">
-              Core_<span className="text-zinc-300">Skills</span>
+            <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-black leading-none">
+              Core_<span className="text-[#00C950]">Skills</span>
             </h2>
           </div>
           <div className="flex flex-col items-start md:items-end">
-             <p className="text-xs md:text-base font-bold border-4 border-black bg-white text-black px-4 md:px-6 py-2 md:py-3 uppercase tracking-widest shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+             {/* Changed shadow color to #00C950 */}
+             <p className="text-xs md:text-base font-bold border-4 border-black bg-white text-black px-4 md:px-6 py-2 md:py-3 uppercase tracking-widest shadow-[4px_4px_0px_0px_#00C950] md:shadow-[8px_8px_0px_0px_#00C950] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
                 Verified Skillset
              </p>
           </div>
         </div>
 
-        {/* --- GRID: Forced 2 columns on mobile (grid-cols-2) --- */}
+        {/* --- GRID --- */}
         <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-3 md:gap-6">
           {techStack.map((tech, index) => (
             <motion.div 

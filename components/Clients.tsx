@@ -25,13 +25,13 @@ export function Clients() {
         {/* --- SECTION HEADER --- */}
         <div className="mb-16">
           <div className="flex items-center gap-3 mb-4">
-            <div className="h-[2px] w-8 bg-black" />
+            <div className="h-[2px] w-8 bg-[#00C950]" />
             <span className="text-xs font-black uppercase tracking-[0.4em] text-zinc-400">
               Production_Output
             </span>
           </div>
           <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter text-black leading-none">
-            Client_<span className="text-zinc-100">Index</span>
+            Client_<span className="text-[#00C950]">Index</span>
           </h2>
         </div>
 
@@ -46,7 +46,8 @@ export function Clients() {
               transition={{ delay: i * 0.05, ease: "circOut" }}
               className="group relative"
             >
-              <div className="absolute inset-0 bg-black translate-x-0 translate-y-0 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-200" />
+              {/* Emerald Shadow on hover */}
+              <div className="absolute inset-0 bg-[#00C950] translate-x-0 translate-y-0 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-200" />
               
               <div className="relative flex items-center justify-center aspect-[500/250] border-2 border-black bg-white p-3 md:p-4 transition-transform duration-200 group-hover:-translate-x-1 group-hover:-translate-y-1 overflow-hidden">
                 
@@ -63,7 +64,8 @@ export function Clients() {
                   />
                 </div>
 
-                <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-5 transition-opacity bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%)] bg-[length:100%_4px]" />
+                {/* Subtle CRT Scanline effect on hover */}
+                <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-5 transition-opacity bg-[linear-gradient(rgba(0,201,80,0)_50%,rgba(0,201,80,0.1)_50%)] bg-[length:100%_4px]" />
               </div>
             </motion.div>
           ))}
@@ -76,7 +78,7 @@ export function Clients() {
             </p>
             <div className="flex gap-1">
               {[...Array(8)].map((_, i) => (
-                <div key={i} className={`h-3 w-[2px] bg-black ${i % 4 === 0 ? 'h-5' : ''}`} />
+                <div key={i} className={`h-3 w-[2px] bg-black ${i % 4 === 0 ? 'h-5 bg-[#00C950]' : ''}`} />
               ))}
             </div>
         </div>

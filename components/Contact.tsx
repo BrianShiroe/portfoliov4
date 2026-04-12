@@ -45,18 +45,17 @@ export function Contact() {
   };
 
   return (
-    /* REMOVED border-t-2 border-black */
     <section id="contact" className="relative w-full bg-white py-24 px-4 md:px-6 font-mono overflow-hidden">
       <div className="mx-auto max-w-6xl">
         
         {/* --- HEADER --- */}
         <div className="mb-16">
           <div className="flex items-center gap-3 mb-4">
-            <div className="h-[2px] w-8 bg-black" />
+            <div className="h-[2px] w-8 bg-[#00C950]" />
             <span className="text-xs font-black uppercase tracking-[0.4em] text-zinc-400">Direct Communication</span>
           </div>
           <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter text-black leading-none">
-            Get_In_<span className="text-zinc-100">Touch</span>
+            Get_In_<span className="text-[#00C950]">Touch</span>
           </h2>
         </div>
 
@@ -72,7 +71,7 @@ export function Contact() {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.1 }}
                   viewport={{ once: true }}
-                  className="group relative flex flex-col gap-1 border-l-2 border-zinc-100 hover:border-black pl-6 transition-colors"
+                  className="group relative flex flex-col gap-1 border-l-2 border-zinc-100 hover:border-[#00C950] pl-6 transition-colors"
                 >
                   <span className="text-xs font-black text-zinc-400 tracking-widest uppercase">
                     {item.label} // 0{i + 1}
@@ -81,7 +80,7 @@ export function Contact() {
                   <div className="flex flex-wrap items-center gap-4">
                     <a 
                       href={item.type === "map" ? "#" : `${item.type}:${item.value}`}
-                      className="text-xl md:text-2xl font-black text-black uppercase hover:text-zinc-500 transition-colors break-all"
+                      className="text-xl md:text-2xl font-black text-black uppercase hover:text-[#00C950] transition-colors break-all"
                     >
                       {item.value}
                     </a>
@@ -89,7 +88,7 @@ export function Contact() {
                     {item.type !== "map" && (
                       <button 
                         onClick={() => copyToClipboard(item.value, item.label)}
-                        className="text-[10px] font-black border border-black px-3 py-1 uppercase hover:bg-black hover:text-white transition-all active:scale-95 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-none"
+                        className="text-[10px] font-black border border-black px-3 py-1 uppercase bg-white hover:bg-black hover:text-[#00C950] transition-all active:scale-95 shadow-[2px_2px_0px_0px_#00C950] hover:shadow-none"
                       >
                         {copied === item.label ? "Copied!" : "Copy"}
                       </button>
@@ -99,13 +98,13 @@ export function Contact() {
               ))}
             </div>
 
-            <div className="bg-zinc-50 border-2 border-black p-6 relative shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+            <div className="bg-zinc-50 border-2 border-black p-6 relative shadow-[8px_8px_0px_0px_#00C950]">
               <h3 className="text-xs font-black uppercase mb-4 tracking-tighter border-b border-black/10 pb-2">Operational Status</h3>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
                   <span className="text-[10px] font-bold text-zinc-400 uppercase">Availability</span>
-                  <span className="text-[10px] font-black text-green-600 uppercase flex items-center gap-2">
-                    <span className="h-2 w-2 bg-green-500 rounded-full animate-pulse" />
+                  <span className="text-[10px] font-black text-[#00C950] uppercase flex items-center gap-2">
+                    <span className="h-2 w-2 bg-[#00C950] rounded-full animate-pulse" />
                     Accepting Projects
                   </span>
                 </div>
@@ -128,7 +127,7 @@ export function Contact() {
                     type="text" 
                     name="name"
                     placeholder="John Doe"
-                    className="w-full bg-zinc-50 border-2 border-zinc-100 focus:border-black p-4 text-xs font-bold uppercase tracking-wider outline-none transition-colors"
+                    className="w-full bg-zinc-50 border-2 border-zinc-100 focus:border-[#00C950] p-4 text-xs font-bold uppercase tracking-wider outline-none transition-colors"
                   />
                 </div>
                 <div className="space-y-1">
@@ -138,7 +137,7 @@ export function Contact() {
                     type="email" 
                     name="email"
                     placeholder="john@example.com"
-                    className="w-full bg-zinc-50 border-2 border-zinc-100 focus:border-black p-4 text-xs font-bold uppercase tracking-wider outline-none transition-colors"
+                    className="w-full bg-zinc-50 border-2 border-zinc-100 focus:border-[#00C950] p-4 text-xs font-bold uppercase tracking-wider outline-none transition-colors"
                   />
                 </div>
               </div>
@@ -150,7 +149,7 @@ export function Contact() {
                   type="text" 
                   name="subject"
                   placeholder="Project Inquiry"
-                  className="w-full bg-zinc-50 border-2 border-zinc-100 focus:border-black p-4 text-xs font-bold uppercase tracking-wider outline-none transition-colors"
+                  className="w-full bg-zinc-50 border-2 border-zinc-100 focus:border-[#00C950] p-4 text-xs font-bold uppercase tracking-wider outline-none transition-colors"
                 />
               </div>
 
@@ -161,14 +160,14 @@ export function Contact() {
                   name="message"
                   rows={5}
                   placeholder="Tell me about your project..."
-                  className="w-full bg-zinc-50 border-2 border-zinc-100 focus:border-black p-4 text-xs font-bold uppercase tracking-wider outline-none transition-colors resize-none"
+                  className="w-full bg-zinc-50 border-2 border-zinc-100 focus:border-[#00C950] p-4 text-xs font-bold uppercase tracking-wider outline-none transition-colors resize-none"
                 />
               </div>
 
               <button 
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-black text-white py-5 text-xs font-black uppercase tracking-[0.3em] hover:bg-zinc-800 transition-all active:scale-[0.99] shadow-[6px_6px_0px_0px_rgba(0,0,0,0.2)] disabled:opacity-50"
+                className="w-full bg-black text-white py-5 text-xs font-black uppercase tracking-[0.3em] hover:text-[#00C950] transition-all active:scale-[0.99] shadow-[6px_6px_0px_0px_#00C950] disabled:opacity-50"
               >
                 {isSubmitting ? "Processing..." : "Dispatch Message"}
               </button>
@@ -177,7 +176,7 @@ export function Contact() {
                 <motion.p 
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className={`text-[10px] font-black uppercase text-center mt-4 ${result.includes("Error") ? "text-red-500" : "text-green-600"}`}
+                  className={`text-[10px] font-black uppercase text-center mt-4 ${result.includes("Error") ? "text-red-500" : "text-[#00C950]"}`}
                 >
                   {result}
                 </motion.p>
@@ -187,14 +186,13 @@ export function Contact() {
         </div>
 
         {/* --- DECORATIVE RULER --- */}
-        {/* REMOVED border-t border-zinc-100 */}
         <div className="mt-24 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 opacity-30">
             <p className="text-xs font-black uppercase tracking-[0.5em] text-zinc-400">
               Professional Portfolio // 2026
             </p>
             <div className="flex gap-1">
               {[...Array(12)].map((_, i) => (
-                <div key={i} className={`h-4 w-[2px] bg-black ${i % 4 === 0 ? 'h-6' : ''}`} />
+                <div key={i} className={`h-4 w-[2px] bg-black ${i % 4 === 0 ? 'h-6 bg-[#00C950]' : ''}`} />
               ))}
             </div>
         </div>

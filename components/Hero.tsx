@@ -18,7 +18,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative h-screen min-h-[600px] w-full overflow-hidden bg-white selection:bg-black selection:text-white font-mono"
+      className="relative h-screen min-h-[600px] w-full overflow-hidden bg-white selection:bg-[#00C950] selection:text-white font-mono"
     >
       {/* --- BACKGROUND LAYER --- */}
       <div
@@ -38,20 +38,20 @@ export function Hero() {
                 Active Focus
               </span>
               <div className="space-y-2.5 font-mono text-[13px] text-zinc-800 uppercase font-bold leading-tight">
-                <p className="flex items-center gap-2 transition-transform hover:translate-x-1">
-                  <span className="h-1 w-1 bg-black" /> Frontend Dev
+                <p className="flex items-center gap-2 transition-transform hover:translate-x-1 group">
+                  <span className="h-1 w-1 bg-black group-hover:bg-[#00C950]" /> Frontend Dev
                 </p>
-                <p className="flex items-center gap-2 transition-transform hover:translate-x-1">
-                  <span className="h-1 w-1 bg-black" /> Full-Stack Dev
+                <p className="flex items-center gap-2 transition-transform hover:translate-x-1 group">
+                  <span className="h-1 w-1 bg-black group-hover:bg-[#00C950]" /> Full-Stack Dev
                 </p>
-                <p className="flex items-center gap-2 transition-transform hover:translate-x-1">
-                  <span className="h-1 w-1 bg-black" /> ERP Integration
+                <p className="flex items-center gap-2 transition-transform hover:translate-x-1 group">
+                  <span className="h-1 w-1 bg-black group-hover:bg-[#00C950]" /> ERP Integration
                 </p>
-                <p className="flex items-center gap-2 transition-transform hover:translate-x-1">
-                  <span className="h-1 w-1 bg-black" /> Shopify Ecommerce
+                <p className="flex items-center gap-2 transition-transform hover:translate-x-1 group">
+                  <span className="h-1 w-1 bg-black group-hover:bg-[#00C950]" /> Shopify Ecommerce
                 </p>
-                <p className="flex items-center gap-2 transition-transform hover:translate-x-1">
-                  <span className="h-1 w-1 bg-black" /> Wordpress Dev
+                <p className="flex items-center gap-2 transition-transform hover:translate-x-1 group">
+                  <span className="h-1 w-1 bg-black group-hover:bg-[#00C950]" /> Wordpress Dev
                 </p>
               </div>
             </div>
@@ -69,7 +69,7 @@ export function Hero() {
 
               <h1 className="text-center text-[14vw] sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black uppercase tracking-tighter leading-[0.8] mb-3">
                 Brian <br />
-                <span className="text-zinc-200 relative inline-block">
+                <span className="text-[#00C950] relative inline-block">
                   Shiroe
                 </span>
               </h1>
@@ -91,26 +91,26 @@ export function Hero() {
 
             <div className="mt-6 md:mt-10 flex flex-col sm:flex-row gap-3 w-full max-w-[240px] sm:max-w-md">
               <motion.button
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.02, backgroundColor: "#00C950", borderColor: "#00C950" }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() =>
                   document
                     .getElementById("projects")
                     ?.scrollIntoView({ behavior: "smooth" })
                 }
-                className="w-full bg-black text-white py-3 md:py-4 px-6 text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]"
+                className="w-full bg-black text-white py-3 md:py-4 px-6 text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] transition-colors"
               >
                 Portfolio
               </motion.button>
               <motion.button
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.02, color: "#00C950", borderColor: "#00C950" }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() =>
                   document
                     .getElementById("contact")
                     ?.scrollIntoView({ behavior: "smooth" })
                 }
-                className="w-full border-2 border-black bg-white py-3 md:py-4 px-6 text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em] text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)]"
+                className="w-full border-2 border-black bg-white py-3 md:py-4 px-6 text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em] text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)] transition-all"
               >
                 Contact
               </motion.button>
@@ -122,7 +122,7 @@ export function Hero() {
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
-              className="absolute inset-0 border border-dashed border-black/10 rounded-full scale-[1.1] md:scale-[1.5] pointer-events-none"
+              className="absolute inset-0 border border-dashed border-[#00C950]/20 rounded-full scale-[1.1] md:scale-[1.5] pointer-events-none"
             />
 
             <div className="relative z-10">
@@ -136,7 +136,7 @@ export function Hero() {
                     {time}
                   </span>
                   <div className="flex items-center gap-2 mt-1">
-                    <span className="h-1.5 w-1.5 bg-green-500 rounded-full animate-pulse" />
+                    <span className="h-1.5 w-1.5 bg-[#00C950] rounded-full animate-pulse shadow-[0_0_8px_#00C950]" />
                     <span className="text-[9px] font-black uppercase text-zinc-400 tracking-widest">
                       Local Time
                     </span>
@@ -158,25 +158,25 @@ export function Hero() {
           {[...Array(6)].map((_, i) => (
             <span key={i} className="flex items-center gap-2 md:gap-4">
               <span>Next.js</span>
-              <span className="text-zinc-300">//</span>
+              <span className="text-[#00C950] font-bold">//</span>
               <span>React.js</span>
-              <span className="text-zinc-300">//</span>
+              <span className="text-[#00C950] font-bold">//</span>
               <span>TypeScript</span>
-              <span className="text-zinc-300">//</span>
+              <span className="text-[#00C950] font-bold">//</span>
               <span>JavaScript</span>
-              <span className="text-zinc-300">//</span>
+              <span className="text-[#00C950] font-bold">//</span>
               <span>Wordpress</span>
-              <span className="text-zinc-300">//</span>
+              <span className="text-[#00C950] font-bold">//</span>
               <span>Tailwind Design</span>
-              <span className="text-zinc-300">//</span>
+              <span className="text-[#00C950] font-bold">//</span>
               <span>HTML</span>
-              <span className="text-zinc-300">//</span>
+              <span className="text-[#00C950] font-bold">//</span>
               <span>CSS</span>
-              <span className="text-zinc-300">//</span>
+              <span className="text-[#00C950] font-bold">//</span>
               <span>Odoo ERP Integration</span>
-              <span className="text-zinc-300">//</span>
-              <span className="italic">UAE Based</span>
-              <span className="text-zinc-300">//</span>
+              <span className="text-[#00C950] font-bold">//</span>
+              <span className="italic text-[#00C950]">UAE Based</span>
+              <span className="text-[#00C950] font-bold">//</span>
             </span>
           ))}
         </motion.div>

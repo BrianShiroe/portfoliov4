@@ -60,12 +60,12 @@ export function Projects() {
         {/* --- SECTION HEADER --- */}
         <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-4 border-b-4 border-black pb-8">
           <div className="relative">
-            <div className="absolute -left-2 -top-2 h-6 w-6 border-l-2 border-t-2 border-black/20" />
+            <div className="absolute -left-2 -top-2 h-6 w-6 border-l-2 border-t-2 border-[#00C950]" />
             <span className="text-[12px] font-black uppercase tracking-widest text-zinc-400">
               Development Portfolio
             </span>
             <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-black leading-none">
-              Top_<span className="text-zinc-200">Projects</span>
+              Top_<span className="text-[#00C950]">Projects</span>
             </h2>
           </div>
           <div className="text-left md:text-right">
@@ -77,7 +77,7 @@ export function Projects() {
                 initial={{ width: 0 }}
                 whileInView={{ width: "100%" }}
                 viewport={{ once: true }}
-                className="h-full bg-black"
+                className="h-full bg-[#00C950]"
               />
             </div>
           </div>
@@ -103,7 +103,7 @@ export function Projects() {
                   {/* ID & Title Column */}
                   <div className="flex items-start md:items-center gap-6 md:gap-12">
                     <div className="flex flex-col items-center">
-                      <span className="text-sm md:text-base font-black text-zinc-300 group-hover:text-black transition-colors">
+                      <span className="text-sm md:text-base font-black text-zinc-300 group-hover:text-[#00C950] transition-colors">
                         {work.id}
                       </span>
                     </div>
@@ -116,8 +116,8 @@ export function Projects() {
                         <span className="text-[10px] md:text-xs font-bold text-zinc-500 uppercase tracking-widest">
                           {work.tech}
                         </span>
-                        <span className="h-1.5 w-1.5 rounded-full bg-zinc-200" />
-                        <span className="text-[10px] md:text-xs font-black text-black uppercase tracking-widest border-b border-black">
+                        <span className="h-1.5 w-1.5 rounded-full bg-[#00C950]" />
+                        <span className="text-[10px] md:text-xs font-black text-black uppercase tracking-widest border-b border-[#00C950]">
                           {work.status}
                         </span>
                       </div>
@@ -136,11 +136,11 @@ export function Projects() {
                     </div>
 
                     <div className="flex items-center gap-4">
-                      <span className="text-[10px] md:text-xs font-black uppercase border-4 border-black px-4 py-2 bg-white group-hover:bg-black group-hover:text-white transition-all shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] group-hover:shadow-none whitespace-nowrap group-hover:-translate-y-1 group-hover:-translate-x-1">
+                      <span className="text-[10px] md:text-xs font-black uppercase border-4 border-black px-4 py-2 bg-white group-hover:bg-black group-hover:text-[#00C950] transition-all shadow-[6px_6px_0px_0px_#00C950] group-hover:shadow-none whitespace-nowrap group-hover:-translate-y-1 group-hover:-translate-x-1">
                         {work.tag}
                       </span>
 
-                      <div className="h-10 w-10 md:h-12 md:w-12 border-4 border-black flex items-center justify-center bg-white group-hover:bg-black group-hover:text-white transition-colors">
+                      <div className="h-10 w-10 md:h-12 md:w-12 border-4 border-black flex items-center justify-center bg-white group-hover:bg-black group-hover:text-[#00C950] transition-colors">
                         <motion.svg
                           whileHover={{ scale: 1.1 }}
                           width="20"
@@ -165,7 +165,7 @@ export function Projects() {
         <div className="mt-20 flex flex-col md:flex-row items-center justify-between gap-6 border-t-2 border-black/10 pt-12">
           <div className="flex gap-2">
             {[...Array(4)].map((_, i) => (
-              <div key={i} className="h-3 w-3 bg-black" />
+              <div key={i} className="h-3 w-3 bg-[#00C950]" />
             ))}
           </div>
           <p className="text-[11px] font-bold uppercase tracking-widest text-zinc-500">
