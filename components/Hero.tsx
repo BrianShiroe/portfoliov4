@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, Transition } from "framer-motion";
 import { Character } from "./Character";
 import { useEffect, useState } from "react";
 
@@ -15,7 +15,12 @@ export function Hero() {
     return () => clearInterval(timer);
   }, []);
 
-  const btnTransition = { type: "tween", ease: "easeOut", duration: 0.15 };
+  // Fixed the Type Assignment Error
+  const btnTransition: Transition = { 
+    type: "tween", 
+    ease: "easeOut", 
+    duration: 0.15 
+  };
 
   return (
     <section
@@ -77,7 +82,7 @@ export function Hero() {
 
             {/* RESPONSIVE CONTACT & SOCIAL FORMAT */}
             <div className="flex flex-col items-center gap-6 mb-10 w-full">
-              {/* Stack vertically on mobile, horizontally on sm+ */}
+              {/* Direct Text Contacts */}
               <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 border-y border-black/5 py-5 w-full max-w-[320px] sm:max-w-none justify-center">
                 <a href="mailto:Brianshiroe@gmail.com" className="flex items-center gap-2 text-[10px] md:text-[12px] font-black uppercase tracking-wider text-zinc-600 hover:text-[#00C950] transition-colors group">
                   <img src="https://img.icons8.com/windows/32/000000/address.png" alt="mail" className="w-4 h-4 opacity-70 group-hover:opacity-100" />
@@ -135,7 +140,7 @@ export function Hero() {
             </div>
           </div>
 
-          {/* --- RIGHT SIDE: CHARACTER BOX (Scales down for Mobile) --- */}
+          {/* --- RIGHT SIDE: CHARACTER BOX --- */}
           <div className="flex flex-col items-center relative mt-4 lg:mt-0">
             <div className="relative z-10">
               <motion.div className="bg-white border-2 md:border-4 border-black p-3 md:p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center overflow-hidden">
@@ -155,7 +160,7 @@ export function Hero() {
         </div>
       </div>
 
-      {/* --- TICKER (Bottom) --- */}
+      {/* --- TICKER --- */}
       <div className="absolute bottom-0 z-20 w-full border-t-2 border-black bg-white py-1 overflow-hidden flex items-center h-12">
         <motion.div
           animate={{ x: [0, -1200] }}
