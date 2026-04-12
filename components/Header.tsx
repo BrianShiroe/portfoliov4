@@ -2,19 +2,24 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+/** * Moved outside the component to prevent "useEffect size change" errors.
+ * This ensures the reference remains constant across renders.
+ */
+const navItems = [
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Services", href: "#services" },
+  { label: "Projects", href: "#projects" },
+  { label: "History", href: "#experience" },
+  { label: "Contact", href: "#contact" },
+];
+
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
-  const navItems = [
-    { label: "Home", href: "#home" },
-    { label: "About", href: "#about" },
-    { label: "Services", href: "#skills" },
-    { label: "Projects", href: "#projects" },
-    { label: "History", href: "#experience" },
-    { label: "Contact", href: "#contact" },
-  ];
-
+  // Handle intersection observer for active link highlighting
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -33,6 +38,7 @@ export function Header() {
     return () => observer.disconnect();
   }, []);
 
+  // Prevent scroll when mobile menu is open
   useEffect(() => {
     if (isOpen) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "unset";
@@ -58,14 +64,14 @@ export function Header() {
   return (
     <header className="sticky top-0 z-[100] w-full border-b border-zinc-100 bg-white/80 backdrop-blur-xl font-sans">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2.5 md:px-6 md:py-4">
-        {/* IDENTITY - LOGO GLOW REMOVED */}
+        
+        {/* IDENTITY */}
         <a
           href="#home"
           onClick={(e) => handleScroll(e, "#home")}
           className="z-[110] group flex items-center gap-2.5"
         >
-          {/* Logo container maintains exact size of original circle */}
-          <div className="h-7 w-7 rounded-full flex items-center justify-center shrink-0 overflow-hidden relative">
+          <div className="h-7 w-7 rounded-full flex items-center justify-center shrink-0 overflow-hidden relative border border-zinc-200">
             <img
               src="/logo.png"
               alt="BrianShiroe Logo"
@@ -82,7 +88,7 @@ export function Header() {
           </div>
         </a>
 
-        {/* DESKTOP NAV - NO CHANGE */}
+        {/* DESKTOP NAV */}
         <nav className="hidden lg:flex items-center gap-1 bg-zinc-100/50 p-1 rounded-full border border-zinc-200">
           {navItems.map((item) => {
             const isActive = activeSection === item.href.replace("#", "");
@@ -91,7 +97,7 @@ export function Header() {
                 key={item.label}
                 href={item.href}
                 onClick={(e) => handleScroll(e, item.href)}
-                className={`relative px-5 py-2 text-[11px] font-bold uppercase tracking-widest transition-colors duration-300 ${
+                className={`relative px-4 py-2 text-[10px] font-bold uppercase tracking-widest transition-colors duration-300 ${
                   isActive ? "text-white" : "text-zinc-500 hover:text-black"
                 }`}
               >
@@ -108,7 +114,7 @@ export function Header() {
           })}
         </nav>
 
-        {/* MOBILE TRIGGER - NO CHANGE */}
+        {/* MOBILE TRIGGER */}
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="lg:hidden z-[110] flex items-center gap-2 bg-black px-3 py-1.5 rounded-full active:scale-95"
@@ -118,11 +124,7 @@ export function Header() {
           </span>
           <div className="flex flex-col gap-0.5 items-end">
             <motion.div
-              animate={
-                isOpen
-                  ? { rotate: 45, y: 3, width: "10px" }
-                  : { rotate: 0, y: 0, width: "10px" }
-              }
+              animate={isOpen ? { rotate: 45, y: 3, width: "10px" } : { rotate: 0, y: 0, width: "10px" }}
               className="h-[1px] bg-white rounded-full"
             />
             <motion.div
@@ -130,18 +132,14 @@ export function Header() {
               className="h-[1px] w-1.5 bg-white rounded-full"
             />
             <motion.div
-              animate={
-                isOpen
-                  ? { rotate: -45, y: -3, width: "10px" }
-                  : { rotate: 0, y: 0, width: "10px" }
-              }
+              animate={isOpen ? { rotate: -45, y: -3, width: "10px" } : { rotate: 0, y: 0, width: "10px" }}
               className="h-[1px] bg-white rounded-full"
             />
           </div>
         </button>
 
-        {/* DESKTOP CTA - NO CHANGE */}
-        <div className="hidden lg:block">
+        {/* DESKTOP CTA */}
+        <div className="hidden xl:block">
           <a
             href="#contact"
             onClick={(e) => handleScroll(e, "#contact")}
@@ -158,7 +156,7 @@ export function Header() {
         </div>
       </div>
 
-      {/* MOBILE OVERLAY - NO CHANGE */}
+      {/* MOBILE OVERLAY */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -182,31 +180,24 @@ export function Header() {
                     href={item.href}
                     onClick={(e) => handleScroll(e, item.href)}
                     className={`group relative flex items-center justify-between px-4 py-3 rounded-lg border transition-all ${
-                      isActive
-                        ? "bg-black text-white border-black"
-                        : "bg-zinc-50/30 text-zinc-400 border-zinc-100 active:bg-zinc-100"
+                      isActive ? "bg-black text-white border-black" : "bg-zinc-50/30 text-zinc-400 border-zinc-100 active:bg-zinc-100"
                     }`}
                   >
                     <span className="text-base font-black uppercase tracking-tight">
                       {item.label}
                     </span>
-                    <div
-                      className={`h-1 w-1 rounded-full ${isActive ? "bg-white animate-pulse" : "bg-zinc-200"}`}
-                    />
+                    <div className={`h-1 w-1 rounded-full ${isActive ? "bg-white animate-pulse" : "bg-zinc-200"}`} />
                   </motion.a>
                 );
               })}
             </div>
 
+            {/* MOBILE FOOTER INFO */}
             <div className="mt-auto pt-6 flex flex-col gap-3">
               <div className="flex items-center justify-between bg-zinc-50 px-4 py-3 rounded-xl border border-zinc-100">
                 <div className="flex flex-col">
-                  <span className="text-[8px] font-black uppercase text-zinc-400">
-                    HQ
-                  </span>
-                  <span className="text-[10px] font-black uppercase text-black leading-none mt-0.5">
-                    Dubai, UAE
-                  </span>
+                  <span className="text-[8px] font-black uppercase text-zinc-400">HQ</span>
+                  <span className="text-[10px] font-black uppercase text-black leading-none mt-0.5">Dubai, UAE</span>
                 </div>
                 <div className="h-1.5 w-1.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_5px_rgba(34,197,94,0.3)]" />
               </div>
