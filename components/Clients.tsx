@@ -20,6 +20,11 @@ export function Clients() {
       status: "live",
     },
     {
+      src: "/logos/500x250_logo_12.png",
+      href: "https://zhel-gold-jewelry.vercel.app/",
+      status: "live",
+    },
+    {
       src: "/logos/500x250_logo_8.png",
       href: "https://dgcgroup.ae/",
       status: "live",

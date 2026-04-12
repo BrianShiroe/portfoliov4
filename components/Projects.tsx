@@ -24,6 +24,15 @@ export function Projects() {
     },
     {
       id: "03",
+      title: "Zhel Gold Jewelry",
+      tag: "Gold & Layaway",
+      tech: "Next.js / Responsive / Systems",
+      status: "Live",
+      date: "2026",
+      href: "https://zhel-gold-jewelry.vercel.app/",
+    },
+    {
+      id: "04",
       title: "Rose Gallery Perfumes",
       tag: "Perfume Store",
       tech: "Shopify / E-Commerce / Responsive",
@@ -32,22 +41,13 @@ export function Projects() {
       href: "https://rosegallery.ae/",
     },
     {
-      id: "04",
+      id: "05",
       title: "Wazeen Law Firm",
       tag: "Legal Services",
       tech: "Wordpress CMS / Arabic / Responsive",
       status: "Live",
       date: "2026",
       href: "https://wazeenlaw.sa/",
-    },
-    {
-      id: "05",
-      title: "DGC Carpentry Dubai",
-      tag: "Carpentry & Furniture Company ",
-      tech: "WordPress / Responsive",
-      status: "Live",
-      date: "2025",
-      href: "https://dgcgroup.ae/",
     },
   ];
 
