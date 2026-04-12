@@ -16,17 +16,19 @@ export function Clients() {
   ];
 
   return (
-    <section id="clients" className="relative w-full bg-white py-24 px-4 md:px-6 font-mono overflow-hidden">
+    <section
+      id="clients"
+      className="relative w-full bg-white py-24 px-4 md:px-6 font-mono overflow-hidden"
+    >
       {/* Background Subtle Grid Texture */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
-      
+
       <div className="mx-auto max-w-7xl relative">
-        
         {/* --- SECTION HEADER --- */}
         <div className="mb-16">
           <div className="flex items-center gap-3 mb-4">
             <div className="h-[2px] w-8 bg-[#00C950]" />
-            <span className="text-xs font-black uppercase tracking-[0.4em] text-zinc-400">
+            <span className="text-[11px] md:text-sm font-black text-zinc-500 uppercase tracking-[0.2em] mb-2 md:mt-2 ml-2">
               Production_Output
             </span>
           </div>
@@ -48,9 +50,8 @@ export function Clients() {
             >
               {/* Emerald Shadow on hover */}
               <div className="absolute inset-0 bg-[#00C950] translate-x-0 translate-y-0 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-200" />
-              
+
               <div className="relative flex items-center justify-center aspect-[500/250] border-2 border-black bg-white p-3 md:p-4 transition-transform duration-200 group-hover:-translate-x-1 group-hover:-translate-y-1 overflow-hidden">
-                
                 <div className="absolute top-1.5 left-2 text-[7px] font-black text-zinc-300 uppercase group-hover:text-black transition-colors z-10">
                   REF_0{i + 1}
                 </div>
@@ -73,14 +74,17 @@ export function Clients() {
 
         {/* --- BOTTOM METADATA --- */}
         <div className="mt-16 pt-8 border-t border-zinc-100 flex flex-col md:flex-row justify-between items-center gap-4 opacity-30">
-            <p className="text-[10px] font-black uppercase tracking-[0.5em] text-zinc-400">
-              Active Development Network // DXB
-            </p>
-            <div className="flex gap-1">
-              {[...Array(8)].map((_, i) => (
-                <div key={i} className={`h-3 w-[2px] bg-black ${i % 4 === 0 ? 'h-5 bg-[#00C950]' : ''}`} />
-              ))}
-            </div>
+          <p className="text-sm font-black uppercase tracking-[0.5em] text-zinc-900">
+            Active Development Network // DXB
+          </p>
+          <div className="flex gap-1">
+            {[...Array(8)].map((_, i) => (
+              <div
+                key={i}
+                className={`h-3 w-[2px] bg-black ${i % 4 === 0 ? "h-5 bg-[#00C950]" : ""}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

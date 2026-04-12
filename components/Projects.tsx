@@ -61,7 +61,7 @@ export function Projects() {
         <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-4 border-b-4 border-black pb-8">
           <div className="relative">
             <div className="absolute -left-2 -top-2 h-6 w-6 border-l-2 border-t-2 border-[#00C950]" />
-            <span className="text-[12px] font-black uppercase tracking-widest text-zinc-400">
+            <span className="text-[11px] md:text-sm font-black text-zinc-500 uppercase tracking-[0.2em] mb-2 md:mb-4 ml-2">
               Development Portfolio
             </span>
             <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-black leading-none">

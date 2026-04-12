@@ -48,8 +48,8 @@ export function Experience() {
         {/* --- HEADER --- */}
         <div className="mb-16 md:mb-32">
           <div className="flex items-center gap-3 mb-4 md:mb-6">
-            <div className="h-[2px] md:h-[3px] w-8 md:w-12 bg-black" />
-            <span className="text-[10px] md:text-[12px] font-black uppercase tracking-widest text-zinc-400">
+            <div className="h-[2px] md:h-[3px] w-8 md:w-12 bg-[#00C950]" />
+            <span className="text-[11px] md:text-sm font-black text-zinc-500 uppercase tracking-[0.2em] mb-2 md:mt-2 ml-2">
               Professional History
             </span>
           </div>
@@ -108,7 +108,9 @@ export function Experience() {
                       <span className="text-xs md:text-sm font-black text-black uppercase tracking-widest">
                         {job.company}
                       </span>
-                      <span className="text-zinc-300 font-bold hidden xs:inline">|</span>
+                      <span className="text-zinc-300 font-bold hidden xs:inline">
+                        |
+                      </span>
                       <span className="text-xs md:text-sm font-bold text-zinc-400 uppercase tracking-widest">
                         {job.location}
                       </span>
@@ -139,7 +141,7 @@ export function Experience() {
 
       {/* FOOTER SCALE */}
       <div className="mx-auto max-w-6xl mt-20 md:mt-32 pt-8 md:pt-10 border-t-2 md:border-t-4 border-black flex flex-col md:flex-row justify-between items-center gap-6">
-        <span className="text-[9px] md:text-xs font-black uppercase tracking-[0.2em] text-black text-center md:text-left">
+        <span className="text-[9px] md:text-sm font-black uppercase tracking-[0.2em] text-black text-center md:text-left">
           BrianShiroe // Professional Experience History
         </span>
         <div className="flex gap-3 md:gap-4">
