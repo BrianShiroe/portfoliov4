@@ -10,7 +10,7 @@ export function Projects() {
       tag: "IT Solutions",
       tech: "Odoo / 80+ Pages / Multilingual",
       status: "Live",
-      date: "2025.10",
+      date: "2026",
       href: "https://www.itdtech.ae/",
     },
     {
@@ -19,7 +19,7 @@ export function Projects() {
       tag: "Real Estate",
       tech: "Odoo / E-commerce/ Multilingual",
       status: "Live",
-      date: "2025.12",
+      date: "2026",
       href: "https://www.kbhrealestate.ae/",
     },
     {
@@ -28,7 +28,7 @@ export function Projects() {
       tag: "Perfume Store",
       tech: "Shopify / E-Commerce / Responsive",
       status: "Live",
-      date: "2026.01",
+      date: "2026",
       href: "https://rosegallery.ae/",
     },
     {
@@ -37,7 +37,7 @@ export function Projects() {
       tag: "Legal Services",
       tech: "Wordpress CMS / Arabic / Responsive",
       status: "Live",
-      date: "2026.02",
+      date: "2026",
       href: "https://wazeenlaw.sa/",
     },
     {
@@ -46,7 +46,7 @@ export function Projects() {
       tag: "Carpentry & Furniture Company ",
       tech: "WordPress / Responsive",
       status: "Live",
-      date: "2025.11",
+      date: "2025",
       href: "https://dgcgroup.ae/",
     },
   ];
