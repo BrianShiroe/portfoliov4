@@ -6,7 +6,7 @@ export function Projects() {
   const projects = [
     {
       id: "01",
-      title: "ITD Innovation Official",
+      title: "ITD Innovation",
       tag: "IT Solutions",
       tech: "Odoo / 80+ Pages / Multilingual",
       status: "Live",
