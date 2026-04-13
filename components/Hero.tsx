@@ -103,13 +103,13 @@ export function Hero() {
             {/* CONTACT ROW */}
             <div className="flex flex-col items-center gap-6 mb-10 w-full">
               <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 border-y border-black/5 py-5 w-full max-w-[320px] sm:max-w-none justify-center">
-                <a href="mailto:Brianshiroe@gmail.com" className="flex items-center gap-2 text-[10px] md:text-[12px] font-black uppercase tracking-wider text-zinc-600 hover:text-[#00C950] transition-colors group">
+                <a href="mailto:Brianshiroe@gmail.com" className="flex items-center gap-2 text-[10px] md:text-[12px] font-black uppercase tracking-wider text-zinc-600 hover:text-[#00C950] transition-colors group cursor-pointer">
                   <div className="p-1.5 rounded-lg bg-zinc-50 group-hover:bg-[#00C950]/10 transition-colors">
                     <img src="https://img.icons8.com/windows/32/000000/address.png" alt="mail" className="w-4 h-4 opacity-70 group-hover:opacity-100" />
                   </div>
                   <span dir="ltr">Brianshiroe@gmail.com</span>
                 </a>
-                <a href="tel:+971503592133" className="flex items-center gap-2 text-[10px] md:text-[12px] font-black uppercase tracking-wider text-zinc-600 hover:text-[#00C950] transition-colors group">
+                <a href="tel:+971503592133" className="flex items-center gap-2 text-[10px] md:text-[12px] font-black uppercase tracking-wider text-zinc-600 hover:text-[#00C950] transition-colors group cursor-pointer">
                   <div className="p-1.5 rounded-lg bg-zinc-50 group-hover:bg-[#00C950]/10 transition-colors">
                     <img src="https://img.icons8.com/windows/32/000000/phone.png" alt="phone" className="w-4 h-4 opacity-70 group-hover:opacity-100" />
                   </div>
@@ -124,7 +124,7 @@ export function Hero() {
                   target="_blank"
                   whileHover={{ y: -3, scale: 1.1 }}
                   transition={btnTransition}
-                  className="group"
+                  className="group cursor-pointer"
                 >
                   <img src="https://img.icons8.com/fluency/48/github.png" alt="github" className="w-8 h-8 filter grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all" />
                 </motion.a>
@@ -133,7 +133,7 @@ export function Hero() {
                   target="_blank"
                   whileHover={{ y: -3, scale: 1.1 }}
                   transition={btnTransition}
-                  className="group"
+                  className="group cursor-pointer"
                 >
                   <img src="https://img.icons8.com/fluency/48/linkedin.png" alt="linkedin" className="w-8 h-8 filter grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all" />
                 </motion.a>
@@ -147,7 +147,7 @@ export function Hero() {
                 whileTap={{ scale: 0.98 }}
                 transition={btnTransition}
                 onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
-                className="w-full bg-black text-white py-4 px-6 rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]"
+                className="w-full bg-black text-white py-4 px-6 rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] cursor-pointer select-none"
               >
                 {t("View Projects", "مشاهدة المشاريع")}
               </motion.button>
@@ -156,7 +156,7 @@ export function Hero() {
                 whileTap={{ scale: 0.98 }}
                 transition={btnTransition}
                 onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-                className="w-full border-2 border-black bg-white py-4 px-6 rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)]"
+                className="w-full border-2 border-black bg-white py-4 px-6 rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)] cursor-pointer select-none"
               >
                 {t("Contact Me", "تواصل معي")}
               </motion.button>
