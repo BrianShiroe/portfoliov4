@@ -27,23 +27,23 @@ export function About() {
   return (
     <section
       id="about"
-      className="relative w-full bg-white py-24 px-4 md:px-6 overflow-hidden font-mono border-t-4 border-black scroll-mt-20 selection:bg-[#00C950] selection:text-white"
+      className="relative w-full bg-white py-16 md:py-24 px-4 md:px-6 overflow-hidden font-mono border-t-4 border-black scroll-mt-20 selection:bg-[#00C950] selection:text-white"
       dir={isAr ? "rtl" : "ltr"}
     >
       <div className="mx-auto max-w-6xl relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
           
           {/* --- LEFT COLUMN: PROFESSIONAL DATA --- */}
-          <div className="lg:col-span-4 space-y-6">
+          <div className="lg:col-span-4 space-y-8">
             {/* Identity Card */}
-            <div className={`border-4 border-black bg-white p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] ${isAr ? "md:shadow-[-8px_8px_0px_0px_rgba(0,0,0,1)]" : ""}`}>
+            <div className={`relative border-4 border-black bg-white p-6 rounded-2xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] ${isAr ? "shadow-[-6px_6px_0px_0px_rgba(0,0,0,1)]" : ""}`}>
               <div className="flex items-center gap-3 border-b-2 border-black pb-4 mb-4">
                 <div className="h-3 w-3 bg-[#00C950] rounded-full shadow-[0_0_10px_#00C950]" />
                 <span className="text-[14px] font-black uppercase tracking-tight text-black">
                   {t("Professional Profile", "الملف المهني")}
                 </span>
               </div>
-              <ul className="space-y-3 text-[14px] uppercase font-bold">
+              <ul className="space-y-3 text-[13px] md:text-[14px] uppercase font-bold">
                 <li className="flex justify-between">
                   <span className="text-zinc-400">{t("Name:", "الاسم:")}</span>
                   <span className="text-black">{t("Brian Haw", "برايان هو")}</span>
@@ -60,12 +60,12 @@ export function About() {
             </div>
 
             {/* ACCOLADES BLOCK */}
-            <div className={`bg-black text-white p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.1)] ${isAr ? "md:shadow-[-8px_8px_0px_0px_rgba(0,0,0,0.1)]" : ""}`}>
+            <div className={`bg-black text-white p-6 rounded-2xl shadow-[6px_6px_0px_0px_rgba(0,0,0,0.1)] ${isAr ? "shadow-[-6px_6px_0px_0px_rgba(0,0,0,0.1)]" : ""}`}>
               <div className="flex items-center justify-between mb-6">
                 <span className="text-[12px] font-black tracking-widest text-white uppercase">
                   {t("Achievements", "الإنجازات")}
                 </span>
-                <span className="text-[12px] font-black text-zinc-400">
+                <span className="text-[12px] font-black text-zinc-500">
                   {t("RECOGNIZED", "معتمد")}
                 </span>
               </div>
@@ -79,14 +79,14 @@ export function About() {
                     transition={{ delay: index * 0.1 }}
                     className="group flex items-center gap-4"
                   >
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center border border-zinc-700 bg-zinc-900 group-hover:border-[#00C950] transition-colors group-hover:bg-zinc-800">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center border border-zinc-700 bg-zinc-900 rounded-xl group-hover:border-[#00C950] transition-colors group-hover:bg-zinc-800">
                       <span className="text-xl group-hover:text-[#00C950] transition-colors">{award.icon}</span>
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-[15px] font-black uppercase tracking-tight transition-colors group-hover:text-zinc-100 leading-tight">
+                      <span className="text-[14px] md:text-[15px] font-black uppercase tracking-tight transition-colors group-hover:text-zinc-100 leading-tight">
                         {award.title}
                       </span>
-                      <span className="text-[11px] font-bold text-zinc-500 uppercase tracking-widest mt-0.5">
+                      <span className="text-[10px] md:text-[11px] font-bold text-zinc-500 uppercase tracking-widest mt-0.5">
                         {award.subtitle}
                       </span>
                     </div>
@@ -103,12 +103,12 @@ export function About() {
               whileInView={{ opacity: 1, y: 0 }}
               className="space-y-6"
             >
-              <div className="inline-block bg-black text-white px-4 py-1.5 text-[13px] font-black uppercase tracking-widest mb-4">
+              <div className="inline-block bg-black text-white px-4 py-1.5 rounded-full text-[12px] md:text-[13px] font-black uppercase tracking-widest mb-4">
                 {t("Professional Bio", "السيرة المهنية")}
               </div>
 
               <h2 className={`font-black uppercase tracking-tighter text-black 
-                ${isAr ? "text-4xl md:text-5xl leading-[1.2]" : "text-4xl md:text-6xl leading-none"}`}>
+                ${isAr ? "text-4xl md:text-5xl lg:text-6xl leading-[1.2]" : "text-4xl md:text-6xl lg:text-7xl leading-none"}`}>
                 {isAr ? (
                   <>ابتكار <br /> <span className="text-[#00C950]">حلول_رقمية</span></>
                 ) : (
@@ -139,14 +139,14 @@ export function About() {
               </div>
 
               {/* FOOTNOTE with #00C950 Shadow */}
-              <div className={`mt-12 bg-white border-2 border-black p-6 font-mono text-sm leading-relaxed shadow-[8px_8px_0px_0px_#00C950] ${isAr ? "md:shadow-[-8px_8px_0px_0px_#00C950]" : ""}`}>
+              <div className={`mt-12 bg-white border-2 border-black p-6 md:p-8 rounded-2xl font-mono text-sm leading-relaxed shadow-[6px_6px_0px_0px_#00C950] ${isAr ? "shadow-[-6px_6px_0px_0px_#00C950]" : ""}`}>
                 <div className="flex gap-2 mb-4">
                   <span className="h-2 w-2 bg-[#00C950] rounded-full shadow-[0_0_8px_#00C950]" />
                   <span className="text-[12px] font-black uppercase text-black">
                     {t("Work Ethic", "أخلاقيات العمل")}
                   </span>
                 </div>
-                <p className="text-zinc-800 font-bold uppercase">
+                <p className="text-zinc-800 font-bold uppercase text-[12px] md:text-[14px]">
                   {t(
                     "Dedicated to exceeding client expectations through transparent communication and meticulous detail. I deliver reliable, data-driven solutions designed for measurable success and long-term satisfaction.",
                     "ملتزم بتجاوز توقعات العملاء من خلال التواصل الشفاف والاهتمام الدقيق بالتفاصيل. أقدم حلولاً موثوقة قائمة على البيانات مصممة للنجاح الملموس والرضا على المدى الطويل."

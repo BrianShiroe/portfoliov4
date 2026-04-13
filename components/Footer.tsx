@@ -4,6 +4,7 @@ import { useLanguage } from "../context/LanguageContext";
 
 export function Footer() {
   const { t, lang } = useLanguage();
+  const isAr = lang === "ar";
 
   const navLinks = [
     { name: t("Home", "الرئيسية"), href: "#" },
@@ -18,82 +19,61 @@ export function Footer() {
   return (
     <footer
       className="w-full bg-white font-mono"
-      dir={lang === "ar" ? "rtl" : "ltr"}
+      dir={isAr ? "rtl" : "ltr"}
     >
-      {/* Main Bar - Reduced padding on mobile for better fit */}
-      <div className="w-full border-t-[6px] md:border-t-8 border-black bg-black py-8 md:py-12 px-5 md:px-6 text-white">
+      {/* Main Bar - Removed top roundness, kept flat heavy border */}
+      <div className="w-full border-t-[8px] md:border-t-[12px] border-black bg-black py-12 md:py-20 px-5 md:px-6 text-white rounded-none">
         <div className="mx-auto max-w-7xl">
-          <div className="flex flex-col lg:flex-row justify-between items-start gap-10 md:gap-12">
+          <div className="flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-20">
             {/* --- IDENTITY & CONTACT SECTION --- */}
-            <div className="flex flex-col items-start text-left w-full lg:w-1/3">
-              <span className="font-black text-xl md:text-3xl uppercase tracking-tighter leading-tight">
+            <div className="flex flex-col items-start w-full lg:w-1/3">
+              <span className="font-black text-2xl md:text-3xl uppercase tracking-tighter leading-tight">
                 BrianShiroe
                 <span className="text-zinc-600"> / {t("DEV", "مطور")}</span>
               </span>
 
-              <div className="flex flex-col gap-2 mt-4">
+              <div className="flex flex-col gap-3 mt-6">
                 <div className="flex items-center gap-3">
-                  <div className="h-2.5 w-2.5 bg-[#00C950] rounded-full animate-pulse" />
-                  <span className="text-[9px] md:text-xs font-black text-zinc-400 uppercase tracking-widest">
+                  <div className="h-2.5 w-2.5 bg-[#00C950] rounded-full animate-pulse shadow-[0_0_8px_#00C950]" />
+                  <span className="text-[10px] md:text-xs font-black text-zinc-400 uppercase tracking-widest">
                     {t("Operational // Dubai, UAE", "قيد التشغيل // دبي")}
                   </span>
                 </div>
                 <a
                   href="tel:+971503592133"
-                  className="text-sm md:text-base font-black text-[#00C950] hover:text-white transition-colors tracking-widest break-all"
+                  className="text-base md:text-lg font-black text-[#00C950] hover:text-white transition-colors tracking-widest"
                 >
                   <span dir="ltr">+971 50 359 2133</span>
                 </a>
               </div>
 
-              {/* Social Icons - Center aligned on very small screens */}
-              <div className="flex gap-6 mt-6 md:mt-8">
-                <a
-                  href="https://github.com/BrianShiroe"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hover:scale-110 transition-transform"
-                >
-                  <img
-                    src="https://img.icons8.com/ios-filled/50/ffffff/github.png"
-                    alt="Github"
-                    className="w-5 h-5 md:w-6 md:h-6"
-                  />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/brianshiroe/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hover:scale-110 transition-transform"
-                >
-                  <img
-                    src="https://img.icons8.com/ios-filled/50/ffffff/linkedin.png"
-                    alt="LinkedIn"
-                    className="w-5 h-5 md:w-6 md:h-6"
-                  />
-                </a>
-                <a
-                  href="mailto:Brianshiroe@gmail.com"
-                  className="hover:scale-110 transition-transform"
-                >
-                  <img
-                    src="https://img.icons8.com/ios-filled/50/ffffff/gmail-new.png"
-                    alt="Email"
-                    className="w-5 h-5 md:w-6 md:h-6"
-                  />
-                </a>
+              {/* Social Icons */}
+              <div className="flex gap-6 mt-8">
+                {["github", "linkedin", "gmail-new"].map((icon) => (
+                  <a
+                    key={icon}
+                    href={icon === "github" ? "https://github.com/BrianShiroe" : icon === "linkedin" ? "https://www.linkedin.com/in/brianshiroe/" : "mailto:Brianshiroe@gmail.com"}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hover:scale-125 transition-transform duration-300 bg-zinc-900 p-2 rounded-xl border border-zinc-800"
+                  >
+                    <img
+                      src={`https://img.icons8.com/ios-filled/50/ffffff/${icon}.png`}
+                      alt={icon}
+                      className="w-5 h-5 md:w-6 md:h-6"
+                    />
+                  </a>
+                ))}
               </div>
             </div>
 
-            {/* --- NAVIGATION LINKS --- 
-                Fixed: Responsive grid that uses 2 columns on mobile but switches to 3/4 on larger screens
-            */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-5 w-full lg:w-auto">
+            {/* --- NAVIGATION LINKS --- */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-6 w-full lg:w-auto">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-[9px] md:text-xs font-black uppercase tracking-widest text-zinc-500 hover:text-[#00C950] transition-colors py-1"
+                  className="text-[10px] md:text-xs font-black uppercase tracking-widest text-zinc-500 hover:text-[#00C950] transition-all hover:translate-x-1"
                 >
                   {link.name}
                 </a>
@@ -101,22 +81,22 @@ export function Footer() {
             </div>
 
             {/* --- CALL TO ACTION --- */}
-            <div className="flex flex-col items-start lg:items-end w-full lg:w-auto mt-4 lg:mt-0">
+            <div className="flex flex-col items-start lg:items-end w-full lg:w-auto">
               <a
                 href="https://wa.me/971503592133"
                 target="_blank"
                 rel="noreferrer"
-                className="w-full lg:w-auto text-center text-black bg-[#00C950] px-6 py-4 md:px-8 font-black uppercase tracking-tighter shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] md:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all"
+                className="w-full lg:w-auto text-center text-black bg-[#00C950] px-8 py-5 font-black uppercase tracking-tighter shadow-[5px_5px_0px_0px_rgba(255,255,255,1)] rounded-2xl hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all text-sm md:text-base"
               >
                 {t("WhatsApp Me ↗", "راسلني واتساب ↗")}
               </a>
               <div
-                className={`mt-11 ${lang === "ar" ? "lg:text-left" : "lg:text-right"} w-full`}
+                className={`mt-12 ${isAr ? "lg:text-left" : "lg:text-right"} w-full`}
               >
-                <span className="text-[9px] font-black uppercase tracking-widest text-zinc-500 block">
+                <span className="text-[10px] font-black uppercase tracking-widest text-zinc-600 block mb-1">
                   © 2026 // BrianShiroe
                 </span>
-                <span className="text-[11px] font-bold text-zinc-700 uppercase">
+                <span className="text-[11px] font-bold text-zinc-500 uppercase">
                   {t(
                     "v2.0.6 // Performance First",
                     "إصدار 2.0.6 // الأداء أولاً",
@@ -126,17 +106,17 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Decorative Footer Divider - Hidden or simplified on mobile to save space */}
-          <div className="mt-12 flex flex-col md:flex-row justify-between items-center border-t border-zinc-900 pt-8 gap-4">
-            <div className="hidden xs:flex gap-1">
-              {[...Array(8)].map((_, i) => (
+          {/* Decorative Footer Divider */}
+          <div className="mt-16 flex flex-col md:flex-row justify-between items-center border-t border-zinc-900 pt-10 gap-6">
+            <div className="flex gap-1.5">
+              {[...Array(10)].map((_, i) => (
                 <div
                   key={i}
-                  className={`h-3 w-1 ${i % 3 === 0 ? "bg-[#00C950]" : "bg-zinc-800"}`}
+                  className={`h-4 w-1 rounded-full ${i % 4 === 0 ? "bg-[#00C950]" : "bg-zinc-800"}`}
                 />
               ))}
             </div>
-            <p className="text-[7px] md:text-[9px] font-black text-zinc-600 uppercase tracking-[0.15em] md:tracking-[0.3em] text-center leading-relaxed">
+            <p className="text-[8px] md:text-[10px] font-black text-zinc-600 uppercase tracking-[0.2em] md:tracking-[0.4em] text-center">
               Next.js // Shopify // Odoo ERP //{" "}
               {t("Custom Web Apps", "تطبيقات ويب مخصصة")}
             </p>

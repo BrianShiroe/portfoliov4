@@ -48,7 +48,7 @@ export function Hero() {
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 md:px-10 flex flex-col items-center justify-center">
         <div className="flex flex-col lg:flex-row items-center justify-between w-full gap-10 lg:gap-16">
           
-          {/* 2. LEFT SIDE: ACTIVE FOCUS (Hidden on Mobile) */}
+          {/* 2. LEFT SIDE: ACTIVE FOCUS */}
           <div className="hidden xl:flex flex-col gap-10 w-64">
             <div className="space-y-4">
               <span className={`text-[13px] font-black border-b-2 border-black w-full block pb-2 tracking-[0.15em] uppercase text-black ${isAr ? "text-right" : "text-left"}`}>
@@ -62,7 +62,7 @@ export function Hero() {
                   t("Shopify Ecommerce", "تجارة شوبيفاي الإلكترونية")
                 ].map((item) => (
                   <p key={item} className="flex items-center gap-2">
-                    <span className="h-1 w-1 bg-[#00C950]" /> {item}
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#00C950]" /> {item}
                   </p>
                 ))}
               </div>
@@ -72,10 +72,9 @@ export function Hero() {
           {/* 3. CENTER: MAIN BRANDING & HEADING */}
           <div className="relative flex flex-col items-center w-full lg:flex-1">
             <div className="relative w-full max-fit mx-auto text-center">
-              {/* Responsive Frame Corners */}
               <div className={`absolute -top-2 md:-top-6 w-3 h-3 md:w-5 md:h-5 border-t-2 md:border-t-[3px] border-black ${isAr ? "-right-2 md:-right-6 border-r-2 md:border-r-[3px]" : "-left-2 md:-left-6 border-l-2 md:border-l-[3px]"}`} />
               
-              <div className="mb-6 inline-block bg-black px-2 py-1 text-[9px] md:text-[11px] font-bold font-mono uppercase tracking-[0.2em] text-white">
+              <div className="mb-6 inline-block bg-black px-3 py-1.5 rounded-full text-[9px] md:text-[11px] font-bold font-mono uppercase tracking-[0.2em] text-white">
                 {t("Web Developer // Dubai", "مطور مواقع // دبي")}
               </div>
 
@@ -105,11 +104,15 @@ export function Hero() {
             <div className="flex flex-col items-center gap-6 mb-10 w-full">
               <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 border-y border-black/5 py-5 w-full max-w-[320px] sm:max-w-none justify-center">
                 <a href="mailto:Brianshiroe@gmail.com" className="flex items-center gap-2 text-[10px] md:text-[12px] font-black uppercase tracking-wider text-zinc-600 hover:text-[#00C950] transition-colors group">
-                  <img src="https://img.icons8.com/windows/32/000000/address.png" alt="mail" className="w-4 h-4 opacity-70 group-hover:opacity-100" />
+                  <div className="p-1.5 rounded-lg bg-zinc-50 group-hover:bg-[#00C950]/10 transition-colors">
+                    <img src="https://img.icons8.com/windows/32/000000/address.png" alt="mail" className="w-4 h-4 opacity-70 group-hover:opacity-100" />
+                  </div>
                   <span dir="ltr">Brianshiroe@gmail.com</span>
                 </a>
                 <a href="tel:+971503592133" className="flex items-center gap-2 text-[10px] md:text-[12px] font-black uppercase tracking-wider text-zinc-600 hover:text-[#00C950] transition-colors group">
-                  <img src="https://img.icons8.com/windows/32/000000/phone.png" alt="phone" className="w-4 h-4 opacity-70 group-hover:opacity-100" />
+                  <div className="p-1.5 rounded-lg bg-zinc-50 group-hover:bg-[#00C950]/10 transition-colors">
+                    <img src="https://img.icons8.com/windows/32/000000/phone.png" alt="phone" className="w-4 h-4 opacity-70 group-hover:opacity-100" />
+                  </div>
                   <span dir="ltr">+971 50 359 2133</span>
                 </a>
               </div>
@@ -144,7 +147,7 @@ export function Hero() {
                 whileTap={{ scale: 0.98 }}
                 transition={btnTransition}
                 onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
-                className="w-full bg-black text-white py-4 px-6 text-[11px] font-black uppercase tracking-[0.2em] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]"
+                className="w-full bg-black text-white py-4 px-6 rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]"
               >
                 {t("View Projects", "مشاهدة المشاريع")}
               </motion.button>
@@ -153,7 +156,7 @@ export function Hero() {
                 whileTap={{ scale: 0.98 }}
                 transition={btnTransition}
                 onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-                className="w-full border-2 border-black bg-white py-4 px-6 text-[11px] font-black uppercase tracking-[0.2em] text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)]"
+                className="w-full border-2 border-black bg-white py-4 px-6 rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)]"
               >
                 {t("Contact Me", "تواصل معي")}
               </motion.button>
@@ -163,7 +166,7 @@ export function Hero() {
           {/* 4. RIGHT SIDE: CHARACTER & TIME BOX */}
           <div className="flex flex-col items-center relative mt-4 lg:mt-0">
             <motion.div 
-              className="bg-white border-2 md:border-4 border-black p-3 md:p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center overflow-hidden"
+              className="bg-white border-2 md:border-4 border-black p-3 md:p-6 rounded-2xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center overflow-hidden"
             >
               <div className="scale-[0.5] sm:scale-75 md:scale-90 lg:scale-100 origin-center">
                 <Character />
