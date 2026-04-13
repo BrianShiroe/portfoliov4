@@ -54,19 +54,19 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="relative w-full bg-white py-24 px-4 md:px-6 font-mono overflow-hidden"
+      className="relative w-full bg-white py-16 md:py-24 px-4 md:px-6 font-mono overflow-hidden"
       dir={isAr ? "rtl" : "ltr"}
     >
       <div className="mx-auto max-w-6xl">
         {/* --- HEADER --- */}
-        <div className="mb-16">
+        <div className="mb-12 md:mb-16">
           <div className="flex items-center gap-3 mb-4">
             <div className="h-[2px] w-8 bg-[#00C950]" />
-            <span className={`text-[11px] md:text-sm font-black text-zinc-500 uppercase tracking-[0.2em] mb-2 md:mt-2 ${isAr ? "mr-2" : "ml-2"}`}>
+            <span className={`text-[10px] md:text-sm font-black text-zinc-500 uppercase tracking-[0.2em] ${isAr ? "mr-2" : "ml-2"}`}>
               {t("Direct Communication", "اتصال مباشر")}
             </span>
           </div>
-          <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter text-black leading-none">
+          <h2 className="text-4xl md:text-8xl font-black uppercase tracking-tighter text-black leading-none">
             {isAr ? (
               <>تواصل_<span className="text-[#00C950]">معي</span></>
             ) : (
@@ -75,10 +75,10 @@ export function Contact() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-12 items-start">
           {/* --- LEFT: CONTACT DETAILS --- */}
-          <div className="lg:col-span-5 space-y-12">
-            <div className="space-y-8">
+          <div className="lg:col-span-5 space-y-10 md:space-y-12">
+            <div className="space-y-6 md:space-y-8">
               {contactData.map((item, i) => (
                 <motion.div
                   key={item.label}
@@ -86,16 +86,16 @@ export function Contact() {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.1 }}
                   viewport={{ once: true }}
-                  className={`group relative flex flex-col gap-1 border-zinc-100 hover:border-[#00C950] transition-colors ${isAr ? "border-r-2 pr-6" : "border-l-2 pl-6"}`}
+                  className={`group relative flex flex-col gap-1 border-zinc-100 hover:border-[#00C950] transition-colors ${isAr ? "border-r-2 pr-5 md:pr-6" : "border-l-2 pl-5 md:pl-6"}`}
                 >
-                  <span className="text-xs font-black text-zinc-400 tracking-widest uppercase">
+                  <span className="text-[10px] md:text-xs font-black text-zinc-400 tracking-widest uppercase">
                     {item.label} // 0{i + 1}
                   </span>
 
-                  <div className="flex flex-wrap items-center gap-4">
+                  <div className="flex flex-wrap items-center gap-3 md:gap-4">
                     <a
                       href={item.type === "map" ? "#" : `${item.type}:${item.value}`}
-                      className="text-xl md:text-2xl font-black text-black uppercase hover:text-[#00C950] transition-colors break-all"
+                      className="text-lg md:text-2xl font-black text-black uppercase hover:text-[#00C950] transition-colors break-all leading-tight"
                     >
                       {item.value}
                     </a>
@@ -103,7 +103,7 @@ export function Contact() {
                     {item.type !== "map" && (
                       <button
                         onClick={() => copyToClipboard(item.value, item.label)}
-                        className={`text-[10px] font-black border border-black px-3 py-1 uppercase bg-white hover:bg-black hover:text-[#00C950] transition-all active:scale-95 cursor-pointer shadow-black hover:shadow-none hover:-translate-y-0.5 ${isAr ? "shadow-[-2px_2px_0px_0px_#00C950] hover:-translate-x-0.5" : "shadow-[2px_2px_0px_0px_#00C950] hover:translate-x-0.5"}`}
+                        className={`text-[9px] md:text-[10px] font-black border border-black px-2 md:px-3 py-1 uppercase bg-white hover:bg-black hover:text-[#00C950] transition-all active:scale-95 cursor-pointer shadow-black hover:shadow-none hover:-translate-y-0.5 ${isAr ? "shadow-[-2px_2px_0px_0px_#00C950] hover:-translate-x-0.5" : "shadow-[2px_2px_0px_0px_#00C950] hover:translate-x-0.5"}`}
                       >
                         {copied === item.label ? t("Copied!", "تم النسخ!") : t("Copy", "نسخ")}
                       </button>
@@ -113,25 +113,26 @@ export function Contact() {
               ))}
             </div>
 
-            <div className={`bg-zinc-50 border-2 border-black p-6 relative ${isAr ? "shadow-[-8px_8px_0px_0px_#00C950]" : "shadow-[8px_8px_0px_0px_#00C950]"}`}>
-              <h3 className="text-xs font-black uppercase mb-4 tracking-tighter border-b border-black/10 pb-2">
+            {/* STATUS CARD - ROUNDED */}
+            <div className={`bg-zinc-50 border-2 border-black p-5 md:p-6 rounded-2xl relative ${isAr ? "shadow-[-6px_6px_0px_0px_#00C950]" : "shadow-[6px_6px_0px_0px_#00C950]"}`}>
+              <h3 className="text-[10px] md:text-xs font-black uppercase mb-4 tracking-tighter border-b border-black/10 pb-2">
                 {t("Operational Status", "حالة العمل")}
               </h3>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
-                  <span className="text-[12px] font-bold text-zinc-400 uppercase">
+                  <span className="text-[11px] md:text-[12px] font-bold text-zinc-400 uppercase">
                     {t("Availability", "التوفر")}
                   </span>
-                  <span className="text-[12px] font-black text-[#00C950] uppercase flex items-center gap-2">
-                    <span className="h-2 w-2 bg-[#00C950] rounded-full animate-pulse" />
+                  <span className="text-[11px] md:text-[12px] font-black text-[#00C950] uppercase flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 bg-[#00C950] rounded-full animate-pulse" />
                     {t("Accepting Projects", "متاح للمشاريع")}
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-[12px] font-bold text-zinc-400 uppercase">
+                  <span className="text-[11px] md:text-[12px] font-bold text-zinc-400 uppercase">
                     {t("Response Time", "وقت الرد")}
                   </span>
-                  <span className="text-[12px] font-black uppercase text-black italic">
+                  <span className="text-[11px] md:text-[12px] font-black uppercase text-black italic">
                     {t("~24 Hours", "~٢٤ ساعة")}
                   </span>
                 </div>
@@ -144,7 +145,7 @@ export function Contact() {
             <form onSubmit={onSubmit} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-zinc-400">
+                  <label className="text-[9px] font-black uppercase tracking-widest text-zinc-400 px-1">
                     {t("Full Name", "الاسم الكامل")}
                   </label>
                   <input
@@ -152,11 +153,11 @@ export function Contact() {
                     type="text"
                     name="name"
                     placeholder={t("John Doe", "فلان الفلاني")}
-                    className="w-full bg-zinc-50 border-2 border-zinc-100 focus:border-[#00C950] p-4 text-xs font-bold uppercase tracking-wider outline-none transition-colors"
+                    className="w-full bg-zinc-50 border-2 border-zinc-100 rounded-2xl focus:border-[#00C950] p-4 text-[11px] md:text-xs font-bold uppercase tracking-wider outline-none transition-colors"
                   />
                 </div>
                 <div className="space-y-1">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-zinc-400">
+                  <label className="text-[9px] font-black uppercase tracking-widest text-zinc-400 px-1">
                     {t("Email Address", "البريد الإلكتروني")}
                   </label>
                   <input
@@ -164,13 +165,13 @@ export function Contact() {
                     type="email"
                     name="email"
                     placeholder="john@example.com"
-                    className="w-full bg-zinc-50 border-2 border-zinc-100 focus:border-[#00C950] p-4 text-xs font-bold uppercase tracking-wider outline-none transition-colors"
+                    className="w-full bg-zinc-50 border-2 border-zinc-100 rounded-2xl focus:border-[#00C950] p-4 text-[11px] md:text-xs font-bold uppercase tracking-wider outline-none transition-colors"
                   />
                 </div>
               </div>
 
               <div className="space-y-1">
-                <label className="text-[10px] font-black uppercase tracking-widest text-zinc-400">
+                <label className="text-[9px] font-black uppercase tracking-widest text-zinc-400 px-1">
                   {t("Subject", "الموضوع")}
                 </label>
                 <input
@@ -178,12 +179,12 @@ export function Contact() {
                   type="text"
                   name="subject"
                   placeholder={t("Project Inquiry", "استفسار عن مشروع")}
-                  className="w-full bg-zinc-50 border-2 border-zinc-100 focus:border-[#00C950] p-4 text-xs font-bold uppercase tracking-wider outline-none transition-colors"
+                  className="w-full bg-zinc-50 border-2 border-zinc-100 rounded-2xl focus:border-[#00C950] p-4 text-[11px] md:text-xs font-bold uppercase tracking-wider outline-none transition-colors"
                 />
               </div>
 
               <div className="space-y-1">
-                <label className="text-[10px] font-black uppercase tracking-widest text-zinc-400">
+                <label className="text-[9px] font-black uppercase tracking-widest text-zinc-400 px-1">
                   {t("Message", "الرسالة")}
                 </label>
                 <textarea
@@ -191,17 +192,17 @@ export function Contact() {
                   name="message"
                   rows={5}
                   placeholder={t("Tell me about your project...", "أخبرني عن مشروعك...")}
-                  className="w-full bg-zinc-50 border-2 border-zinc-100 focus:border-[#00C950] p-4 text-xs font-bold uppercase tracking-wider outline-none transition-colors resize-none"
+                  className="w-full bg-zinc-50 border-2 border-zinc-100 rounded-2xl focus:border-[#00C950] p-4 text-[11px] md:text-xs font-bold uppercase tracking-wider outline-none transition-colors resize-none"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full bg-black text-white py-5 text-xs font-black uppercase tracking-[0.3em] hover:text-[#00C950] transition-all active:scale-[0.99] disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed hover:shadow-none hover:-translate-y-1 ${
+                className={`w-full bg-black text-white py-5 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] hover:text-[#00C950] transition-all active:scale-[0.98] disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed hover:shadow-none hover:-translate-y-1 ${
                   isAr 
-                    ? "shadow-[-6px_6px_0px_0px_#00C950] hover:translate-x-1" 
-                    : "shadow-[6px_6px_0px_0px_#00C950] hover:-translate-x-1"
+                    ? "shadow-[-5px_5px_0px_0px_#00C950] hover:translate-x-1" 
+                    : "shadow-[5px_5px_0px_0px_#00C950] hover:-translate-x-1"
                 }`}
               >
                 {isSubmitting ? t("Processing...", "جاري المعالجة...") : t("Dispatch Message", "إرسال الرسالة")}
@@ -221,12 +222,12 @@ export function Contact() {
         </div>
 
         {/* --- DECORATIVE RULER --- */}
-        <div className="mt-24 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 opacity-30">
-          <p className="text-sm font-black uppercase tracking-[0.5em] text-zinc-900">
+        <div className="mt-16 md:mt-24 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 md:gap-4 opacity-30">
+          <p className="text-[10px] md:text-sm font-black uppercase tracking-[0.4em] text-zinc-900 text-center">
             {t("Professional Portfolio // 2026", "معرض الأعمال المهني // ٢٠٢٦")}
           </p>
           <div className={`flex gap-1 ${isAr ? "flex-row-reverse" : ""}`}>
-            {[...Array(12)].map((_, i) => (
+            {[...Array(10)].map((_, i) => (
               <div
                 key={i}
                 className={`h-4 w-[2px] bg-black ${i % 4 === 0 ? "h-6 bg-[#00C950]" : ""}`}
