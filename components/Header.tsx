@@ -1,21 +1,22 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "../context/LanguageContext";
 
-/** * Moved outside the component to prevent "useEffect size change" errors.
- * This ensures the reference remains constant across renders.
+/** * Updated to include both EN and AR labels.
  */
 const navItems = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Services", href: "#services" },
-  { label: "Projects", href: "#projects" },
-  { label: "History", href: "#experience" },
-  { label: "Contact", href: "#contact" },
+  { en: "Home", ar: "الرئيسية", href: "#home" },
+  { en: "About", ar: "من أنا", href: "#about" },
+  { en: "Skills", ar: "المهارات", href: "#skills" },
+  { en: "Services", ar: "الخدمات", href: "#services" },
+  { en: "Projects", ar: "المشاريع", href: "#projects" },
+  { en: "History", ar: "الخبرة", href: "#experience" },
+  { en: "Contact", ar: "اتصل بنا", href: "#contact" },
 ];
 
 export function Header() {
+  const { lang, setLang, t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
@@ -83,7 +84,7 @@ export function Header() {
               BrianShiroe
             </span>
             <span className="text-[8px] md:text-[10px] font-bold text-zinc-400 uppercase tracking-widest mt-0.5">
-              Web Developer
+              {t("Web Developer", "مطور مواقع")}
             </span>
           </div>
         </a>
@@ -94,14 +95,14 @@ export function Header() {
             const isActive = activeSection === item.href.replace("#", "");
             return (
               <a
-                key={item.label}
+                key={item.en}
                 href={item.href}
                 onClick={(e) => handleScroll(e, item.href)}
                 className={`relative px-4 py-2 text-[10px] font-bold uppercase tracking-widest transition-colors duration-300 ${
                   isActive ? "text-white" : "text-zinc-500 hover:text-black"
                 }`}
               >
-                <span className="relative z-10">{item.label}</span>
+                <span className="relative z-10">{t(item.en, item.ar)}</span>
                 {isActive && (
                   <motion.div
                     layoutId="liquidNav"
@@ -114,29 +115,40 @@ export function Header() {
           })}
         </nav>
 
-        {/* MOBILE TRIGGER */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden z-[110] flex items-center gap-2 bg-black px-3 py-1.5 rounded-full active:scale-95"
-        >
-          <span className="text-[8px] font-black uppercase tracking-widest text-white">
-            {isOpen ? "Close" : "Menu"}
-          </span>
-          <div className="flex flex-col gap-0.5 items-end">
-            <motion.div
-              animate={isOpen ? { rotate: 45, y: 3, width: "10px" } : { rotate: 0, y: 0, width: "10px" }}
-              className="h-[1px] bg-white rounded-full"
-            />
-            <motion.div
-              animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
-              className="h-[1px] w-1.5 bg-white rounded-full"
-            />
-            <motion.div
-              animate={isOpen ? { rotate: -45, y: -3, width: "10px" } : { rotate: 0, y: 0, width: "10px" }}
-              className="h-[1px] bg-white rounded-full"
-            />
-          </div>
-        </button>
+        {/* CONTROLS */}
+        <div className="flex items-center gap-4">
+          {/* LANGUAGE TOGGLE */}
+          <button 
+            onClick={() => setLang(lang === "en" ? "ar" : "en")}
+            className="z-[110] text-[10px] font-black border-2 border-black px-3 py-1 hover:bg-black hover:text-white transition-all active:scale-95"
+          >
+            {lang === "en" ? "AR" : "EN"}
+          </button>
+
+          {/* MOBILE TRIGGER */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="lg:hidden z-[110] flex items-center gap-2 bg-black px-3 py-1.5 rounded-full active:scale-95"
+          >
+            <span className="text-[8px] font-black uppercase tracking-widest text-white">
+              {isOpen ? t("Close", "إغلاق") : t("Menu", "القائمة")}
+            </span>
+            <div className="flex flex-col gap-0.5 items-end">
+              <motion.div
+                animate={isOpen ? { rotate: 45, y: 3, width: "10px" } : { rotate: 0, y: 0, width: "10px" }}
+                className="h-[1px] bg-white rounded-full"
+              />
+              <motion.div
+                animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
+                className="h-[1px] w-1.5 bg-white rounded-full"
+              />
+              <motion.div
+                animate={isOpen ? { rotate: -45, y: -3, width: "10px" } : { rotate: 0, y: 0, width: "10px" }}
+                className="h-[1px] bg-white rounded-full"
+              />
+            </div>
+          </button>
+        </div>
 
         {/* DESKTOP CTA */}
         <div className="hidden xl:block">
@@ -146,7 +158,7 @@ export function Header() {
             className="group flex items-center gap-2.5 px-2 py-1 transition-all"
           >
             <span className="text-[10px] font-black uppercase tracking-widest text-zinc-400 group-hover:text-black transition-colors">
-              Available for Hire
+              {t("Available for Hire", "متاح للعمل")}
             </span>
             <div className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -167,13 +179,13 @@ export function Header() {
           >
             <div className="flex flex-col gap-1.5">
               <span className="text-[8px] font-black uppercase text-zinc-400 tracking-[0.2em] mb-1 px-1">
-                Navigation
+                {t("Navigation", "التنقل")}
               </span>
               {navItems.map((item, i) => {
                 const isActive = activeSection === item.href.replace("#", "");
                 return (
                   <motion.a
-                    key={item.label}
+                    key={item.en}
                     initial={{ opacity: 0, x: -5 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.03 }}
@@ -184,7 +196,7 @@ export function Header() {
                     }`}
                   >
                     <span className="text-base font-black uppercase tracking-tight">
-                      {item.label}
+                      {t(item.en, item.ar)}
                     </span>
                     <div className={`h-1 w-1 rounded-full ${isActive ? "bg-white animate-pulse" : "bg-zinc-200"}`} />
                   </motion.a>
@@ -196,16 +208,16 @@ export function Header() {
             <div className="mt-auto pt-6 flex flex-col gap-3">
               <div className="flex items-center justify-between bg-zinc-50 px-4 py-3 rounded-xl border border-zinc-100">
                 <div className="flex flex-col">
-                  <span className="text-[8px] font-black uppercase text-zinc-400">HQ</span>
-                  <span className="text-[10px] font-black uppercase text-black leading-none mt-0.5">Dubai, UAE</span>
+                  <span className="text-[8px] font-black uppercase text-zinc-400">{t("HQ", "المقر")}</span>
+                  <span className="text-[10px] font-black uppercase text-black leading-none mt-0.5">{t("Dubai, UAE", "دبي، الإمارات")}</span>
                 </div>
                 <div className="h-1.5 w-1.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_5px_rgba(34,197,94,0.3)]" />
               </div>
               <a
-                href="mailto:contact@brianshiroe.com"
+                href="mailto:Brianshiroe@gmail.com"
                 className="w-full bg-black text-white text-center py-3.5 rounded-lg font-black uppercase tracking-widest text-[10px] active:scale-95 transition-transform"
               >
-                Let's Talk
+                {t("Let's Talk", "لنبدأ الحوار")}
               </a>
             </div>
           </motion.div>

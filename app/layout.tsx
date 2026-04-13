@@ -1,10 +1,10 @@
-// app\layout.tsx
 import type { Metadata, Viewport } from "next";
 import { Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { SystemLoader } from "../components/SystemLoader";
+import { LanguageProvider } from "../context/LanguageContext";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -110,14 +110,17 @@ export default function RootLayout({
       </head>
       <body
         className="min-h-full flex flex-col font-mono bg-white text-black selection:bg-[#00C950] selection:text-white"
-        suppressHydrationWarning={true}
+        suppressHydrationWarning
       >
-        <SystemLoader />
-        <Header />
-        <main role="main" className="flex-1">
-          {children}
-        </main>
-        <Footer />
+        {/* FIX: LanguageProvider must wrap the UI components inside the body */}
+        <LanguageProvider>
+          <SystemLoader />
+          <Header />
+          <main role="main" className="flex-1">
+            {children}
+          </main>
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );
