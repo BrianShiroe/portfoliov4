@@ -126,7 +126,7 @@ export function Hero() {
                 onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
                 className="w-full bg-black text-white py-4 px-6 text-[11px] font-black uppercase tracking-[0.2em] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]"
               >
-                Portfolio
+                Projects
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.02, color: "#00C950", borderColor: "#00C950" }}
