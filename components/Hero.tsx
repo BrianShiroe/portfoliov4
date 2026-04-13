@@ -1,10 +1,11 @@
-// components\Hero.tsx
 "use client";
 import { motion, Transition } from "framer-motion";
 import { Character } from "./Character";
 import { useEffect, useState } from "react";
+import { useLanguage } from "../context/LanguageContext";
 
 export function Hero() {
+  const { t, lang } = useLanguage();
   const [time, setTime] = useState("");
 
   useEffect(() => {
@@ -16,7 +17,6 @@ export function Hero() {
     return () => clearInterval(timer);
   }, []);
 
-  // Fixed the Type Assignment Error
   const btnTransition: Transition = { 
     type: "tween", 
     ease: "easeOut", 
@@ -44,10 +44,15 @@ export function Hero() {
           <div className="hidden xl:flex flex-col gap-10 w-64">
             <div className="space-y-4">
               <span className="text-[13px] font-black border-b-2 border-black w-full block pb-2 tracking-[0.15em] uppercase text-black">
-                Active Focus
+                {t("Active Focus", "التركيز الحالي")}
               </span>
               <div className="space-y-2.5 text-[13px] text-zinc-800 uppercase font-bold leading-tight">
-                {["Frontend Dev", "Full-Stack Dev", "ERP Integration", "Shopify Ecommerce"].map((item) => (
+                {[
+                  t("Frontend Dev", "تطوير الواجهة الأمامية"),
+                  t("Full-Stack Dev", "تطوير الويب الشامل"),
+                  t("ERP Integration", "تكامل أنظمة ERP"),
+                  t("Shopify Ecommerce", "تجارة شوبيفاي الإلكترونية")
+                ].map((item) => (
                   <p key={item} className="flex items-center gap-2">
                     <span className="h-1 w-1 bg-black" /> {item}
                   </p>
@@ -63,13 +68,16 @@ export function Hero() {
               <div className="absolute -top-2 -left-2 md:-top-6 md:-left-6 w-3 h-3 md:w-5 md:h-5 border-t-2 md:border-t-[3px] border-l-2 md:border-l-[3px] border-black" />
               
               <div className="mb-3 inline-block bg-black px-2 py-1 text-[9px] md:text-[11px] font-bold uppercase tracking-[0.2em] text-white">
-                Web Developer // Dubai
+                {t("Web Developer // Dubai", "مطور مواقع // دبي")}
               </div>
 
               {/* Fluid Typography Fix */}
               <h1 className="text-center text-[15vw] sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase tracking-tighter leading-[0.85] md:leading-[0.8] mb-4">
-                Brian <br />
-                <span className="text-[#00C950]">Shiroe</span>
+                {lang === "en" ? (
+                  <>Brian <br /> <span className="text-[#00C950]">Shiroe</span></>
+                ) : (
+                  <>برايان <br /> <span className="text-[#00C950]">شيرو</span></>
+                )}
               </h1>
 
               <div className="flex items-center justify-center gap-2 md:gap-3 mb-8">
@@ -83,7 +91,6 @@ export function Hero() {
 
             {/* RESPONSIVE CONTACT & SOCIAL FORMAT */}
             <div className="flex flex-col items-center gap-6 mb-10 w-full">
-              {/* Direct Text Contacts */}
               <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 border-y border-black/5 py-5 w-full max-w-[320px] sm:max-w-none justify-center">
                 <a href="mailto:Brianshiroe@gmail.com" className="flex items-center gap-2 text-[10px] md:text-[12px] font-black uppercase tracking-wider text-zinc-600 hover:text-[#00C950] transition-colors group">
                   <img src="https://img.icons8.com/windows/32/000000/address.png" alt="mail" className="w-4 h-4 opacity-70 group-hover:opacity-100" />
@@ -95,7 +102,6 @@ export function Hero() {
                 </a>
               </div>
 
-              {/* Brand Icons */}
               <div className="flex gap-10">
                 <motion.a
                   href="https://github.com/BrianShiroe"
@@ -127,7 +133,7 @@ export function Hero() {
                 onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
                 className="w-full bg-black text-white py-4 px-6 text-[11px] font-black uppercase tracking-[0.2em] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]"
               >
-                Projects
+                {t("Projects", "المشاريع")}
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.02, color: "#00C950", borderColor: "#00C950" }}
@@ -136,7 +142,7 @@ export function Hero() {
                 onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
                 className="w-full border-2 border-black bg-white py-4 px-6 text-[11px] font-black uppercase tracking-[0.2em] text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)]"
               >
-                Contact
+                {t("Contact", "تواصل")}
               </motion.button>
             </div>
           </div>
@@ -152,7 +158,9 @@ export function Hero() {
                   <span className="text-xl md:text-2xl font-black text-black tabular-nums">{time}</span>
                   <div className="flex items-center justify-center gap-2 mt-1">
                     <span className="h-1.5 w-1.5 bg-[#00C950] rounded-full animate-pulse" />
-                    <span className="text-[9px] font-black uppercase text-zinc-400">Dubai Time</span>
+                    <span className="text-[9px] font-black uppercase text-zinc-400">
+                      {t("Dubai Time", "توقيت دبي")}
+                    </span>
                   </div>
                 </div>
               </motion.div>
@@ -164,7 +172,7 @@ export function Hero() {
       {/* --- TICKER --- */}
       <div className="absolute bottom-0 z-20 w-full border-t-2 border-black bg-white py-1 overflow-hidden flex items-center h-12">
         <motion.div
-          animate={{ x: [0, -1200] }}
+          animate={{ x: lang === 'en' ? [0, -1200] : [-1200, 0] }}
           transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
           className="flex gap-8 md:gap-12 text-[10px] md:text-[12px] font-black uppercase text-black whitespace-nowrap"
         >
@@ -174,7 +182,10 @@ export function Hero() {
               <span>React.js</span> <span className="text-[#00C950]">//</span>
               <span>Shopify</span> <span className="text-[#00C950]">//</span>
               <span>Odoo ERP</span> <span className="text-[#00C950]">//</span>
-              <span className="italic text-[#00C950]">UAE Based</span> <span className="text-[#00C950]">//</span>
+              <span className="italic text-[#00C950]">
+                {t("UAE Based", "مقرنا في الإمارات")}
+              </span> 
+              <span className="text-[#00C950]">//</span>
             </span>
           ))}
         </motion.div>
