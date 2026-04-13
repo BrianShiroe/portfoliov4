@@ -10,6 +10,7 @@ export function Projects() {
       tag: "IT Solutions",
       tech: "Odoo / 80+ Pages / Multilingual",
       status: "Live",
+      isDevelopment: false,
       date: "2026",
       href: "https://www.itdtech.ae/",
     },
@@ -19,6 +20,7 @@ export function Projects() {
       tag: "Real Estate",
       tech: "Odoo / E-commerce/ Multilingual",
       status: "Live",
+      isDevelopment: false,
       date: "2026",
       href: "https://www.kbhrealestate.ae/",
     },
@@ -28,6 +30,7 @@ export function Projects() {
       tag: "Gold & Layaway",
       tech: "Next.js / Responsive / Systems",
       status: "Live",
+      isDevelopment: true,
       date: "2026",
       href: "https://zhel-gold-jewelry.vercel.app/",
     },
@@ -37,6 +40,7 @@ export function Projects() {
       tag: "Perfume Store",
       tech: "Shopify / E-Commerce / Responsive",
       status: "Live",
+      isDevelopment: false,
       date: "2026",
       href: "https://rosegallery.ae/",
     },
@@ -46,6 +50,7 @@ export function Projects() {
       tag: "Legal Services",
       tech: "Wordpress CMS / Arabic / Responsive",
       status: "Live",
+      isDevelopment: false,
       date: "2026",
       href: "https://wazeenlaw.sa/",
     },
@@ -100,7 +105,6 @@ export function Projects() {
                 className="block w-full"
               >
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-                  {/* ID & Title Column */}
                   <div className="flex items-start md:items-center gap-6 md:gap-12">
                     <div className="flex flex-col items-center">
                       <span className="text-sm md:text-base font-black text-zinc-300 group-hover:text-[#00C950] transition-colors">
@@ -116,15 +120,34 @@ export function Projects() {
                         <span className="text-[10px] md:text-xs font-bold text-zinc-500 uppercase tracking-widest">
                           {work.tech}
                         </span>
-                        <span className="h-1.5 w-1.5 rounded-full bg-[#00C950]" />
-                        <span className="text-[10px] md:text-xs font-black text-black uppercase tracking-widest border-b border-[#00C950]">
+
+                        {/* Pulsing Green Indicator */}
+                        <span className="relative flex h-2 w-2">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00C950] opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00C950]"></span>
+                        </span>
+
+                        <span className="text-[11px] md:text-[13px] font-black text-black uppercase tracking-widest border-b-2 border-[#00C950]">
                           {work.status}
                         </span>
+
+                        {/* Separate Development Indicator */}
+                        {work.isDevelopment && (
+                          <div className="flex items-center gap-2 bg-amber-50 px-2 py-0.5 border border-amber-400">
+                            <span className="relative flex h-1.5 w-1.5">
+                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-500 opacity-75"></span>
+                              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-amber-500"></span>
+                            </span>
+                            <span className="text-[10px] md:text-[11px] font-black text-amber-600 uppercase tracking-tighter">
+                              Under Development
+                            </span>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
 
-                  {/* Metadata Column */}
+                  {/* Metadata & Tag */}
                   <div className="flex items-center justify-between md:justify-end gap-8">
                     <div className="hidden xl:flex flex-col items-end">
                       <p className="text-[10px] font-black text-zinc-400 uppercase tracking-tighter">
@@ -141,8 +164,7 @@ export function Projects() {
                       </span>
 
                       <div className="h-10 w-10 md:h-12 md:w-12 border-4 border-black flex items-center justify-center bg-white group-hover:bg-black group-hover:text-[#00C950] transition-colors">
-                        <motion.svg
-                          whileHover={{ scale: 1.1 }}
+                        <svg
                           width="20"
                           height="20"
                           viewBox="0 0 24 24"
@@ -151,7 +173,7 @@ export function Projects() {
                           strokeWidth="4"
                         >
                           <path d="M7 17L17 7M17 7H7M17 7V17" />
-                        </motion.svg>
+                        </svg>
                       </div>
                     </div>
                   </div>
@@ -159,18 +181,6 @@ export function Projects() {
               </Link>
             </motion.div>
           ))}
-        </div>
-
-        {/* --- SECTION FOOTER --- */}
-        <div className="mt-20 flex flex-col md:flex-row items-center justify-between gap-6 border-t-2 border-black/10 pt-12">
-          <div className="flex gap-2">
-            {[...Array(4)].map((_, i) => (
-              <div key={i} className="h-3 w-3 bg-[#00C950]" />
-            ))}
-          </div>
-          <p className="text-[11px] font-bold uppercase tracking-widest text-zinc-500">
-            Selected Work // Fullstack & Systems // 2025 - 2026
-          </p>
         </div>
       </div>
     </section>
