@@ -1,3 +1,4 @@
+// components\Hero.tsx
 "use client";
 import { motion, Transition } from "framer-motion";
 import { Character } from "./Character";
