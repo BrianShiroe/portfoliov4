@@ -1,13 +1,26 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "../context/LanguageContext";
 
 export function SystemLoader() {
+  const { t, lang } = useLanguage();
+  const isAr = lang === "ar";
+  
   const [progress, setProgress] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const [entropy, setEntropy] = useState("0x000000");
 
-  const logs = [
+  const logs = isAr ? [
+    "جاري_تهيئة_المحرك_العصبي...",
+    "توثيق_المستخدم: BrianShiroe [تم التحقق]",
+    "تحميل_وحدات_Odoo_ERP...",
+    "مزامنة_إطار_Next.js...",
+    "تحسين_مكونات_React...",
+    "نشر_واجهات_Shopify...",
+    "إعداد_نظام_WordPress_CRM...",
+    "النظام_مستقر._فتح_الواجهة.",
+  ] : [
     "Initializing_Neural_Engine...",
     "User_Auth: BrianShiroe [Verified]",
     "Loading_Odoo_ERP_Modules...",
@@ -52,7 +65,7 @@ export function SystemLoader() {
       clearInterval(hexTimer);
       clearInterval(logTimer);
     };
-  }, []);
+  }, [logs.length]);
 
   return (
     <AnimatePresence>
@@ -64,43 +77,43 @@ export function SystemLoader() {
             transition: { duration: 1.1, ease: [0.8, 0, 0.1, 1] },
           }}
           className="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-white font-mono overflow-hidden"
+          dir={isAr ? "rtl" : "ltr"}
         >
-          {/* DECOR: TOP-RIGHT STATUS - Increased to text-xs for legibility */}
-          <div className="absolute top-10 right-10 text-right hidden lg:block opacity-30">
+          {/* DECOR: TOP STATUS */}
+          <div className={`absolute top-10 hidden lg:block opacity-30 ${isAr ? "left-10 text-left" : "right-10 text-right"}`}>
             <p className="text-xs leading-relaxed font-black uppercase tracking-widest">
-              Entropy: {entropy}
+              {t("Entropy", "العشوائية")}: {entropy}
               <br />
-              Link: Secured
+              {t("Link: Secured", "الارتباط: آمن")}
               <br />
-              Node: DXB_01
+              {t("Node: DXB_01", "العقدة: DXB_01")}
             </p>
           </div>
 
-          {/* DECOR: LEFT-SIDE TOPOLOGY SKETCH */}
-          <div className="absolute left-10 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-6 opacity-10">
+          {/* DECOR: SIDE TOPOLOGY SKETCH */}
+          <div className={`absolute top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-6 opacity-10 ${isAr ? "right-10" : "left-10"}`}>
             <div className="h-24 w-[1px] bg-black relative">
               <div className="absolute top-0 -left-1 h-2 w-2 bg-black rounded-full" />
               <div className="absolute bottom-0 -left-1 h-2 w-2 bg-black rounded-full" />
-              <div className="absolute top-1/2 -left-10 w-10 h-[1px] bg-black" />
+              <div className={`absolute top-1/2 w-10 h-[1px] bg-black ${isAr ? "-right-10" : "-left-10"}`} />
             </div>
-            <span className="text-[10px] rotate-90 origin-left mt-12 font-black tracking-[0.5em] uppercase">
-              Architecture_Map
+            <span className={`text-[10px] font-black tracking-[0.5em] uppercase ${isAr ? "-rotate-90 origin-right mt-12" : "rotate-90 origin-left mt-12"}`}>
+              {t("Architecture_Map", "خريطة_المعمارية")}
             </span>
           </div>
 
-          {/* Increased container max-width slightly for the larger fonts */}
           <div className="w-full max-w-[420px] flex flex-col gap-10 px-8">
-            {/* 1. PROFESSIONAL IDENTITY - Scaled to text-4xl */}
+            {/* 1. PROFESSIONAL IDENTITY */}
             <div className="relative group">
-              <div className="flex flex-col gap-2 border-l-[4px] border-black pl-6">
+              <div className={`flex flex-col gap-2 border-black ${isAr ? "border-r-[4px] pr-6" : "border-l-[4px] pl-6"}`}>
                 <span className="text-[11px] font-black uppercase text-zinc-500 tracking-[0.4em]">
-                  Web_Developer
+                  {t("Web_Developer", "مطور_ويب")}
                 </span>
                 <h1 className="text-4xl font-black uppercase tracking-tighter text-black leading-none">
                   BrianShiroe<span className="animate-pulse">_</span>
                 </h1>
               </div>
-              <div className="absolute -right-2 -top-2 text-[10px] font-black bg-black text-white px-2 py-1 uppercase tracking-widest">
+              <div className={`absolute -top-2 text-[10px] font-black bg-black text-white px-2 py-1 uppercase tracking-widest ${isAr ? "-left-2" : "-right-2"}`}>
                 v5.0
               </div>
             </div>
@@ -122,9 +135,9 @@ export function SystemLoader() {
                     />
                   ))}
                 </div>
-                <div className="flex flex-col items-end">
+                <div className={`flex flex-col ${isAr ? "items-start" : "items-end"}`}>
                   <span className="text-[10px] font-black text-zinc-400 uppercase tracking-wider">
-                    Process_Load
+                    {t("Process_Load", "تحميل_العملية")}
                   </span>
                   <span className="text-xl font-black text-black tabular-nums">
                     {Math.round(progress)}%
@@ -132,10 +145,10 @@ export function SystemLoader() {
                 </div>
               </div>
 
-              {/* Progress Bar - Increased height to 16px */}
+              {/* Progress Bar */}
               <div className="w-full h-4 bg-zinc-200 relative overflow-hidden rounded-full">
                 <motion.div
-                  className="absolute top-0 left-0 h-full bg-black"
+                  className={`absolute top-0 h-full bg-black ${isAr ? "right-0" : "left-0"}`}
                   initial={{ width: "0%" }}
                   animate={{ width: `${progress}%` }}
                   transition={{ ease: "easeOut", duration: 0.4 }}
@@ -143,12 +156,12 @@ export function SystemLoader() {
               </div>
             </div>
 
-            {/* 3. DIAGNOSTIC TERMINAL - Increased to text-sm */}
+            {/* 3. DIAGNOSTIC TERMINAL */}
             <div className="flex flex-col gap-4">
               <div className="flex items-center gap-3 opacity-30">
                 <div className="h-[1px] flex-1 bg-black" />
                 <span className="text-[10px] font-black uppercase tracking-widest">
-                  Diagnostic_Stream
+                  {t("Diagnostic_Stream", "بث_التشخيص")}
                 </span>
                 <div className="h-[1px] flex-1 bg-black" />
               </div>
@@ -164,28 +177,28 @@ export function SystemLoader() {
               </div>
             </div>
 
-            {/* 4. SYSTEM METADATA FOOTER - Increased font and spacing */}
+            {/* 4. SYSTEM METADATA FOOTER */}
             <div className="grid grid-cols-2 gap-6 border-t border-zinc-100 pt-8">
               <div className="flex flex-col gap-1">
                 <span className="text-[9px] font-black text-zinc-400 uppercase tracking-tighter">
-                  Core_Environment
+                  {t("Core_Environment", "البيئة_الأساسية")}
                 </span>
                 <span className="text-[11px] font-bold uppercase tracking-tight text-zinc-800">
-                  Production_Secure
+                  {t("Production_Secure", "الإنتاج_آمن")}
                 </span>
               </div>
-              <div className="flex flex-col items-end gap-1">
+              <div className={`flex flex-col gap-1 ${isAr ? "items-start" : "items-end"}`}>
                 <span className="text-[9px] font-black text-zinc-400 uppercase tracking-tighter">
-                  Deployment_Origin
+                  {t("Deployment_Origin", "مصدر_النشر")}
                 </span>
-                <span className="text-[11px] font-bold uppercase tracking-tight text-right text-zinc-800">
-                  DXB_UAE_SATELLITE
+                <span className={`text-[11px] font-bold uppercase tracking-tight text-zinc-800 ${isAr ? "text-left" : "text-right"}`}>
+                  {t("DXB_UAE_SATELLITE", "قمر_دبي_الإماراتي")}
                 </span>
               </div>
             </div>
           </div>
 
-          {/* BACKGROUND TEXTURE: SCANLINES + GRID */}
+          {/* BACKGROUND TEXTURE */}
           <div
             className="absolute inset-0 z-[-1] opacity-[0.03] pointer-events-none"
             style={{

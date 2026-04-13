@@ -1,12 +1,13 @@
 "use client";
 import { motion, Transition } from "framer-motion";
-import { Character } from "./Character"; // Ensure this path is correct
+import { Character } from "./Character";
 import { useEffect, useState } from "react";
 import { useLanguage } from "../context/LanguageContext";
 
 export function Hero() {
   const { t, lang } = useLanguage();
   const [time, setTime] = useState("");
+  const isAr = lang === "ar";
 
   // Dubai Time Logic
   useEffect(() => {
@@ -29,12 +30,10 @@ export function Hero() {
     duration: 0.15 
   };
 
-  const isAr = lang === "ar";
-
   return (
     <section
       id="home"
-      className="relative min-h-screen w-full overflow-hidden bg-white selection:bg-[#00C950] selection:text-white font-mono flex flex-col justify-center py-20 lg:py-0"
+      className={`relative min-h-screen w-full overflow-hidden bg-white selection:bg-[#00C950] selection:text-white flex flex-col justify-center py-20 lg:py-0 ${isAr ? "font-arabic" : "font-mono"}`}
       dir={isAr ? "rtl" : "ltr"}
     >
       {/* 1. Background Pattern */}
@@ -72,18 +71,18 @@ export function Hero() {
 
           {/* 3. CENTER: MAIN BRANDING & HEADING */}
           <div className="relative flex flex-col items-center w-full lg:flex-1">
-            <div className="relative w-full max-w-fit mx-auto text-center">
+            <div className="relative w-full max-fit mx-auto text-center">
               {/* Responsive Frame Corners */}
               <div className={`absolute -top-2 md:-top-6 w-3 h-3 md:w-5 md:h-5 border-t-2 md:border-t-[3px] border-black ${isAr ? "-right-2 md:-right-6 border-r-2 md:border-r-[3px]" : "-left-2 md:-left-6 border-l-2 md:border-l-[3px]"}`} />
               
-              <div className="mb-3 inline-block bg-black px-2 py-1 text-[9px] md:text-[11px] font-bold uppercase tracking-[0.2em] text-white">
+              <div className="mb-6 inline-block bg-black px-2 py-1 text-[9px] md:text-[11px] font-bold font-mono uppercase tracking-[0.2em] text-white">
                 {t("Web Developer // Dubai", "مطور مواقع // دبي")}
               </div>
 
-              <h1 className={`text-center font-black uppercase tracking-tighter mb-4 
+              <h1 className={`text-center font-black uppercase mb-4 
                 ${isAr 
                   ? "text-[12vw] sm:text-6xl md:text-7xl lg:text-8xl leading-[1.1]" 
-                  : "text-[15vw] sm:text-7xl md:text-8xl lg:text-9xl leading-[0.85] md:leading-[0.8]"
+                  : "text-[15vw] sm:text-7xl md:text-8xl lg:text-9xl leading-[0.85] md:leading-[0.8] tracking-tighter"
                 }`}
               >
                 {isAr ? (
@@ -107,11 +106,11 @@ export function Hero() {
               <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 border-y border-black/5 py-5 w-full max-w-[320px] sm:max-w-none justify-center">
                 <a href="mailto:Brianshiroe@gmail.com" className="flex items-center gap-2 text-[10px] md:text-[12px] font-black uppercase tracking-wider text-zinc-600 hover:text-[#00C950] transition-colors group">
                   <img src="https://img.icons8.com/windows/32/000000/address.png" alt="mail" className="w-4 h-4 opacity-70 group-hover:opacity-100" />
-                  Brianshiroe@gmail.com
+                  <span dir="ltr">Brianshiroe@gmail.com</span>
                 </a>
                 <a href="tel:+971503592133" className="flex items-center gap-2 text-[10px] md:text-[12px] font-black uppercase tracking-wider text-zinc-600 hover:text-[#00C950] transition-colors group">
                   <img src="https://img.icons8.com/windows/32/000000/phone.png" alt="phone" className="w-4 h-4 opacity-70 group-hover:opacity-100" />
-                  +971 50 359 2133
+                  <span dir="ltr">+971 50 359 2133</span>
                 </a>
               </div>
 
@@ -171,7 +170,7 @@ export function Hero() {
               </div>
               
               <div className="w-full border-t-2 border-black/10 pt-4 mt-2 text-center">
-                <span className="text-xl md:text-2xl font-black text-black tabular-nums tracking-wider">
+                <span className="text-xl md:text-2xl font-black text-black tabular-nums tracking-wider font-mono">
                   {time}
                 </span>
                 <div className="flex items-center justify-center gap-2 mt-1">
@@ -191,7 +190,7 @@ export function Hero() {
         <motion.div
           animate={{ x: isAr ? [1200, 0] : [0, -1200] }}
           transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
-          className="flex gap-8 md:gap-12 text-[10px] md:text-[12px] font-black uppercase text-black whitespace-nowrap items-center"
+          className="flex gap-8 md:gap-12 text-[10px] md:text-[12px] font-black uppercase text-black whitespace-nowrap items-center font-mono"
         >
           {[...Array(6)].map((_, i) => (
             <span key={i} className="flex items-center gap-4">
@@ -199,7 +198,7 @@ export function Hero() {
               <span>React.js</span> <span className="text-[#00C950]">//</span>
               <span>Shopify</span> <span className="text-[#00C950]">//</span>
               <span>Odoo ERP</span> <span className="text-[#00C950]">//</span>
-              <span className="italic text-[#00C950]">
+              <span className={`italic text-[#00C950] ${isAr ? "font-arabic" : ""}`}>
                 {t("UAE Based", "مقرنا في الإمارات")}
               </span> 
               <span className="text-[#00C950]">//</span>

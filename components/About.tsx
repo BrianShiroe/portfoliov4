@@ -1,17 +1,34 @@
 "use client";
 import { motion } from "framer-motion";
+import { useLanguage } from "../context/LanguageContext";
 
 export function About() {
+  const { t, lang } = useLanguage();
+  const isAr = lang === "ar";
+
   const awards = [
-    { title: "Cum Laude", subtitle: "Academic Excellence", icon: "★" },
-    { title: "Best Thesis", subtitle: "Research & Analysis", icon: "◆" },
-    { title: "Leadership", subtitle: "Project Coordination", icon: "▲" },
+    { 
+      title: t("Cum Laude", "امتياز مع مرتبة الشرف"), 
+      subtitle: t("Academic Excellence", "التميز الأكاديمي"), 
+      icon: "★" 
+    },
+    { 
+      title: t("Best Thesis", "أفضل أطروحة"), 
+      subtitle: t("Research & Analysis", "البحث والتحليل"), 
+      icon: "◆" 
+    },
+    { 
+      title: t("Leadership", "القيادة"), 
+      subtitle: t("Project Coordination", "تنسيق المشاريع"), 
+      icon: "▲" 
+    },
   ];
 
   return (
     <section
       id="about"
       className="relative w-full bg-white py-24 px-4 md:px-6 overflow-hidden font-mono border-t-4 border-black scroll-mt-20 selection:bg-[#00C950] selection:text-white"
+      dir={isAr ? "rtl" : "ltr"}
     >
       <div className="mx-auto max-w-6xl relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -19,37 +36,37 @@ export function About() {
           {/* --- LEFT COLUMN: PROFESSIONAL DATA --- */}
           <div className="lg:col-span-4 space-y-6">
             {/* Identity Card */}
-            <div className="border-4 border-black bg-white p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+            <div className={`border-4 border-black bg-white p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] ${isAr ? "md:shadow-[-8px_8px_0px_0px_rgba(0,0,0,1)]" : ""}`}>
               <div className="flex items-center gap-3 border-b-2 border-black pb-4 mb-4">
                 <div className="h-3 w-3 bg-[#00C950] rounded-full shadow-[0_0_10px_#00C950]" />
                 <span className="text-[14px] font-black uppercase tracking-tight text-black">
-                  Professional Profile
+                  {t("Professional Profile", "الملف المهني")}
                 </span>
               </div>
               <ul className="space-y-3 text-[14px] uppercase font-bold">
                 <li className="flex justify-between">
-                  <span className="text-zinc-400">Name:</span>
-                  <span className="text-black">Brian Haw</span>
+                  <span className="text-zinc-400">{t("Name:", "الاسم:")}</span>
+                  <span className="text-black">{t("Brian Haw", "برايان هو")}</span>
                 </li>
                 <li className="flex justify-between">
-                  <span className="text-zinc-400">Education:</span>
-                  <span className="text-black">Computer Science</span>
+                  <span className="text-zinc-400">{t("Education:", "التعليم:")}</span>
+                  <span className="text-black">{t("Computer Science", "علوم الحاسوب")}</span>
                 </li>
                 <li className="flex justify-between">
-                  <span className="text-zinc-400">Location:</span>
-                  <span className="text-black">Dubai, UAE</span>
+                  <span className="text-zinc-400">{t("Location:", "الموقع:")}</span>
+                  <span className="text-black">{t("Dubai, UAE", "دبي، الإمارات")}</span>
                 </li>
               </ul>
             </div>
 
             {/* ACCOLADES BLOCK */}
-            <div className="bg-black text-white p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.1)]">
+            <div className={`bg-black text-white p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.1)] ${isAr ? "md:shadow-[-8px_8px_0px_0px_rgba(0,0,0,0.1)]" : ""}`}>
               <div className="flex items-center justify-between mb-6">
                 <span className="text-[12px] font-black tracking-widest text-white uppercase">
-                  Achievements
+                  {t("Achievements", "الإنجازات")}
                 </span>
                 <span className="text-[12px] font-black text-zinc-400">
-                  RECOGNIZED
+                  {t("RECOGNIZED", "معتمد")}
                 </span>
               </div>
 
@@ -57,7 +74,7 @@ export function About() {
                 {awards.map((award, index) => (
                   <motion.div
                     key={award.title}
-                    initial={{ x: -10, opacity: 0 }}
+                    initial={{ x: isAr ? 10 : -10, opacity: 0 }}
                     whileInView={{ x: 0, opacity: 1 }}
                     transition={{ delay: index * 0.1 }}
                     className="group flex items-center gap-4"
@@ -66,7 +83,7 @@ export function About() {
                       <span className="text-xl group-hover:text-[#00C950] transition-colors">{award.icon}</span>
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-[15px] font-black uppercase tracking-tight transition-colors group-hover:text-zinc-100">
+                      <span className="text-[15px] font-black uppercase tracking-tight transition-colors group-hover:text-zinc-100 leading-tight">
                         {award.title}
                       </span>
                       <span className="text-[11px] font-bold text-zinc-500 uppercase tracking-widest mt-0.5">
@@ -87,53 +104,58 @@ export function About() {
               className="space-y-6"
             >
               <div className="inline-block bg-black text-white px-4 py-1.5 text-[13px] font-black uppercase tracking-widest mb-4">
-                Professional Bio
+                {t("Professional Bio", "السيرة المهنية")}
               </div>
 
-              {/* H2 Span Updated with #00C950 */}
-              <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none text-black">
-                Creating <br />
-                <span className="text-[#00C950]">Digital_Solutions</span>
+              <h2 className={`font-black uppercase tracking-tighter text-black 
+                ${isAr ? "text-4xl md:text-5xl leading-[1.2]" : "text-4xl md:text-6xl leading-none"}`}>
+                {isAr ? (
+                  <>ابتكار <br /> <span className="text-[#00C950]">حلول_رقمية</span></>
+                ) : (
+                  <>Creating <br /> <span className="text-[#00C950]">Digital_Solutions</span></>
+                )}
               </h2>
 
-              <p className="text-lg md:text-xl font-bold text-zinc-700 leading-relaxed uppercase">
-                IT Professional and Web Developer focused on scaling businesses
-                through high-impact online platforms and optimized digital
-                management.
+              <p className={`font-bold text-zinc-700 uppercase ${isAr ? "text-base md:text-lg leading-relaxed" : "text-lg md:text-xl leading-relaxed"}`}>
+                {t(
+                  "IT Professional and Web Developer focused on scaling businesses through high-impact online platforms and optimized digital management.",
+                  "أخصائي تقنية معلومات ومطور ويب أركز على تطوير الأعمال من خلال منصات رقمية عالية التأثير وإدارة رقمية محسنة."
+                )}
               </p>
 
-              <div className="space-y-6 border-l-4 border-black pl-6 md:pl-8 text-base md:text-lg font-medium text-zinc-500 italic">
+              <div className={`space-y-6 text-zinc-500 italic ${isAr ? "border-r-4 border-l-0 pr-6 md:pr-8 text-sm md:text-base" : "border-l-4 pr-0 pl-6 md:pl-8 text-base md:text-lg"} border-black font-medium`}>
                 <p>
-                  "Dubai-based expert in high-performance e-commerce and custom
-                  web development. I extend business capabilities beyond the
-                  frontend by implementing Odoo ERP systems to automate and
-                  streamline core operations."
+                  {t(
+                    "\"Dubai-based expert in high-performance e-commerce and custom web development. I extend business capabilities beyond the frontend by implementing Odoo ERP systems to automate and streamline core operations.\"",
+                    "\"خبير في التجارة الإلكترونية عالية الأداء وتطوير الويب المخصص ومقري في دبي. أعمل على توسيع قدرات الأعمال إلى ما هو أبعد من الواجهة الأمامية من خلال تنفيذ أنظمة Odoo ERP لأتمتة العمليات الأساسية.\""
+                  )}
                 </p>
                 <p>
-                  "I bridge the gap between creative design and technical
-                  execution, engineering intuitive user experiences that balance
-                  aesthetic appeal with robust, practical functionality."
+                  {t(
+                    "\"I bridge the gap between creative design and technical execution, engineering intuitive user experiences that balance aesthetic appeal with robust, practical functionality.\"",
+                    "\"أعمل على سد الفجوة بين التصميم الإبداعي والتنفيذ التقني، من خلال هندسة تجارب مستخدم بديهية توازن بين الجمال الوظيفي والمتانة العملية.\""
+                  )}
                 </p>
               </div>
 
               {/* FOOTNOTE with #00C950 Shadow */}
-              <div className="mt-12 bg-white border-2 border-black p-6 font-mono text-sm leading-relaxed shadow-[8px_8px_0px_0px_#00C950]">
+              <div className={`mt-12 bg-white border-2 border-black p-6 font-mono text-sm leading-relaxed shadow-[8px_8px_0px_0px_#00C950] ${isAr ? "md:shadow-[-8px_8px_0px_0px_#00C950]" : ""}`}>
                 <div className="flex gap-2 mb-4">
                   <span className="h-2 w-2 bg-[#00C950] rounded-full shadow-[0_0_8px_#00C950]" />
                   <span className="text-[12px] font-black uppercase text-black">
-                    Work Ethic
+                    {t("Work Ethic", "أخلاقيات العمل")}
                   </span>
                 </div>
                 <p className="text-zinc-800 font-bold uppercase">
-                  Dedicated to exceeding client expectations through transparent
-                  communication and meticulous detail. I deliver reliable,
-                  data-driven solutions designed for measurable success and
-                  long-term satisfaction.
+                  {t(
+                    "Dedicated to exceeding client expectations through transparent communication and meticulous detail. I deliver reliable, data-driven solutions designed for measurable success and long-term satisfaction.",
+                    "ملتزم بتجاوز توقعات العملاء من خلال التواصل الشفاف والاهتمام الدقيق بالتفاصيل. أقدم حلولاً موثوقة قائمة على البيانات مصممة للنجاح الملموس والرضا على المدى الطويل."
+                  )}
                 </p>
                 <motion.span
                   animate={{ opacity: [1, 0] }}
                   transition={{ repeat: Infinity, duration: 0.8 }}
-                  className="inline-block w-2 h-4 bg-[#00C950] ml-1 translate-y-1"
+                  className={`inline-block w-2 h-4 bg-[#00C950] translate-y-1 ${isAr ? "mr-1" : "ml-1"}`}
                 />
               </div>
             </motion.div>

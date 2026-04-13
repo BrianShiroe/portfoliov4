@@ -3,8 +3,6 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "../context/LanguageContext";
 
-/** * Updated to include both EN and AR labels.
- */
 const navItems = [
   { en: "Home", ar: "الرئيسية", href: "#home" },
   { en: "About", ar: "من أنا", href: "#about" },
@@ -17,6 +15,7 @@ const navItems = [
 
 export function Header() {
   const { lang, setLang, t } = useLanguage();
+  const isAr = lang === "ar";
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
@@ -63,7 +62,10 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-[100] w-full border-b border-zinc-100 bg-white/80 backdrop-blur-xl font-sans">
+    <header 
+      className="sticky top-0 z-[100] w-full border-b border-zinc-100 bg-white/80 backdrop-blur-xl font-mono"
+      dir={isAr ? "rtl" : "ltr"}
+    >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2.5 md:px-6 md:py-4">
         
         {/* IDENTITY */}
@@ -79,12 +81,12 @@ export function Header() {
               className="h-full w-full object-cover transition-transform group-hover:scale-110"
             />
           </div>
-          <div className="flex flex-col">
+          <div className={`flex flex-col ${isAr ? "items-start" : "items-start"}`}>
             <span className="text-xs md:text-lg font-black uppercase tracking-tighter text-black leading-none">
               BrianShiroe
             </span>
             <span className="text-[8px] md:text-[10px] font-bold text-zinc-400 uppercase tracking-widest mt-0.5">
-              {t("Web Developer", "مطور مواقع")}
+              {t("Web Developer", "مطور ويب")}
             </span>
           </div>
         </a>
@@ -98,7 +100,7 @@ export function Header() {
                 key={item.en}
                 href={item.href}
                 onClick={(e) => handleScroll(e, item.href)}
-                className={`relative px-4 py-2 text-[10px] font-bold uppercase tracking-widest transition-colors duration-300 ${
+                className={`relative px-4 py-2 text-[10px] font-black uppercase tracking-widest transition-colors duration-300 ${
                   isActive ? "text-white" : "text-zinc-500 hover:text-black"
                 }`}
               >
@@ -117,23 +119,23 @@ export function Header() {
 
         {/* CONTROLS */}
         <div className="flex items-center gap-4">
-          {/* LANGUAGE TOGGLE */}
+          {/* LANGUAGE TOGGLE - Show opposite label */}
           <button 
             onClick={() => setLang(lang === "en" ? "ar" : "en")}
-            className="z-[110] text-[10px] font-black border-2 border-black px-3 py-1 hover:bg-black hover:text-white transition-all active:scale-95"
+            className="z-[110] text-[10px] font-black border-2 border-black px-4 py-1 hover:bg-black hover:text-[#00C950] transition-all active:scale-95 cursor-pointer"
           >
-            {lang === "en" ? "AR" : "EN"}
+            {lang === "en" ? "عربي" : "ENGLISH"}
           </button>
 
           {/* MOBILE TRIGGER */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden z-[110] flex items-center gap-2 bg-black px-3 py-1.5 rounded-full active:scale-95"
+            className="lg:hidden z-[110] flex items-center gap-2 bg-black px-3 py-1.5 rounded-full active:scale-95 cursor-pointer"
           >
             <span className="text-[8px] font-black uppercase tracking-widest text-white">
               {isOpen ? t("Close", "إغلاق") : t("Menu", "القائمة")}
             </span>
-            <div className="flex flex-col gap-0.5 items-end">
+            <div className={`flex flex-col gap-0.5 ${isAr ? "items-start" : "items-end"}`}>
               <motion.div
                 animate={isOpen ? { rotate: 45, y: 3, width: "10px" } : { rotate: 0, y: 0, width: "10px" }}
                 className="h-[1px] bg-white rounded-full"
@@ -176,9 +178,10 @@ export function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -5 }}
             className="fixed inset-0 h-screen w-full bg-white z-[100] flex flex-col p-5 pt-16 overflow-y-auto"
+            dir={isAr ? "rtl" : "ltr"}
           >
             <div className="flex flex-col gap-1.5">
-              <span className="text-[8px] font-black uppercase text-zinc-400 tracking-[0.2em] mb-1 px-1">
+              <span className={`text-[8px] font-black uppercase text-zinc-400 tracking-[0.2em] mb-1 px-1 ${isAr ? "text-right" : "text-left"}`}>
                 {t("Navigation", "التنقل")}
               </span>
               {navItems.map((item, i) => {
@@ -186,19 +189,19 @@ export function Header() {
                 return (
                   <motion.a
                     key={item.en}
-                    initial={{ opacity: 0, x: -5 }}
+                    initial={{ opacity: 0, x: isAr ? 5 : -5 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.03 }}
                     href={item.href}
                     onClick={(e) => handleScroll(e, item.href)}
-                    className={`group relative flex items-center justify-between px-4 py-3 rounded-lg border transition-all ${
+                    className={`group relative flex items-center justify-between px-4 py-4 border transition-all ${
                       isActive ? "bg-black text-white border-black" : "bg-zinc-50/30 text-zinc-400 border-zinc-100 active:bg-zinc-100"
                     }`}
                   >
                     <span className="text-base font-black uppercase tracking-tight">
                       {t(item.en, item.ar)}
                     </span>
-                    <div className={`h-1 w-1 rounded-full ${isActive ? "bg-white animate-pulse" : "bg-zinc-200"}`} />
+                    <div className={`h-1.5 w-1.5 rounded-full ${isActive ? "bg-[#00C950] animate-pulse" : "bg-zinc-200"}`} />
                   </motion.a>
                 );
               })}
@@ -206,16 +209,16 @@ export function Header() {
 
             {/* MOBILE FOOTER INFO */}
             <div className="mt-auto pt-6 flex flex-col gap-3">
-              <div className="flex items-center justify-between bg-zinc-50 px-4 py-3 rounded-xl border border-zinc-100">
-                <div className="flex flex-col">
+              <div className="flex items-center justify-between bg-zinc-50 px-4 py-3 border border-zinc-100">
+                <div className={`flex flex-col ${isAr ? "items-start" : "items-start"}`}>
                   <span className="text-[8px] font-black uppercase text-zinc-400">{t("HQ", "المقر")}</span>
                   <span className="text-[10px] font-black uppercase text-black leading-none mt-0.5">{t("Dubai, UAE", "دبي، الإمارات")}</span>
                 </div>
-                <div className="h-1.5 w-1.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_5px_rgba(34,197,94,0.3)]" />
+                <div className="h-2 w-2 bg-green-500 rounded-full animate-pulse shadow-[0_0_5px_rgba(34,197,94,0.3)]" />
               </div>
               <a
                 href="mailto:Brianshiroe@gmail.com"
-                className="w-full bg-black text-white text-center py-3.5 rounded-lg font-black uppercase tracking-widest text-[10px] active:scale-95 transition-transform"
+                className="w-full bg-black text-white text-center py-4 font-black uppercase tracking-widest text-[10px] active:scale-95 transition-transform"
               >
                 {t("Let's Talk", "لنبدأ الحوار")}
               </a>

@@ -1,76 +1,77 @@
 "use client";
 import { motion } from "framer-motion";
+import { useLanguage } from "../context/LanguageContext";
 
-const techStack = [
+const techStack = (t: any) => [
   {
     slug: "odoo",
-    name: "Odoo ERP",
-    type: "Enterprise System",
-    level: "Advanced",
-    focus: "Business Management",
+    name: t("Odoo ERP", "أودو ERP"),
+    type: t("Enterprise System", "نظام مؤسسي"),
+    level: t("Advanced", "متقدم"),
+    focus: t("Business Management", "إدارة الأعمال"),
   },
   {
     slug: "nextdotjs",
-    name: "Next.js",
-    type: "Framework",
-    level: "Expert",
-    focus: "Modern Web Architecture",
+    name: t("Next.js", "نكست جي إس"),
+    type: t("Framework", "إطار عمل"),
+    level: t("Expert", "خبير"),
+    focus: t("Modern Web Architecture", "بنية الويب الحديثة"),
   },
   {
     slug: "react",
-    name: "React",
-    type: "Library",
-    level: "Expert",
-    focus: "Interactive Interfaces",
+    name: t("React", "رياكت"),
+    type: t("Library", "مكتبة برمجة"),
+    level: t("Expert", "خبير"),
+    focus: t("Interactive Interfaces", "واجهات تفاعلية"),
   },
   {
     slug: "wordpress",
-    name: "WordPress",
-    type: "CMS",
-    level: "Expert",
-    focus: "Content & Site Structure",
+    name: t("WordPress", "وردبريس"),
+    type: t("CMS", "نظام إدارة محتوى"),
+    level: t("Expert", "خبير"),
+    focus: t("Content & Site Structure", "هيكلية المواقع والمحتوى"),
   },
   {
     slug: "shopify",
-    name: "Shopify",
-    type: "eCommerce",
-    level: "Advanced",
-    focus: "Online Store Growth",
+    name: t("Shopify", "شوبيفاي"),
+    type: t("eCommerce", "تجارة إلكترونية"),
+    level: t("Advanced", "متقدم"),
+    focus: t("Online Store Growth", "نمو المتاجر الإلكترونية"),
   },
   {
     slug: "googleads",
-    name: "Google Ads",
-    type: "Marketing",
-    level: "Experienced",
-    focus: "Digital Reach",
+    name: t("Google Ads", "إعلانات جوجل"),
+    type: t("Marketing", "تسويق"),
+    level: t("Experienced", "متمرس"),
+    focus: t("Digital Reach", "الوصول الرقمي"),
   },
   {
     slug: "hostinger",
-    name: "Hosting",
-    type: "Management",
-    level: "Expert",
-    focus: "Domain & Site Support",
+    name: t("Hosting", "الاستضافة"),
+    type: t("Management", "إدارة"),
+    level: t("Expert", "خبير"),
+    focus: t("Domain & Site Support", "دعم النطاق والمواقع"),
   },
   {
     slug: "javascript",
-    name: "JavaScript",
-    type: "Core Web",
-    level: "Expert",
-    focus: "Interactivity",
+    name: t("JavaScript", "جافا سكريبت"),
+    type: t("Core Web", "أساسيات الويب"),
+    level: t("Expert", "خبير"),
+    focus: t("Interactivity", "التفاعل"),
   },
   {
     slug: "html5",
-    name: "HTML5",
-    type: "Structure",
-    level: "Expert",
-    focus: "Modern Layouts",
+    name: t("HTML5", "إتش تي إم إل ٥"),
+    type: t("Structure", "الهيكلة"),
+    level: t("Expert", "خبير"),
+    focus: t("Modern Layouts", "تخطيطات حديثة"),
   },
   {
     slug: "css",
-    name: "CSS3",
-    type: "Styling",
-    level: "Expert",
-    focus: "Visual Presentation",
+    name: t("CSS3", "سي إس إس ٣"),
+    type: t("Styling", "التصميم"),
+    level: t("Expert", "خبير"),
+    focus: t("Visual Presentation", "العرض البصري"),
   },
 ];
 
@@ -89,34 +90,42 @@ const ExternalIcon = ({ slug }: { slug: string }) => (
 );
 
 export function Skills() {
+  const { t, lang } = useLanguage();
+  const isAr = lang === "ar";
+  const stack = techStack(t);
+
   return (
     <section
       id="skills"
       className="relative w-full border-t-4 border-black bg-zinc-50 py-16 md:py-24 overflow-hidden selection:bg-black selection:text-white font-sans"
+      dir={isAr ? "rtl" : "ltr"}
     >
       <div className="mx-auto max-w-7xl px-4 md:px-6 relative z-10">
         {/* --- HEADER --- */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-20 gap-8">
           <div className="relative">
-            <div className="absolute -left-2 -top-2 md:-left-4 md:-top-4 h-8 w-8 md:h-12 md:w-12 border-l-4 border-t-4 border-[#00C950]" />
-            <p className="text-[11px] md:text-sm font-black text-zinc-500 uppercase tracking-[0.2em] mb-2 md:mb-4 ml-2">
-              Area of Expertise
+            <div className={`absolute -top-2 md:-top-4 h-8 w-8 md:h-12 md:w-12 border-t-4 border-[#00C950] ${isAr ? "-right-2 md:-right-4 border-r-4" : "-left-2 md:-left-4 border-l-4"}`} />
+            <p className={`text-[11px] md:text-sm font-black text-zinc-500 uppercase tracking-[0.2em] mb-2 md:mb-4 ${isAr ? "mr-2" : "ml-2"}`}>
+              {t("Area of Expertise", "مجالات الخبرة")}
             </p>
             <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-black leading-none">
-              Core_<span className="text-[#00C950]">Skills</span>
+              {isAr ? (
+                <>مهارات_<span className="text-[#00C950]">أساسية</span></>
+              ) : (
+                <>Core_<span className="text-[#00C950]">Skills</span></>
+              )}
             </h2>
           </div>
           <div className="flex flex-col items-start md:items-end">
-            {/* Changed shadow color to #00C950 */}
             <p className="text-xs md:text-base font-bold border-4 border-black bg-white text-black px-4 md:px-6 py-2 md:py-3 uppercase tracking-widest shadow-[4px_4px_0px_0px_#00C950] md:shadow-[8px_8px_0px_0px_#00C950] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
-              Verified Skillset
+              {t("Verified Skillset", "مجموعة مهارات معتمدة")}
             </p>
           </div>
         </div>
 
         {/* --- GRID --- */}
         <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-3 md:gap-6">
-          {techStack.map((tech, index) => (
+          {stack.map((tech, index) => (
             <motion.div
               key={tech.name}
               initial={{ opacity: 0, y: 20 }}
@@ -125,7 +134,8 @@ export function Skills() {
               transition={{ delay: index * 0.05 }}
               className="group relative h-[220px] sm:h-[280px] md:h-[380px] [perspective:1000px]"
             >
-              <div className="relative h-full w-full transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+              <div className={`relative h-full w-full transition-all duration-500 [transform-style:preserve-3d] ${isAr ? "group-hover:[transform:rotateY(-180deg)]" : "group-hover:[transform:rotateY(180deg)]"}`}>
+                
                 {/* CARD FRONT */}
                 <div className="absolute inset-0 h-full w-full border-2 md:border-4 border-black bg-white p-3 md:p-8 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] md:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col justify-between [backface-visibility:hidden]">
                   <div className="flex justify-between items-start border-b-2 border-black pb-1 md:pb-2">
@@ -163,24 +173,24 @@ export function Skills() {
                 </div>
 
                 {/* CARD BACK */}
-                <div className="absolute inset-0 h-full w-full border-2 md:border-4 border-black bg-black p-3 md:p-8 text-white [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                <div className={`absolute inset-0 h-full w-full border-2 md:border-4 border-black bg-black p-3 md:p-8 text-white [backface-visibility:hidden] ${isAr ? "[transform:rotateY(-180deg)]" : "[transform:rotateY(180deg)]"}`}>
                   <div className="h-full flex flex-col justify-between">
                     <div className="space-y-2 md:space-y-4">
                       <div className="flex justify-between items-center border-b border-zinc-700 pb-1 md:pb-2">
                         <p className="text-[8px] md:text-[11px] text-zinc-400 uppercase font-bold tracking-widest">
-                          Focus Area
+                          {t("Focus Area", "منطقة التركيز")}
                         </p>
                       </div>
-                      <p className="text-[10px] md:text-lg uppercase leading-tight font-black tracking-tight italic">
+                      <p className={`text-[10px] md:text-lg uppercase leading-tight font-black tracking-tight italic ${isAr ? "text-right" : "text-left"}`}>
                         {tech.focus}
                       </p>
                     </div>
                     <div className="pt-2 md:pt-4 border-t border-zinc-800 flex flex-col gap-1 md:gap-2">
                       <span className="text-[7px] md:text-[10px] text-zinc-500 font-bold uppercase">
-                        Professional Application
+                        {t("Professional Application", "التطبيق المهني")}
                       </span>
                       <div className="w-fit px-1.5 py-0.5 md:px-2 md:py-1 bg-white text-black font-black uppercase tracking-tighter text-[7px] md:text-[10px]">
-                        Confirmed_Skill
+                        {t("Confirmed_Skill", "مهارة_مؤكدة")}
                       </div>
                     </div>
                   </div>

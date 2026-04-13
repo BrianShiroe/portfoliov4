@@ -1,44 +1,56 @@
 "use client";
 import { motion } from "framer-motion";
 import { ShoppingCart, Settings, Globe, Code2 } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
 
 export function Services() {
+  const { t, lang } = useLanguage();
+  const isAr = lang === "ar";
+
   const services = [
     {
       id: "SV_01",
-      title: "E-Commerce",
-      description:
+      title: t("E-Commerce", "تجارة إلكترونية"),
+      description: t(
         "High-conversion digital storefronts built for scale. From Shopify to headless commerce.",
-      features: ["Sell More", "Grow Sales"],
+        "واجهات متاجر رقمية عالية التحويل مصممة للتوسع. من شوبيفاي إلى التجارة بدون رأس."
+      ),
+      features: [t("Sell More", "بيع أكثر"), t("Grow Sales", "زيادة المبيعات")],
       icon: ShoppingCart,
-      action: "Build Store ↗",
+      action: t("Build Store ↗", "أنشئ متجرك ↗"),
     },
     {
       id: "SV_02",
-      title: "ERP & Odoo",
-      description:
+      title: t("ERP & Odoo", "أنظمة ERP وأودو"),
+      description: t(
         "Deep integration of Odoo Enterprise to streamline inventory and business automation.",
-      features: ["Automate", "Save Time"],
+        "تكامل عميق لنظام Odoo المؤسسي لتبسيط المخزون وأتمتة الأعمال."
+      ),
+      features: [t("Automate", "أتمتة"), t("Save Time", "توفير الوقت")],
       icon: Settings,
-      action: "Integrate Now ↗",
+      action: t("Integrate Now ↗", "ابدأ التكامل ↗"),
     },
     {
       id: "SV_03",
-      title: "Corporate",
-      description:
+      title: t("Corporate", "مواقع الشركات"),
+      description: t(
         "Professional web systems for firms. Focused on authority and lead generation.",
-      features: ["Reach Clients", "Build Trust"],
+        "أنظمة ويب احترافية للشركات. تركز على السلطة وجذب العملاء المحتملين."
+      ),
+      features: [t("Reach Clients", "الوصول للعملاء"), t("Build Trust", "بناء الثقة")],
       icon: Globe,
-      action: "Grow Your Brand ↗",
+      action: t("Grow Your Brand ↗", "نمّ علامتك التجارية ↗"),
     },
     {
       id: "SV_04",
-      title: "Web Apps",
-      description:
+      title: t("Web Apps", "تطبيقات الويب"),
+      description: t(
         "Specialized applications designed for unique logic and superior performance.",
-      features: ["Boost Speed", "Scale Easy"],
+        "تطبيقات متخصصة مصممة لمنطق فريد وأداء متفوق."
+      ),
+      features: [t("Boost Speed", "زيادة السرعة"), t("Scale Easy", "توسع سهل")],
       icon: Code2,
-      action: "Develop App ↗",
+      action: t("Develop App ↗", "طوّر تطبيقك ↗"),
     },
   ];
 
@@ -46,28 +58,33 @@ export function Services() {
     <section
       id="services"
       className="w-full bg-zinc-50 py-16 md:py-24 overflow-hidden font-mono"
+      dir={isAr ? "rtl" : "ltr"}
     >
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         {/* --- SECTION HEADER --- */}
-        <div className="mb-12 md:mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b-4 border-black pb-8">
+        <div className={`mb-12 md:mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b-4 border-black pb-8`}>
           <div className="relative">
-            <div className="absolute -left-2 -top-2 h-6 w-6 border-l-2 border-t-2 border-[#00C950]" />
-            <span className="text-[10px] md:text-sm font-black text-zinc-500 uppercase tracking-[0.2em] mb-2 block ml-2">
-              Service_Architecture
+            <div className={`absolute -top-2 h-6 w-6 border-t-2 border-[#00C950] ${isAr ? "-right-2 border-r-2" : "-left-2 border-l-2"}`} />
+            <span className={`text-[10px] md:text-sm font-black text-zinc-500 uppercase tracking-[0.2em] mb-2 block ${isAr ? "mr-2" : "ml-2"}`}>
+              {t("Service_Architecture", "هيكلية_الخدمات")}
             </span>
-            <h2 className="text-4xl sm:text-5xl md:text-7xl font-black uppercase tracking-tighter text-black leading-none">
-              Expert_<span className="text-[#00C950]">Services</span>
+            <h2 className={`text-4xl sm:text-5xl md:text-7xl font-black uppercase tracking-tighter text-black leading-none`}>
+              {isAr ? (
+                <>خدمات_<span className="text-[#00C950]">خبير</span></>
+              ) : (
+                <>Expert_<span className="text-[#00C950]">Services</span></>
+              )}
             </h2>
           </div>
-          <div className="hidden md:block text-right">
+          <div className={`hidden md:block ${isAr ? "text-left" : "text-right"}`}>
             <p className="text-[12px] font-bold text-black uppercase tracking-widest leading-tight">
-              Business Goals // <br /> Technical Execution
+              {t("Business Goals //", "أهداف العمل //")} <br /> 
+              {t("Technical Execution", "التنفيذ التقني")}
             </p>
           </div>
         </div>
 
         {/* --- HORIZONTAL ROW (Mobile Swipeable / Desktop Row) --- */}
-        {/* Added flex-nowrap to prevent column wrapping on any screen size */}
         <div className="flex flex-nowrap overflow-x-auto pb-10 pt-4 gap-6 no-scrollbar snap-x snap-mandatory">
           {services.map((service, index) => {
             const Icon = service.icon;
@@ -78,14 +95,12 @@ export function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                // min-w-[300px] ensures cards don't squish on mobile
-                // md:min-w-0 md:flex-1 lets them distribute evenly on desktop
                 className="group relative min-w-[300px] md:min-w-0 md:flex-1 snap-center shrink-0 md:shrink"
               >
-                {/* Neobrutalist Shadow */}
-                <div className="absolute inset-0 bg-black translate-x-2 translate-y-2 transition-transform group-hover:translate-x-3 group-hover:translate-y-3" />
+                {/* Neobrutalist Shadow - Flipped for Arabic */}
+                <div className={`absolute inset-0 bg-black transition-transform group-hover:translate-y-3 ${isAr ? "translate-x-[-8px] translate-y-2 group-hover:translate-x-[-12px]" : "translate-x-2 translate-y-2 group-hover:translate-x-3"}`} />
 
-                <div className="relative h-full border-[3px] md:border-4 border-black bg-white p-6 md:p-8 transition-all group-hover:-translate-x-1 group-hover:-translate-y-1 group-hover:border-[#00C950] flex flex-col justify-between">
+                <div className="relative h-full border-[3px] md:border-4 border-black bg-white p-6 md:p-8 transition-all group-hover:-translate-y-1 group-hover:border-[#00C950] flex flex-col justify-between">
                   <div>
                     <div className="flex justify-between items-start mb-6">
                       <span className="text-[9px] font-black text-[#00C950] bg-black px-2 py-1 uppercase tracking-widest">
@@ -144,13 +159,13 @@ export function Services() {
               ))}
             </div>
             <p className="text-[10px] md:text-[12px] font-black uppercase tracking-widest text-black">
-              Fullstack // Dubai // 2026
+              {t("Fullstack // Dubai // 2026", "فول ستاك // دبي // ٢٠٢٦")}
             </p>
           </div>
           <div className="flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-[#00C950] animate-pulse" />
             <p className="text-[9px] md:text-[11px] font-bold uppercase tracking-widest text-zinc-400">
-              System_Status: Operational
+              {t("System_Status: Operational", "حالة_النظام: قيد التشغيل")}
             </p>
           </div>
         </div>

@@ -1,71 +1,32 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useLanguage } from "../context/LanguageContext";
 
 export function Clients() {
+  const { t, lang } = useLanguage();
+  const isAr = lang === "ar";
+
   const logos = [
-    {
-      src: "/logos/500x250_logo_1.png",
-      href: "https://www.itdtech.ae/",
-      status: "live",
-    },
-    {
-      src: "/logos/500x250_logo_2.png",
-      href: "https://kbh-realestate.odoo.com/",
-      status: "live",
-    },
-    {
-      src: "/logos/500x250_logo_11.png",
-      href: "https://rosegallery.ae/",
-      status: "live",
-    },
-    {
-      src: "/logos/500x250_logo_12.png",
-      href: "https://zhel-gold-jewelry.vercel.app/",
-      status: "live",
-    },
-    {
-      src: "/logos/500x250_logo_8.png",
-      href: "https://dgcgroup.ae/",
-      status: "live",
-    },
-    {
-      src: "/logos/500x250_logo_9.png",
-      href: "https://wazeenlaw.sa/",
-      status: "live",
-    },
-    {
-      src: "/logos/500x250_logo_3.png",
-      href: "https://www.alnoblaa.com/",
-      status: "live",
-    },
+    { src: "/logos/500x250_logo_1.png", href: "https://www.itdtech.ae/", status: "live" },
+    { src: "/logos/500x250_logo_2.png", href: "https://kbh-realestate.odoo.com/", status: "live" },
+    { src: "/logos/500x250_logo_11.png", href: "https://rosegallery.ae/", status: "live" },
+    { src: "/logos/500x250_logo_12.png", href: "https://zhel-gold-jewelry.vercel.app/", status: "live" },
+    { src: "/logos/500x250_logo_8.png", href: "https://dgcgroup.ae/", status: "live" },
+    { src: "/logos/500x250_logo_9.png", href: "https://wazeenlaw.sa/", status: "live" },
+    { src: "/logos/500x250_logo_3.png", href: "https://www.alnoblaa.com/", status: "live" },
     { src: "/logos/500x250_logo_4.png", href: "#", status: "offline" },
-    {
-      src: "/logos/500x250_logo_5.png",
-      href: "https://capimob.com/",
-      status: "live",
-    },
-    {
-      src: "/logos/500x250_logo_6.png",
-      href: "https://friendsmedia.net/",
-      status: "live",
-    },
-    {
-      src: "/logos/500x250_logo_7.png",
-      href: "https://idesignsart.com/",
-      status: "live",
-    },
-    {
-      src: "/logos/500x250_logo_10.png",
-      href: "https://idesignstech.com/",
-      status: "live",
-    },
+    { src: "/logos/500x250_logo_5.png", href: "https://capimob.com/", status: "live" },
+    { src: "/logos/500x250_logo_6.png", href: "https://friendsmedia.net/", status: "live" },
+    { src: "/logos/500x250_logo_7.png", href: "https://idesignsart.com/", status: "live" },
+    { src: "/logos/500x250_logo_10.png", href: "https://idesignstech.com/", status: "live" },
   ];
 
   return (
     <section
       id="clients"
       className="relative w-full bg-white py-24 px-4 md:px-6 font-mono overflow-hidden"
+      dir={isAr ? "rtl" : "ltr"}
     >
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
 
@@ -74,12 +35,16 @@ export function Clients() {
         <div className="mb-16">
           <div className="flex items-center gap-3 mb-4">
             <div className="h-[2px] w-8 bg-[#00C950]" />
-            <span className="text-[11px] md:text-sm font-black text-zinc-500 uppercase tracking-[0.2em] mb-2 md:mt-2 ml-2">
-              Production_Output
+            <span className={`text-[11px] md:text-sm font-black text-zinc-500 uppercase tracking-[0.2em] mb-2 md:mt-2 ${isAr ? "mr-2" : "ml-2"}`}>
+              {t("Production_Output", "مخرجات_الإنتاج")}
             </span>
           </div>
           <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter text-black leading-none">
-            Client_<span className="text-[#00C950]">Index</span>
+            {isAr ? (
+              <>قائمة_<span className="text-[#00C950]">العملاء</span></>
+            ) : (
+              <>Client_<span className="text-[#00C950]">Index</span></>
+            )}
           </h2>
         </div>
 
@@ -97,21 +62,21 @@ export function Clients() {
               transition={{ delay: i * 0.05, ease: "circOut" }}
               className={`group relative ${logo.status === "offline" ? "cursor-not-allowed" : "cursor-pointer"}`}
             >
-              {/* Emerald Shadow on hover */}
-              <div className="absolute inset-0 bg-[#00C950] translate-x-0 translate-y-0 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-200" />
+              {/* Emerald Shadow on hover - Flipped for AR */}
+              <div className={`absolute inset-0 bg-[#00C950] translate-x-0 translate-y-0 group-hover:translate-y-2 transition-transform duration-200 ${isAr ? "group-hover:-translate-x-2" : "group-hover:translate-x-2"}`} />
 
-              <div className="relative flex items-center justify-center aspect-[500/250] border-2 border-black bg-white p-3 md:p-4 transition-transform duration-200 group-hover:-translate-x-1 group-hover:-translate-y-1 overflow-hidden">
-                <div className="absolute top-1.5 left-2 text-[10px] font-black text-zinc-400 uppercase group-hover:text-black transition-colors z-10">
-                  REF_0{i + 1}
+              <div className={`relative flex items-center justify-center aspect-[500/250] border-2 border-black bg-white p-3 md:p-4 transition-transform duration-200 group-hover:-translate-y-1 overflow-hidden ${isAr ? "group-hover:translate-x-1" : "group-hover:-translate-x-1"}`}>
+                <div className={`absolute top-1.5 text-[10px] font-black text-zinc-400 uppercase group-hover:text-black transition-colors z-10 ${isAr ? "right-2" : "left-2"}`}>
+                  {isAr ? `مرجع_0${i + 1}` : `REF_0${i + 1}`}
                 </div>
 
-                {/* Status Indicator */}
-                <div className="absolute top-1.5 right-2 flex items-center gap-1.5 z-10">
+                {/* Status Indicator - Flipped for AR */}
+                <div className={`absolute top-1.5 flex items-center gap-1.5 z-10 ${isAr ? "left-2" : "right-2"}`}>
                   <span
                     className={`h-1.5 w-1.5 rounded-full ${logo.status === "live" ? "bg-[#00C950] animate-pulse" : "bg-zinc-300"}`}
                   />
                   <span className="text-[10px] font-black uppercase text-zinc-400 group-hover:text-black transition-colors">
-                    {logo.status}
+                    {logo.status === "live" ? t("live", "مباشر") : t("offline", "غير متصل")}
                   </span>
                 </div>
 
@@ -136,11 +101,11 @@ export function Clients() {
         </div>
 
         {/* --- BOTTOM METADATA --- */}
-        <div className="mt-16 pt-8 border-t border-zinc-100 flex flex-col md:flex-row justify-between items-center gap-4 opacity-30">
+        <div className={`mt-16 pt-8 border-t border-zinc-100 flex flex-col md:flex-row justify-between items-center gap-4 opacity-30 ${isAr ? "md:flex-row-reverse" : ""}`}>
           <p className="text-sm font-black uppercase tracking-[0.5em] text-zinc-900">
-            Active Development Network // DXB
+            {t("Active Development Network // DXB", "شبكة التطوير النشطة // دبي")}
           </p>
-          <div className="flex gap-1">
+          <div className={`flex gap-1 ${isAr ? "flex-row-reverse" : ""}`}>
             {[...Array(8)].map((_, i) => (
               <div
                 key={i}
