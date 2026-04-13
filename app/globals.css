@@ -1,4 +1,3 @@
-/* app\globals.css */
 @import "tailwindcss";
 
 :root {
@@ -6,30 +5,66 @@
   --ink-deep: #000000;
   --ink-mid: #1a1a1a;
   --ink-soft: #4a4a4a;
+  --accent-green: #00C950;
 }
 
 @theme inline {
   --color-ink-deep: var(--ink-deep);
   --color-ink-mid: var(--ink-mid);
   --color-ink-soft: var(--ink-soft);
-  --font-mono: var(--font-geist-mono);
+  --color-accent-green: var(--accent-green);
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
 body {
   background: var(--background);
   color: var(--ink-mid);
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-mono);
+  /* Smoother scrolling for the anchor links in your footer */
+  scroll-behavior: smooth;
 }
 
-/* Retro UI Utilities */
+/* --- ARABIC TYPOGRAPHY OPTIMIZATION --- */
+[lang="ar"] {
+  /* Arabic text usually needs slightly more line-height to prevent clipping */
+  line-height: 1.6;
+}
+
+[lang="ar"] .tracking-tighter, 
+[lang="ar"] .tracking-widest {
+  /* Letter-spacing doesn't apply to Arabic script and can look broken */
+  letter-spacing: 0 !important;
+}
+
+/* --- RETRO UI UTILITIES --- */
 .retro-border-thick {
   border: 4px solid var(--ink-deep);
   box-shadow: 6px 6px 0px 0px var(--ink-deep);
   transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+/* RTL-aware Shadow: Moves the shadow to the left when in Arabic mode */
+[dir="rtl"] .retro-border-thick {
+  box-shadow: -6px 6px 0px 0px var(--ink-deep);
+}
+
+.retro-border-thick:active {
+  box-shadow: 0px 0px 0px 0px var(--ink-deep);
+  transform: translate(6px, 6px);
+}
+
+[dir="rtl"] .retro-border-thick:active {
+  transform: translate(-6px, 6px);
+}
+
 .text-gradient-ink {
   background: linear-gradient(180deg, var(--ink-deep) 40%, var(--ink-soft) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* Custom Selection Color for your brand */
+::selection {
+  background-color: var(--accent-green);
+  color: white;
 }
