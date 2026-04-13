@@ -19,7 +19,6 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
-  // Handle intersection observer for active link highlighting
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -38,10 +37,8 @@ export function Header() {
     return () => observer.disconnect();
   }, []);
 
-  // Prevent scroll when mobile menu is open
   useEffect(() => {
-    if (isOpen) document.body.style.overflow = "hidden";
-    else document.body.style.overflow = "unset";
+    document.body.style.overflow = isOpen ? "hidden" : "unset";
   }, [isOpen]);
 
   const handleScroll = (e: React.MouseEvent, href: string) => {
@@ -54,8 +51,7 @@ export function Header() {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else if (elem) {
       const offset = 70;
-      const offsetPosition =
-        elem.getBoundingClientRect().top + window.pageYOffset - offset;
+      const offsetPosition = elem.getBoundingClientRect().top + window.pageYOffset - offset;
       window.scrollTo({ top: offsetPosition, behavior: "smooth" });
     }
     window.history.pushState(null, "", href);
@@ -66,7 +62,7 @@ export function Header() {
       className="sticky top-0 z-[100] w-full border-b border-zinc-100 bg-white/80 backdrop-blur-xl font-mono"
       dir={isAr ? "rtl" : "ltr"}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2.5 md:px-6 md:py-4">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-6 md:py-4">
         
         {/* IDENTITY */}
         <a
@@ -74,14 +70,14 @@ export function Header() {
           onClick={(e) => handleScroll(e, "#home")}
           className="z-[110] group flex items-center gap-2.5"
         >
-          <div className="h-7 w-7 rounded-full flex items-center justify-center shrink-0 overflow-hidden relative border border-zinc-200">
+          <div className="h-8 w-8 rounded-full flex items-center justify-center shrink-0 overflow-hidden relative border border-zinc-200">
             <img
               src="/logo.png"
-              alt="BrianShiroe Logo"
+              alt="Logo"
               className="h-full w-full object-cover transition-transform group-hover:scale-110"
             />
           </div>
-          <div className={`flex flex-col ${isAr ? "items-start" : "items-start"}`}>
+          <div className="flex flex-col items-start">
             <span className="text-xs md:text-lg font-black uppercase tracking-tighter text-black leading-none">
               BrianShiroe
             </span>
@@ -100,7 +96,7 @@ export function Header() {
                 key={item.en}
                 href={item.href}
                 onClick={(e) => handleScroll(e, item.href)}
-                className={`relative px-4 py-2 text-[10px] font-black uppercase tracking-widest transition-colors duration-300 ${
+                className={`relative px-5 py-2.5 text-[10px] font-black uppercase tracking-widest transition-colors duration-300 ${
                   isActive ? "text-white" : "text-zinc-500 hover:text-black"
                 }`}
               >
@@ -117,47 +113,46 @@ export function Header() {
           })}
         </nav>
 
-        {/* CONTROLS */}
-        <div className="flex items-center gap-4">
-          {/* LANGUAGE TOGGLE - Show opposite label */}
+        {/* CONTROLS - SCALED UP SIZES */}
+        <div className="flex items-center gap-3">
+          {/* Language Switcher */}
           <button 
             onClick={() => setLang(lang === "en" ? "ar" : "en")}
-            className="z-[110] text-[10px] font-black border-2 border-black px-4 py-1 hover:bg-black hover:text-[#00C950] transition-all active:scale-95 cursor-pointer"
+            className="z-[110] h-10 px-4 rounded-full border-2 border-black text-[10px] font-black transition-all hover:bg-black hover:text-[#00C950] active:scale-95 flex items-center justify-center leading-none cursor-pointer"
           >
-            {lang === "en" ? "عربي" : "ENGLISH"}
+            <span className={lang === "ar" ? "translate-y-[1px]" : ""}>
+              {lang === "en" ? "عربي" : "EN"}
+            </span>
           </button>
 
-          {/* MOBILE TRIGGER */}
+          {/* Mobile Toggle (Icon Only) */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden z-[110] flex items-center gap-2 bg-black px-3 py-1.5 rounded-full active:scale-95 cursor-pointer"
+            className="lg:hidden z-[110] h-10 w-10 bg-black rounded-full flex items-center justify-center active:scale-95 transition-transform cursor-pointer"
           >
-            <span className="text-[8px] font-black uppercase tracking-widest text-white">
-              {isOpen ? t("Close", "إغلاق") : t("Menu", "القائمة")}
-            </span>
-            <div className={`flex flex-col gap-0.5 ${isAr ? "items-start" : "items-end"}`}>
+            <div className="flex flex-col gap-1 items-center justify-center">
               <motion.div
-                animate={isOpen ? { rotate: 45, y: 3, width: "10px" } : { rotate: 0, y: 0, width: "10px" }}
-                className="h-[1px] bg-white rounded-full"
+                animate={isOpen ? { rotate: 45, y: 5 } : { rotate: 0, y: 0 }}
+                className="h-[1.5px] w-4.5 bg-white rounded-full origin-center"
               />
               <motion.div
-                animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
-                className="h-[1px] w-1.5 bg-white rounded-full"
+                animate={isOpen ? { opacity: 0, x: -5 } : { opacity: 1, x: 0 }}
+                className="h-[1.5px] w-4.5 bg-white rounded-full"
               />
               <motion.div
-                animate={isOpen ? { rotate: -45, y: -3, width: "10px" } : { rotate: 0, y: 0, width: "10px" }}
-                className="h-[1px] bg-white rounded-full"
+                animate={isOpen ? { rotate: -45, y: -5 } : { rotate: 0, y: 0 }}
+                className="h-[1.5px] w-4.5 bg-white rounded-full origin-center"
               />
             </div>
           </button>
         </div>
 
-        {/* DESKTOP CTA */}
+        {/* DESKTOP STATUS */}
         <div className="hidden xl:block">
           <a
             href="#contact"
             onClick={(e) => handleScroll(e, "#contact")}
-            className="group flex items-center gap-2.5 px-2 py-1 transition-all"
+            className="group flex items-center gap-2.5 px-3 py-1.5"
           >
             <span className="text-[10px] font-black uppercase tracking-widest text-zinc-400 group-hover:text-black transition-colors">
               {t("Available for Hire", "متاح للعمل")}
@@ -174,14 +169,14 @@ export function Header() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -5 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -5 }}
-            className="fixed inset-0 h-screen w-full bg-white z-[100] flex flex-col p-5 pt-16 overflow-y-auto"
+            exit={{ opacity: 0, y: -10 }}
+            className="fixed inset-0 h-screen w-full bg-white z-[100] flex flex-col p-5 pt-20 overflow-y-auto"
             dir={isAr ? "rtl" : "ltr"}
           >
-            <div className="flex flex-col gap-1.5">
-              <span className={`text-[8px] font-black uppercase text-zinc-400 tracking-[0.2em] mb-1 px-1 ${isAr ? "text-right" : "text-left"}`}>
+            <div className="flex flex-col gap-2 mt-4">
+              <span className="text-[8px] font-black uppercase text-zinc-400 tracking-[0.2em] mb-2 px-2">
                 {t("Navigation", "التنقل")}
               </span>
               {navItems.map((item, i) => {
@@ -189,36 +184,42 @@ export function Header() {
                 return (
                   <motion.a
                     key={item.en}
-                    initial={{ opacity: 0, x: isAr ? 5 : -5 }}
+                    initial={{ opacity: 0, x: isAr ? 20 : -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.03 }}
+                    transition={{ delay: i * 0.02 }}
                     href={item.href}
                     onClick={(e) => handleScroll(e, item.href)}
-                    className={`group relative flex items-center justify-between px-4 py-4 border transition-all ${
-                      isActive ? "bg-black text-white border-black" : "bg-zinc-50/30 text-zinc-400 border-zinc-100 active:bg-zinc-100"
+                    className={`flex items-center justify-between px-5 py-4 rounded-2xl border-2 transition-all ${
+                      isActive 
+                        ? "bg-black text-white border-black shadow-lg" 
+                        : "bg-zinc-50 border-zinc-100 text-zinc-500 active:bg-zinc-100"
                     }`}
                   >
-                    <span className="text-base font-black uppercase tracking-tight">
+                    <span className="text-sm font-black uppercase tracking-tight">
                       {t(item.en, item.ar)}
                     </span>
-                    <div className={`h-1.5 w-1.5 rounded-full ${isActive ? "bg-[#00C950] animate-pulse" : "bg-zinc-200"}`} />
+                    <div className={`h-2 w-2 rounded-full ${isActive ? "bg-[#00C950]" : "bg-zinc-200"}`} />
                   </motion.a>
                 );
               })}
             </div>
 
-            {/* MOBILE FOOTER INFO */}
-            <div className="mt-auto pt-6 flex flex-col gap-3">
-              <div className="flex items-center justify-between bg-zinc-50 px-4 py-3 border border-zinc-100">
-                <div className={`flex flex-col ${isAr ? "items-start" : "items-start"}`}>
-                  <span className="text-[8px] font-black uppercase text-zinc-400">{t("HQ", "المقر")}</span>
-                  <span className="text-[10px] font-black uppercase text-black leading-none mt-0.5">{t("Dubai, UAE", "دبي، الإمارات")}</span>
+            <div className="mt-auto pt-8 flex flex-col gap-3 mb-4">
+              <div className="flex items-center justify-between bg-zinc-50 px-5 py-4 rounded-2xl border border-zinc-100">
+                <div className="flex flex-col">
+                  <span className="text-[8px] font-black uppercase text-zinc-400 leading-none">
+                    {t("HQ", "المقر")}
+                  </span>
+                  <span className="text-[11px] font-black uppercase text-black mt-1.5 leading-none">
+                    Dubai, UAE
+                  </span>
                 </div>
-                <div className="h-2 w-2 bg-green-500 rounded-full animate-pulse shadow-[0_0_5px_rgba(34,197,94,0.3)]" />
+                <div className="h-2.5 w-2.5 bg-green-500 rounded-full animate-pulse" />
               </div>
+              
               <a
                 href="mailto:Brianshiroe@gmail.com"
-                className="w-full bg-black text-white text-center py-4 font-black uppercase tracking-widest text-[10px] active:scale-95 transition-transform"
+                className="w-full bg-black text-white text-center py-5 rounded-2xl font-black uppercase tracking-widest text-[10px] active:scale-[0.98] transition-all"
               >
                 {t("Let's Talk", "لنبدأ الحوار")}
               </a>
