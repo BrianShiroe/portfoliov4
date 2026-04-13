@@ -1,4 +1,5 @@
 "use client";
+
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useLanguage } from "../context/LanguageContext";
@@ -6,7 +7,7 @@ import { useLanguage } from "../context/LanguageContext";
 export function Contact() {
   const { t, lang } = useLanguage();
   const isAr = lang === "ar";
-  
+
   const [copied, setCopied] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [result, setResult] = useState<string | null>(null);
@@ -28,27 +29,41 @@ export function Contact() {
     setIsSubmitting(true);
     setResult(null);
 
-    const formData = new FormData(event.currentTarget);
-    formData.append(
-      "access_key",
-      process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY as string,
-    );
+    // 1. Resolve Access Key (Ensure NEXT_PUBLIC_ is used)
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
 
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData,
-    });
-
-    const data = await response.json();
-
-    if (data.success) {
-      setResult(t("Message Sent Successfully!", "تم إرسال الرسالة بنجاح!"));
-      (event.target as HTMLFormElement).reset();
-    } else {
-      setResult(t("Error sending message. Please try again.", "حدث خطأ أثناء الإرسال. حاول مرة أخرى."));
+    if (!accessKey) {
+      setResult(t("Configuration Missing", "إعدادات API مفقودة"));
+      setIsSubmitting(false);
+      return;
     }
-    setIsSubmitting(false);
-    setTimeout(() => setResult(null), 5000);
+
+    try {
+      const formData = new FormData(event.currentTarget);
+      formData.append("access_key", accessKey);
+
+      // 2. Perform Fetch - No manual headers to avoid CORS/Boundary issues
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setResult(t("Message Sent Successfully!", "تم إرسال الرسالة بنجاح!"));
+        (event.target as HTMLFormElement).reset();
+      } else {
+        setResult(t(data.message || "Error sending message", data.message || "حدث خطأ أثناء الإرسال"));
+      }
+    } catch (error) {
+      console.error("Submission Error:", error);
+      // This usually catches 'Failed to fetch' due to ad-blockers or DNS
+      setResult(t("Network Error. Check Ad-blockers.", "خطأ في الشبكة. تحقق من مانع الإعلانات."));
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setResult(null), 5000);
+    }
   };
 
   return (
@@ -113,7 +128,7 @@ export function Contact() {
               ))}
             </div>
 
-            {/* STATUS CARD - ROUNDED */}
+            {/* STATUS CARD */}
             <div className={`bg-zinc-50 border-2 border-black p-5 md:p-6 rounded-2xl relative ${isAr ? "shadow-[-6px_6px_0px_0px_#00C950]" : "shadow-[6px_6px_0px_0px_#00C950]"}`}>
               <h3 className="text-[10px] md:text-xs font-black uppercase mb-4 tracking-tighter border-b border-black/10 pb-2">
                 {t("Operational Status", "حالة العمل")}
@@ -212,7 +227,7 @@ export function Contact() {
                 <motion.p
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className={`text-[10px] font-black uppercase text-center mt-4 ${result.includes("Error") || result.includes("خطأ") ? "text-red-500" : "text-[#00C950]"}`}
+                  className={`text-[10px] font-black uppercase text-center mt-4 ${result.includes("Error") || result.includes("خطأ") || result.includes("Network") ? "text-red-500" : "text-[#00C950]"}`}
                 >
                   {result}
                 </motion.p>
