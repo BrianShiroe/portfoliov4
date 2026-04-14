@@ -8,10 +8,13 @@ export function Experience() {
 
   const history = [
     {
-      period: t("2025 – PRESENT", "سبتمبر ٢٠٢٥ – الحالي"),
+      period: t("Sep 2025 – PRESENT", "سبتمبر ٢٠٢٥ – الحالي"),
       company: t("ITD INNOVATION", "آي تي دي للابتكار"),
       location: t("DUBAI, UAE", "دبي، الإمارات"),
-      role: t("Web Developer & IT Specialist", "مطور ويب وأخصائي تقنية معلومات"),
+      role: t(
+        "Web Developer & Digital Marketing Specialist",
+        "مطور ويب وأخصائي تسويق رقمي",
+      ),
       status: t("CURRENT", "الحالي"),
       stack: "Wordpress / Shopify / Odoo ERP / HTML / CSS / Javascript",
       tasks: [
@@ -54,21 +57,29 @@ export function Experience() {
         <div className="mb-16 md:mb-24">
           <div className="flex items-center gap-3 mb-6">
             <div className="h-[3px] w-12 bg-[#00C950] rounded-full" />
-            <span className={`text-[11px] md:text-sm font-black text-zinc-500 uppercase tracking-[0.2em] ${isAr ? "mr-2" : "ml-2"}`}>
+            <span
+              className={`text-[11px] md:text-sm font-black text-zinc-500 uppercase tracking-[0.2em] ${isAr ? "mr-2" : "ml-2"}`}
+            >
               {t("Professional History", "التاريخ المهني")}
             </span>
           </div>
           <h2 className="text-4xl md:text-8xl font-black uppercase tracking-tighter text-black leading-none">
             {isAr ? (
-              <>مسيرة_<span className="text-[#00C950]">العمل</span></>
+              <>
+                مسيرة_<span className="text-[#00C950]">العمل</span>
+              </>
             ) : (
-              <>Career_<span className="text-[#00C950]">Timeline</span></>
+              <>
+                Career_<span className="text-[#00C950]">Timeline</span>
+              </>
             )}
           </h2>
         </div>
 
         {/* --- TIMELINE GRID --- */}
-        <div className={`relative border-black ${isAr ? "border-r-4 mr-1 md:mr-0" : "border-l-4 ml-1 md:ml-0"}`}>
+        <div
+          className={`relative border-black ${isAr ? "border-r-4 mr-1 md:mr-0" : "border-l-4 ml-1 md:ml-0"}`}
+        >
           {history.map((job, index) => (
             <motion.div
               key={job.company}
@@ -79,7 +90,9 @@ export function Experience() {
               className={`relative mb-16 md:mb-24 last:mb-0 group ${isAr ? "pr-8 md:pr-24" : "pl-8 md:pl-24"}`}
             >
               {/* Timeline Marker (Circle for Neobrutalist contrast) */}
-              <div className={`absolute top-2 h-5 w-5 md:h-7 md:w-7 border-4 border-black bg-white rounded-full flex items-center justify-center transition-transform group-hover:scale-110 ${isAr ? "-right-[14px] md:-right-[18px]" : "-left-[14px] md:-left-[18px]"}`}>
+              <div
+                className={`absolute top-2 h-5 w-5 md:h-7 md:w-7 border-4 border-black bg-white rounded-full flex items-center justify-center transition-transform group-hover:scale-110 ${isAr ? "-right-[14px] md:-right-[18px]" : "-left-[14px] md:-left-[18px]"}`}
+              >
                 <div
                   className={`h-2 w-2 md:h-3 md:w-3 rounded-full ${index === 0 ? "bg-[#00C950]" : "bg-zinc-200"}`}
                 />
@@ -88,7 +101,9 @@ export function Experience() {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 {/* Time & Status Column */}
                 <div className="lg:col-span-4 flex flex-col items-start">
-                  <div className={`px-4 py-2 bg-black text-white mb-4 rounded-xl ${isAr ? "shadow-[-4px_4px_0px_0px_#00C950]" : "shadow-[4px_4px_0px_0px_#00C950]"}`}>
+                  <div
+                    className={`px-4 py-2 bg-black text-white mb-4 rounded-xl ${isAr ? "shadow-[-4px_4px_0px_0px_#00C950]" : "shadow-[4px_4px_0px_0px_#00C950]"}`}
+                  >
                     <span className="text-[10px] md:text-xs font-black tracking-widest whitespace-nowrap uppercase">
                       {job.period}
                     </span>
@@ -104,7 +119,10 @@ export function Experience() {
                   {job.stack && (
                     <div className="p-4 border-[3px] border-black/10 bg-zinc-50 rounded-2xl w-full">
                       <span className="text-[10px] font-bold text-zinc-500 uppercase leading-relaxed block">
-                        <span className="text-black font-black">{isAr ? "التقنيات" : "Stack"}:</span> {job.stack}
+                        <span className="text-black font-black">
+                          {isAr ? "التقنيات" : "Stack"}:
+                        </span>{" "}
+                        {job.stack}
                       </span>
                     </div>
                   )}
@@ -123,7 +141,9 @@ export function Experience() {
                       </span>
                     </div>
 
-                    <h3 className={`text-2xl md:text-5xl font-black uppercase tracking-tighter text-black leading-[1.1] mb-8 group-hover:text-[#00C950] transition-colors duration-300 ${isAr ? "md:leading-[1.3]" : ""}`}>
+                    <h3
+                      className={`text-2xl md:text-5xl font-black uppercase tracking-tighter text-black leading-[1.1] mb-8 group-hover:text-[#00C950] transition-colors duration-300 ${isAr ? "md:leading-[1.3]" : ""}`}
+                    >
                       {job.role}
                     </h3>
 
@@ -147,7 +167,9 @@ export function Experience() {
       </div>
 
       {/* FOOTER SCALE */}
-      <div className={`mx-auto max-w-6xl mt-24 pt-10 border-t-[3px] border-black flex flex-col md:flex-row justify-between items-center gap-6`}>
+      <div
+        className={`mx-auto max-w-6xl mt-24 pt-10 border-t-[3px] border-black flex flex-col md:flex-row justify-between items-center gap-6`}
+      >
         <span className="text-[10px] md:text-sm font-black uppercase tracking-[0.2em] text-black">
           {isAr ? "دبي // ٢٠٢٦" : "Dubai // 2026"}
         </span>
