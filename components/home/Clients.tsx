@@ -60,6 +60,13 @@ export function Clients() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05, ease: "circOut" }}
+              
+              // --- CLICK ANIMATION ---
+              whileTap={logo.status === "live" ? { 
+                scale: 0.92, 
+                transition: { duration: 0.1 } 
+              } : {}}
+              
               className={`group relative ${logo.status === "offline" ? "cursor-not-allowed" : "cursor-pointer"}`}
             >
               {/* Emerald Shadow Layer */}
