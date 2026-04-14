@@ -8,7 +8,7 @@ export function Experience() {
 
   const history = [
     {
-      period: t("SEP 2025 – PRESENT", "سبتمبر ٢٠٢٥ – الحالي"),
+      period: t("2025 – PRESENT", "سبتمبر ٢٠٢٥ – الحالي"),
       company: t("ITD INNOVATION", "آي تي دي للابتكار"),
       location: t("DUBAI, UAE", "دبي، الإمارات"),
       role: t("Web Developer & IT Specialist", "مطور ويب وأخصائي تقنية معلومات"),
