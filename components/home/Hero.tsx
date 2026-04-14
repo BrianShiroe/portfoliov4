@@ -2,7 +2,7 @@
 import { motion, Transition } from "framer-motion";
 import { Character } from "./Character";
 import { useEffect, useState } from "react";
-import { useLanguage } from "../context/LanguageContext";
+import { useLanguage } from "../../context/LanguageContext";
 
 export function Hero() {
   const { t, lang } = useLanguage();

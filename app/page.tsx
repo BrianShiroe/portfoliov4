@@ -1,13 +1,13 @@
 // app/page.tsx
-import { Hero } from "../components/Hero";
-import { About } from "@/components/About";
-import { Skills } from "../components/Skills";
-import { Projects } from "../components/Projects";
-import { Experience } from "@/components/Experience";
-import { CurriculumVitae } from "@/components/CurriculumVitae";
-import { Contact } from "@/components/Contact";
-import { Clients } from "@/components/Clients";
-import { Services } from "@/components/Services";
+import { Hero } from "@/components/home/Hero";
+import { About } from "@/components/home/About";
+import { Services } from "@/components/home/Services";
+import { Skills } from "@/components/home/Skills";
+import { Projects } from "@/components/home/Projects";
+import { Experience } from "@/components/home/Experience";
+import { Clients } from "@/components/home/Clients";
+import { Contact } from "@/components/home/Contact";
+// import { CurriculumVitae } from "@/components/home/CurriculumVitae";
 
 export default function Home() {
   return (

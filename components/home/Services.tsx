@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { ShoppingCart, Settings, Globe, Code2 } from "lucide-react";
-import { useLanguage } from "../context/LanguageContext";
+import { useLanguage } from "../../context/LanguageContext";
 
 export function Services() {
   const { t, lang } = useLanguage();

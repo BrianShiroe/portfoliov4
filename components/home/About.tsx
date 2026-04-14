@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { useLanguage } from "../context/LanguageContext";
+import { useLanguage } from "../../context/LanguageContext";
 
 export function About() {
   const { t, lang } = useLanguage();
