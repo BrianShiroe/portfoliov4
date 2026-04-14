@@ -67,7 +67,7 @@ const techStack = (t: any) => [
     focus: t("Modern Layouts", "تخطيطات حديثة"),
   },
   {
-    slug: "css3",
+    slug: "css",
     name: t("CSS3", "سي إس إس ٣"),
     type: t("Styling", "التصميم"),
     level: t("Expert", "خبير"),
