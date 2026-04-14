@@ -80,8 +80,8 @@ export function Hero() {
 
               <div className="mb-6 inline-block bg-black px-4 py-1.5 rounded-full text-[9px] md:text-[11px] font-bold font-mono uppercase tracking-[0.2em] text-white">
                 {t(
-                  "Web Developer & Digital Marketing Specialist in Dubai",
-                  "مطور ويب وأخصائي تسويق رقمي في دبي",
+                  "Web Developer & Digital Marketing in Dubai",
+                  "مطور ويب وتسويق رقمي في دبي",
                 )}
               </div>
 
