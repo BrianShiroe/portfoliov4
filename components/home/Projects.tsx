@@ -13,7 +13,8 @@ export function Projects() {
       title: t("Zhel Gold Jewelry", "زيل للمجوهرات"),
       tag: t("Gold & Layaway", "ذهب وتقسيط"),
       tech: t("Next.js / Responsive / Systems", "نكست جي إس / متجاوب / أنظمة"),
-      status: t("Live", "مباشر"),
+      // Updated from "Live" to "Deployed" for legal safety
+      status: t("Deployed", "تم النشر"),
       isDevelopment: true,
       date: "2026",
       href: "https://zhel-gold-jewelry.vercel.app/",
@@ -38,14 +39,14 @@ export function Projects() {
             >
               {t("Development Portfolio", "معرض الأعمال البرمجية")}
             </span>
-            <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-black leading-none">
+            <h2 className="text-3xl sm:text-5xl md:text-7xl font-black uppercase tracking-tighter text-black leading-none">
               {isAr ? (
                 <>
-                  أبرز_<span className="text-[#00C950]">المشاريع</span>
+                  سجل_<span className="text-[#00C950]">العمل</span>
                 </>
               ) : (
                 <>
-                  My_<span className="text-[#00C950]">Work</span>
+                  Work_<span className="text-[#00C950]">Log</span>
                 </>
               )}
             </h2>
@@ -92,8 +93,9 @@ export function Projects() {
                       <span className="text-[10px] md:text-xs font-bold text-zinc-500 uppercase tracking-widest">
                         {work.tech}
                       </span>
+                      {/* Visual Indicator: Changed from Ping to Solid/Stable to look less 'live-active' */}
                       <span className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00C950] opacity-75"></span>
+                        <span className="absolute inline-flex h-full w-full rounded-full bg-[#00C950] opacity-20"></span>
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00C950]"></span>
                       </span>
                       <span className="text-[11px] md:text-[13px] font-black text-black uppercase tracking-widest border-b-2 border-[#00C950]">
@@ -108,7 +110,7 @@ export function Projects() {
                     className={`hidden xl:flex flex-col ${isAr ? "items-start" : "items-end"}`}
                   >
                     <p className="text-[10px] font-black text-zinc-400 uppercase tracking-tighter">
-                      {t("Deployed", "تم النشر")}
+                      {t("Year", "السنة")}
                     </p>
                     <p className="text-xs font-bold text-black">{work.date}</p>
                   </div>

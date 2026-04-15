@@ -56,8 +56,8 @@ export function Services() {
       ),
       features: [t("Boost Speed", "زيادة السرعة"), t("Scale Easy", "توسع سهل")],
       icon: Code2,
-      // Changed from "Develop App ↗" to "Tech Stack Info"
-      action: t("Tech Stack Info", "معلومات التقنيات"),
+      // Updated for a professional, non-freelance "Safe Mode"
+      action: t("Logic_Architecture", "هيكلة_المنطق"),
     },
   ];
 
@@ -82,11 +82,11 @@ export function Services() {
             <h2 className="text-4xl sm:text-5xl md:text-7xl font-black uppercase tracking-tighter text-black leading-none">
               {isAr ? (
                 <>
-                  الأرشيف_<span className="text-[#00C950]">القديم</span>
+                  حزمة_<span className="text-[#00C950]">معتمدة</span>
                 </>
               ) : (
                 <>
-                  Legacy_<span className="text-[#00C950]">Archive</span>
+                  Proven_<span className="text-[#00C950]">Stack</span>
                 </>
               )}
             </h2>
@@ -185,8 +185,8 @@ export function Services() {
           </div>
           <div className="flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-[#00C950] animate-pulse" />
-            <p className="text-[9px] md:text-[11px] font-bold uppercase tracking-widest text-zinc-400">
-              {t("System_Status: Operational", "حالة_النظام: قيد التشغيل")}
+            <p className="text-[9px] md:text-[11px] font-bold uppercase tracking-widest text-zinc-400 italic">
+              {t("System_Status: Stable_Build", "حالة_النظام: بناء_مستقر")}
             </p>
           </div>
         </div>
