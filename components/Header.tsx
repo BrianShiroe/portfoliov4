@@ -51,19 +51,19 @@ export function Header() {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else if (elem) {
       const offset = 70;
-      const offsetPosition = elem.getBoundingClientRect().top + window.pageYOffset - offset;
+      const offsetPosition =
+        elem.getBoundingClientRect().top + window.pageYOffset - offset;
       window.scrollTo({ top: offsetPosition, behavior: "smooth" });
     }
     window.history.pushState(null, "", href);
   };
 
   return (
-    <header 
+    <header
       className="sticky top-0 z-[100] w-full border-b border-zinc-100 bg-white/80 backdrop-blur-xl font-mono"
       dir={isAr ? "rtl" : "ltr"}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-6 md:py-4">
-        
         {/* IDENTITY */}
         <a
           href="#home"
@@ -116,7 +116,7 @@ export function Header() {
         {/* CONTROLS - SCALED UP SIZES */}
         <div className="flex items-center gap-3">
           {/* Language Switcher */}
-          <button 
+          <button
             onClick={() => setLang(lang === "en" ? "ar" : "en")}
             className="z-[110] h-10 px-4 rounded-full border-2 border-black text-[10px] font-black transition-all hover:bg-black hover:text-[#00C950] active:scale-95 flex items-center justify-center leading-none cursor-pointer"
           >
@@ -155,7 +155,7 @@ export function Header() {
             className="group flex items-center gap-2.5 px-3 py-1.5"
           >
             <span className="text-[10px] font-black uppercase tracking-widest text-zinc-400 group-hover:text-black transition-colors">
-              {t("Available for Hire", "متاح للعمل")}
+              {t("Open to Opportunities", "متاح لفرص جديدة")}
             </span>
             <div className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -190,15 +190,17 @@ export function Header() {
                     href={item.href}
                     onClick={(e) => handleScroll(e, item.href)}
                     className={`flex items-center justify-between px-5 py-4 rounded-2xl border-2 transition-all ${
-                      isActive 
-                        ? "bg-black text-white border-black shadow-lg" 
+                      isActive
+                        ? "bg-black text-white border-black shadow-lg"
                         : "bg-zinc-50 border-zinc-100 text-zinc-500 active:bg-zinc-100"
                     }`}
                   >
                     <span className="text-sm font-black uppercase tracking-tight">
                       {t(item.en, item.ar)}
                     </span>
-                    <div className={`h-2 w-2 rounded-full ${isActive ? "bg-[#00C950]" : "bg-zinc-200"}`} />
+                    <div
+                      className={`h-2 w-2 rounded-full ${isActive ? "bg-[#00C950]" : "bg-zinc-200"}`}
+                    />
                   </motion.a>
                 );
               })}
@@ -216,7 +218,7 @@ export function Header() {
                 </div>
                 <div className="h-2.5 w-2.5 bg-green-500 rounded-full animate-pulse" />
               </div>
-              
+
               <a
                 href="mailto:Brianshiroe@gmail.com"
                 className="w-full bg-black text-white text-center py-5 rounded-2xl font-black uppercase tracking-widest text-[10px] active:scale-[0.98] transition-all"
