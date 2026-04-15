@@ -101,7 +101,6 @@ export function Skills() {
       dir={isAr ? "rtl" : "ltr"}
     >
       <div className="mx-auto max-w-7xl px-4 md:px-6 relative z-10">
-        {/* --- HEADER --- */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-20 gap-8">
           <div className="relative">
             <div className={`absolute -top-2 md:-top-4 h-8 w-8 md:h-12 md:w-12 border-t-4 border-[#00C950] ${isAr ? "-right-2 md:-right-4 border-r-4" : "-left-2 md:-left-4 border-l-4"}`} />
@@ -123,7 +122,6 @@ export function Skills() {
           </div>
         </div>
 
-        {/* --- GRID --- */}
         <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4 md:gap-6">
           {stack.map((tech, index) => (
             <motion.div
@@ -190,8 +188,9 @@ export function Skills() {
                       <span className="text-[7px] md:text-[10px] text-zinc-500 font-bold uppercase">
                         {t("Status", "الحالة")}
                       </span>
+                      {/* Swapped "Active_Deployment" for "Verified_Skillset" */}
                       <div className="w-fit px-2 py-1 bg-[#00C950] text-black font-black rounded-lg uppercase tracking-tighter text-[8px] md:text-[10px]">
-                        {t("Active_Deployment", "نشر_نشط")}
+                        {t("Verified_Skillset", "مهارة_معتمدة")}
                       </div>
                     </div>
                   </div>

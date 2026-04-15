@@ -82,11 +82,11 @@ export function Services() {
             <h2 className="text-4xl sm:text-5xl md:text-7xl font-black uppercase tracking-tighter text-black leading-none">
               {isAr ? (
                 <>
-                  قدرات_<span className="text-[#00C950]">تقنية</span>
+                  الأرشيف_<span className="text-[#00C950]">القديم</span>
                 </>
               ) : (
                 <>
-                  Technical_<span className="text-[#00C950]">Capabilities</span>
+                  Legacy_<span className="text-[#00C950]">Archive</span>
                 </>
               )}
             </h2>
@@ -157,9 +157,7 @@ export function Services() {
                     </div>
 
                     <div className="pt-4 border-t-2 border-zinc-100 flex justify-between items-center group-hover:border-[#00C950]/20">
-                      <span
-                        className="text-[10px] md:text-[11px] font-black border-b-2 border-black transition-colors group-hover:text-[#00C950] group-hover:border-[#00C950] cursor-default uppercase"
-                      >
+                      <span className="text-[10px] md:text-[11px] font-black border-b-2 border-black transition-colors group-hover:text-[#00C950] group-hover:border-[#00C950] cursor-default uppercase">
                         {service.action}
                       </span>
                     </div>

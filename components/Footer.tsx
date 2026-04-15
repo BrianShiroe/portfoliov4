@@ -17,11 +17,7 @@ export function Footer() {
   ];
 
   return (
-    <footer
-      className="w-full bg-white font-mono"
-      dir={isAr ? "rtl" : "ltr"}
-    >
-      {/* Main Bar - Removed top roundness, kept flat heavy border */}
+    <footer className="w-full bg-white font-mono" dir={isAr ? "rtl" : "ltr"}>
       <div className="w-full border-t-[8px] md:border-t-[12px] border-black bg-black py-12 md:py-20 px-5 md:px-6 text-white rounded-none">
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-20">
@@ -36,7 +32,7 @@ export function Footer() {
                 <div className="flex items-center gap-3">
                   <div className="h-2.5 w-2.5 bg-[#00C950] rounded-full animate-pulse shadow-[0_0_8px_#00C950]" />
                   <span className="text-[10px] md:text-xs font-black text-zinc-400 uppercase tracking-widest">
-                    {t("Operational // Dubai, UAE", "قيد التشغيل // دبي")}
+                    {t("Active // Dubai, UAE", "نشط // دبي، الإمارات")}
                   </span>
                 </div>
                 <a
@@ -52,7 +48,13 @@ export function Footer() {
                 {["github", "linkedin", "gmail-new"].map((icon) => (
                   <a
                     key={icon}
-                    href={icon === "github" ? "https://github.com/BrianShiroe" : icon === "linkedin" ? "https://www.linkedin.com/in/brianshiroe/" : "mailto:Brianshiroe@gmail.com"}
+                    href={
+                      icon === "github"
+                        ? "https://github.com/BrianShiroe"
+                        : icon === "linkedin"
+                          ? "https://www.linkedin.com/in/brianshiroe/"
+                          : "mailto:Brianshiroe@gmail.com"
+                    }
                     target="_blank"
                     rel="noreferrer"
                     className="hover:scale-125 transition-transform duration-300 bg-zinc-900 p-2 rounded-xl border border-zinc-800"
@@ -82,13 +84,14 @@ export function Footer() {
 
             {/* --- CALL TO ACTION --- */}
             <div className="flex flex-col items-start lg:items-end w-full lg:w-auto">
+              {/* Neutralized WhatsApp to "Connect" for networking rather than sales */}
               <a
                 href="https://wa.me/971503592133"
                 target="_blank"
                 rel="noreferrer"
                 className="w-full lg:w-auto text-center text-black bg-[#00C950] px-8 py-5 font-black uppercase tracking-tighter shadow-[5px_5px_0px_0px_rgba(255,255,255,1)] rounded-2xl hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all text-sm md:text-base"
               >
-                {t("WhatsApp Me ↗", "راسلني واتساب ↗")}
+                {t("Let's Connect", "تواصل معي")}
               </a>
               <div
                 className={`mt-12 ${isAr ? "lg:text-left" : "lg:text-right"} w-full`}
@@ -96,17 +99,17 @@ export function Footer() {
                 <span className="text-[10px] font-black uppercase tracking-widest text-zinc-600 block mb-1">
                   © 2026 // BrianShiroe
                 </span>
+                {/* Removed version number to avoid tracking active dev work */}
                 <span className="text-[11px] font-bold text-zinc-500 uppercase">
                   {t(
-                    "v2.0.6 // Performance First",
-                    "إصدار 2.0.6 // الأداء أولاً",
+                    "Digital Portfolio // Performance First",
+                    "معرض الأعمال الرقمي // الأداء أولاً",
                   )}
                 </span>
               </div>
             </div>
           </div>
 
-          {/* Decorative Footer Divider */}
           <div className="mt-16 flex flex-col md:flex-row justify-between items-center border-t border-zinc-900 pt-10 gap-6">
             <div className="flex gap-1.5">
               {[...Array(10)].map((_, i) => (

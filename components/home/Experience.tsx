@@ -11,10 +11,7 @@ export function Experience() {
       period: t("Sep 2025 – PRESENT", "سبتمبر ٢٠٢٥ – الحالي"),
       company: t("ITD INNOVATION", "آي تي دي للابتكار"),
       location: t("DUBAI, UAE", "دبي، الإمارات"),
-      role: t(
-        "Web Developer & Digital Marketing Specialist",
-        "مطور ويب وأخصائي تسويق رقمي",
-      ),
+      role: t("Web Developer & Digital Marketing", "مطور ويب وتسويق رقمي"),
       status: t("CURRENT", "الحالي"),
       stack: "Wordpress / Shopify / Odoo ERP / HTML / CSS / Javascript",
       tasks: [

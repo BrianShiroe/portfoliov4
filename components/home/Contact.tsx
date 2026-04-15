@@ -161,7 +161,7 @@ export function Contact() {
               className={`bg-zinc-50 border-2 border-black p-5 md:p-6 rounded-2xl relative ${isAr ? "shadow-[-6px_6px_0px_0px_#00C950]" : "shadow-[6px_6px_0px_0px_#00C950]"}`}
             >
               <h3 className="text-[10px] md:text-xs font-black uppercase mb-4 tracking-tighter border-b border-black/10 pb-2">
-                {t("Operational Status", "حالة العمل")}
+                {t("Current Status", "الحالة الحالية")}
               </h3>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
