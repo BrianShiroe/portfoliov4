@@ -20,8 +20,16 @@ export function Contact() {
 
   const contactData = [
     { label: t("PHONE", "الهاتف"), value: "+971 50 359 2133", type: "tel" },
-    { label: t("EMAIL", "البريد الإلكتروني"), value: "Brianshiroe@gmail.com", type: "mailto" },
-    { label: t("LOCATION", "الموقع"), value: t("Dubai, UAE", "دبي، الإمارات"), type: "map" },
+    {
+      label: t("EMAIL", "البريد الإلكتروني"),
+      value: "Brianshiroe@gmail.com",
+      type: "mailto",
+    },
+    {
+      label: t("LOCATION", "الموقع"),
+      value: t("Dubai, UAE", "دبي، الإمارات"),
+      type: "map",
+    },
   ];
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -54,12 +62,22 @@ export function Contact() {
         setResult(t("Message Sent Successfully!", "تم إرسال الرسالة بنجاح!"));
         (event.target as HTMLFormElement).reset();
       } else {
-        setResult(t(data.message || "Error sending message", data.message || "حدث خطأ أثناء الإرسال"));
+        setResult(
+          t(
+            data.message || "Error sending message",
+            data.message || "حدث خطأ أثناء الإرسال",
+          ),
+        );
       }
     } catch (error) {
       console.error("Submission Error:", error);
       // This usually catches 'Failed to fetch' due to ad-blockers or DNS
-      setResult(t("Network Error. Check Ad-blockers.", "خطأ في الشبكة. تحقق من مانع الإعلانات."));
+      setResult(
+        t(
+          "Network Error. Check Ad-blockers.",
+          "خطأ في الشبكة. تحقق من مانع الإعلانات.",
+        ),
+      );
     } finally {
       setIsSubmitting(false);
       setTimeout(() => setResult(null), 5000);
@@ -77,15 +95,21 @@ export function Contact() {
         <div className="mb-12 md:mb-16">
           <div className="flex items-center gap-3 mb-4">
             <div className="h-[2px] w-8 bg-[#00C950]" />
-            <span className={`text-[10px] md:text-sm font-black text-zinc-500 uppercase tracking-[0.2em] ${isAr ? "mr-2" : "ml-2"}`}>
+            <span
+              className={`text-[10px] md:text-sm font-black text-zinc-500 uppercase tracking-[0.2em] ${isAr ? "mr-2" : "ml-2"}`}
+            >
               {t("Direct Communication", "اتصال مباشر")}
             </span>
           </div>
           <h2 className="text-4xl md:text-8xl font-black uppercase tracking-tighter text-black leading-none">
             {isAr ? (
-              <>تواصل_<span className="text-[#00C950]">معي</span></>
+              <>
+                تواصل_<span className="text-[#00C950]">معي</span>
+              </>
             ) : (
-              <>Get_In_<span className="text-[#00C950]">Touch</span></>
+              <>
+                Get_In_<span className="text-[#00C950]">Touch</span>
+              </>
             )}
           </h2>
         </div>
@@ -109,7 +133,9 @@ export function Contact() {
 
                   <div className="flex flex-wrap items-center gap-3 md:gap-4">
                     <a
-                      href={item.type === "map" ? "#" : `${item.type}:${item.value}`}
+                      href={
+                        item.type === "map" ? "#" : `${item.type}:${item.value}`
+                      }
                       className="text-lg md:text-2xl font-black text-black uppercase hover:text-[#00C950] transition-colors break-all leading-tight"
                     >
                       {item.value}
@@ -120,7 +146,9 @@ export function Contact() {
                         onClick={() => copyToClipboard(item.value, item.label)}
                         className={`text-[9px] md:text-[10px] font-black border border-black px-2 md:px-3 py-1 uppercase bg-white hover:bg-black hover:text-[#00C950] transition-all active:scale-95 cursor-pointer shadow-black hover:shadow-none hover:-translate-y-0.5 ${isAr ? "shadow-[-2px_2px_0px_0px_#00C950] hover:-translate-x-0.5" : "shadow-[2px_2px_0px_0px_#00C950] hover:translate-x-0.5"}`}
                       >
-                        {copied === item.label ? t("Copied!", "تم النسخ!") : t("Copy", "نسخ")}
+                        {copied === item.label
+                          ? t("Copied!", "تم النسخ!")
+                          : t("Copy", "نسخ")}
                       </button>
                     )}
                   </div>
@@ -129,7 +157,9 @@ export function Contact() {
             </div>
 
             {/* STATUS CARD */}
-            <div className={`bg-zinc-50 border-2 border-black p-5 md:p-6 rounded-2xl relative ${isAr ? "shadow-[-6px_6px_0px_0px_#00C950]" : "shadow-[6px_6px_0px_0px_#00C950]"}`}>
+            <div
+              className={`bg-zinc-50 border-2 border-black p-5 md:p-6 rounded-2xl relative ${isAr ? "shadow-[-6px_6px_0px_0px_#00C950]" : "shadow-[6px_6px_0px_0px_#00C950]"}`}
+            >
               <h3 className="text-[10px] md:text-xs font-black uppercase mb-4 tracking-tighter border-b border-black/10 pb-2">
                 {t("Operational Status", "حالة العمل")}
               </h3>
@@ -138,17 +168,22 @@ export function Contact() {
                   <span className="text-[11px] md:text-[12px] font-bold text-zinc-400 uppercase">
                     {t("Availability", "التوفر")}
                   </span>
+                  {/* Changed "Accepting Projects" to "Post-Notice / May 2026" */}
                   <span className="text-[11px] md:text-[12px] font-black text-[#00C950] uppercase flex items-center gap-2">
                     <span className="h-1.5 w-1.5 bg-[#00C950] rounded-full animate-pulse" />
-                    {t("Accepting Projects", "متاح للمشاريع")}
+                    {t(
+                      "Post-Notice / May 2026",
+                      "بعد فترة الإنذار / مايو ٢٠٢٦",
+                    )}
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-[11px] md:text-[12px] font-bold text-zinc-400 uppercase">
                     {t("Response Time", "وقت الرد")}
                   </span>
+                  {/* Changed "~24 Hours" to "Within 48 Hours" to look less like an active agency */}
                   <span className="text-[11px] md:text-[12px] font-black uppercase text-black italic">
-                    {t("~24 Hours", "~٢٤ ساعة")}
+                    {t("Within 48 Hours", "خلال ٤٨ ساعة")}
                   </span>
                 </div>
               </div>
@@ -206,7 +241,10 @@ export function Contact() {
                   required
                   name="message"
                   rows={5}
-                  placeholder={t("Tell me about your project...", "أخبرني عن مشروعك...")}
+                  placeholder={t(
+                    "Tell me about your project...",
+                    "أخبرني عن مشروعك...",
+                  )}
                   className="w-full bg-zinc-50 border-2 border-zinc-100 rounded-2xl focus:border-[#00C950] p-4 text-[11px] md:text-xs font-bold uppercase tracking-wider outline-none transition-colors resize-none"
                 />
               </div>
@@ -215,12 +253,14 @@ export function Contact() {
                 type="submit"
                 disabled={isSubmitting}
                 className={`w-full bg-black text-white py-5 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] hover:text-[#00C950] transition-all active:scale-[0.98] disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed hover:shadow-none hover:-translate-y-1 ${
-                  isAr 
-                    ? "shadow-[-5px_5px_0px_0px_#00C950] hover:translate-x-1" 
+                  isAr
+                    ? "shadow-[-5px_5px_0px_0px_#00C950] hover:translate-x-1"
                     : "shadow-[5px_5px_0px_0px_#00C950] hover:-translate-x-1"
                 }`}
               >
-                {isSubmitting ? t("Processing...", "جاري المعالجة...") : t("Dispatch Message", "إرسال الرسالة")}
+                {isSubmitting
+                  ? t("Processing...", "جاري المعالجة...")
+                  : t("Dispatch Message", "إرسال الرسالة")}
               </button>
 
               {result && (

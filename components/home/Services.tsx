@@ -17,7 +17,8 @@ export function Services() {
       ),
       features: [t("Sell More", "بيع أكثر"), t("Grow Sales", "زيادة المبيعات")],
       icon: ShoppingCart,
-      action: t("Build Store ↗", "أنشئ متجرك ↗"),
+      // Changed from "Build Store ↗" to "Architecture Overview"
+      action: t("Architecture Overview", "نظرة عامة على البنية"),
     },
     {
       id: "SV_02",
@@ -28,7 +29,8 @@ export function Services() {
       ),
       features: [t("Automate", "أتمتة"), t("Save Time", "توفير الوقت")],
       icon: Settings,
-      action: t("Integrate Now ↗", "ابدأ التكامل ↗"),
+      // Changed from "Integrate Now ↗" to "Integration Logic"
+      action: t("Integration Logic", "منطق التكامل"),
     },
     {
       id: "SV_03",
@@ -42,7 +44,8 @@ export function Services() {
         t("Build Trust", "بناء الثقة"),
       ],
       icon: Globe,
-      action: t("Grow Your Brand ↗", "نمّ علامتك التجارية ↗"),
+      // Changed from "Grow Your Brand ↗" to "Lead Strategy"
+      action: t("Lead Strategy", "استراتيجية الربط"),
     },
     {
       id: "SV_04",
@@ -53,7 +56,8 @@ export function Services() {
       ),
       features: [t("Boost Speed", "زيادة السرعة"), t("Scale Easy", "توسع سهل")],
       icon: Code2,
-      action: t("Develop App ↗", "طوّر تطبيقك ↗"),
+      // Changed from "Develop App ↗" to "Tech Stack Info"
+      action: t("Tech Stack Info", "معلومات التقنيات"),
     },
   ];
 
@@ -73,12 +77,12 @@ export function Services() {
             <span
               className={`text-[10px] md:text-sm font-black text-zinc-500 uppercase tracking-[0.2em] mb-2 block ${isAr ? "mr-2" : "ml-2"}`}
             >
-              {t("Service_Architecture", "هيكلية_الخدمات")}
+              {t("Technical_Capabilities", "القدرات_التقنية")}
             </span>
             <h2 className="text-4xl sm:text-5xl md:text-7xl font-black uppercase tracking-tighter text-black leading-none">
               {isAr ? (
                 <>
-                  خدمات_<span className="text-[#00C950]">خبير</span>
+                  قدرات_<span className="text-[#00C950]">تقنية</span>
                 </>
               ) : (
                 <>
@@ -91,15 +95,13 @@ export function Services() {
             className={`hidden md:block ${isAr ? "text-left" : "text-right"}`}
           >
             <p className="text-[12px] font-bold text-black uppercase tracking-widest leading-tight">
-              {t("Business Goals //", "أهداف العمل //")} <br />
-              {t("Technical Execution", "التنفيذ التقني")}
+              {t("Professional Logic //", "المنطق المهني //")} <br />
+              {t("System Execution", "تنفيذ النظام")}
             </p>
           </div>
         </div>
 
-        {/* --- SERVICE GRID --- 
-            Now displays 1 column on mobile, 2 on tablets, and 4 on large screens.
-        */}
+        {/* --- SERVICE GRID --- */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-8 lg:gap-6">
           {services.map((service, index) => {
             const Icon = service.icon;
@@ -112,7 +114,7 @@ export function Services() {
                 transition={{ delay: index * 0.1 }}
                 className="group relative w-full"
               >
-                {/* Neobrutalist Shadow - Adjusted for Mobile & RTL */}
+                {/* Neobrutalist Shadow */}
                 <div
                   className={`absolute inset-0 bg-black rounded-2xl transition-transform group-hover:translate-y-3 
                   ${
@@ -155,12 +157,11 @@ export function Services() {
                     </div>
 
                     <div className="pt-4 border-t-2 border-zinc-100 flex justify-between items-center group-hover:border-[#00C950]/20">
-                      <a
-                        href="#contact"
-                        className="text-[10px] md:text-[11px] font-black border-b-2 border-black transition-colors group-hover:text-[#00C950] group-hover:border-[#00C950] cursor-pointer uppercase"
+                      <span
+                        className="text-[10px] md:text-[11px] font-black border-b-2 border-black transition-colors group-hover:text-[#00C950] group-hover:border-[#00C950] cursor-default uppercase"
                       >
                         {service.action}
-                      </a>
+                      </span>
                     </div>
                   </div>
                 </div>
