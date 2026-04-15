@@ -8,7 +8,18 @@ export function Clients() {
   const isAr = lang === "ar";
 
   const logos = [
+    // { src: "/logos/500x250_logo_1.png", href: "https://www.itdtech.ae/", status: "live" },
+    // { src: "/logos/500x250_logo_2.png", href: "https://kbh-realestate.odoo.com/", status: "live" },
+    // { src: "/logos/500x250_logo_11.png", href: "https://rosegallery.ae/", status: "live" },
     { src: "/logos/500x250_logo_12.png", href: "https://zhel-gold-jewelry.vercel.app/", status: "live" },
+    // { src: "/logos/500x250_logo_8.png", href: "https://dgcgroup.ae/", status: "live" },
+    // { src: "/logos/500x250_logo_9.png", href: "https://wazeenlaw.sa/", status: "live" },
+    // { src: "/logos/500x250_logo_3.png", href: "https://www.alnoblaa.com/", status: "live" },
+    // { src: "/logos/500x250_logo_4.png", href: "#", status: "offline" },
+    // { src: "/logos/500x250_logo_5.png", href: "https://capimob.com/", status: "live" },
+    // { src: "/logos/500x250_logo_6.png", href: "https://friendsmedia.net/", status: "live" },
+    // { src: "/logos/500x250_logo_7.png", href: "https://idesignsart.com/", status: "live" },
+    // { src: "/logos/500x250_logo_10.png", href: "https://idesignstech.com/", status: "live" },
   ];
 
   return (
