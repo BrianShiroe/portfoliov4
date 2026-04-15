@@ -18,55 +18,6 @@ export function Projects() {
       date: "2026",
       href: "https://zhel-gold-jewelry.vercel.app/",
     },
-    // {
-    //   id: "02",
-    //   title: t("ITD Innovation", "آي تي دي للابتكار"),
-    //   tag: t("IT Solutions", "حلول تقنية"),
-    //   tech: t(
-    //     "Odoo / 80+ Pages / Multilingual",
-    //     "أودو / +٨٠ صفحة / متعدد اللغات",
-    //   ),
-    //   status: t("Live", "مباشر"),
-    //   isDevelopment: false,
-    //   date: "2026",
-    //   href: "https://www.itdtech.ae/",
-    // },
-    // {
-    //   id: "03",
-    //   title: t("KBH Real Estate", "كي بي إتش العقارية"),
-    //   tag: t("Real Estate", "عقارات"),
-    //   tech: t(
-    //     "Odoo / E-commerce/ Multilingual",
-    //     "أودو / تجارة إلكترونية / متعدد اللغات",
-    //   ),
-    //   status: t("Live", "مباشر"),
-    //   isDevelopment: false,
-    //   date: "2026",
-    //   href: "https://www.kbhrealestate.ae/",
-    // },
-    // {
-    //   id: "04",
-    //   title: t("Rose Gallery Perfumes", "روز غاليري للعطور"),
-    //   tag: t("Perfume Store", "متجر عطور"),
-    //   tech: t(
-    //     "Shopify / E-Commerce / Responsive",
-    //     "شوبيفاي / تجارة إلكترونية / متجاوب",
-    //   ),
-    //   status: t("Live", "مباشر"),
-    //   isDevelopment: false,
-    //   date: "2026",
-    //   href: "https://rosegallery.ae/",
-    // },
-    // {
-    //   id: "05",
-    //   title: t("Wazeen Law Firm", "مكتب وزين للمحاماة"),
-    //   tag: t("Legal Services", "خدمات قانونية"),
-    //   tech: t("Wordpress CMS / Arabic / Responsive", "وردبريس / عربي / متجاوب"),
-    //   status: t("Live", "مباشر"),
-    //   isDevelopment: false,
-    //   date: "2026",
-    //   href: "https://wazeenlaw.sa/",
-    // },
   ];
 
   return (

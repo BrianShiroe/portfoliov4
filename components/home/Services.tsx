@@ -13,7 +13,7 @@ export function Services() {
       title: t("E-Commerce", "تجارة إلكترونية"),
       description: t(
         "High-conversion digital storefronts built for scale. From Shopify to headless commerce.",
-        "واجهات متاجر رقمية عالية التحويل مصممة للتوسع. من شوبيفاي إلى التجارة بدون رأس."
+        "واجهات متاجر رقمية عالية التحويل مصممة للتوسع. من شوبيفاي إلى التجارة بدون رأس.",
       ),
       features: [t("Sell More", "بيع أكثر"), t("Grow Sales", "زيادة المبيعات")],
       icon: ShoppingCart,
@@ -24,7 +24,7 @@ export function Services() {
       title: t("ERP & Odoo", "أنظمة ERP وأودو"),
       description: t(
         "Deep integration of Odoo Enterprise to streamline inventory and business automation.",
-        "تكامل عميق لنظام Odoo المؤسسي لتبسيط المخزون وأتمتة الأعمال."
+        "تكامل عميق لنظام Odoo المؤسسي لتبسيط المخزون وأتمتة الأعمال.",
       ),
       features: [t("Automate", "أتمتة"), t("Save Time", "توفير الوقت")],
       icon: Settings,
@@ -35,9 +35,12 @@ export function Services() {
       title: t("Corporate", "مواقع الشركات"),
       description: t(
         "Professional web systems for firms. Focused on authority and lead generation.",
-        "أنظمة ويب احترافية للشركات. تركز على السلطة وجذب العملاء المحتملين."
+        "أنظمة ويب احترافية للشركات. تركز على السلطة وجذب العملاء المحتملين.",
       ),
-      features: [t("Reach Clients", "الوصول للعملاء"), t("Build Trust", "بناء الثقة")],
+      features: [
+        t("Reach Clients", "الوصول للعملاء"),
+        t("Build Trust", "بناء الثقة"),
+      ],
       icon: Globe,
       action: t("Grow Your Brand ↗", "نمّ علامتك التجارية ↗"),
     },
@@ -46,7 +49,7 @@ export function Services() {
       title: t("Web Apps", "تطبيقات الويب"),
       description: t(
         "Specialized applications designed for unique logic and superior performance.",
-        "تطبيقات متخصصة مصممة لمنطق فريد وأداء متفوق."
+        "تطبيقات متخصصة مصممة لمنطق فريد وأداء متفوق.",
       ),
       features: [t("Boost Speed", "زيادة السرعة"), t("Scale Easy", "توسع سهل")],
       icon: Code2,
@@ -64,21 +67,31 @@ export function Services() {
         {/* --- SECTION HEADER --- */}
         <div className="mb-12 md:mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b-4 border-black pb-8">
           <div className="relative">
-            <div className={`absolute -top-2 h-6 w-6 border-t-2 border-[#00C950] ${isAr ? "-right-2 border-r-2" : "-left-2 border-l-2"}`} />
-            <span className={`text-[10px] md:text-sm font-black text-zinc-500 uppercase tracking-[0.2em] mb-2 block ${isAr ? "mr-2" : "ml-2"}`}>
+            <div
+              className={`absolute -top-2 h-6 w-6 border-t-2 border-[#00C950] ${isAr ? "-right-2 border-r-2" : "-left-2 border-l-2"}`}
+            />
+            <span
+              className={`text-[10px] md:text-sm font-black text-zinc-500 uppercase tracking-[0.2em] mb-2 block ${isAr ? "mr-2" : "ml-2"}`}
+            >
               {t("Service_Architecture", "هيكلية_الخدمات")}
             </span>
             <h2 className="text-4xl sm:text-5xl md:text-7xl font-black uppercase tracking-tighter text-black leading-none">
               {isAr ? (
-                <>خدمات_<span className="text-[#00C950]">خبير</span></>
+                <>
+                  خدمات_<span className="text-[#00C950]">خبير</span>
+                </>
               ) : (
-                <>Expert_<span className="text-[#00C950]">Services</span></>
+                <>
+                  Technical_<span className="text-[#00C950]">Capabilities</span>
+                </>
               )}
             </h2>
           </div>
-          <div className={`hidden md:block ${isAr ? "text-left" : "text-right"}`}>
+          <div
+            className={`hidden md:block ${isAr ? "text-left" : "text-right"}`}
+          >
             <p className="text-[12px] font-bold text-black uppercase tracking-widest leading-tight">
-              {t("Business Goals //", "أهداف العمل //")} <br /> 
+              {t("Business Goals //", "أهداف العمل //")} <br />
               {t("Technical Execution", "التنفيذ التقني")}
             </p>
           </div>
@@ -100,11 +113,13 @@ export function Services() {
                 className="group relative w-full"
               >
                 {/* Neobrutalist Shadow - Adjusted for Mobile & RTL */}
-                <div className={`absolute inset-0 bg-black rounded-2xl transition-transform group-hover:translate-y-3 
-                  ${isAr 
-                    ? "-translate-x-1.5 translate-y-1.5 md:-translate-x-2 md:translate-y-2 group-hover:-translate-x-2.5" 
-                    : "translate-x-1.5 translate-y-1.5 md:translate-x-2 md:translate-y-2 group-hover:translate-x-3"
-                  }`} 
+                <div
+                  className={`absolute inset-0 bg-black rounded-2xl transition-transform group-hover:translate-y-3 
+                  ${
+                    isAr
+                      ? "-translate-x-1.5 translate-y-1.5 md:-translate-x-2 md:translate-y-2 group-hover:-translate-x-2.5"
+                      : "translate-x-1.5 translate-y-1.5 md:translate-x-2 md:translate-y-2 group-hover:translate-x-3"
+                  }`}
                 />
 
                 <div className="relative h-full border-[3px] border-black bg-white p-6 md:p-8 rounded-2xl transition-all group-hover:-translate-y-1 group-hover:border-[#00C950] flex flex-col justify-between">
