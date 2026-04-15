@@ -10,7 +10,7 @@ export function Clients() {
   const logos = [
     { src: "/logos/500x250_logo_1.png", href: "https://www.itdtech.ae/", status: "live" },
     { src: "/logos/500x250_logo_2.png", href: "https://kbh-realestate.odoo.com/", status: "live" },
-    { src: "/logos/500x250_logo_11.png", href: "https://rosegallery.ae/", status: "live" },
+    // { src: "/logos/500x250_logo_11.png", href: "https://rosegallery.ae/", status: "live" },
     { src: "/logos/500x250_logo_12.png", href: "https://zhel-gold-jewelry.vercel.app/", status: "live" },
     { src: "/logos/500x250_logo_8.png", href: "https://dgcgroup.ae/", status: "live" },
     { src: "/logos/500x250_logo_9.png", href: "https://wazeenlaw.sa/", status: "live" },
