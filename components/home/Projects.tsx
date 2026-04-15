@@ -13,11 +13,36 @@ export function Projects() {
       title: t("Zhel Gold Jewelry", "زيل للمجوهرات"),
       tag: t("Gold & Layaway", "ذهب وتقسيط"),
       tech: t("Next.js / Responsive / Systems", "نكست جي إس / متجاوب / أنظمة"),
-      // Updated from "Live" to "Deployed" for legal safety
       status: t("Deployed", "تم النشر"),
       isDevelopment: true,
       date: "2026",
       href: "https://zhel-gold-jewelry.vercel.app/",
+    },
+    {
+      id: "02",
+      title: t("Greyscale Real Estate", "جريسكيل العقارية"),
+      tag: t("Real Estate", "عقارات"), // Removed "Demo"
+      tech: t(
+        "Next.js / Architectural / High-Contrast",
+        "نكست جي إس / معماري / تباين عالٍ",
+      ),
+      status: t("Deployed", "تم النشر"),
+      isDevelopment: false,
+      date: "2026",
+      href: "https://greyscale-real-estate.vercel.app/",
+    },
+    {
+      id: "03",
+      title: t("LUKA AI Detection", "لوكا للكشف الذكي"),
+      tag: t("AI Thesis Project", "مشروع تخرج ذكاء اصطناعي"),
+      tech: t(
+        "Flask / YOLO / OpenCV / IoT",
+        "فلاسك / YOLO / OpenCV / إنترنت الأشياء",
+      ),
+      status: t("Source Code", "الكود المصدري"),
+      isDevelopment: false,
+      date: "2025",
+      href: "https://github.com/BrianShiroe/luka",
     },
   ];
 
