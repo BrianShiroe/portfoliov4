@@ -87,7 +87,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="relative w-full bg-white py-16 md:py-24 px-4 md:px-6 font-mono overflow-hidden"
+      className="relative w-full bg-zinc-50 py-16 md:py-24 px-4 md:px-6 font-mono overflow-hidden"
       dir={isAr ? "rtl" : "ltr"}
     >
       <div className="mx-auto max-w-6xl">
@@ -101,14 +101,14 @@ export function Contact() {
               {t("Direct Communication", "اتصال مباشر")}
             </span>
           </div>
-          <h2 className="text-4xl md:text-8xl font-black uppercase tracking-tighter text-black leading-none">
+          <h2 className="text-3xl sm:text-5xl md:text-7xl font-black uppercase tracking-tighter text-black leading-none">
             {isAr ? (
               <>
-                تواصل_<span className="text-[#00C950]">معي</span>
+                اتصل_<span className="text-[#00C950]">بنا</span>
               </>
             ) : (
               <>
-                Get_In_<span className="text-[#00C950]">Touch</span>
+                Reach_<span className="text-[#00C950]">Out</span>
               </>
             )}
           </h2>

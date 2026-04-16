@@ -8,21 +8,31 @@ export function Experience() {
 
   const history = [
     {
-      period: t("Sep 2025 – PRESENT", "سبتمبر ٢٠٢٥ – الحالي"),
+      period: t("SEP 2025 – MAY 2026", "سبتمبر ٢٠٢٥ – مايو ٢٠٢٦"),
       company: t("ITD INNOVATION", "آي تي دي للابتكار"),
       location: t("DUBAI, UAE", "دبي، الإمارات"),
       role: t("Web Developer & Digital Marketing", "مطور ويب وتسويق رقمي"),
       status: t("CURRENT", "الحالي"),
-      stack: "Wordpress / Shopify / Odoo ERP / HTML / CSS / Javascript",
+      // Expanded stack to reflect your full toolkit
+      stack: "React / Next.js / Odoo ERP / Shopify / WordPress / Tailwind CSS",
       tasks: [
-        t("Wordpress Web Development", "تطوير مواقع ووردبريس"),
-        t("E-Commerce Development", "تطوير التجارة الإلكترونية"),
-        t("Odoo ERP Implementation", "تنفيذ نظام أودو ERP"),
-        t("Shopify Development", "تطوير منصة شوبيفاي"),
-        t("Graphics Design", "التصميم الجرافيكي"),
-        t("Digital & Social Media Marketing", "التسويق الرقمي والاجتماعي"),
-        t("Google Tools", "أدوات جوجل"),
-        t("Hosting & Website Management", "إدارة الاستضافة والمواقع"),
+        t("Full-Stack Development", "تطوير كامل المواقع"),
+        t(
+          "Multilingual SEO (+500% Traffic)",
+          "سيو متعدد اللغات (+٥٠٠٪ حركة زوار)",
+        ),
+        t(
+          "E-Commerce & Payment Integration",
+          "التجارة الإلكترونية وتكامل الدفع",
+        ),
+        t("Odoo ERP & Accounting Ops", "نظام أودو والعمليات المحاسبية"),
+        t(
+          "Google Ecosystem (Ads/Merchant)",
+          "أدوات جوجل (إعلانات/مركز التجار)",
+        ),
+        t("Hosting & DNS Management", "إدارة الاستضافة ونظام الأسماء"),
+        t("UI/UX & Social Media Graphics", "واجهة المستخدم ورسوم التواصل"),
+        t("30+ Web Projects Delivered", "أكثر من ٣٠ مشروع ويب تم تسليمه"),
       ],
       color: "text-black",
     },
@@ -32,12 +42,13 @@ export function Experience() {
       location: t("PHILIPPINES", "الفلبين"),
       role: t("PHP Developer & IT Support", "مطور PHP ودعم فني"),
       status: t("COMPLETED", "مكتمل"),
-      stack: "HTML / CSS / Javascript / PHP / MySQL",
+      stack: "PHP / MySQL / HTML / CSS / JavaScript",
       tasks: [
-        t("Full-Stack Development", "تطوير كامل المواقع"),
-        t("PHP Development", "برمجة PHP"),
-        t("IT Assistance", "المساعدة التقنية"),
-        t("Hardware & Software Configurations", "إعداد العتاد والبرمجيات"),
+        t("Asset Management System", "نظام إدارة الأصول المادية"),
+        t("Backend & Auth Logic", "البرمجة الخلفية ومنطق المصادقة"),
+        t("Data Migration & Integrity", "ترحيل البيانات وسلامتها"),
+        t("IT Support & Infrastructure", "الدعم الفني والبنية التحتية"),
+        t("Printer & Network Config", "إعداد الطابعات والشبكات"),
       ],
       color: "text-zinc-400",
     },
@@ -46,7 +57,7 @@ export function Experience() {
   return (
     <section
       id="experience"
-      className="relative w-full bg-white py-16 md:py-24 px-4 md:px-6 overflow-hidden font-mono border-b-4 border-black"
+      className="relative w-full bg-white py-16 md:py-24 px-4 md:px-6 overflow-hidden font-mono"
       dir={isAr ? "rtl" : "ltr"}
     >
       <div className="mx-auto max-w-6xl relative">
@@ -60,14 +71,14 @@ export function Experience() {
               {t("Professional History", "التاريخ المهني")}
             </span>
           </div>
-          <h2 className="text-4xl md:text-8xl font-black uppercase tracking-tighter text-black leading-none">
+          <h2 className="text-3xl sm:text-5xl md:text-7xl font-black uppercase tracking-tighter text-black leading-none">
             {isAr ? (
               <>
-                مسيرة_<span className="text-[#00C950]">العمل</span>
+                مسار_<span className="text-[#00C950]">العمل</span>
               </>
             ) : (
               <>
-                Career_<span className="text-[#00C950]">Timeline</span>
+                Experience_<span className="text-[#00C950]">Path</span>
               </>
             )}
           </h2>

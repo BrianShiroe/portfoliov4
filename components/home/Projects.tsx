@@ -49,7 +49,7 @@ export function Projects() {
   return (
     <section
       id="projects"
-      className="w-full bg-white px-4 py-24 md:px-6 overflow-hidden font-mono"
+      className="w-full bg-zinc-50 px-4 py-24 md:px-6 overflow-hidden font-mono"
       dir={isAr ? "rtl" : "ltr"}
     >
       <div className="mx-auto max-w-6xl">

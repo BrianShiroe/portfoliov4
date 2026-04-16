@@ -9,7 +9,7 @@ const navItems = [
   { en: "Skills", ar: "المهارات", href: "#skills" },
   { en: "Services", ar: "الخدمات", href: "#services" },
   { en: "Projects", ar: "المشاريع", href: "#projects" },
-  { en: "History", ar: "الخبرة", href: "#experience" },
+  { en: "Experience", ar: "الخبرة", href: "#experience" },
   { en: "Contact", ar: "اتصل بنا", href: "#contact" },
 ];
 
