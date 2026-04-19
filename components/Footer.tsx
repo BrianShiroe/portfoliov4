@@ -72,7 +72,8 @@ export function Footer() {
             {/* --- NAVIGATION LINKS --- */}
             <div className="w-full lg:w-auto">
               <h4 className="text-[10px] font-black uppercase text-zinc-500 tracking-[0.3em] mb-8 flex items-center gap-3">
-                <span className="w-1 h-3 bg-[#00C950]" /> {t("Navigation", "التنقل")}
+                <span className="w-1 h-3 bg-[#00C950]" />{" "}
+                {t("Navigation", "التنقل")}
               </h4>
               <div className="grid grid-cols-2 gap-x-6 gap-y-6 w-full lg:w-auto">
                 {navLinks.map((link) => (
@@ -95,7 +96,7 @@ export function Footer() {
                 rel="noreferrer"
                 className="w-full lg:w-auto text-center text-black bg-[#00C950] px-8 py-5 font-black uppercase tracking-tighter shadow-[5px_5px_0px_0px_rgba(255,255,255,1)] rounded-2xl hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all text-sm md:text-base"
               >
-                {t("Let's Connect", "تواصل معي")}
+                {t("WhatsApp Me", "تواصل عبر واتساب")}
               </a>
               <div
                 className={`mt-12 ${isAr ? "lg:text-left" : "lg:text-right"} w-full`}

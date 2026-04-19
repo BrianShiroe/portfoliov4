@@ -220,7 +220,7 @@ export function Header() {
               </div>
 
               <a
-                href="mailto:Brianshiroe@gmail.com"
+                href="mailto:hello@example.com"
                 className="w-full bg-black text-white text-center py-5 rounded-2xl font-black uppercase tracking-widest text-[10px] active:scale-[0.98] transition-all"
               >
                 {t("Let's Talk", "لنبدأ الحوار")}
