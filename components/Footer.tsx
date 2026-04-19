@@ -70,21 +70,25 @@ export function Footer() {
             </div>
 
             {/* --- NAVIGATION LINKS --- */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-6 w-full lg:w-auto">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="text-[10px] md:text-xs font-black uppercase tracking-widest text-zinc-500 hover:text-[#00C950] transition-all hover:translate-x-1"
-                >
-                  {link.name}
-                </a>
-              ))}
+            <div className="w-full lg:w-auto">
+              <h4 className="text-[10px] font-black uppercase text-zinc-500 tracking-[0.3em] mb-8 flex items-center gap-3">
+                <span className="w-1 h-3 bg-[#00C950]" /> {t("Navigation", "التنقل")}
+              </h4>
+              <div className="grid grid-cols-2 gap-x-6 gap-y-6 w-full lg:w-auto">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className="text-[10px] md:text-xs font-black uppercase tracking-widest text-white hover:text-[#00C950] transition-all hover:translate-x-1"
+                  >
+                    {link.name}
+                  </a>
+                ))}
+              </div>
             </div>
 
             {/* --- CALL TO ACTION --- */}
             <div className="flex flex-col items-start lg:items-end w-full lg:w-auto">
-              {/* Neutralized WhatsApp to "Connect" for networking rather than sales */}
               <a
                 href="https://wa.me/971503592133"
                 target="_blank"
@@ -99,7 +103,6 @@ export function Footer() {
                 <span className="text-[10px] font-black uppercase tracking-widest text-zinc-600 block mb-1">
                   © 2026 // BrianShiroe
                 </span>
-                {/* Removed version number to avoid tracking active dev work */}
                 <span className="text-[11px] font-bold text-zinc-500 uppercase">
                   {t(
                     "Digital Portfolio // Performance First",
