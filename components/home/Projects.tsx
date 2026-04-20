@@ -10,6 +10,16 @@ export function Projects() {
   const projects = [
     {
       id: "01",
+      title: t("GameTree", "جيم تري"),
+      tag: t("Gaming Portfolio", "معرض الألعاب"),
+      tech: t("Next.js / Gaming / Social", "نكست جي إس / ألعاب / اجتماعي"),
+      status: t("Live", "مباشر"),
+      isDevelopment: false,
+      date: "2026",
+      href: "https://gametree.vercel.app/",
+    },
+    {
+      id: "02",
       title: t("Zhel Gold Jewelry", "زيل للمجوهرات"),
       tag: t("Gold & Layaway", "ذهب وتقسيط"),
       tech: t("Next.js / Responsive / Systems", "نكست جي إس / متجاوب / أنظمة"),
@@ -19,9 +29,9 @@ export function Projects() {
       href: "https://zhel-gold-jewelry.vercel.app/",
     },
     {
-      id: "02",
+      id: "03",
       title: t("Greyscale Real Estate", "جريسكيل العقارية"),
-      tag: t("Real Estate", "عقارات"), // Removed "Demo"
+      tag: t("Real Estate", "عقارات"),
       tech: t(
         "Next.js / Architectural / High-Contrast",
         "نكست جي إس / معماري / تباين عالٍ",
@@ -32,7 +42,7 @@ export function Projects() {
       href: "https://greyscale-real-estate.vercel.app/",
     },
     {
-      id: "03",
+      id: "04",
       title: t("LUKA AI Detection", "لوكا للكشف الذكي"),
       tag: t("AI Thesis Project", "مشروع تخرج ذكاء اصطناعي"),
       tech: t(
@@ -97,7 +107,7 @@ export function Projects() {
 
         {/* --- PROJECT LIST --- */}
         <div className="space-y-0">
-          {projects.map((work, index) => (
+          {projects.map((work) => (
             <div
               key={work.id}
               className="group relative border-b-2 border-zinc-100 py-10 md:py-14 transition-all hover:bg-zinc-50 px-2 md:px-6 cursor-default"
@@ -118,7 +128,6 @@ export function Projects() {
                       <span className="text-[10px] md:text-xs font-bold text-zinc-500 uppercase tracking-widest">
                         {work.tech}
                       </span>
-                      {/* Visual Indicator: Changed from Ping to Solid/Stable to look less 'live-active' */}
                       <span className="relative flex h-2 w-2">
                         <span className="absolute inline-flex h-full w-full rounded-full bg-[#00C950] opacity-20"></span>
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00C950]"></span>
@@ -141,7 +150,6 @@ export function Projects() {
                   </div>
 
                   <div className="flex items-center gap-4">
-                    {/* CLICKABLE TAG BUTTON */}
                     <Link
                       href={work.href}
                       target={work.href !== "#" ? "_blank" : undefined}
@@ -160,7 +168,6 @@ export function Projects() {
                       </motion.button>
                     </Link>
 
-                    {/* CLICKABLE ICON BUTTON */}
                     <Link
                       href={work.href}
                       target={work.href !== "#" ? "_blank" : undefined}
