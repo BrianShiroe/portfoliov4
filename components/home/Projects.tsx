@@ -11,7 +11,7 @@ export function Projects() {
     {
       id: "01",
       title: t("GameTree", "جيم تري"),
-      tag: t("Gaming Portfolio", "معرض الألعاب"),
+      tag: t("Game Marketplace", "سوق الألعاب"),
       tech: t("Next.js / Gaming / Social", "نكست جي إس / ألعاب / اجتماعي"),
       status: t("Live", "مباشر"),
       isDevelopment: false,
