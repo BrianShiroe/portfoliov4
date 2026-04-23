@@ -93,8 +93,8 @@ const ExternalIcon = ({ slug }: { slug: string }) => (
   <div
     className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 bg-black group-hover:bg-zinc-700 transition-colors duration-200"
     style={{
-      WebkitMaskImage: `url(https://cdn.simpleicons.org/${slug}/000)`,
-      maskImage: `url(https://cdn.simpleicons.org/${slug}/000)`,
+      WebkitMaskImage: `url(https://cdn.simpleicons.org/${slug}/000000)`,
+      maskImage: `url(https://cdn.simpleicons.org/${slug}/000000)`,
       WebkitMaskSize: "contain",
       maskSize: "contain",
       WebkitMaskRepeat: "no-repeat",
@@ -118,15 +118,23 @@ export function Skills() {
         {/* --- HEADER --- */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-20 gap-8">
           <div className="relative">
-            <div className={`absolute -top-2 md:-top-4 h-8 w-8 md:h-12 md:w-12 border-t-4 border-[#00C950] ${isAr ? "-right-2 md:-right-4 border-r-4" : "-left-2 md:-left-4 border-l-4"}`} />
-            <p className={`text-[11px] md:text-sm font-black text-zinc-500 uppercase tracking-[0.2em] mb-2 md:mb-4 ${isAr ? "mr-2" : "ml-2"}`}>
+            <div
+              className={`absolute -top-2 md:-top-4 h-8 w-8 md:h-12 md:w-12 border-t-4 border-[#00C950] ${isAr ? "-right-2 md:-right-4 border-r-4" : "-left-2 md:-left-4 border-l-4"}`}
+            />
+            <p
+              className={`text-[11px] md:text-sm font-black text-zinc-500 uppercase tracking-[0.2em] mb-2 md:mb-4 ${isAr ? "mr-2" : "ml-2"}`}
+            >
               {t("Area of Expertise", "مجالات الخبرة")}
             </p>
             <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-black leading-none">
               {isAr ? (
-                <>مهارات_<span className="text-[#00C950]">أساسية</span></>
+                <>
+                  مهارات_<span className="text-[#00C950]">أساسية</span>
+                </>
               ) : (
-                <>Core_<span className="text-[#00C950]">Skills</span></>
+                <>
+                  Core_<span className="text-[#00C950]">Skills</span>
+                </>
               )}
             </h2>
           </div>
@@ -148,8 +156,9 @@ export function Skills() {
               transition={{ delay: index * 0.05 }}
               className="group relative h-[280px] md:h-[340px] [perspective:1000px]"
             >
-              <div className={`relative h-full w-full transition-all duration-500 [transform-style:preserve-3d] ${isAr ? "group-hover:[transform:rotateY(-180deg)]" : "group-hover:[transform:rotateY(180deg)]"}`}>
-                
+              <div
+                className={`relative h-full w-full transition-all duration-500 [transform-style:preserve-3d] ${isAr ? "group-hover:[transform:rotateY(-180deg)]" : "group-hover:[transform:rotateY(180deg)]"}`}
+              >
                 {/* CARD FRONT */}
                 <div className="absolute inset-0 h-full w-full border-[3px] md:border-4 border-black bg-white p-5 md:p-6 rounded-2xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col justify-between [backface-visibility:hidden]">
                   <div className="flex justify-between items-start border-b-2 border-black/10 pb-3">
@@ -157,7 +166,7 @@ export function Skills() {
                       {tech.level}
                     </span>
                     <span className="text-[10px] font-black text-black opacity-30">
-                      {(index + 1).toString().padStart(2, '0')}
+                      {(index + 1).toString().padStart(2, "0")}
                     </span>
                   </div>
 
@@ -188,7 +197,9 @@ export function Skills() {
                 </div>
 
                 {/* CARD BACK */}
-                <div className={`absolute inset-0 h-full w-full border-[3px] md:border-4 border-black bg-black p-6 md:p-8 text-white rounded-2xl [backface-visibility:hidden] ${isAr ? "[transform:rotateY(-180deg)]" : "[transform:rotateY(180deg)]"}`}>
+                <div
+                  className={`absolute inset-0 h-full w-full border-[3px] md:border-4 border-black bg-black p-6 md:p-8 text-white rounded-2xl [backface-visibility:hidden] ${isAr ? "[transform:rotateY(-180deg)]" : "[transform:rotateY(180deg)]"}`}
+                >
                   <div className="h-full flex flex-col justify-between">
                     <div className="space-y-4">
                       <div className="flex justify-between items-center border-b border-zinc-700 pb-2">
@@ -196,11 +207,13 @@ export function Skills() {
                           {t("Focus Area", "منطقة التركيز")}
                         </p>
                       </div>
-                      <p className={`text-base md:text-xl uppercase leading-tight font-black tracking-tight italic ${isAr ? "text-right" : "text-left"}`}>
+                      <p
+                        className={`text-base md:text-xl uppercase leading-tight font-black tracking-tight italic ${isAr ? "text-right" : "text-left"}`}
+                      >
                         {tech.focus}
                       </p>
                     </div>
-                    
+
                     <div className="pt-4 border-t border-zinc-800 flex flex-col gap-3">
                       <span className="text-[9px] text-zinc-500 font-bold uppercase">
                         {t("Status", "الحالة")}
