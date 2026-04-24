@@ -32,11 +32,11 @@ const techStack = (t: any) => [
     focus: t("Interactive Systems", "أنظمة تفاعلية"),
   },
   {
-    slug: "shopify",
-    name: t("Shopify", "شوبيفاي"),
-    type: t("eCommerce", "تجارة إلكترونية"),
+    slug: "shopee",
+    name: t("eCommerce", "تجارة إلكترونية"),
+    type: t("Platforms", "منصات"),
     level: t("Expert", "خبير"),
-    focus: t("Liquid & Payment Flow", "تدفق الدفع وLiquid"),
+    focus: t("Marketplace Optimization", "تحسين المتجر"),
   },
   {
     slug: "tailwindcss",
@@ -53,9 +53,9 @@ const techStack = (t: any) => [
     focus: t("Speed & Optimization", "تحسين السرعة"),
   },
   {
-    slug: "google",
+    slug: "googleads",
     name: t("Google Tools", "أدوات جوجل"),
-    type: t("Ads, Console, & Merchant", "إعلانات، كونسول، وتاجر"),
+    type: t("Ads & Merchant", "إعلانات وتاجر"),
     level: t("Experienced", "متمرس"),
     focus: t("SEM & Conversion", "التسويق عبر البحث"),
   },
@@ -89,12 +89,13 @@ const techStack = (t: any) => [
   },
 ];
 
-const ExternalIcon = ({ slug }: { slug: string }) => (
+// Updated to use local public/icons/ directory
+const LocalIcon = ({ slug }: { slug: string }) => (
   <div
-    className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 bg-black group-hover:bg-zinc-700 transition-colors duration-200"
+    className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 bg-black group-hover:bg-[#00C950] transition-colors duration-300"
     style={{
-      WebkitMaskImage: `url(https://cdn.simpleicons.org/${slug}/000000)`,
-      maskImage: `url(https://cdn.simpleicons.org/${slug}/000000)`,
+      WebkitMaskImage: `url(/icons/${slug}.svg)`,
+      maskImage: `url(/icons/${slug}.svg)`,
       WebkitMaskSize: "contain",
       maskSize: "contain",
       WebkitMaskRepeat: "no-repeat",
@@ -111,7 +112,7 @@ export function Skills() {
   return (
     <section
       id="skills"
-      className="relative w-full py-16 md:py-24 overflow-hidden selection:bg-black selection:text-white font-mono"
+      className="relative w-full py-16 md:py-24 overflow-hidden selection:bg-black selection:text-white font-mono bg-white"
       dir={isAr ? "rtl" : "ltr"}
     >
       <div className="mx-auto max-w-7xl px-4 md:px-6 relative z-10">
@@ -119,10 +120,14 @@ export function Skills() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-20 gap-8">
           <div className="relative">
             <div
-              className={`absolute -top-2 md:-top-4 h-8 w-8 md:h-12 md:w-12 border-t-4 border-[#00C950] ${isAr ? "-right-2 md:-right-4 border-r-4" : "-left-2 md:-left-4 border-l-4"}`}
+              className={`absolute -top-2 md:-top-4 h-8 w-8 md:h-12 md:w-12 border-t-4 border-[#00C950] ${
+                isAr ? "-right-2 md:-right-4 border-r-4" : "-left-2 md:-left-4 border-l-4"
+              }`}
             />
             <p
-              className={`text-[11px] md:text-sm font-black text-zinc-500 uppercase tracking-[0.2em] mb-2 md:mb-4 ${isAr ? "mr-2" : "ml-2"}`}
+              className={`text-[11px] md:text-sm font-black text-zinc-500 uppercase tracking-[0.2em] mb-2 md:mb-4 ${
+                isAr ? "mr-2" : "ml-2"
+              }`}
             >
               {t("Area of Expertise", "مجالات الخبرة")}
             </p>
@@ -157,7 +162,9 @@ export function Skills() {
               className="group relative h-[280px] md:h-[340px] [perspective:1000px]"
             >
               <div
-                className={`relative h-full w-full transition-all duration-500 [transform-style:preserve-3d] ${isAr ? "group-hover:[transform:rotateY(-180deg)]" : "group-hover:[transform:rotateY(180deg)]"}`}
+                className={`relative h-full w-full transition-all duration-500 [transform-style:preserve-3d] ${
+                  isAr ? "group-hover:[transform:rotateY(-180deg)]" : "group-hover:[transform:rotateY(180deg)]"
+                }`}
               >
                 {/* CARD FRONT */}
                 <div className="absolute inset-0 h-full w-full border-[3px] md:border-4 border-black bg-white p-5 md:p-6 rounded-2xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col justify-between [backface-visibility:hidden]">
@@ -172,7 +179,7 @@ export function Skills() {
 
                   <div className="flex-grow flex items-center justify-center py-4">
                     <div className="transition-transform duration-300 group-hover:scale-110">
-                      <ExternalIcon slug={tech.slug} />
+                      <LocalIcon slug={tech.slug} />
                     </div>
                   </div>
 
@@ -198,7 +205,9 @@ export function Skills() {
 
                 {/* CARD BACK */}
                 <div
-                  className={`absolute inset-0 h-full w-full border-[3px] md:border-4 border-black bg-black p-6 md:p-8 text-white rounded-2xl [backface-visibility:hidden] ${isAr ? "[transform:rotateY(-180deg)]" : "[transform:rotateY(180deg)]"}`}
+                  className={`absolute inset-0 h-full w-full border-[3px] md:border-4 border-black bg-black p-6 md:p-8 text-white rounded-2xl [backface-visibility:hidden] ${
+                    isAr ? "[transform:rotateY(-180deg)]" : "[transform:rotateY(180deg)]"
+                  }`}
                 >
                   <div className="h-full flex flex-col justify-between">
                     <div className="space-y-4">
@@ -208,7 +217,9 @@ export function Skills() {
                         </p>
                       </div>
                       <p
-                        className={`text-base md:text-xl uppercase leading-tight font-black tracking-tight italic ${isAr ? "text-right" : "text-left"}`}
+                        className={`text-base md:text-xl uppercase leading-tight font-black tracking-tight italic ${
+                          isAr ? "text-right" : "text-left"
+                        }`}
                       >
                         {tech.focus}
                       </p>
