@@ -16,23 +16,46 @@
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
+/* --- GLOBAL INTERACTIVE STATES --- */
+a, 
+button, 
+input[type="button"], 
+input[type="submit"], 
+input[type="reset"], 
+input[type="checkbox"],
+input[type="radio"],
+label, 
+summary, 
+select,
+[role="button"] {
+  cursor: pointer;
+}
+
+/* Ensure disabled elements don't show the pointer */
+:disabled, 
+[disabled],
+.cursor-not-allowed {
+  cursor: not-allowed !important;
+}
+
 body {
   background: var(--background);
   color: var(--ink-mid);
   font-family: var(--font-mono);
-  /* Smoother scrolling for the anchor links in your footer */
+  /* Smoother scrolling for the anchor links */
   scroll-behavior: smooth;
+  /* Standardizes text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* --- ARABIC TYPOGRAPHY OPTIMIZATION --- */
 [lang="ar"] {
-  /* Arabic text usually needs slightly more line-height to prevent clipping */
   line-height: 1.6;
 }
 
 [lang="ar"] .tracking-tighter, 
 [lang="ar"] .tracking-widest {
-  /* Letter-spacing doesn't apply to Arabic script and can look broken */
   letter-spacing: 0 !important;
 }
 
@@ -43,7 +66,7 @@ body {
   transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* RTL-aware Shadow: Moves the shadow to the left when in Arabic mode */
+/* RTL-aware Shadow */
 [dir="rtl"] .retro-border-thick {
   box-shadow: -6px 6px 0px 0px var(--ink-deep);
 }
@@ -63,7 +86,7 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-/* Custom Selection Color for your brand */
+/* Custom Selection Color */
 ::selection {
   background-color: var(--accent-green);
   color: white;
