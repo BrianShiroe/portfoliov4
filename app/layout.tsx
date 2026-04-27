@@ -1,4 +1,4 @@
-import type {Metadata, Viewport} from 'next';
+import type {Viewport} from 'next';
 import {Geist_Mono} from 'next/font/google';
 import {getLocale} from 'next-intl/server';
 import './globals.css';
@@ -8,55 +8,6 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
   display: 'swap'
 });
-
-export const metadata: Metadata = {
-  metadataBase: new URL("https://brianshiroe.vercel.app"),
-  title: {
-    default: "Brian Shiroe | Dubai Web Developer & ERP Specialist",
-    template: "%s | Brian Shiroe",
-  },
-  description:
-    "Professional Web Developer in Dubai specializing in E-Commerce systems, Odoo ERP integrations, Corporate websites, and high-performance Custom Web Applications.",
-  keywords: [
-    "Brian Shiroe",
-    "E-Commerce Developer Dubai",
-    "Odoo ERP UAE",
-    "Corporate Website Design Dubai",
-    "Custom Web Apps Dubai",
-    "Next.js Developer UAE",
-    "Shopify Expert Dubai",
-  ],
-  authors: [{ name: "Brian Shiroe" }],
-  creator: "Brian Shiroe",
-  alternates: {
-    canonical: "https://brianshiroe.vercel.app",
-  },
-  openGraph: {
-    type: "website",
-    locale: "en_AE",
-    url: "https://brianshiroe.vercel.app",
-    title: "Brian Shiroe | Custom Web Solutions Dubai",
-    description:
-      "Expert development in E-Commerce, Odoo ERP, Corporate sites, and Custom Apps.",
-    siteName: "Brian Shiroe Portfolio",
-    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Brian Shiroe | Dubai Web Developer",
-    description:
-      "Specializing in E-Commerce, Odoo ERP, and Custom Web Applications.",
-    images: ["/og-image.png"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-  },
-};
 
 export const viewport: Viewport = {
   themeColor: "#ffffff",
@@ -70,12 +21,13 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   // Structured Data for Google (JSON-LD)
+  const baseUrl = 'https://brianshiroe.vercel.app';
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     name: "Brian Shiroe",
-    image: "https://brianshiroe.vercel.app/og-image.png",
-    url: "https://brianshiroe.vercel.app",
+    image: `${baseUrl}/og-image.png`,
+    url: baseUrl,
     address: {
       "@type": "PostalAddress",
       addressLocality: "Dubai",
@@ -95,6 +47,7 @@ export default async function RootLayout({
 
   const locale = await getLocale();
   const isAr = locale === 'ar';
+  jsonLd.url = `${baseUrl}/${locale}`;
 
   return (
     <html
