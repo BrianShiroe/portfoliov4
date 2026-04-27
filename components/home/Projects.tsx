@@ -2,11 +2,12 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { useLanguage } from "../../context/LanguageContext";
+import { useLocale } from "next-intl";
 
 export function Projects() {
-  const { t, lang } = useLanguage();
-  const isAr = lang === "ar";
+  const locale = useLocale();
+  const isAr = locale === "ar";
+  const t = (en: string, ar: string) => (isAr ? ar : en);
 
   const projects = [
     {

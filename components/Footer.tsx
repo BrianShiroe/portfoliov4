@@ -1,10 +1,11 @@
 "use client";
-import React from "react";
-import { useLanguage } from "../context/LanguageContext";
+import React from 'react';
+import {useLocale} from 'next-intl';
 
 export function Footer() {
-  const { t, lang } = useLanguage();
-  const isAr = lang === "ar";
+  const locale = useLocale();
+  const isAr = locale === 'ar';
+  const t = (en: string, ar: string) => (isAr ? ar : en);
 
   const navLinks = [
     { name: t("Home", "الرئيسية"), href: "#" },

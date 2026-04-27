@@ -2,12 +2,13 @@
 import { motion, Transition } from "framer-motion";
 import { Character } from "./Character";
 import { useEffect, useState } from "react";
-import { useLanguage } from "../../context/LanguageContext";
+import { useLocale } from "next-intl";
 
 export function Hero() {
-  const { t, lang } = useLanguage();
+  const locale = useLocale();
+  const isAr = locale === "ar";
+  const t = (en: string, ar: string) => (isAr ? ar : en);
   const [time, setTime] = useState("");
-  const isAr = lang === "ar";
 
   // Dubai Time Logic
   useEffect(() => {

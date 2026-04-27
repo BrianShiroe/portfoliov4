@@ -1,11 +1,12 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useLanguage } from "../context/LanguageContext";
+import React, {useEffect, useState} from 'react';
+import {AnimatePresence, motion} from 'framer-motion';
+import {useLocale} from 'next-intl';
 
 export function SystemLoader() {
-  const { t, lang } = useLanguage();
-  const isAr = lang === "ar";
+  const locale = useLocale();
+  const isAr = locale === 'ar';
+  const t = (en: string, ar: string) => (isAr ? ar : en);
   
   const [progress, setProgress] = useState(0);
   const [isVisible, setIsVisible] = useState(true);

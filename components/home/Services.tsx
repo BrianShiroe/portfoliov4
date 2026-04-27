@@ -1,11 +1,12 @@
 "use client";
 import { motion } from "framer-motion";
 import { ShoppingCart, Settings, Globe, Code2 } from "lucide-react";
-import { useLanguage } from "../../context/LanguageContext";
+import { useLocale } from "next-intl";
 
 export function Services() {
-  const { t, lang } = useLanguage();
-  const isAr = lang === "ar";
+  const locale = useLocale();
+  const isAr = locale === "ar";
+  const t = (en: string, ar: string) => (isAr ? ar : en);
 
   const services = [
     {

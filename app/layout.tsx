@@ -1,15 +1,12 @@
-import type { Metadata, Viewport } from "next";
-import { Geist_Mono } from "next/font/google";
-import "./globals.css";
-import { Header } from "../components/Header";
-import { Footer } from "../components/Footer";
-import { SystemLoader } from "../components/SystemLoader";
-import { LanguageProvider } from "../context/LanguageContext";
+import type {Metadata, Viewport} from 'next';
+import {Geist_Mono} from 'next/font/google';
+import {getLocale} from 'next-intl/server';
+import './globals.css';
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: "swap",
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
+  display: 'swap'
 });
 
 export const metadata: Metadata = {
@@ -67,7 +64,7 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -96,11 +93,14 @@ export default function RootLayout({
     ],
   };
 
+  const locale = await getLocale();
+  const isAr = locale === 'ar';
+
   return (
     <html
-      lang="en"
+      lang={locale}
+      dir={isAr ? 'rtl' : 'ltr'}
       className={`${geistMono.variable} scroll-smooth h-full antialiased`}
-      suppressHydrationWarning
     >
       <head>
         <script
@@ -112,15 +112,7 @@ export default function RootLayout({
         className="min-h-full flex flex-col font-mono bg-white text-black selection:bg-[#00C950] selection:text-white"
         suppressHydrationWarning
       >
-        {/* FIX: LanguageProvider must wrap the UI components inside the body */}
-        <LanguageProvider>
-          <SystemLoader />
-          <Header />
-          <main role="main" className="flex-1">
-            {children}
-          </main>
-          <Footer />
-        </LanguageProvider>
+        {children}
       </body>
     </html>
   );

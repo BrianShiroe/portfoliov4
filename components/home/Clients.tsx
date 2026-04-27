@@ -1,11 +1,12 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useLanguage } from "../../context/LanguageContext";
+import { useLocale } from "next-intl";
 
 export function Clients() {
-  const { t, lang } = useLanguage();
-  const isAr = lang === "ar";
+  const locale = useLocale();
+  const isAr = locale === "ar";
+  const t = (en: string, ar: string) => (isAr ? ar : en);
 
   const logos = [
     { src: "/logos/500x250_logo_12.png", href: "https://zhel-gold-jewelry.vercel.app/", status: "live" },

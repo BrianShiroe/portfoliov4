@@ -2,11 +2,12 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { useLanguage } from "../../context/LanguageContext";
+import { useLocale } from "next-intl";
 
 export function Contact() {
-  const { t, lang } = useLanguage();
-  const isAr = lang === "ar";
+  const locale = useLocale();
+  const isAr = locale === "ar";
+  const t = (en: string, ar: string) => (isAr ? ar : en);
 
   const [copied, setCopied] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);

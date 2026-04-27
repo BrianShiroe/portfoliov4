@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { useLanguage } from "../../context/LanguageContext";
+import { useLocale } from "next-intl";
 
 const techStack = (t: any) => [
   {
@@ -105,8 +105,9 @@ const LocalIcon = ({ slug }: { slug: string }) => (
 );
 
 export function Skills() {
-  const { t, lang } = useLanguage();
-  const isAr = lang === "ar";
+  const locale = useLocale();
+  const isAr = locale === "ar";
+  const t = (en: string, ar: string) => (isAr ? ar : en);
   const stack = techStack(t);
 
   return (

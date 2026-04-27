@@ -1,7 +1,8 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useLanguage } from "../context/LanguageContext";
+import React, {useEffect, useState} from 'react';
+import {AnimatePresence, motion} from 'framer-motion';
+import {useLocale} from 'next-intl';
+import {usePathname, useRouter} from 'next/navigation';
 
 const navItems = [
   { en: "Home", ar: "الرئيسية", href: "#home" },
@@ -14,8 +15,11 @@ const navItems = [
 ];
 
 export function Header() {
-  const { lang, setLang, t } = useLanguage();
-  const isAr = lang === "ar";
+  const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
+  const isAr = locale === 'ar';
+  const t = (en: string, ar: string) => (isAr ? ar : en);
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
@@ -56,6 +60,16 @@ export function Header() {
       window.scrollTo({ top: offsetPosition, behavior: "smooth" });
     }
     window.history.pushState(null, "", href);
+  };
+
+  const switchLocale = () => {
+    const nextLocale = locale === 'en' ? 'ar' : 'en';
+    const pathnameWithoutLocale =
+      pathname === `/${locale}` ? '' : pathname.replace(new RegExp(`^/${locale}`), '');
+    const hash = typeof window !== 'undefined' ? window.location.hash : '';
+
+    setIsOpen(false);
+    router.push(`/${nextLocale}${pathnameWithoutLocale}${hash}`);
   };
 
   return (
@@ -117,11 +131,11 @@ export function Header() {
         <div className="flex items-center gap-3">
           {/* Language Switcher */}
           <button
-            onClick={() => setLang(lang === "en" ? "ar" : "en")}
+            onClick={switchLocale}
             className="z-[110] h-10 px-4 rounded-full border-2 border-black text-[10px] font-black transition-all hover:bg-black hover:text-[#00C950] active:scale-95 flex items-center justify-center leading-none cursor-pointer"
           >
-            <span className={lang === "ar" ? "translate-y-[1px]" : ""}>
-              {lang === "en" ? "عربي" : "EN"}
+            <span className={locale === "ar" ? "translate-y-[1px]" : ""}>
+              {locale === "en" ? "عربي" : "EN"}
             </span>
           </button>
 
