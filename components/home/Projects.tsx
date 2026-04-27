@@ -168,13 +168,13 @@ export function Projects() {
         </div>
 
         {/* --- FOOTER CTA --- */}
-        <div className="mt-24 text-center">
+        {/* <div className="mt-24 text-center">
           <Link href="https://github.com/BrianShiroe" target="_blank" className="inline-block cursor-pointer">
             <button className="bg-black text-white px-12 py-5 rounded-[2rem] font-black uppercase tracking-tighter text-lg border-4 border-black hover:bg-[#00C950] hover:text-black transition-all shadow-[8px_8px_0px_0px_rgba(0,0,0,0.2)] hover:shadow-none cursor-pointer">
               {t("Explore All Code", "استكشاف الكود بالكامل")}
             </button>
           </Link>
-        </div>
+        </div> */}
       </div>
     </section>
   );
