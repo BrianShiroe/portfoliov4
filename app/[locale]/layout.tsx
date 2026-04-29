@@ -6,6 +6,7 @@ import {getMessages, setRequestLocale} from 'next-intl/server';
 import {Header} from '@/components/Header';
 import {Footer} from '@/components/Footer';
 import {SystemLoader} from '@/components/SystemLoader';
+import {LenisScroll} from '@/components/LenisScroll';
 import {routing, type AppLocale} from '@/i18n/routing';
 
 export async function generateMetadata({
@@ -99,6 +100,7 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider messages={messages}>
+      <LenisScroll />
       <SystemLoader />
       <Header />
       <main role="main" className="flex-1">
