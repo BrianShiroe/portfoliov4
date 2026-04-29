@@ -1,8 +1,8 @@
 "use client";
-import React, { useEffect, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
-import { useLocale } from 'next-intl';
-import { usePathname, useRouter } from 'next/navigation';
+import React, { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { useLocale } from "next-intl";
+import { usePathname, useRouter } from "next/navigation";
 
 const navItems = [
   { en: "Home", ar: "الرئيسية", href: "#home" },
@@ -18,7 +18,7 @@ export function Header() {
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
-  const isAr = locale === 'ar';
+  const isAr = locale === "ar";
   const t = (en: string, ar: string) => (isAr ? ar : en);
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -64,16 +64,16 @@ export function Header() {
 
       window.scrollTo({
         top: offsetPosition,
-        behavior: "smooth"
+        behavior: "smooth",
       });
     }
     window.history.pushState(null, "", href);
   };
 
   const switchLocale = () => {
-    const nextLocale = locale === 'en' ? 'ar' : 'en';
-    const pathnameWithoutLocale = pathname === `/${locale}` ? '' : pathname.replace(new RegExp(`^/${locale}`), '');
-    const hash = typeof window !== 'undefined' ? window.location.hash : '';
+    const nextLocale = locale === "en" ? "ar" : "en";
+    const pathnameWithoutLocale = pathname === `/${locale}` ? "" : pathname.replace(new RegExp(`^/${locale}`), "");
+    const hash = typeof window !== "undefined" ? window.location.hash : "";
     setIsOpen(false);
     router.push(`/${nextLocale}${pathnameWithoutLocale}${hash}`);
   };
@@ -85,11 +85,7 @@ export function Header() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-6 md:py-4">
         {/* IDENTITY */}
-        <a
-          href="#home"
-          onClick={(e) => handleScroll(e, "#home")}
-          className="z-[110] group flex items-center gap-2.5"
-        >
+        <a href="#home" onClick={(e) => handleScroll(e, "#home")} className="z-[110] group flex items-center gap-2.5">
           <div className="h-8 w-8 rounded-full flex items-center justify-center shrink-0 overflow-hidden relative border border-zinc-200">
             <img
               src="/logo.png"
@@ -146,18 +142,25 @@ export function Header() {
             onClick={() => setIsOpen(!isOpen)}
             className="lg:hidden z-[110] h-10 w-10 bg-black rounded-full flex flex-col gap-1 items-center justify-center active:scale-95 transition-transform cursor-pointer"
           >
-            <motion.div animate={isOpen ? { rotate: 45, y: 5 } : { rotate: 0, y: 0 }} className="h-[1.5px] w-4.5 bg-white rounded-full origin-center" />
-            <motion.div animate={isOpen ? { opacity: 0 } : { opacity: 1 }} className="h-[1.5px] w-4.5 bg-white rounded-full" />
-            <motion.div animate={isOpen ? { rotate: -45, y: -5 } : { rotate: 0, y: 0 }} className="h-[1.5px] w-4.5 bg-white rounded-full origin-center" />
+            <motion.div
+              animate={isOpen ? { rotate: 45, y: 5 } : { rotate: 0, y: 0 }}
+              className="h-[1.5px] w-4.5 bg-white rounded-full origin-center"
+            />
+            <motion.div
+              animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
+              className="h-[1.5px] w-4.5 bg-white rounded-full"
+            />
+            <motion.div
+              animate={isOpen ? { rotate: -45, y: -5 } : { rotate: 0, y: 0 }}
+              className="h-[1.5px] w-4.5 bg-white rounded-full origin-center"
+            />
           </button>
         </div>
 
         {/* STATUS INDICATOR */}
         <div className="hidden xl:block">
           <div className="flex items-center gap-2.5 px-3 py-1.5 border border-zinc-100 rounded-full">
-            <span className="text-[10px] font-black uppercase text-zinc-400">
-              {t("Dubai, UAE", "دبي، الإمارات")}
-            </span>
+            <span className="text-[10px] font-black uppercase text-zinc-400">{t("Dubai, UAE", "دبي، الإمارات")}</span>
             <div className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
@@ -204,7 +207,7 @@ export function Header() {
                 onClick={(e) => handleScroll(e, "#contact")}
                 className="w-full bg-[#00C950] text-black text-center py-5 rounded-2xl font-black uppercase tracking-widest text-xs border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
               >
-                {t("Hire Me", "وظفني")}
+                {t("Contact Me", "اتصل بي")}
               </a>
             </div>
           </motion.div>
