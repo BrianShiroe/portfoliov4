@@ -1,5 +1,5 @@
 "use client";
-import { motion, Transition } from "framer-motion";
+import { motion, Transition, Variants } from "framer-motion";
 import { Character } from "./Character";
 import { useEffect, useState } from "react";
 import { useLocale } from "next-intl";
@@ -39,6 +39,30 @@ export function Hero() {
     t("Shopify Ecommerce", "تجارة شوبيفاي الإلكترونية"),
   ];
 
+  // --- ANIMATION VARIANTS ---
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { 
+        staggerChildren: 0.15, 
+        delayChildren: 0.2 
+      }
+    }
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { 
+        duration: 0.8, 
+        ease: [0.16, 1, 0.3, 1] // Fixed: Validated by Variants type
+      } 
+    }
+  };
+
   return (
     <section
       id="home"
@@ -54,10 +78,16 @@ export function Hero() {
         }}
       />
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 md:px-10 flex flex-col items-center justify-center">
+      <motion.div 
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="relative z-10 mx-auto w-full max-w-7xl px-4 md:px-10 flex flex-col items-center justify-center"
+      >
         <div className="flex flex-col lg:flex-row items-center justify-between w-full gap-10 lg:gap-16">
+          
           {/* LEFT SIDE: ACTIVE FOCUS */}
-          <div className="hidden xl:flex flex-col gap-10 w-64">
+          <motion.div variants={itemVariants} className="hidden xl:flex flex-col gap-10 w-64">
             <div className="space-y-4">
               <span
                 className={`text-[13px] font-black border-b-2 border-black w-full block pb-2 tracking-[0.15em] uppercase text-black ${isAr ? "text-right" : "text-left"}`}
@@ -73,11 +103,11 @@ export function Hero() {
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* CENTER: MAIN BRANDING */}
           <div className="relative flex flex-col items-center w-full lg:flex-1">
-            <div className="relative w-full max-fit mx-auto text-center">
+            <motion.div variants={itemVariants} className="relative w-full max-fit mx-auto text-center">
               <div
                 className={`absolute -top-2 md:-top-6 w-3 h-3 md:w-5 md:h-5 border-t-2 md:border-t-[3px] border-black ${isAr ? "-right-2 md:-right-6 border-r-2 md:border-r-[3px]" : "-left-2 md:-left-6 border-l-2 md:border-l-[3px]"}`}
               />
@@ -110,10 +140,10 @@ export function Hero() {
                 </span>
                 <div className="h-[1px] w-4 md:w-8 bg-black/20" />
               </div>
-            </div>
+            </motion.div>
 
             {/* CONTACT ROW */}
-            <div className="flex flex-col items-center gap-6 mb-10 w-full">
+            <motion.div variants={itemVariants} className="flex flex-col items-center gap-6 mb-10 w-full">
               <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 border-y border-black/5 py-5 w-full max-w-[320px] sm:max-w-none justify-center">
                 <motion.a
                   whileTap={{ scale: 0.95 }}
@@ -169,10 +199,10 @@ export function Hero() {
                   </motion.a>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* ACTIONS */}
-            <div className="flex flex-col sm:flex-row gap-4 w-full max-w-[260px] sm:max-w-md">
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 w-full max-w-[260px] sm:max-w-md">
               <motion.button
                 whileHover={{
                   scale: 1.02,
@@ -207,15 +237,12 @@ export function Hero() {
               >
                 {t("Contact Me", "تواصل معي")}
               </motion.button>
-            </div>
+            </motion.div>
           </div>
 
           {/* RIGHT SIDE: CHARACTER & TIME */}
-          <div className="flex flex-col items-center relative mt-4 lg:mt-0">
-            <motion.div
-              whileTap={{ scale: 0.98 }}
-              className="bg-white border-2 md:border-4 border-black p-3 md:p-6 rounded-2xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center overflow-hidden cursor-default"
-            >
+          <motion.div variants={itemVariants} className="flex flex-col items-center relative mt-4 lg:mt-0">
+            <div className="bg-white border-2 md:border-4 border-black p-3 md:p-6 rounded-2xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center overflow-hidden cursor-default">
               <div className="scale-[0.5] sm:scale-75 md:scale-90 lg:scale-100 origin-center">
                 <Character />
               </div>
@@ -230,10 +257,10 @@ export function Hero() {
                   </span>
                 </div>
               </div>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

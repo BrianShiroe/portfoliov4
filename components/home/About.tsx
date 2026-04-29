@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { useLocale } from "next-intl";
 
 export function About() {
@@ -25,18 +25,56 @@ export function About() {
     },
   ];
 
+  // --- Animation Variants ---
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+    },
+  };
+
+  const awardItemVariants: Variants = {
+    hidden: { x: isAr ? 20 : -20, opacity: 0 },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
+  };
+
   return (
     <section
       id="about"
       className="relative w-full bg-white py-16 md:py-24 px-4 md:px-6 overflow-hidden font-mono scroll-mt-20 selection:bg-[#00C950] selection:text-white"
       dir={isAr ? "rtl" : "ltr"}
     >
-      <div className="mx-auto max-w-6xl relative z-10">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        className="mx-auto max-w-6xl relative z-10"
+      >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+          
           {/* --- LEFT COLUMN: PROFESSIONAL DATA --- */}
           <div className="lg:col-span-4 space-y-8">
             {/* Identity Card */}
-            <div
+            <motion.div
+              variants={itemVariants}
               className={`relative border-4 border-black bg-white p-6 rounded-2xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] ${
                 isAr ? "shadow-[-6px_6px_0px_0px_rgba(0,0,0,1)]" : ""
               }`}
@@ -63,10 +101,11 @@ export function About() {
                   <span className="text-black">{t("Dubai, UAE", "دبي، الإمارات")}</span>
                 </li>
               </ul>
-            </div>
+            </motion.div>
 
             {/* ACCOLADES BLOCK */}
-            <div
+            <motion.div
+              variants={itemVariants}
               className={`bg-black text-white p-6 rounded-2xl shadow-[6px_6px_0px_0px_rgba(0,0,0,0.1)] ${
                 isAr ? "shadow-[-6px_6px_0px_0px_rgba(0,0,0,0.1)]" : ""
               }`}
@@ -81,13 +120,10 @@ export function About() {
               </div>
 
               <div className="space-y-6">
-                {awards.map((award, index) => (
+                {awards.map((award) => (
                   <motion.div
                     key={award.title}
-                    initial={{ x: isAr ? 10 : -10, opacity: 0 }}
-                    whileInView={{ x: 0, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
+                    variants={awardItemVariants}
                     className="group flex items-center gap-4"
                   >
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center border border-zinc-700 bg-zinc-900 rounded-xl group-hover:border-[#00C950] transition-colors group-hover:bg-zinc-800">
@@ -106,22 +142,18 @@ export function About() {
                   </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* --- RIGHT COLUMN: THE NARRATIVE --- */}
           <div className="lg:col-span-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="space-y-6"
-            >
-              <div className="inline-block bg-black text-white px-4 py-1.5 rounded-full text-[12px] md:text-[13px] font-black uppercase tracking-widest mb-4">
+            <div className="space-y-6">
+              <motion.div variants={itemVariants} className="inline-block bg-black text-white px-4 py-1.5 rounded-full text-[12px] md:text-[13px] font-black uppercase tracking-widest mb-4">
                 {t("Professional Bio", "السيرة المهنية")}
-              </div>
+              </motion.div>
 
-              <h2
+              <motion.h2
+                variants={itemVariants}
                 className={`font-black uppercase tracking-tighter text-black 
                   ${
                     isAr
@@ -140,9 +172,10 @@ export function About() {
                     <span className="text-[#00C950]">Digital_Tech</span>
                   </>
                 )}
-              </h2>
+              </motion.h2>
 
-              <p
+              <motion.p
+                variants={itemVariants}
                 className={`font-bold text-zinc-700 uppercase ${
                   isAr ? "text-base md:text-lg leading-relaxed" : "text-lg md:text-xl leading-relaxed"
                 }`}
@@ -151,9 +184,10 @@ export function About() {
                   "IT Professional and Web Developer focused on scaling businesses through high-impact online platforms and optimized digital management.",
                   "أخصائي تقنية معلومات ومطور ويب أركز على تطوير الأعمال من خلال منصات رقمية عالية التأثير وإدارة رقمية محسنة."
                 )}
-              </p>
+              </motion.p>
 
-              <div
+              <motion.div
+                variants={itemVariants}
                 className={`space-y-6 text-zinc-500 italic ${
                   isAr
                     ? "border-r-4 border-l-0 pr-6 md:pr-8 text-sm md:text-base"
@@ -172,10 +206,11 @@ export function About() {
                     '"أعمل على سد الفجوة بين التصميم الإبداعي والتنفيذ التقني، من خلال هندسة تجارب مستخدم بديهية توازن بين الجمال الوظيفي والمتانة العملية."'
                   )}
                 </p>
-              </div>
+              </motion.div>
 
               {/* FOOTNOTE */}
-              <div
+              <motion.div
+                variants={itemVariants}
                 className={`mt-12 bg-white border-2 border-black p-6 md:p-8 rounded-2xl font-mono text-sm leading-relaxed shadow-[6px_6px_0px_0px_#00C950] ${
                   isAr ? "shadow-[-6px_6px_0px_0px_#00C950]" : ""
                 }`}
@@ -199,11 +234,11 @@ export function About() {
                     isAr ? "mr-1" : "ml-1"
                   }`}
                 />
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

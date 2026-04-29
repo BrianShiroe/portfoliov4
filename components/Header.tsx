@@ -1,8 +1,8 @@
 "use client";
-import React, {useEffect, useState} from 'react';
-import {AnimatePresence, motion} from 'framer-motion';
-import {useLocale} from 'next-intl';
-import {usePathname, useRouter} from 'next/navigation';
+import React, { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useLocale } from 'next-intl';
+import { usePathname, useRouter } from 'next/navigation';
 
 const navItems = [
   { en: "Home", ar: "الرئيسية", href: "#home" },
@@ -23,6 +23,7 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
+  // Intersection Observer for Active State
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -41,6 +42,7 @@ export function Header() {
     return () => observer.disconnect();
   }, []);
 
+  // Lock Body Scroll when Mobile Menu is Open
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "unset";
   }, [isOpen]);
@@ -54,20 +56,24 @@ export function Header() {
     if (targetId === "home") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else if (elem) {
-      const offset = 70;
-      const offsetPosition =
-        elem.getBoundingClientRect().top + window.pageYOffset - offset;
-      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+      const offset = 80; // Offset for sticky header height
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = elem.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
     }
     window.history.pushState(null, "", href);
   };
 
   const switchLocale = () => {
     const nextLocale = locale === 'en' ? 'ar' : 'en';
-    const pathnameWithoutLocale =
-      pathname === `/${locale}` ? '' : pathname.replace(new RegExp(`^/${locale}`), '');
+    const pathnameWithoutLocale = pathname === `/${locale}` ? '' : pathname.replace(new RegExp(`^/${locale}`), '');
     const hash = typeof window !== 'undefined' ? window.location.hash : '';
-
     setIsOpen(false);
     router.push(`/${nextLocale}${pathnameWithoutLocale}${hash}`);
   };
@@ -93,15 +99,15 @@ export function Header() {
           </div>
           <div className="flex flex-col items-start">
             <span className="text-xs md:text-lg font-black uppercase tracking-tighter text-black leading-none">
-              BrianShiroe
+              BrianHaw
             </span>
             <span className="text-[8px] md:text-[10px] font-bold text-zinc-400 uppercase tracking-widest mt-0.5">
-              {t("Web Developer", "مطور ويب")}
+              {t("IT Specialist", "أخصائي تقنية معلومات")}
             </span>
           </div>
         </a>
 
-        {/* DESKTOP NAV */}
+        {/* DESKTOP NAV - WITH LIQUID ANIMATION */}
         <nav className="hidden lg:flex items-center gap-1 bg-zinc-100/50 p-1 rounded-full border border-zinc-200">
           {navItems.map((item) => {
             const isActive = activeSection === item.href.replace("#", "");
@@ -118,8 +124,8 @@ export function Header() {
                 {isActive && (
                   <motion.div
                     layoutId="liquidNav"
-                    className="absolute inset-0 bg-black rounded-full shadow-lg shadow-black/10"
-                    transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                    className="absolute inset-0 bg-black rounded-full shadow-lg"
+                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
                   />
                 )}
               </a>
@@ -127,117 +133,78 @@ export function Header() {
           })}
         </nav>
 
-        {/* CONTROLS - SCALED UP SIZES */}
+        {/* CONTROLS */}
         <div className="flex items-center gap-3">
-          {/* Language Switcher */}
           <button
             onClick={switchLocale}
             className="z-[110] h-10 px-4 rounded-full border-2 border-black text-[10px] font-black transition-all hover:bg-black hover:text-[#00C950] active:scale-95 flex items-center justify-center leading-none cursor-pointer"
           >
-            <span className={locale === "ar" ? "translate-y-[1px]" : ""}>
-              {locale === "en" ? "عربي" : "EN"}
-            </span>
+            {locale === "en" ? "عربي" : "EN"}
           </button>
 
-          {/* Mobile Toggle (Icon Only) */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden z-[110] h-10 w-10 bg-black rounded-full flex items-center justify-center active:scale-95 transition-transform cursor-pointer"
+            className="lg:hidden z-[110] h-10 w-10 bg-black rounded-full flex flex-col gap-1 items-center justify-center active:scale-95 transition-transform cursor-pointer"
           >
-            <div className="flex flex-col gap-1 items-center justify-center">
-              <motion.div
-                animate={isOpen ? { rotate: 45, y: 5 } : { rotate: 0, y: 0 }}
-                className="h-[1.5px] w-4.5 bg-white rounded-full origin-center"
-              />
-              <motion.div
-                animate={isOpen ? { opacity: 0, x: -5 } : { opacity: 1, x: 0 }}
-                className="h-[1.5px] w-4.5 bg-white rounded-full"
-              />
-              <motion.div
-                animate={isOpen ? { rotate: -45, y: -5 } : { rotate: 0, y: 0 }}
-                className="h-[1.5px] w-4.5 bg-white rounded-full origin-center"
-              />
-            </div>
+            <motion.div animate={isOpen ? { rotate: 45, y: 5 } : { rotate: 0, y: 0 }} className="h-[1.5px] w-4.5 bg-white rounded-full origin-center" />
+            <motion.div animate={isOpen ? { opacity: 0 } : { opacity: 1 }} className="h-[1.5px] w-4.5 bg-white rounded-full" />
+            <motion.div animate={isOpen ? { rotate: -45, y: -5 } : { rotate: 0, y: 0 }} className="h-[1.5px] w-4.5 bg-white rounded-full origin-center" />
           </button>
         </div>
 
-        {/* DESKTOP STATUS */}
+        {/* STATUS INDICATOR */}
         <div className="hidden xl:block">
-          <a
-            href="#contact"
-            onClick={(e) => handleScroll(e, "#contact")}
-            className="group flex items-center gap-2.5 px-3 py-1.5"
-          >
-            <span className="text-[10px] font-black uppercase tracking-widest text-zinc-400 group-hover:text-black transition-colors">
-              {t("Status: Online", "الحالة: متصل")}
+          <div className="flex items-center gap-2.5 px-3 py-1.5 border border-zinc-100 rounded-full">
+            <span className="text-[10px] font-black uppercase text-zinc-400">
+              {t("Dubai, UAE", "دبي، الإمارات")}
             </span>
             <div className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
             </div>
-          </a>
+          </div>
         </div>
       </div>
 
-      {/* MOBILE OVERLAY */}
+      {/* MOBILE OVERLAY - STAGGERED ANIMATIONS */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="fixed inset-0 h-screen w-full bg-white z-[100] flex flex-col p-5 pt-20 overflow-y-auto"
-            dir={isAr ? "rtl" : "ltr"}
+            initial={{ opacity: 0, x: isAr ? 100 : -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: isAr ? 100 : -100 }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="fixed inset-0 h-screen w-full bg-white z-[100] flex flex-col p-6 pt-24"
           >
-            <div className="flex flex-col gap-2 mt-4">
-              <span className="text-[8px] font-black uppercase text-zinc-400 tracking-[0.2em] mb-2 px-2">
-                {t("Navigation", "التنقل")}
-              </span>
+            <div className="flex flex-col gap-2">
               {navItems.map((item, i) => {
                 const isActive = activeSection === item.href.replace("#", "");
                 return (
                   <motion.a
                     key={item.en}
-                    initial={{ opacity: 0, x: isAr ? 20 : -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.02 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.05 }}
                     href={item.href}
                     onClick={(e) => handleScroll(e, item.href)}
-                    className={`flex items-center justify-between px-5 py-4 rounded-2xl border-2 transition-all ${
-                      isActive
-                        ? "bg-black text-white border-black shadow-lg"
-                        : "bg-zinc-50 border-zinc-100 text-zinc-500 active:bg-zinc-100"
+                    className={`flex items-center justify-between px-6 py-5 rounded-2xl border-2 transition-all ${
+                      isActive ? "bg-black text-white border-black" : "bg-zinc-50 border-zinc-100 text-zinc-500"
                     }`}
                   >
-                    <span className="text-sm font-black uppercase tracking-tight">
-                      {t(item.en, item.ar)}
-                    </span>
-                    <div
-                      className={`h-2 w-2 rounded-full ${isActive ? "bg-[#00C950]" : "bg-zinc-200"}`}
-                    />
+                    <span className="text-sm font-black uppercase">{t(item.en, item.ar)}</span>
+                    <div className={`h-2 w-2 rounded-full ${isActive ? "bg-[#00C950]" : "bg-zinc-200"}`} />
                   </motion.a>
                 );
               })}
             </div>
 
-            <div className="mt-auto pt-8 flex flex-col gap-3 mb-4">
-              <div className="flex items-center justify-between bg-zinc-50 px-5 py-4 rounded-2xl border border-zinc-100">
-                <div className="flex flex-col">
-                  <span className="text-[8px] font-black uppercase text-zinc-400 leading-none">
-                    {t("HQ", "المقر")}
-                  </span>
-                  <span className="text-[11px] font-black uppercase text-black mt-1.5 leading-none">
-                    Dubai, UAE
-                  </span>
-                </div>
-                <div className="h-2.5 w-2.5 bg-green-500 rounded-full animate-pulse" />
-              </div>
-
+            <div className="mt-auto pb-10 flex flex-col gap-4">
               <a
-                href="mailto:hello@example.com"
-                className="w-full bg-black text-white text-center py-5 rounded-2xl font-black uppercase tracking-widest text-[10px] active:scale-[0.98] transition-all"
+                href="#contact"
+                onClick={(e) => handleScroll(e, "#contact")}
+                className="w-full bg-[#00C950] text-black text-center py-5 rounded-2xl font-black uppercase tracking-widest text-xs border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
               >
-                {t("Let's Talk", "لنبدأ الحوار")}
+                {t("Hire Me", "وظفني")}
               </a>
             </div>
           </motion.div>

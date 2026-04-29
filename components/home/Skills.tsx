@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import { motion } from "framer-motion";
 import { useLocale } from "next-intl";
 
@@ -30,6 +31,13 @@ const techStack = (t: any) => [
     type: t("Library", "مكتبة برمجة"),
     level: t("Expert", "خبير"),
     focus: t("Interactive Systems", "أنظمة تفاعلية"),
+  },
+  {
+    slug: "supabase",
+    name: t("Supabase", "سوبابيس"),
+    type: t("Backend", "قاعدة بيانات"),
+    level: t("Expert", "خبير"),
+    focus: t("Real-time Auth & Storage", "المصادقة والتخزين"),
   },
   {
     slug: "shopee",
@@ -89,9 +97,10 @@ const techStack = (t: any) => [
   },
 ];
 
-// Updated to use local public/icons/ directory
 const LocalIcon = ({ slug }: { slug: string }) => (
-  <div
+  <motion.div
+    animate={{ y: [0, -5, 0] }}
+    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
     className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 bg-black group-hover:bg-[#00C950] transition-colors duration-300"
     style={{
       WebkitMaskImage: `url(/icons/${slug}.svg)`,
@@ -113,92 +122,112 @@ export function Skills() {
   return (
     <section
       id="skills"
-      className="relative w-full py-16 md:py-24 overflow-hidden selection:bg-black selection:text-white font-mono bg-white"
+      className="relative w-full py-20 md:py-32 overflow-hidden selection:bg-black selection:text-white font-mono bg-white"
       dir={isAr ? "rtl" : "ltr"}
     >
       <div className="mx-auto max-w-7xl px-4 md:px-6 relative z-10">
         {/* --- HEADER --- */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-20 gap-8">
-          <div className="relative">
-            <div
-              className={`absolute -top-2 md:-top-4 h-8 w-8 md:h-12 md:w-12 border-t-4 border-[#00C950] ${
-                isAr ? "-right-2 md:-right-4 border-r-4" : "-left-2 md:-left-4 border-l-4"
-              }`}
-            />
-            <p
-              className={`text-[11px] md:text-sm font-black text-zinc-500 uppercase tracking-[0.2em] mb-2 md:mb-4 ${
-                isAr ? "mr-2" : "ml-2"
-              }`}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-10">
+          <motion.div
+            initial={{ opacity: 0, x: isAr ? 20 : -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="relative"
+          >
+            {/* TOP INDICATOR: SYNCED WITH GLOBAL BRANDING */}
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-[3px] w-12 bg-[#00C950] rounded-full shadow-[0_0_8px_#00C950]" />
+              <span
+                className={`text-[11px] md:text-sm font-black text-zinc-500 uppercase tracking-[0.3em] ${isAr ? "mr-2" : "ml-2"}`}
+              >
+                {t("Technical Arsenal", "الترسانة التقنية")}
+              </span>
+            </div>
+
+            {/* H2 HEADER: UNIFIED TYPOGRAPHY SCALE */}
+            <h2
+              className={`font-black uppercase tracking-tighter text-black 
+      ${
+        isAr
+          ? "text-4xl md:text-5xl lg:text-6xl leading-[1.2]"
+          : "text-4xl md:text-6xl lg:text-7xl leading-none"
+      }`}
             >
-              {t("Area of Expertise", "مجالات الخبرة")}
-            </p>
-            <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-black leading-none">
               {isAr ? (
                 <>
-                  مهارات_<span className="text-[#00C950]">أساسية</span>
+                  مهارات_<span className="text-[#00C950]">الخبير</span>
                 </>
               ) : (
                 <>
-                  Core_<span className="text-[#00C950]">Skills</span>
+                  Expert_<span className="text-[#00C950]">Stack</span>
                 </>
               )}
             </h2>
-          </div>
-          <div className="flex flex-col items-start md:items-end">
-            <p className="text-xs md:text-base font-bold border-4 border-black bg-white text-black px-4 md:px-6 py-2 md:py-3 rounded-xl uppercase tracking-widest shadow-[4px_4px_0px_0px_#00C950] md:shadow-[6px_6px_0px_0px_#00C950] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
-              {t("Verified Skillset", "مجموعة مهارات معتمدة")}
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="flex flex-col items-start md:items-end"
+          >
+            <p className="text-xs md:text-base font-black border-4 border-black bg-white text-black px-6 py-4 rounded-2xl uppercase tracking-widest shadow-[8px_8px_0px_0px_#00C950] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-300 cursor-default">
+              {t("10+ Verified Tools", "أكثر من ١٠ أدوات معتمدة")}
             </p>
-          </div>
+          </motion.div>
         </div>
 
         {/* --- SKILLS GRID --- */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {stack.map((tech, index) => (
             <motion.div
               key={tech.name}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.05 }}
-              className="group relative h-[280px] md:h-[340px] [perspective:1000px]"
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.08,
+                ease: [0.25, 1, 0.5, 1],
+              }}
+              className="group relative h-[300px] md:h-[360px] [perspective:1200px]"
             >
               <div
-                className={`relative h-full w-full transition-all duration-500 [transform-style:preserve-3d] ${
-                  isAr ? "group-hover:[transform:rotateY(-180deg)]" : "group-hover:[transform:rotateY(180deg)]"
+                className={`relative h-full w-full transition-all duration-700 [transform-style:preserve-3d] ${
+                  isAr
+                    ? "group-hover:[transform:rotateY(-180deg)]"
+                    : "group-hover:[transform:rotateY(180deg)]"
                 }`}
               >
                 {/* CARD FRONT */}
-                <div className="absolute inset-0 h-full w-full border-[3px] md:border-4 border-black bg-white p-5 md:p-6 rounded-2xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col justify-between [backface-visibility:hidden]">
-                  <div className="flex justify-between items-start border-b-2 border-black/10 pb-3">
+                <div className="absolute inset-0 h-full w-full border-4 border-black bg-white p-6 md:p-8 rounded-2xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col justify-between [backface-visibility:hidden]">
+                  <div className="flex justify-between items-start border-b-2 border-zinc-100 pb-4">
                     <span className="text-[10px] font-black text-[#00C950] uppercase tracking-widest">
                       {tech.level}
                     </span>
-                    <span className="text-[10px] font-black text-black opacity-30">
+                    <span className="text-[10px] font-black text-black/20">
                       {(index + 1).toString().padStart(2, "0")}
                     </span>
                   </div>
 
-                  <div className="flex-grow flex items-center justify-center py-4">
-                    <div className="transition-transform duration-300 group-hover:scale-110">
-                      <LocalIcon slug={tech.slug} />
-                    </div>
+                  <div className="flex-grow flex items-center justify-center py-6">
+                    <LocalIcon slug={tech.slug} />
                   </div>
 
-                  <div className="space-y-3">
+                  <div className="space-y-4">
                     <div>
-                      <h3 className="text-xl md:text-2xl font-black uppercase tracking-tighter text-black leading-tight">
+                      <h3 className="text-2xl font-black uppercase tracking-tighter text-black leading-none group-hover:text-[#00C950] transition-colors">
                         {tech.name}
                       </h3>
-                      <p className="text-[9px] md:text-[10px] font-bold text-zinc-500 uppercase tracking-widest mt-1 min-h-[1rem]">
+                      <p className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mt-2">
                         {tech.type}
                       </p>
                     </div>
-                    <div className="h-2 w-full bg-zinc-100 rounded-full overflow-hidden border border-black/10">
+                    <div className="h-1.5 w-full bg-zinc-100 border border-black/5 rounded-full overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
                         whileInView={{ width: "100%" }}
-                        transition={{ duration: 1, ease: "easeOut" }}
-                        className="h-full bg-black"
+                        transition={{ duration: 1.2, delay: index * 0.1 }}
+                        className="h-full bg-black group-hover:bg-[#00C950] transition-colors"
                       />
                     </div>
                   </div>
@@ -206,32 +235,32 @@ export function Skills() {
 
                 {/* CARD BACK */}
                 <div
-                  className={`absolute inset-0 h-full w-full border-[3px] md:border-4 border-black bg-black p-6 md:p-8 text-white rounded-2xl [backface-visibility:hidden] ${
-                    isAr ? "[transform:rotateY(-180deg)]" : "[transform:rotateY(180deg)]"
+                  className={`absolute inset-0 h-full w-full border-4 border-black bg-black p-8 text-white rounded-2xl [backface-visibility:hidden] ${
+                    isAr
+                      ? "[transform:rotateY(-180deg)]"
+                      : "[transform:rotateY(180deg)]"
                   }`}
                 >
                   <div className="h-full flex flex-col justify-between">
-                    <div className="space-y-4">
-                      <div className="flex justify-between items-center border-b border-zinc-700 pb-2">
-                        <p className="text-[10px] text-[#00C950] uppercase font-bold tracking-widest">
-                          {t("Focus Area", "منطقة التركيز")}
+                    <div className="space-y-6">
+                      <div className="flex justify-between items-center border-b border-zinc-800 pb-3">
+                        <p className="text-[10px] text-[#00C950] uppercase font-black tracking-widest">
+                          {t("Core Focus", "التركيز الأساسي")}
                         </p>
                       </div>
                       <p
-                        className={`text-base md:text-xl uppercase leading-tight font-black tracking-tight italic ${
-                          isAr ? "text-right" : "text-left"
-                        }`}
+                        className={`text-xl md:text-2xl uppercase leading-tight font-black tracking-tight italic ${isAr ? "text-right" : "text-left"}`}
                       >
                         {tech.focus}
                       </p>
                     </div>
 
-                    <div className="pt-4 border-t border-zinc-800 flex flex-col gap-3">
-                      <span className="text-[9px] text-zinc-500 font-bold uppercase">
-                        {t("Status", "الحالة")}
+                    <div className="pt-6 border-t border-zinc-900 flex flex-col gap-4">
+                      <span className="text-[10px] text-zinc-600 font-black uppercase tracking-widest">
+                        {t("Node_Status", "حالة_العقدة")}
                       </span>
-                      <div className="w-fit px-3 py-1.5 bg-[#00C950] text-black font-black rounded-lg uppercase tracking-tighter text-[10px]">
-                        {t("Verified_Skillset", "مهارة_معتمدة")}
+                      <div className="w-full text-center py-3 bg-[#00C950] text-black font-black rounded-xl uppercase tracking-tighter text-xs shadow-[4px_4px_0px_0px_white]">
+                        {t("Operational", "نشط_تعمل")}
                       </div>
                     </div>
                   </div>

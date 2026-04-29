@@ -12,29 +12,47 @@ export function TechTicker() {
     { name: "React.js", accent: "//" },
     { name: "Shopify", accent: "//" },
     { name: "Odoo ERP", accent: "//" },
+    { name: "TypeScript", accent: "//" },
+    { name: "Supabase", accent: "//" },
   ];
 
+  // Doubling the array to ensure no gaps during the infinite loop
+  const displayStack = [...techStack, ...techStack];
+
   return (
-    // Changed: Removed absolute positioning and z-index to let it flow in the flex container
-    <div className="w-full border-t-2 border-b-2 border-black bg-white py-1 overflow-hidden flex items-center h-12">
+    <div 
+      className="w-full border-y-4 border-black bg-white py-3 overflow-hidden flex items-center h-14 md:h-16 selection:bg-[#00C950] selection:text-black"
+      dir={isAr ? "rtl" : "ltr"}
+    >
       <motion.div
-        animate={{ x: isAr ? [1200, 0] : [0, -1200] }}
-        transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
-        className="flex gap-8 md:gap-12 text-[10px] md:text-[12px] font-black uppercase text-black whitespace-nowrap items-center font-mono"
+        animate={{ 
+          x: isAr ? ["0%", "50%"] : ["0%", "-50%"] 
+        }}
+        transition={{ 
+          repeat: Infinity, 
+          duration: 25, 
+          ease: "linear" 
+        }}
+        className="flex gap-10 md:gap-16 text-[11px] md:text-sm font-black uppercase text-black whitespace-nowrap items-center font-mono"
       >
-        {[...Array(6)].map((_, i) => (
-          <span key={i} className="flex items-center gap-4">
-            {techStack.map((tech, idx) => (
-              <span key={idx} className="flex gap-4">
-                <span>{tech.name}</span>
-                <span className="text-[#00C950]">{tech.accent}</span>
+        {[...Array(4)].map((_, i) => (
+          <div key={i} className="flex items-center gap-10 md:gap-16">
+            {displayStack.map((tech, idx) => (
+              <span key={`${i}-${idx}`} className="flex items-center gap-10 md:gap-16">
+                <span className="hover:text-[#00C950] transition-colors cursor-default">
+                  {tech.name}
+                </span>
+                <span className="text-[#00C950] font-bold">{tech.accent}</span>
               </span>
             ))}
-            <span className={`italic text-[#00C950] ${isAr ? "font-arabic" : ""}`}>
-              {t("UAE Based", "مقرنا في الإمارات")}
-            </span>
-            <span className="text-[#00C950]">//</span>
-          </span>
+            <div className="flex items-center gap-4 bg-black text-white px-4 py-1 rounded-full">
+              <span className="h-2 w-2 rounded-full bg-[#00C950] animate-pulse" />
+              <span className="italic tracking-widest text-[10px] md:text-xs">
+                {t("UAE_CORE_SYSTEMS", "أنظمة_الإمارات_الأساسية")}
+              </span>
+            </div>
+            <span className="text-[#00C950] font-bold">//</span>
+          </div>
         ))}
       </motion.div>
     </div>
