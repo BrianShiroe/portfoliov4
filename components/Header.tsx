@@ -6,10 +6,10 @@ import {usePathname, useRouter} from 'next/navigation';
 
 const navItems = [
   { en: "Home", ar: "الرئيسية", href: "#home" },
+  { en: "Projects", ar: "المشاريع", href: "#projects" },
   { en: "About", ar: "من أنا", href: "#about" },
   { en: "Skills", ar: "المهارات", href: "#skills" },
   { en: "Services", ar: "الخدمات", href: "#services" },
-  { en: "Projects", ar: "المشاريع", href: "#projects" },
   { en: "Experience", ar: "الخبرة", href: "#experience" },
   { en: "Contact", ar: "اتصل بنا", href: "#contact" },
 ];
