@@ -70,7 +70,7 @@ export function Projects() {
 
       <div className="mx-auto max-w-7xl relative z-10">
         {/* --- HEADER --- */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -79,12 +79,24 @@ export function Projects() {
         >
           <div className="flex items-center gap-3">
             <div className="h-[3px] w-12 bg-[#00C950] rounded-full shadow-[0_0_8px_#00C950]" />
-            <span className={`text-[11px] md:text-sm font-black text-zinc-500 uppercase tracking-[0.3em] ${isAr ? "mr-2" : "ml-2"}`}>
+            <span
+              className={`text-[11px] md:text-sm font-black text-zinc-500 uppercase tracking-[0.3em] ${isAr ? "mr-2" : "ml-2"}`}
+            >
               {t("Case Studies", "دراسات الحالة")}
             </span>
           </div>
-          <h2 className={`font-black uppercase tracking-tighter text-black ${isAr ? "text-4xl md:text-5xl lg:text-6xl leading-[1.2]" : "text-4xl md:text-6xl lg:text-7xl leading-none"}`}>
-            {isAr ? <>أبرز_<span className="text-[#00C950]">المشاريع</span></> : <>Top_<span className="text-[#00C950]">Projects</span></>}
+          <h2
+            className={`font-black uppercase tracking-tighter text-black ${isAr ? "text-4xl md:text-5xl lg:text-6xl leading-[1.2]" : "text-4xl md:text-6xl lg:text-7xl leading-none"}`}
+          >
+            {isAr ? (
+              <>
+                أبرز_<span className="text-[#00C950]">المشاريع</span>
+              </>
+            ) : (
+              <>
+                Top_<span className="text-[#00C950]">Projects</span>
+              </>
+            )}
           </h2>
         </motion.div>
 
@@ -100,10 +112,10 @@ export function Projects() {
                 initial={{ opacity: 0, x: xOffset }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
-                transition={{ 
-                  duration: 1, 
+                transition={{
+                  duration: 1,
                   delay: index * 0.1, // Staggered delay for cascading effect
-                  ease: [0.25, 1, 0.5, 1] // Smooth out-expo easing
+                  ease: [0.25, 1, 0.5, 1], // Smooth out-expo easing
                 }}
                 className={`flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"} gap-12 md:gap-24 items-center`}
               >
@@ -119,11 +131,26 @@ export function Projects() {
                           className="object-cover transition-transform duration-1000 group-hover:scale-105"
                           quality={95}
                           priority={index === 0}
+                          // Added sizes prop for performance optimization
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 65vw"
                         />
                       ) : (
                         <div className="w-full h-full bg-zinc-900 flex flex-col items-center justify-center p-12 text-center group-hover:bg-black transition-colors">
-                          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="mb-6 text-[#00C950]"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-                          <p className="text-white font-black text-xs uppercase tracking-widest">{t("Source Code Secure", "الكود المصدري مؤمن")}</p>
+                          <svg
+                            width="48"
+                            height="48"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            className="mb-6 text-[#00C950]"
+                          >
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                          </svg>
+                          <p className="text-white font-black text-xs uppercase tracking-widest">
+                            {t("Source Code Secure", "الكود المصدري مؤمن")}
+                          </p>
                         </div>
                       )}
                     </div>
@@ -135,7 +162,9 @@ export function Projects() {
                   <div className="space-y-4">
                     <div className={`flex items-center gap-3 ${isEven ? "justify-start" : "md:justify-end"}`}>
                       <span className="text-xs font-black text-white bg-black px-2 py-1 rounded-[4px]">{work.id}</span>
-                      <span className="text-[10px] font-black text-[#00C950] tracking-[0.3em] uppercase">{work.tag}</span>
+                      <span className="text-[10px] font-black text-[#00C950] tracking-[0.3em] uppercase">
+                        {work.tag}
+                      </span>
                     </div>
                     <h3 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-black leading-none">
                       {work.title}
@@ -148,12 +177,23 @@ export function Projects() {
                   <div className="pt-4 flex flex-col gap-6">
                     <p className="text-[10px] font-bold text-zinc-400 tracking-[0.2em] uppercase">{work.tech}</p>
                     <div className={`flex ${isEven ? "justify-start" : "md:justify-end"}`}>
-                      <Link href={work.href} target="_blank" className="group/btn relative inline-flex items-center gap-4">
+                      <Link
+                        href={work.href}
+                        target="_blank"
+                        className="group/btn relative inline-flex items-center gap-4"
+                      >
                         <span className="text-xs font-black uppercase tracking-tight group-hover:text-[#00C950] transition-colors">
                           {t("Exploration", "استكشاف")}
                         </span>
                         <div className="h-12 w-12 bg-black text-white rounded-[12px] flex items-center justify-center group-hover/btn:bg-[#00C950] group-hover/btn:text-black transition-all shadow-lg group-hover/btn:rotate-12">
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5">
+                          <svg
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="3.5"
+                          >
                             <path d={isAr ? "M17 7L7 17M7 17h10M7 17V7" : "M7 17L17 7M17 7H7M17 7V17"} />
                           </svg>
                         </div>
