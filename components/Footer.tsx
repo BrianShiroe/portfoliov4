@@ -1,11 +1,11 @@
 "use client";
-import React from 'react';
-import { useLocale } from 'next-intl';
-import { motion, Variants } from 'framer-motion';
+import React from "react";
+import { useLocale } from "next-intl";
+import { motion, Variants } from "framer-motion";
 
 export function Footer() {
   const locale = useLocale();
-  const isAr = locale === 'ar';
+  const isAr = locale === "ar";
   const t = (en: string, ar: string) => (isAr ? ar : en);
 
   // --- Animation Variants with Explicit Typing ---
@@ -25,10 +25,10 @@ export function Footer() {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { 
-        duration: 0.8, 
+      transition: {
+        duration: 0.8,
         // Using "as const" or explicit Variants type fixes the number[] error
-        ease: [0.16, 1, 0.3, 1] 
+        ease: [0.16, 1, 0.3, 1],
       },
     },
   };
@@ -64,7 +64,7 @@ export function Footer() {
   return (
     <footer className="w-full bg-white font-mono" dir={isAr ? "rtl" : "ltr"}>
       <div className="w-full border-t-[8px] md:border-t-[12px] border-black bg-black py-16 md:py-24 px-5 md:px-6 text-white">
-        <motion.div 
+        <motion.div
           className="mx-auto max-w-7xl"
           variants={containerVariants}
           initial="hidden"
@@ -72,7 +72,6 @@ export function Footer() {
           viewport={{ once: true, margin: "-50px" }}
         >
           <div className="flex flex-col lg:flex-row justify-between items-start gap-16 lg:gap-20">
-            
             {/* IDENTITY SECTION */}
             <motion.div variants={itemVariants} className="flex flex-col items-start w-full lg:w-1/3">
               <div className="flex flex-col">
@@ -80,7 +79,7 @@ export function Footer() {
                   BrianHaw
                 </span>
                 <span className="text-zinc-500 font-bold text-xs uppercase tracking-[0.2em] mt-2">
-                  {t("IT Specialist", "أخصائي تقنية معلومات")}
+                  {t("Web Developer", "مطور ويب")}
                 </span>
               </div>
 
@@ -113,11 +112,11 @@ export function Footer() {
                     whileHover={{ y: -4 }}
                     className="group bg-zinc-900 h-12 w-12 flex items-center justify-center rounded-xl border border-zinc-800 hover:border-[#00C950] transition-colors"
                   >
-                    <div 
+                    <div
                       className="h-5 w-5 bg-white group-hover:bg-[#00C950] transition-colors"
-                      style={{ 
-                        mask: `url(/icons/${social.id}.svg) no-repeat center / contain`, 
-                        WebkitMask: `url(/icons/${social.id}.svg) no-repeat center / contain` 
+                      style={{
+                        mask: `url(/icons/${social.id}.svg) no-repeat center / contain`,
+                        WebkitMask: `url(/icons/${social.id}.svg) no-repeat center / contain`,
                       }}
                     />
                   </motion.a>
@@ -149,7 +148,9 @@ export function Footer() {
             {/* ACTION SECTION */}
             <motion.div variants={itemVariants} className="flex flex-col items-start lg:items-end w-full lg:w-auto">
               <div className="space-y-6 w-full lg:w-auto">
-                <p className={`text-zinc-500 text-xs font-bold uppercase tracking-widest ${isAr ? "text-right" : "text-left lg:text-right"}`}>
+                <p
+                  className={`text-zinc-500 text-xs font-bold uppercase tracking-widest ${isAr ? "text-right" : "text-left lg:text-right"}`}
+                >
                   {t("Based in Dubai, UAE", "مقرنا في دبي، الإمارات")}
                 </p>
                 <motion.a
@@ -166,7 +167,7 @@ export function Footer() {
           </div>
 
           {/* BOTTOM BAR */}
-          <motion.div 
+          <motion.div
             variants={itemVariants}
             className="mt-24 pt-12 border-t border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-8"
           >
@@ -178,13 +179,10 @@ export function Footer() {
                 {t("Next.js // Odoo // SEO Specialist", "نكست جي إس // أودو // خبير سيو")}
               </span>
             </div>
-            
+
             <div className="flex gap-2">
               {[...Array(6)].map((_, i) => (
-                <div 
-                  key={i} 
-                  className={`h-1.5 w-8 rounded-full ${i === 0 ? "bg-[#00C950]" : "bg-zinc-800"}`} 
-                />
+                <div key={i} className={`h-1.5 w-8 rounded-full ${i === 0 ? "bg-[#00C950]" : "bg-zinc-800"}`} />
               ))}
             </div>
 
