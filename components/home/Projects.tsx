@@ -18,6 +18,7 @@ export function Projects() {
       tech: "Next.js / Supabase / Stripe",
       href: "https://gametree.vercel.app/",
       image: "/images/gametree/thumbnail.png",
+      isUnderDevelopment: true,
       description: t(
         "A comprehensive e-commerce ecosystem featuring dedicated workflows for visitors, customers, and admins. Includes integrated Stripe payments, dynamic shipping calculations, and a full administrative suite for product management.",
         "نظام متكامل للتجارة الإلكترونية يوفر مسارات عمل مخصصة للزوار والعملاء والمديرين. يتضمن عمليات دفع عبر Stripe، حساب تلقائي لرسوم الشحن، ولوحة تحكم شاملة لإدارة وتعديل المنتجات.",
@@ -25,6 +26,19 @@ export function Projects() {
     },
     {
       id: "02",
+      title: "Noor Label",
+      tag: t("FASHION ARCHIVE", "أرشيف الأزياء"),
+      tech: "Next.js / Shopify / Framer Motion",
+      href: "https://noor-label.vercel.app/",
+      image: "/images/noor-label/thumbnail.png",
+      isUnderDevelopment: true,
+      description: t(
+        "A premium fashion portfolio showcasing architectural silhouettes and modest luxury. Focuses on high-end visual storytelling, scroll-based animations, and a minimalist aesthetic rooted in Dubai's design culture.",
+        "بورتفوليو متميز للأزياء يعرض تصاميم معمارية وفخامة محتشمة. يركز على السرد البصري الراقي، وتفاعلات التمرير، وجمالية بسيطة مستوحاة من ثقافة التصميم في دبي.",
+      ),
+    },
+    {
+      id: "03",
       title: "Zhel Jewelry",
       tag: t("DIGITAL CATALOG", "كتالوج رقمي"),
       tech: "Next.js / Tailwind / Framer",
@@ -36,7 +50,7 @@ export function Projects() {
       ),
     },
     {
-      id: "03",
+      id: "04",
       title: "Blackscale",
       tag: t("MODERN REAL ESTATE", "عقارات عصرية"),
       tech: "Next.js / Tailwind / UI/UX",
@@ -48,7 +62,7 @@ export function Projects() {
       ),
     },
     {
-      id: "04",
+      id: "05",
       title: "LUKA AI",
       tag: t("AI SAFETY SYSTEM", "نظام أمان ذكي"),
       tech: "Python / YOLOv11 / OpenCV",
@@ -67,7 +81,6 @@ export function Projects() {
       className="w-full bg-[#FAFAFA] py-32 px-6 font-mono relative overflow-hidden"
       dir={isAr ? "rtl" : "ltr"}
     >
-      {/* Background Noise Texture */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
       <div className="mx-auto max-w-7xl relative z-10">
@@ -110,16 +123,9 @@ function ProjectItem({ work, index, isAr, t }: any) {
     offset: ["start end", "end start"],
   });
 
-  // Slide in from 200px to 0, and STAY at 0 as you scroll further down.
-  const rawX = useTransform(
-    scrollYProgress,
-    [0, 0.4], 
-    [isEven ? -200 : 200, 0]
-  );
-
+  const rawX = useTransform(scrollYProgress, [0, 0.4], [isEven ? -200 : 200, 0]);
   const rawOpacity = useTransform(scrollYProgress, [0, 0.25], [0, 1]);
 
-  // Spring physics for smoother, non-linear scrolling reaction
   const x = useSpring(rawX, { stiffness: 80, damping: 25, restDelta: 0.001 });
   const opacity = useSpring(rawOpacity, { stiffness: 80, damping: 25 });
 
@@ -130,7 +136,14 @@ function ProjectItem({ work, index, isAr, t }: any) {
       className={`flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"} gap-12 md:gap-24 items-center`}
     >
       {/* Image Side */}
-      <div className="w-full md:w-[65%] group">
+      <div className="w-full md:w-[65%] group relative">
+        {/* Under Development Badge */}
+        {work.isUnderDevelopment && (
+          <div className="absolute -top-4 -right-4 z-20 bg-black text-white text-[10px] font-black px-4 py-2 border-[2px] border-[#00C950] shadow-[4px_4px_0px_0px_#00C950] uppercase tracking-widest rotate-3">
+            {t("Under Development", "قيد التطوير")}
+          </div>
+        )}
+        
         <Link href={work.href} target="_blank">
           <div className="relative aspect-[1.92/1] bg-white border-[3px] border-black rounded-[15px] overflow-hidden shadow-[15px_15px_0px_0px_#000] group-hover:shadow-[10px_10px_0px_0px_#00C950] group-hover:-translate-y-2 transition-all duration-500">
             {work.image ? (
