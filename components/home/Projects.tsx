@@ -28,7 +28,7 @@ export function Projects() {
       id: "02",
       title: "Noor Label",
       tag: t("FASHION ARCHIVE", "أرشيف الأزياء"),
-      tech: "Next.js / Shopify / Framer Motion",
+      tech: "Next.js / Shopify / Headless Commerce",
       href: "https://noor-label.vercel.app/",
       image: "/images/noor-label/thumbnail.png",
       isUnderDevelopment: true,
