@@ -1,3 +1,4 @@
+﻿// components\home\Skills.tsx
 "use client";
 import React, { useLayoutEffect, useRef } from "react";
 import { useLocale } from "next-intl";
@@ -101,7 +102,7 @@ export function Skills() {
             </span>
           </div>
 
-          <h2 className={`font-black uppercase tracking-tighter text-black ${isAr ? "text-6xl md:text-8xl" : "text-6xl md:text-9xl"} leading-[0.85]`}>
+          <h2 className={`font-black uppercase tracking-tighter text-black ${isAr ? "text-4xl md:text-5xl lg:text-6xl leading-[1.2]" : "text-4xl md:text-6xl lg:text-7xl leading-none"}`}>
             {isAr ? (
               <>ترسانة_<span className="text-[#00C950]">الخبرات</span></>
             ) : (

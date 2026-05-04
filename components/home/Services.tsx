@@ -1,3 +1,4 @@
+﻿// components\home\Services.tsx
 "use client";
 import { motion, Variants } from "framer-motion";
 import { ShoppingCart, Settings, Globe, Code2, Database, Layout } from "lucide-react";
@@ -95,7 +96,7 @@ export function Services() {
             </div>
 
             <h2
-              className={`font-black uppercase tracking-tighter text-black ${isAr ? "text-5xl md:text-7xl leading-[0.9]" : "text-5xl md:text-8xl leading-[0.8]"}`}
+              className={`font-black uppercase tracking-tighter text-black ${isAr ? "text-4xl md:text-5xl lg:text-6xl leading-[1.2]" : "text-4xl md:text-6xl lg:text-7xl leading-none"}`}
             >
               {isAr ? (
                 <>
