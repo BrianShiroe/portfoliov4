@@ -112,12 +112,24 @@ export function Projects() {
         >
           <div className="flex items-center gap-3">
             <div className="h-[3px] w-12 bg-[#00C950] rounded-full shadow-[0_0_8px_#00C950]" />
-            <span className={`text-[11px] md:text-sm font-black text-zinc-500 uppercase tracking-[0.3em] ${isAr ? "mr-2" : "ml-2"}`}>
-              {t("Case Studies", "دراسات الحالة")}
+            <span
+              className={`text-[11px] md:text-sm font-black text-zinc-500 uppercase tracking-[0.3em] ${isAr ? "mr-2" : "ml-2"}`}
+            >
+              {t("Personal Projects", "المشاريع الشخصية")}
             </span>
           </div>
-          <h2 className={`font-black uppercase tracking-tighter text-black ${isAr ? "text-4xl md:text-5xl lg:text-6xl leading-[1.2]" : "text-4xl md:text-6xl lg:text-7xl leading-none"}`}>
-            {isAr ? <>أبرز_<span className="text-[#00C950]">المشاريع</span></> : <>Top_<span className="text-[#00C950]">Projects</span></>}
+          <h2
+            className={`font-black uppercase tracking-tighter text-black ${isAr ? "text-4xl md:text-5xl lg:text-6xl leading-[1.2]" : "text-4xl md:text-6xl lg:text-7xl leading-none"}`}
+          >
+            {isAr ? (
+              <>
+                أبرز_<span className="text-[#00C950]">المشاريع</span>
+              </>
+            ) : (
+              <>
+                Top_<span className="text-[#00C950]">Projects</span>
+              </>
+            )}
           </h2>
         </motion.div>
 
@@ -160,7 +172,7 @@ function ProjectItem({ work, index, isAr, t }: any) {
             {t("Under Development", "قيد التطوير")}
           </div>
         )}
-        
+
         <Link href={work.href} target="_blank">
           <div className="relative aspect-[1.92/1] bg-white border-[3px] border-black rounded-[15px] overflow-hidden shadow-[15px_15px_0px_0px_#000] group-hover:shadow-[10px_10px_0px_0px_#00C950] group-hover:-translate-y-2 transition-all duration-500">
             {work.image ? (
@@ -175,7 +187,15 @@ function ProjectItem({ work, index, isAr, t }: any) {
               />
             ) : (
               <div className="w-full h-full bg-zinc-900 flex flex-col items-center justify-center p-12 text-center group-hover:bg-black transition-colors">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="mb-6 text-[#00C950]">
+                <svg
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  className="mb-6 text-[#00C950]"
+                >
                   <polyline points="16 18 22 12 16 6"></polyline>
                   <polyline points="8 6 2 12 8 18"></polyline>
                 </svg>
@@ -195,8 +215,12 @@ function ProjectItem({ work, index, isAr, t }: any) {
             <span className="text-xs font-black text-white bg-black px-2 py-1 rounded-[4px]">{work.id}</span>
             <span className="text-[10px] font-black text-[#00C950] tracking-[0.3em] uppercase">{work.tag}</span>
           </div>
-          <h3 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-black leading-none">{work.title}</h3>
-          <p className="text-sm font-medium text-zinc-500 leading-relaxed max-w-sm ml-0 mr-auto md:ml-auto md:mr-0">{work.description}</p>
+          <h3 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-black leading-none">
+            {work.title}
+          </h3>
+          <p className="text-sm font-medium text-zinc-500 leading-relaxed max-w-sm ml-0 mr-auto md:ml-auto md:mr-0">
+            {work.description}
+          </p>
         </div>
 
         <div className="pt-4 flex flex-col gap-6">
@@ -204,7 +228,9 @@ function ProjectItem({ work, index, isAr, t }: any) {
           <div className={`flex items-center gap-4 ${isEven ? "justify-start" : "md:justify-end"}`}>
             {/* Live Preview Button */}
             <Link href={work.href} target="_blank" className="group/btn relative inline-flex items-center gap-3">
-              <span className="text-[10px] font-black uppercase tracking-tight group-hover:text-[#00C950] transition-colors">{t("Live Demo", "معاينة")}</span>
+              <span className="text-[10px] font-black uppercase tracking-tight group-hover:text-[#00C950] transition-colors">
+                {t("Live Demo", "معاينة")}
+              </span>
               <div className="h-10 w-10 bg-black text-white rounded-[10px] flex items-center justify-center group-hover/btn:bg-[#00C950] group-hover/btn:text-black transition-all shadow-lg group-hover/btn:rotate-12">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
                   <path d={isAr ? "M17 7L7 17M7 17h10M7 17V7" : "M7 17L17 7M17 7H7M17 7V17"} />
@@ -215,10 +241,12 @@ function ProjectItem({ work, index, isAr, t }: any) {
             {/* GitHub Button */}
             {work.github && (
               <Link href={work.github} target="_blank" className="group/git relative inline-flex items-center gap-3">
-                <span className="text-[10px] font-black uppercase tracking-tight group-hover:text-[#00C950] transition-colors">{t("Code", "الكود")}</span>
+                <span className="text-[10px] font-black uppercase tracking-tight group-hover:text-[#00C950] transition-colors">
+                  {t("Code", "الكود")}
+                </span>
                 <div className="h-10 w-10 border-2 border-black rounded-[10px] flex items-center justify-center group-hover/git:bg-black group-hover/git:text-[#00C950] transition-all">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.042-1.416-4.042-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.042-1.416-4.042-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                   </svg>
                 </div>
               </Link>
