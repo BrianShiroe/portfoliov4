@@ -32,11 +32,11 @@ export function Hero() {
   };
 
   const focusItems = [
-    t("Frontend Dev", "تطوير الواجهة الأمامية"),
-    t("Full Stack Dev", "التطوير المتكامل"),
-    t("ERP Integration", "تكامل أنظمة ERP"),
-    t("Digital Marketing", "التسويق الرقمي"),
-    t("Shopify Ecommerce", "تجارة شوبيفاي الإلكترونية"),
+    t("Full Stack Dev", "تطوير ويب متكامل"),
+    t("Agentic AI Workflows", "سير عمل الذكاء الاصطناعي"),
+    t("Headless E-commerce", "تجارة إلكترونية متطورة"),
+    t("Cloud Infrastructure", "البنية التحتية السحابية"),
+    t("ERP Customization", "تخصيص أنظمة ERP"),
   ];
 
   // --- ANIMATION VARIANTS ---
@@ -58,7 +58,7 @@ export function Hero() {
       y: 0, 
       transition: { 
         duration: 0.8, 
-        ease: [0.16, 1, 0.3, 1] // Fixed: Validated by Variants type
+        ease: [0.16, 1, 0.3, 1] 
       } 
     }
   };
@@ -92,7 +92,7 @@ export function Hero() {
               <span
                 className={`text-[13px] font-black border-b-2 border-black w-full block pb-2 tracking-[0.15em] uppercase text-black ${isAr ? "text-right" : "text-left"}`}
               >
-                {t("Active Focus", "التركيز الحالي")}
+                {t("Current Focus", "التركيز الحالي")}
               </span>
               <div className="space-y-2.5 text-[13px] text-zinc-800 uppercase font-bold leading-tight">
                 {focusItems.map((item) => (
@@ -114,8 +114,8 @@ export function Hero() {
 
               <div className="mb-6 inline-block bg-black px-4 py-1.5 rounded-full text-[9px] md:text-[11px] font-bold font-mono uppercase tracking-[0.2em] text-white">
                 {t(
-                  "Web Developer & Digital Marketing in Dubai",
-                  "مطور ويب وتسويق رقمي في دبي",
+                  "Full-Stack Developer & Infrastructure Expert",
+                  "مطور ويب متكامل وخبير بنية تحتية",
                 )}
               </div>
 
@@ -124,11 +124,11 @@ export function Hero() {
               >
                 {isAr ? (
                   <>
-                    برايان <br /> <span className="text-[#00C950]">شيرو</span>
+                    برايان <br /> <span className="text-[#00C950]">هاو</span>
                   </>
                 ) : (
                   <>
-                    Brian <br /> <span className="text-[#00C950]">Shiroe</span>
+                    Brian <br /> <span className="text-[#00C950]">Haw</span>
                   </>
                 )}
               </h1>
@@ -136,7 +136,7 @@ export function Hero() {
               <div className="flex items-center justify-center gap-2 md:gap-3 mb-8">
                 <div className="h-[1px] w-4 md:w-8 bg-black/20" />
                 <span className="text-[10px] md:text-sm font-black uppercase tracking-[0.2em] text-black italic">
-                  Brian Ong Haw
+                  Solutions Architect
                 </span>
                 <div className="h-[1px] w-4 md:w-8 bg-black/20" />
               </div>

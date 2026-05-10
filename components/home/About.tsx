@@ -19,8 +19,8 @@ export function About() {
       icon: "◆",
     },
     {
-      title: t("Leadership", "القيادة"),
-      subtitle: t("Project Coordination", "تنسيق المشاريع"),
+      title: t("Top 20 AppCon", "أفضل ٢٠ في AppCon"),
+      subtitle: t("Innovation Award", "جائزة الابتكار"),
       icon: "▲",
     },
   ];
@@ -91,10 +91,8 @@ export function About() {
                   <span className="text-black">{t("Brian Haw", "برايان هو")}</span>
                 </li>
                 <li className="flex justify-between">
-                  <span className="text-zinc-400">{t("Education:", "التعليم:")}</span>
-                  <span className="text-black">
-                    {t("Computer Science", "علوم الحاسوب")}
-                  </span>
+                  <span className="text-zinc-400">{t("Role:", "الدور:")}</span>
+                  <span className="text-black">{t("Full-Stack Dev", "مطور متكامل")}</span>
                 </li>
                 <li className="flex justify-between">
                   <span className="text-zinc-400">{t("Location:", "الموقع:")}</span>
@@ -149,7 +147,7 @@ export function About() {
           <div className="lg:col-span-8">
             <div className="space-y-6">
               <motion.div variants={itemVariants} className="inline-block bg-black text-white px-4 py-1.5 rounded-full text-[12px] md:text-[13px] font-black uppercase tracking-widest mb-4">
-                {t("Professional Bio", "السيرة المهنية")}
+                {t("About Me", "عني")}
               </motion.div>
 
               <motion.h2
@@ -163,13 +161,13 @@ export function About() {
               >
                 {isAr ? (
                   <>
-                    ابتكار <br />{" "}
-                    <span className="text-[#00C950]">مستقبل_رقمي</span>
+                    هندسة <br />{" "}
+                    <span className="text-[#00C950]">الحلول_الرقمية</span>
                   </>
                 ) : (
                   <>
-                    Driving <br />{" "}
-                    <span className="text-[#00C950]">Digital_Tech</span>
+                    Building <br />{" "}
+                    <span className="text-[#00C950]">Modern_Web</span>
                   </>
                 )}
               </motion.h2>
@@ -181,8 +179,8 @@ export function About() {
                 }`}
               >
                 {t(
-                  "IT Professional and Web Developer focused on scaling businesses through high-impact online platforms and optimized digital management.",
-                  "أخصائي تقنية معلومات ومطور ويب أركز على تطوير الأعمال من خلال منصات رقمية عالية التأثير وإدارة رقمية محسنة."
+                  "Full-Stack Developer with 3+ years of experience specializing in high-performance headless e-commerce and AI-accelerated workflows.",
+                  "مطور ويب متكامل بخبرة تزيد عن ٣ سنوات متخصص في التجارة الإلكترونية عالية الأداء وسير العمل المعزز بالذكاء الاصطناعي."
                 )}
               </motion.p>
 
@@ -196,14 +194,14 @@ export function About() {
               >
                 <p>
                   {t(
-                    '"Dubai-based expert in high-performance e-commerce and custom web development. I extend business capabilities beyond the frontend by implementing Odoo ERP systems to automate and streamline core operations."',
-                    '"خبير في التجارة الإلكترونية عالية الأداء وتطوير الويب المخصص ومقري في دبي. أعمل على توسيع قدرات الأعمال إلى ما هو أبعد من الواجهة الأمامية من خلال تنفيذ أنظمة Odoo ERP لأتمتة العمليات الأساسية."'
+                    '"I bridge the gap between premium frontend design and scalable infrastructure. By leveraging Next.js, Cloudflare, and Agentic AI, I deliver robust e-commerce solutions that move the needle for businesses."',
+                    '"أعمل على سد الفجوة بين التصميم المتميز والبنية التحتية القابلة للتوسع. من خلال الاستفادة من Next.js وCloudflare والذكاء الاصطناعي، أقدم حلولاً قوية للتجارة الإلكترونية تحقق نتائج ملموسة للأعمال."'
                   )}
                 </p>
                 <p>
                   {t(
-                    '"I bridge the gap between creative design and technical execution, engineering intuitive user experiences that balance aesthetic appeal with robust, practical functionality."',
-                    '"أعمل على سد الفجوة بين التصميم الإبداعي والتنفيذ التقني، من خلال هندسة تجارب مستخدم بديهية توازن بين الجمال الوظيفي والمتانة العملية."'
+                    '"My approach extends beyond the browser. I integrate custom Odoo ERP logic and serverless backend systems to automate operations, ensuring that the digital storefront is as efficient as it is beautiful."',
+                    '"نهجي يتجاوز المتصفح. أقوم بدمج منطق Odoo ERP المخصص وأنظمة الخلفية البرمجية السحابية لأتمتة العمليات، مما يضمن أن يكون المتجر الرقمي فعالاً بقدر جماله."'
                   )}
                 </p>
               </motion.div>
@@ -218,13 +216,13 @@ export function About() {
                 <div className="flex gap-2 mb-4">
                   <span className="h-2 w-2 bg-[#00C950] rounded-full shadow-[0_0_8px_#00C950]" />
                   <span className="text-[12px] font-black uppercase text-black">
-                    {t("Work Ethic", "أخلاقيات العمل")}
+                    {t("Mission", "المهمة")}
                   </span>
                 </div>
                 <p className="text-zinc-800 font-bold uppercase text-[12px] md:text-[14px]">
                   {t(
-                    "Dedicated to exceeding client expectations through transparent communication and meticulous detail. I deliver reliable, data-driven solutions designed for measurable success and long-term satisfaction.",
-                    "ملتزم بتجاوز توقعات العملاء من خلال التواصل الشفاف والاهتمام الدقيق بالتفاصيل. أقدم حلولاً موثوقة قائمة على البيانات مصممة للنجاح الملموس والرضا على المدى الطويل."
+                    "Focused on delivering lightning-fast, secure, and user-centric web applications. I combine 20+ projects of delivery experience with a deep understanding of modern DevOps to build the future of commerce.",
+                    "أركز على تقديم تطبيقات ويب سريعة البرق وآمنة وتتمحور حول المستخدم. أجمع بين خبرة تسليم أكثر من ٢٠ مشروعاً وفهم عميق للعمليات السحابية الحديثة لبناء مستقبل التجارة."
                   )}
                 </p>
                 <motion.span
