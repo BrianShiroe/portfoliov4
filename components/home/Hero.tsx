@@ -44,23 +44,23 @@ export function Hero() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { 
-        staggerChildren: 0.15, 
-        delayChildren: 0.2 
-      }
-    }
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
+      },
+    },
   };
 
   const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { 
-        duration: 0.8, 
-        ease: [0.16, 1, 0.3, 1] 
-      } 
-    }
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.16, 1, 0.3, 1],
+      },
+    },
   };
 
   return (
@@ -78,14 +78,13 @@ export function Hero() {
         }}
       />
 
-      <motion.div 
+      <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
         className="relative z-10 mx-auto w-full max-w-7xl px-4 md:px-10 flex flex-col items-center justify-center"
       >
         <div className="flex flex-col lg:flex-row items-center justify-between w-full gap-10 lg:gap-16">
-          
           {/* LEFT SIDE: ACTIVE FOCUS */}
           <motion.div variants={itemVariants} className="hidden xl:flex flex-col gap-10 w-64">
             <div className="space-y-4">
@@ -97,8 +96,7 @@ export function Hero() {
               <div className="space-y-2.5 text-[13px] text-zinc-800 uppercase font-bold leading-tight">
                 {focusItems.map((item) => (
                   <p key={item} className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#00C950]" />{" "}
-                    {item}
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#00C950]" /> {item}
                   </p>
                 ))}
               </div>
@@ -113,10 +111,7 @@ export function Hero() {
               />
 
               <div className="mb-6 inline-block bg-black px-4 py-1.5 rounded-full text-[9px] md:text-[11px] font-bold font-mono uppercase tracking-[0.2em] text-white">
-                {t(
-                  "Full-Stack Developer & Infrastructure Expert",
-                  "مطور ويب متكامل وخبير بنية تحتية",
-                )}
+                {t("Full-Stack Developer & Infrastructure Expert", "مطور ويب متكامل وخبير بنية تحتية")}
               </div>
 
               <h1
@@ -136,7 +131,7 @@ export function Hero() {
               <div className="flex items-center justify-center gap-2 md:gap-3 mb-8">
                 <div className="h-[1px] w-4 md:w-8 bg-black/20" />
                 <span className="text-[10px] md:text-sm font-black uppercase tracking-[0.2em] text-black italic">
-                  Solutions Architect
+                  Full-Stack Engineer
                 </span>
                 <div className="h-[1px] w-4 md:w-8 bg-black/20" />
               </div>
@@ -202,7 +197,10 @@ export function Hero() {
             </motion.div>
 
             {/* ACTIONS */}
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 w-full max-w-[260px] sm:max-w-md">
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-col sm:flex-row gap-4 w-full max-w-[260px] sm:max-w-md"
+            >
               <motion.button
                 whileHover={{
                   scale: 1.02,
@@ -211,11 +209,7 @@ export function Hero() {
                 }}
                 whileTap={{ scale: 0.95 }}
                 transition={btnTransition}
-                onClick={() =>
-                  document
-                    .getElementById("projects")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
+                onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
                 className="w-full bg-black text-white py-4 px-6 rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] cursor-pointer select-none"
               >
                 {t("View Projects", "مشاهدة المشاريع")}
@@ -228,11 +222,7 @@ export function Hero() {
                 }}
                 whileTap={{ scale: 0.95 }}
                 transition={btnTransition}
-                onClick={() =>
-                  document
-                    .getElementById("contact")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
+                onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
                 className="w-full border-2 border-black bg-white py-4 px-6 rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)] cursor-pointer select-none"
               >
                 {t("Contact Me", "تواصل معي")}
@@ -252,9 +242,7 @@ export function Hero() {
                 </span>
                 <div className="flex items-center justify-center gap-2 mt-1">
                   <span className="h-1.5 w-1.5 bg-[#00C950] rounded-full animate-pulse" />
-                  <span className="text-[9px] font-black uppercase text-zinc-400">
-                    {t("Dubai Time", "توقيت دبي")}
-                  </span>
+                  <span className="text-[9px] font-black uppercase text-zinc-400">{t("Dubai Time", "توقيت دبي")}</span>
                 </div>
               </div>
             </div>
