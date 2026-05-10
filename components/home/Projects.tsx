@@ -27,16 +27,16 @@ export function Projects() {
     },
     {
       id: "02",
-      title: "Noor Label",
-      tag: t("FASHION ARCHIVE", "أرشيف الأزياء"),
-      tech: "Next.js / Shopify / Headless Commerce",
-      href: "https://noor-label.vercel.app/",
-      github: "https://github.com/BrianShiroe/noor-label-next.js-shopify-ecommerce-website",
-      image: "/images/noor-label/thumbnail.png",
+      title: "AURAX",
+      tag: t("LUXURY FOOTWEAR", "أحذية فاخرة"),
+      tech: "React / Framer Motion / Tailwind",
+      href: "https://aurax-luxury-footwear-landing-page.vercel.app/",
+      github: "https://github.com/BrianShiroe/aurax-luxury-footwear-landing-page",
+      image: "/images/aurax/thumbnail.png",
       isUnderDevelopment: true,
       description: t(
-        "A premium fashion portfolio showcasing architectural silhouettes and modest luxury. Focuses on high-end visual storytelling, scroll-based animations, and a minimalist aesthetic rooted in Dubai's design culture.",
-        "بورتفوليو متميز للأزياء يعرض تصاميم معمارية وفخامة محتشمة. يركز على السرد البصري الراقي، وتفاعلات التمرير، وجمالية بسيطة مستوحاة من ثقافة التصميم في دبي.",
+        "A high-end digital showroom for luxury footwear, featuring immersive scroll-based animations, architectural layouts, and a fluid user experience designed for premium retail storytelling.",
+        "معرض رقمي متطور للأحذية الفاخرة، يتميز برسوم متحركة غامرة تعتمد على التمرير، وتنسيقات معمارية، وتجربة مستخدم سلسة مصممة لسرد قصص العلامات التجارية الراقية."
       ),
     },
     {
@@ -54,6 +54,20 @@ export function Projects() {
     },
     {
       id: "04",
+      title: "Noor Label",
+      tag: t("FASHION ARCHIVE", "أرشيف الأزياء"),
+      tech: "Next.js / Shopify / Headless Commerce",
+      href: "https://noor-label.vercel.app/",
+      github: "https://github.com/BrianShiroe/noor-label-next.js-shopify-ecommerce-website",
+      image: "/images/noor-label/thumbnail.png",
+      isUnderDevelopment: true,
+      description: t(
+        "A premium fashion portfolio showcasing architectural silhouettes and modest luxury. Focuses on high-end visual storytelling, scroll-based animations, and a minimalist aesthetic rooted in Dubai's design culture.",
+        "بورتفوليو متميز للأزياء يعرض تصاميم معمارية وفخامة محتشمة. يركز على السرد البصري الراقي، وتفاعلات التمرير، وجمالية بسيطة مستوحاة من ثقافة التصميم في دبي.",
+      ),
+    },
+    {
+      id: "05",
       title: "Zhel Jewelry",
       tag: t("DIGITAL CATALOG", "كتالوج رقمي"),
       tech: "Next.js / Tailwind / Framer",
@@ -66,7 +80,7 @@ export function Projects() {
       ),
     },
     {
-      id: "05",
+      id: "06",
       title: "Blackscale",
       tag: t("MODERN REAL ESTATE", "عقارات عصرية"),
       tech: "Next.js / Tailwind / UI/UX",
@@ -79,7 +93,7 @@ export function Projects() {
       ),
     },
     {
-      id: "06",
+      id: "07",
       title: "LUKA AI",
       tag: t("AI SAFETY SYSTEM", "نظام أمان ذكي"),
       tech: "Python / YOLOv11 / OpenCV",
