@@ -98,7 +98,7 @@ export function Header() {
               BrianHaw
             </span>
             <span className="text-[8px] md:text-[10px] font-bold text-zinc-400 uppercase tracking-widest mt-0.5">
-              {t("IT Specialist", "أخصائي تقنية معلومات")}
+              {t("Web Developer", "مطور ويب")}
             </span>
           </div>
         </a>
