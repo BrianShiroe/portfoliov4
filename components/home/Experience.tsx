@@ -9,46 +9,38 @@ export function Experience() {
 
   const history = [
     {
-      period: t("SEP 2025 – MAY 2026", "سبتمبر ٢٠٢٥ – مايو ٢٠٢٦"),
+      period: t("MAY 2025 – MAY 2026", "مايو ٢٠٢٥ – مايو ٢٠٢٦"),
       company: t("ITD INNOVATION", "آي تي دي للابتكار"),
       location: t("DUBAI, UAE", "دبي، الإمارات"),
-      role: t("Web Developer & Digital Marketing", "مطور ويب وتسويق رقمي"),
+      role: t("Full Stack Developer", "مطور فول ستاك"),
       status: t("CURRENT", "الحالي"),
-      stack: "React / Next.js / Odoo ERP / Shopify / WordPress / Tailwind CSS",
+      stack: "Next.js / Medusa.js / Cloudflare Workers / Odoo API / Agentic AI",
       tasks: [
-        t("Full-Stack Development", "تطوير كامل المواقع"),
-        t(
-          "Multilingual SEO (+500% Traffic)",
-          "سيو متعدد اللغات (+٥٠٠٪ حركة زوار)",
-        ),
-        t(
-          "E-Commerce & Payment Integration",
-          "التجارة الإلكترونية وتكامل الدفع",
-        ),
-        t("Odoo ERP & Accounting Ops", "نظام أودو والعمليات المحاسبية"),
-        t(
-          "Google Ecosystem (Ads/Merchant)",
-          "أدوات جوجل (إعلانات/مركز التجار)",
-        ),
-        t("Hosting & DNS Management", "إدارة الاستضافة ونظام الأسماء"),
-        t("UI/UX & Social Media Graphics", "واجهة المستخدم ورسوم التواصل"),
-        t("30+ Web Projects Delivered", "أكثر من ٣٠ مشروع ويب تم تسليمه"),
+        t("20+ E-commerce Storefronts Built", "بناء أكثر من ٢٠ متجر إلكتروني"),
+        t("Headless Commerce (Medusa/Shopify)", "تجارة بلا رأس (ميدوزا/شوبيفاي)"),
+        t("Infrastructure & DNS Management", "إدارة البنية التحتية والـ DNS"),
+        t("Agentic AI Automation (Cline/Ollama)", "أتمتة الذكاء الاصطناعي (Cline/Ollama)"),
+        t("Custom Odoo ERP Integrations", "تكاملات مخصصة لنظام أودو"),
+        t("Payment Gateway & Serverless Logic", "بوابات الدفع والمنطق البرمجي السحابي"),
+        t("CI/CD & High-Availability Systems", "أنظمة النشر المستمر والجاهزية العالية"),
       ],
       color: "text-black",
     },
     {
-      period: t("MAY 2024 – AUG 2024", "مايو ٢٠٢٤ – أغسطس ٢٠٢٤"),
-      company: "DPWH - OLONGAPO",
+      period: t("JUNE 2022 – AUG 2024", "يونيو ٢٠٢٢ – أغسطس ٢٠٢٤"),
+      company: "DPWH - PHILIPPINES",
       location: t("PHILIPPINES", "الفلبين"),
-      role: t("PHP Developer & IT Support", "مطور PHP ودعم فني"),
+      role: t("Web Developer & IT Admin", "مطور ويب ومسؤول تقني"),
       status: t("COMPLETED", "مكتمل"),
-      stack: "PHP / MySQL / HTML / CSS / JavaScript",
+      stack: "PostgreSQL / REST APIs / Technical SEO / RBAC / UI UX",
       tasks: [
-        t("Asset Management System", "نظام إدارة الأصول المادية"),
-        t("Backend & Auth Logic", "البرمجة الخلفية ومنطق المصادقة"),
-        t("Data Migration & Integrity", "ترحيل البيانات وسلامتها"),
-        t("IT Support & Infrastructure", "الدعم الفني والبنية التحتية"),
-        t("Printer & Network Config", "إعداد الطابعات والشبكات"),
+        t("Asset Management System Interface", "واجهة نظام إدارة الأصول"),
+        t("Full-Stack API Synchronization", "مزامنة البيانات عبر الـ APIs"),
+        t("PostgreSQL Schema & Migrations", "إدارة وتطوير قواعد البيانات"),
+        t("Technical SEO & Accessibility", "السيو التقني ومعايير الوصول"),
+        t("Role-Based Access Control", "نظام التحكم في الوصول القائم على الأدوار"),
+        t("Internal Security & Auth Protocols", "بروتوكولات الأمان والمصادقة"),
+        t("Network & Infrastructure Support", "دعم الشبكات والبنية التحتية"),
       ],
       color: "text-zinc-400",
     },
@@ -87,7 +79,6 @@ export function Experience() {
       >
         {/* --- HEADER --- */}
         <motion.div variants={itemVariants} className="mb-16 md:mb-24">
-          {/* TOP INDICATOR: BRAND CONSISTENCY */}
           <div className="flex items-center gap-3 mb-6">
             <div className="h-[3px] w-12 bg-[#00C950] rounded-full shadow-[0_0_8px_#00C950]" />
             <span
@@ -97,14 +88,9 @@ export function Experience() {
             </span>
           </div>
 
-          {/* H2 HEADER: UNIFIED TYPOGRAPHY SCALE */}
           <h2
             className={`font-black uppercase tracking-tighter text-black 
-      ${
-        isAr
-          ? "text-4xl md:text-5xl lg:text-6xl leading-[1.2]"
-          : "text-4xl md:text-6xl lg:text-7xl leading-none"
-      }`}
+      ${isAr ? "text-4xl md:text-5xl lg:text-6xl leading-[1.2]" : "text-4xl md:text-6xl lg:text-7xl leading-none"}`}
           >
             {isAr ? (
               <>
@@ -119,9 +105,7 @@ export function Experience() {
         </motion.div>
 
         {/* --- TIMELINE GRID --- */}
-        <div
-          className={`relative border-black/10 ${isAr ? "border-r-4 mr-1 md:mr-0" : "border-l-4 ml-1 md:ml-0"}`}
-        >
+        <div className={`relative border-black/10 ${isAr ? "border-r-4 mr-1 md:mr-0" : "border-l-4 ml-1 md:ml-0"}`}>
           {history.map((job, index) => (
             <motion.div
               key={job.company}
@@ -131,9 +115,7 @@ export function Experience() {
               {/* Timeline Marker */}
               <div
                 className={`absolute top-2 h-6 w-6 md:h-8 md:w-8 border-[3px] border-black bg-white rounded-full flex items-center justify-center transition-all group-hover:border-[#00C950] group-hover:scale-110 z-10 ${
-                  isAr
-                    ? "-right-[15px] md:-right-[20px]"
-                    : "-left-[15px] md:-left-[20px]"
+                  isAr ? "-right-[15px] md:-right-[20px]" : "-left-[15px] md:-left-[20px]"
                 }`}
               >
                 <div
@@ -146,28 +128,20 @@ export function Experience() {
                 <div className="lg:col-span-4 flex flex-col items-start">
                   <div
                     className={`px-4 py-2 bg-black text-white mb-4 rounded-xl font-black text-[10px] md:text-xs tracking-widest uppercase ${
-                      isAr
-                        ? "shadow-[-4px_4px_0px_0px_#00C950]"
-                        : "shadow-[4px_4px_0px_0px_#00C950]"
+                      isAr ? "shadow-[-4px_4px_0px_0px_#00C950]" : "shadow-[4px_4px_0px_0px_#00C950]"
                     }`}
                   >
                     {job.period}
                   </div>
 
                   <div className={`flex items-center gap-2 mb-6 ${job.color}`}>
-                    <span className="text-[10px] font-black uppercase tracking-widest">
-                      {job.status}
-                    </span>
-                    {index === 0 && (
-                      <span className="h-2 w-2 bg-[#00C950] rounded-full animate-ping" />
-                    )}
+                    <span className="text-[10px] font-black uppercase tracking-widest">{job.status}</span>
+                    {index === 0 && <span className="h-2 w-2 bg-[#00C950] rounded-full animate-ping" />}
                   </div>
 
                   <div className="p-5 border-2 border-black/5 bg-zinc-50/50 rounded-2xl w-full group-hover:border-[#00C950]/30 transition-colors">
                     <p className="text-[10px] font-bold text-zinc-500 uppercase leading-relaxed">
-                      <span className="text-black font-black block mb-1">
-                        {isAr ? "التقنيات" : "Stack"}:
-                      </span>
+                      <span className="text-black font-black block mb-1">{isAr ? "التقنيات" : "Stack"}:</span>
                       {job.stack}
                     </p>
                   </div>
@@ -176,13 +150,9 @@ export function Experience() {
                 {/* Content Column */}
                 <div className="lg:col-span-8">
                   <div className="flex flex-wrap items-center gap-3 mb-4 opacity-60">
-                    <span className="text-xs font-black text-black uppercase tracking-widest">
-                      {job.company}
-                    </span>
+                    <span className="text-xs font-black text-black uppercase tracking-widest">{job.company}</span>
                     <span className="h-1 w-1 bg-zinc-300 rounded-full" />
-                    <span className="text-xs font-bold text-zinc-400 uppercase tracking-widest">
-                      {job.location}
-                    </span>
+                    <span className="text-xs font-bold text-zinc-400 uppercase tracking-widest">{job.location}</span>
                   </div>
 
                   <h3
@@ -196,9 +166,7 @@ export function Experience() {
                       <span
                         key={task}
                         className={`text-[9px] md:text-xs font-black uppercase border-2 border-black px-4 py-2.5 rounded-xl transition-all bg-white hover:bg-black hover:text-[#00C950] ${
-                          isAr
-                            ? "shadow-[-3px_3px_0px_0px_#00C950]"
-                            : "shadow-[3px_3px_0px_0px_#00C950]"
+                          isAr ? "shadow-[-3px_3px_0px_0px_#00C950]" : "shadow-[3px_3px_0px_0px_#00C950]"
                         } hover:shadow-none hover:translate-y-0.5`}
                       >
                         {task}
@@ -221,10 +189,7 @@ export function Experience() {
           </span>
           <div className="flex gap-1.5">
             {[...Array(8)].map((_, i) => (
-              <div
-                key={i}
-                className={`h-5 w-[2.5px] bg-black rounded-full ${i % 4 === 0 ? "h-7 bg-[#00C950]" : ""}`}
-              />
+              <div key={i} className={`h-5 w-[2.5px] bg-black rounded-full ${i % 4 === 0 ? "h-7 bg-[#00C950]" : ""}`} />
             ))}
           </div>
         </motion.div>
