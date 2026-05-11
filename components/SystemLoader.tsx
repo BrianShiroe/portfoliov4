@@ -1,13 +1,11 @@
-﻿// portfolio\components\SystemLoader.tsx
-"use client";
-import React, {useEffect, useState} from 'react';
-import {AnimatePresence, motion} from 'framer-motion';
-import {useLocale} from 'next-intl';
+﻿"use client";
+import React, { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useAppStore } from '@/store/useStore'; // Import Zustand store
 
 export function SystemLoader() {
-  const locale = useLocale();
-  const isAr = locale === 'ar';
-  const t = (en: string, ar: string) => (isAr ? ar : en);
+  const { lang, t, setLoaded } = useAppStore(); // Access store actions and state
+  const isAr = lang === 'ar';
   
   const [progress, setProgress] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
@@ -40,7 +38,10 @@ export function SystemLoader() {
       setProgress((oldProgress) => {
         if (oldProgress >= 100) {
           clearInterval(timer);
-          setTimeout(() => setIsVisible(false), 1200);
+          // 1. Tell the global store that loading is finished
+          setLoaded(true); 
+          // 2. Hide the loader visual after a short delay for the exit animation
+          setTimeout(() => setIsVisible(false), 1200); 
           return 100;
         }
         const diff = Math.random() < 0.2 ? 0.5 : Math.random() * 18;
@@ -51,10 +52,10 @@ export function SystemLoader() {
     const hexTimer = setInterval(() => {
       setEntropy(
         "0x" +
-          Math.floor(Math.random() * 16777215)
-            .toString(16)
-            .toUpperCase()
-            .padStart(6, "0"),
+        Math.floor(Math.random() * 16777215)
+          .toString(16)
+          .toUpperCase()
+          .padStart(6, "0"),
       );
     }, 100);
 
@@ -67,7 +68,7 @@ export function SystemLoader() {
       clearInterval(hexTimer);
       clearInterval(logTimer);
     };
-  }, [logs.length]);
+  }, [logs.length, setLoaded]);
 
   return (
     <AnimatePresence>

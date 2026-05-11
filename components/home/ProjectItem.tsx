@@ -3,15 +3,16 @@ import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useAppStore } from "@/store/useStore"; // استخدام Zustand
 
 interface ProjectItemProps {
   work: any;
   index: number;
-  isAr: boolean;
-  t: (en: string, ar: string) => string;
 }
 
-export function ProjectItem({ work, index, isAr, t }: ProjectItemProps) {
+export function ProjectItem({ work, index }: ProjectItemProps) {
+  const { lang, t } = useAppStore();
+  const isAr = lang === "ar";
   const containerRef = useRef<HTMLDivElement>(null);
   const isEven = index % 2 === 0;
 
@@ -53,7 +54,7 @@ export function ProjectItem({ work, index, isAr, t }: ProjectItemProps) {
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 65vw"
               />
             ) : (
-              <div className="w-full h-full bg-zinc-900 flex flex-col items-center justify-center p-12 text-center group-hover:bg-black transition-colors">
+              <div className="w-full h-full bg-zinc-900 flex flex-col items-center justify-center p-12 text-center">
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="mb-6 text-[#00C950]">
                   <polyline points="16 18 22 12 16 6"></polyline>
                   <polyline points="8 6 2 12 8 18"></polyline>
@@ -77,7 +78,7 @@ export function ProjectItem({ work, index, isAr, t }: ProjectItemProps) {
           <h3 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-black leading-none">
             {work.title}
           </h3>
-          <p className="text-sm font-medium text-zinc-500 leading-relaxed max-w-sm ml-0 mr-auto md:ml-auto md:mr-0">
+          <p className={`text-sm font-medium text-zinc-500 leading-relaxed max-w-sm ${isEven ? "ml-0 mr-auto" : "md:ml-auto md:mr-0"}`}>
             {work.description}
           </p>
         </div>
@@ -85,17 +86,20 @@ export function ProjectItem({ work, index, isAr, t }: ProjectItemProps) {
         <div className="pt-4 flex flex-col gap-6">
           <p className="text-[10px] font-bold text-zinc-400 tracking-[0.2em] uppercase">{work.tech}</p>
           <div className={`flex items-center gap-4 ${isEven ? "justify-start" : "md:justify-end"}`}>
-            {/* Live Preview Button */}
-            <Link href={work.href} target="_blank" className="group/btn relative inline-flex items-center gap-3">
-              <span className="text-[10px] font-black uppercase tracking-tight group-hover:text-[#00C950] transition-colors">
-                {t("Live Demo", "معاينة")}
-              </span>
-              <div className="h-10 w-10 bg-black text-white rounded-[10px] flex items-center justify-center group-hover/btn:bg-[#00C950] group-hover/btn:text-black transition-all shadow-lg group-hover/btn:rotate-12">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                  <path d={isAr ? "M17 7L7 17M7 17h10M7 17V7" : "M7 17L17 7M17 7H7M17 7V17"} />
-                </svg>
-              </div>
-            </Link>
+            
+            {/* Live Preview Button - Only shown if link is not a GitHub repo (unless it's an AI project) */}
+            {!work.href.includes("github.com") && (
+              <Link href={work.href} target="_blank" className="group/btn relative inline-flex items-center gap-3">
+                <span className="text-[10px] font-black uppercase tracking-tight group-hover:text-[#00C950] transition-colors">
+                  {t("Live Demo", "معاينة")}
+                </span>
+                <div className="h-10 w-10 bg-black text-white rounded-[10px] flex items-center justify-center group-hover/btn:bg-[#00C950] group-hover/btn:text-black transition-all shadow-lg group-hover/btn:rotate-12">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                    <path d={isAr ? "M17 7L7 17M7 17h10M7 17V7" : "M7 17L17 7M17 7H7M17 7V17"} />
+                  </svg>
+                </div>
+              </Link>
+            )}
 
             {/* GitHub Button */}
             {work.github && (

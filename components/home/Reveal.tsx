@@ -1,6 +1,7 @@
 "use client";
 import { motion, useAnimation, useInView } from "framer-motion";
 import React, { useEffect, useRef } from "react";
+import { useAppStore } from "@/store/useStore"; // Import your global store
 
 interface Props {
   children: React.ReactNode;
@@ -19,16 +20,20 @@ export const Reveal = ({
 }: Props) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
+  
+  // Access global loading state from Zustand
+  const isLoaded = useAppStore((state) => state.isLoaded);
 
   const mainControls = useAnimation();
   const slideControls = useAnimation();
 
   useEffect(() => {
-    if (isInView) {
+    // Only start animations if the element is in view AND the system loader is finished
+    if (isInView && isLoaded) {
       mainControls.start("visible");
       slideControls.start("visible");
     }
-  }, [isInView, mainControls, slideControls]);
+  }, [isInView, isLoaded, mainControls, slideControls]);
 
   return (
     <div ref={ref} className="relative overflow-hidden" style={{ width }}>
@@ -42,7 +47,7 @@ export const Reveal = ({
         animate={mainControls}
         transition={{ 
           duration: 0.6, 
-          delay: delay + 0.1, // Wait for the block to start
+          delay: delay + 0.1, 
           ease: [0.215, 0.61, 0.355, 1] 
         }}
       >

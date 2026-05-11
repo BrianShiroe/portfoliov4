@@ -1,12 +1,11 @@
 "use client";
 import { motion } from "framer-motion";
-import { useLocale } from "next-intl";
+import { useAppStore } from "@/store/useStore"; // استخدام Zustand
 import { ProjectItem } from "./ProjectItem";
 
 export function Projects() {
-  const locale = useLocale();
-  const isAr = locale === "ar";
-  const t = (en: string, ar: string) => (isAr ? ar : en);
+  const { lang, t } = useAppStore();
+  const isAr = lang === "ar";
 
   const projects = [
     {
@@ -31,7 +30,7 @@ export function Projects() {
       href: "https://aurax-luxury-footwear-landing-page.vercel.app/",
       github: "https://github.com/BrianShiroe/aurax-luxury-footwear-landing-page",
       image: "/images/aurax/thumbnail.png",
-      isUnderDevelopment: true,
+      isUnderDevelopment: false,
       description: t(
         "A high-end digital showroom for luxury footwear, featuring immersive scroll-based animations, architectural layouts, and a fluid user experience designed for premium retail storytelling.",
         "معرض رقمي متطور للأحذية الفاخرة، يتميز برسوم متحركة غامرة تعتمد على التمرير، وتنسيقات معمارية، وتجربة مستخدم سلسة مصممة لسرد قصص العلامات التجارية الراقية."
@@ -87,20 +86,7 @@ export function Projects() {
       image: "/images/greyscale-real-estate/thumbnail.png",
       description: t(
         "A minimalist, dark-themed single-page landing for real estate, focusing on premium aesthetic and architectural layout without backend overhead.",
-        "واجهة هبوط (Landing Page) من صفحة واحدة للعقارات، تعتمد تصميماً داكناً وبسيطاً يركز على الجمالية الفائقة والتنسيق المعماري دون الحاجة لتعقيدات خلفية.",
-      ),
-    },
-    {
-      id: "07",
-      title: "LUKA AI",
-      tag: t("AI SAFETY SYSTEM", "نظام أمان ذكي"),
-      tech: "Python / YOLOv11 / OpenCV",
-      href: "https://github.com/BrianShiroe/luka",
-      github: "https://github.com/BrianShiroe/luka",
-      image: null,
-      description: t(
-        "A cutting-edge disaster detection system leveraging YOLOv11 for ultra-fast real-time object recognition. The model was trained using OpenCV and CNN to detect environmental hazards and trigger automated emergency alerts.",
-        "نظام متطور للكشف عن الكوارث يعتمد على YOLOv11 للتعرف اللحظي فائق السرعة على الأجسام. تم تدريب النموذج باستخدام OpenCV وCNN للكشف عن المخاطر البيئية وتفعيل تنبيهات الطوارئ المؤتمتة.",
+        "واجهة هبوط للعقارات، تعتمد تصميماً داكناً وبسيطاً يركز على الجمالية الفائقة والتنسيق المعماري دون الحاجة لتعقيدات خلفية.",
       ),
     },
   ];
@@ -134,7 +120,7 @@ export function Projects() {
 
         <div className="flex flex-col gap-48 md:gap-64">
           {projects.map((work, index) => (
-            <ProjectItem key={work.id} work={work} index={index} isAr={isAr} t={t} />
+            <ProjectItem key={work.id} work={work} index={index} />
           ))}
         </div>
       </div>

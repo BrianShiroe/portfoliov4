@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useLocale } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
+import { useAppStore } from "@/store/useStore"; // استيراد المخزن الجديد
 
 const navItems = [
   { en: "Home", ar: "الرئيسية", href: "#home" },
@@ -15,20 +15,23 @@ const navItems = [
 ];
 
 export function Header() {
-  const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
-  const isAr = locale === "ar";
-  const t = (en: string, ar: string) => (isAr ? ar : en);
+  
+  // استخدام Zustand لإدارة الحالة العالمية
+  const { lang, setLang, t, activeSection, setActiveSection } = useAppStore();
+  const isAr = lang === "ar";
+  
   const [isOpen, setIsOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
 
-  // Intersection Observer for Active State
+  // مراقب التقاطع (Intersection Observer) لتحديث القسم النشط عالمياً
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) setActiveSection(entry.target.id);
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
         });
       },
       { rootMargin: "-45% 0px -45% 0px" },
@@ -40,9 +43,9 @@ export function Header() {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [setActiveSection]);
 
-  // Lock Body Scroll when Mobile Menu is Open
+  // قفل التمرير عند فتح القائمة المتنقلة
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "unset";
   }, [isOpen]);
@@ -56,7 +59,7 @@ export function Header() {
     if (targetId === "home") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else if (elem) {
-      const offset = 80; // Offset for sticky header height
+      const offset = 80;
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = elem.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
@@ -71,8 +74,10 @@ export function Header() {
   };
 
   const switchLocale = () => {
-    const nextLocale = locale === "en" ? "ar" : "en";
-    const pathnameWithoutLocale = pathname === `/${locale}` ? "" : pathname.replace(new RegExp(`^/${locale}`), "");
+    const nextLocale = lang === "en" ? "ar" : "en";
+    setLang(nextLocale); // تحديث الحالة في Zustand
+    
+    const pathnameWithoutLocale = pathname === `/${lang}` ? "" : pathname.replace(new RegExp(`^/${lang}`), "");
     const hash = typeof window !== "undefined" ? window.location.hash : "";
     setIsOpen(false);
     router.push(`/${nextLocale}${pathnameWithoutLocale}${hash}`);
@@ -84,7 +89,7 @@ export function Header() {
       dir={isAr ? "rtl" : "ltr"}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-6 md:py-4">
-        {/* IDENTITY */}
+        {/* الهوية البصرية */}
         <a href="#home" onClick={(e) => handleScroll(e, "#home")} className="z-[110] group flex items-center gap-2.5">
           <div className="h-8 w-8 rounded-full flex items-center justify-center shrink-0 overflow-hidden relative border border-zinc-200">
             <img
@@ -103,7 +108,7 @@ export function Header() {
           </div>
         </a>
 
-        {/* DESKTOP NAV - WITH LIQUID ANIMATION */}
+        {/* القائمة المكتبية - مع حركات Zustand */}
         <nav className="hidden lg:flex items-center gap-1 bg-zinc-100/50 p-1 rounded-full border border-zinc-200">
           {navItems.map((item) => {
             const isActive = activeSection === item.href.replace("#", "");
@@ -129,13 +134,13 @@ export function Header() {
           })}
         </nav>
 
-        {/* CONTROLS */}
+        {/* أزرار التحكم */}
         <div className="flex items-center gap-3">
           <button
             onClick={switchLocale}
             className="z-[110] h-10 px-4 rounded-full border-2 border-black text-[10px] font-black transition-all hover:bg-black hover:text-[#00C950] active:scale-95 flex items-center justify-center leading-none cursor-pointer"
           >
-            {locale === "en" ? "عربي" : "EN"}
+            {lang === "en" ? "عربي" : "EN"}
           </button>
 
           <button
@@ -157,7 +162,7 @@ export function Header() {
           </button>
         </div>
 
-        {/* STATUS INDICATOR */}
+        {/* مؤشر الموقع (دبي) */}
         <div className="hidden xl:block">
           <div className="flex items-center gap-2.5 px-3 py-1.5 border border-zinc-100 rounded-full">
             <span className="text-[10px] font-black uppercase text-zinc-400">{t("Dubai, UAE", "دبي، الإمارات")}</span>
@@ -169,7 +174,7 @@ export function Header() {
         </div>
       </div>
 
-      {/* MOBILE OVERLAY - STAGGERED ANIMATIONS */}
+      {/* القائمة المتنقلة */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -199,16 +204,6 @@ export function Header() {
                   </motion.a>
                 );
               })}
-            </div>
-
-            <div className="mt-auto pb-10 flex flex-col gap-4">
-              <a
-                href="#contact"
-                onClick={(e) => handleScroll(e, "#contact")}
-                className="w-full bg-[#00C950] text-black text-center py-5 rounded-2xl font-black uppercase tracking-widest text-xs border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
-              >
-                {t("Contact Me", "اتصل بي")}
-              </a>
             </div>
           </motion.div>
         )}

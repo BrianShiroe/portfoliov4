@@ -1,16 +1,15 @@
-﻿// app\layout.tsx
+﻿// app/layout.tsx
 import type { Viewport } from 'next';
 import { Geist_Mono } from 'next/font/google';
 import { getLocale } from 'next-intl/server';
 import './globals.css';
 
-// We add a fallback and ensure display is set to swap 
-// to help with connection timeouts during build.
+// إعداد الخط مع ضمان الثبات أثناء التحميل
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
   display: 'swap',
-  adjustFontFallback: true, // Helps prevent layout shift if fetch fails
+  adjustFontFallback: true,
 });
 
 export const viewport: Viewport = {
@@ -25,39 +24,36 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const baseUrl = 'https://brianshiroe.vercel.app';
-  
-  // SEO Structured Data
+  const locale = await getLocale();
+  const isAr = locale === 'ar';
+
+  // بيانات الـ SEO المهيكلة (JSON-LD) لتعزيز ظهورك في بحث دبي
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "name": "Brian Shiroe",
+    "name": "Brian Haw",
     "image": `${baseUrl}/og-image.png`,
-    "url": baseUrl,
+    "url": `${baseUrl}/${locale}`,
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Dubai",
       "addressCountry": "AE",
     },
-    "description": "Specialist in E-Commerce, Odoo ERP, Corporate Websites, and Custom Web Apps.",
+    "description": "Full-Stack Engineer & ERP Specialist in Dubai. Expertise in Next.js, Odoo, and Agentic AI.",
     "knowsAbout": [
       "E-Commerce",
       "Odoo ERP",
-      "Web Development",
-      "React",
-      "Next.js",
+      "Next.js 15",
+      "Agentic AI Workflows",
+      "Cloud Infrastructure",
       "Custom Web Applications",
     ],
   };
-
-  const locale = await getLocale();
-  const isAr = locale === 'ar';
-  jsonLd.url = `${baseUrl}/${locale}`;
 
   return (
     <html
       lang={locale}
       dir={isAr ? 'rtl' : 'ltr'}
-      // Use the variable for CSS but provide a system fallback class just in case
       className={`${geistMono.variable} scroll-smooth h-full antialiased`}
     >
       <head>
@@ -70,6 +66,9 @@ export default async function RootLayout({
         className="min-h-full flex flex-col font-mono bg-white text-black selection:bg-[#00C950] selection:text-white"
         suppressHydrationWarning
       >
+        {/* Zustand لا يحتاج لـ Provider هنا. 
+          يتم استدعاء الحالة مباشرة داخل المكونات الفرعية.
+        */}
         {children}
       </body>
     </html>
