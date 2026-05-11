@@ -24,7 +24,7 @@ const ibmPlexArabic = IBM_Plex_Sans_Arabic({
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const isAr = locale === 'ar';
-  const baseUrl = 'https://brianshiroe.vercel.app';
+  const baseUrl = 'https://brianshiroe.com';
 
   return {
     metadataBase: new URL(baseUrl),
