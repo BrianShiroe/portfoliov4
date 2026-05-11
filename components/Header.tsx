@@ -24,12 +24,11 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
-  // 1. Hydration Guard: Set mounted to true on client
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Intersection Observer
+  // Intersection Observer للتحقق من القسم النشط
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -54,19 +53,20 @@ export function Header() {
     document.body.style.overflow = isOpen ? "hidden" : "unset";
   }, [isOpen]);
 
+  // تحديث وظيفة handleScroll لتكون أكثر استقراراً
   const handleScroll = (e: React.MouseEvent, href: string) => {
     e.preventDefault();
     setIsOpen(false);
+    
     const targetId = href.replace("#", "");
     const elem = document.getElementById(targetId);
 
     if (targetId === "home") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else if (elem) {
+      // إزاحة تعويضية لارتفاع الهيدر (Sticky Header Offset)
       const offset = 80;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = elem.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
+      const elementPosition = elem.offsetTop; 
       const offsetPosition = elementPosition - offset;
 
       window.scrollTo({
@@ -74,6 +74,8 @@ export function Header() {
         behavior: "smooth",
       });
     }
+    
+    // تحديث الرابط في المتصفح دون إعادة تحميل الصفحة
     window.history.pushState(null, "", href);
   };
 
@@ -87,7 +89,6 @@ export function Header() {
     router.push(`/${nextLocale}${pathnameWithoutLocale}${hash}`);
   };
 
-  // 2. Prevent rendering until mounted to avoid hydration errors
   if (!mounted) {
     return <header className="sticky top-0 z-[100] w-full h-[65px] md:h-[81px] bg-white border-b border-zinc-100" />;
   }
@@ -98,7 +99,7 @@ export function Header() {
       dir={isAr ? "rtl" : "ltr"}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-6 md:py-4">
-        {/* Visual Identity */}
+        {/* Logo */}
         <a href="#home" onClick={(e) => handleScroll(e, "#home")} className="z-[110] group flex items-center gap-2.5">
           <div className="h-8 w-8 rounded-full flex items-center justify-center shrink-0 overflow-hidden relative border border-zinc-200">
             <img
@@ -109,7 +110,7 @@ export function Header() {
           </div>
           <div className="flex flex-col items-start">
             <span className="text-xs md:text-lg font-black uppercase tracking-tighter text-black leading-none">
-              BrianHaw
+              BrianShiroe
             </span>
             <span className="text-[8px] md:text-[10px] font-bold text-zinc-400 uppercase tracking-widest mt-0.5">
               {t("Web Developer", "مطور ويب")}
@@ -171,7 +172,7 @@ export function Header() {
           </button>
         </div>
 
-        {/* Location Indicator */}
+        {/* Dubai Indicator */}
         <div className="hidden xl:block">
           <div className="flex items-center gap-2.5 px-3 py-1.5 border border-zinc-100 rounded-full">
             <span className="text-[10px] font-black uppercase text-zinc-400">{t("Dubai, UAE", "دبي، الإمارات")}</span>

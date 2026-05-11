@@ -8,7 +8,7 @@ export function Footer() {
   const isAr = locale === "ar";
   const t = (en: string, ar: string) => (isAr ? ar : en);
 
-  // --- Animation Variants with Explicit Typing ---
+  // --- Animation Variants ---
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -27,7 +27,6 @@ export function Footer() {
       opacity: 1,
       transition: {
         duration: 0.8,
-        // Using "as const" or explicit Variants type fixes the number[] error
         ease: [0.16, 1, 0.3, 1],
       },
     },
@@ -43,6 +42,7 @@ export function Footer() {
     { name: t("Contact", "تواصل معي"), href: "#contact" },
   ];
 
+  // التحديث: استخدام offsetTop لضمان الدقة وتجنب التحذيرات
   const handleScroll = (e: React.MouseEvent, href: string) => {
     e.preventDefault();
     const targetId = href.replace("#", "");
@@ -51,14 +51,16 @@ export function Footer() {
     if (targetId === "home") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else if (elem) {
-      const offset = 80;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = elem.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
+      const offset = 80; // يجب أن يطابق الإزاحة في الـ Header
+      const elementPosition = elem.offsetTop;
       const offsetPosition = elementPosition - offset;
 
-      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+      window.scrollTo({ 
+        top: offsetPosition, 
+        behavior: "smooth" 
+      });
     }
+    window.history.pushState(null, "", href);
   };
 
   return (
@@ -72,11 +74,12 @@ export function Footer() {
           viewport={{ once: true, margin: "-50px" }}
         >
           <div className="flex flex-col lg:flex-row justify-between items-start gap-16 lg:gap-20">
+            
             {/* IDENTITY SECTION */}
             <motion.div variants={itemVariants} className="flex flex-col items-start w-full lg:w-1/3">
               <div className="flex flex-col">
                 <span className="font-black text-3xl md:text-4xl uppercase tracking-tighter leading-none">
-                  BrianHaw
+                  BrianShiroe
                 </span>
                 <span className="text-zinc-500 font-bold text-xs uppercase tracking-[0.2em] mt-2">
                   {t("Web Developer", "مطور ويب")}
@@ -148,9 +151,7 @@ export function Footer() {
             {/* ACTION SECTION */}
             <motion.div variants={itemVariants} className="flex flex-col items-start lg:items-end w-full lg:w-auto">
               <div className="space-y-6 w-full lg:w-auto">
-                <p
-                  className={`text-zinc-500 text-xs font-bold uppercase tracking-widest ${isAr ? "text-right" : "text-left lg:text-right"}`}
-                >
+                <p className={`text-zinc-500 text-xs font-bold uppercase tracking-widest ${isAr ? "text-right" : "text-left lg:text-right"}`}>
                   {t("Based in Dubai, UAE", "مقرنا في دبي، الإمارات")}
                 </p>
                 <motion.a
@@ -173,7 +174,7 @@ export function Footer() {
           >
             <div className="flex flex-col items-center md:items-start gap-2">
               <span className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500">
-                © 2026 // BrianHaw
+                © 2026 // BrianShiroe
               </span>
               <span className="text-[9px] font-bold text-zinc-700 uppercase">
                 {t("Next.js // Odoo // SEO Specialist", "نكست جي إس // أودو // خبير سيو")}
