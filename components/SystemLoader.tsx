@@ -1,15 +1,19 @@
 ﻿"use client";
 import React, { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useAppStore } from '@/store/useStore'; // Import Zustand store
+import { useAppStore } from '@/store/useStore';
 
 export function SystemLoader() {
-  const { lang, t, setLoaded } = useAppStore(); // Access store actions and state
+  const { lang, t, setLoaded } = useAppStore();
   const isAr = lang === 'ar';
+  
+  // 1. حارس الهدرجة لمنع أخطاء الـ Hydration
+  const [mounted, setMounted] = useState(false);
   
   const [progress, setProgress] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const [entropy, setEntropy] = useState("0x000000");
+  const [currentLog, setCurrentLog] = useState(0);
 
   const logs = isAr ? [
     "جاري_تهيئة_المحرك_العصبي...",
@@ -31,17 +35,27 @@ export function SystemLoader() {
     "System_Stable. Opening_Interface.",
   ];
 
-  const [currentLog, setCurrentLog] = useState(0);
+  // 2. مراقبة التقدم لتحديث الحالة العالمية (Zustand) خارج دورة الصيرورة (Render Cycle)
+  useEffect(() => {
+    if (progress >= 100) {
+      // تحديث الحالة العالمية هنا آمن لأننا داخل useEffect
+      setLoaded(true); 
+      
+      const exitTimer = setTimeout(() => {
+        setIsVisible(false);
+      }, 1200);
+      
+      return () => clearTimeout(exitTimer);
+    }
+  }, [progress, setLoaded]);
 
   useEffect(() => {
+    setMounted(true);
+
     const timer = setInterval(() => {
       setProgress((oldProgress) => {
         if (oldProgress >= 100) {
           clearInterval(timer);
-          // 1. Tell the global store that loading is finished
-          setLoaded(true); 
-          // 2. Hide the loader visual after a short delay for the exit animation
-          setTimeout(() => setIsVisible(false), 1200); 
           return 100;
         }
         const diff = Math.random() < 0.2 ? 0.5 : Math.random() * 18;
@@ -68,7 +82,10 @@ export function SystemLoader() {
       clearInterval(hexTimer);
       clearInterval(logTimer);
     };
-  }, [logs.length, setLoaded]);
+  }, [logs.length]);
+
+  // لا يتم عرض أي شيء على الخادم لتجنب تعارض النصوص
+  if (!mounted) return null;
 
   return (
     <AnimatePresence>
@@ -93,7 +110,7 @@ export function SystemLoader() {
             </p>
           </div>
 
-          {/* DECOR: SIDE TOPOLOGY SKETCH */}
+          {/* DECOR: SIDE TOPOLOGY */}
           <div className={`absolute top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-6 opacity-10 ${isAr ? "right-10" : "left-10"}`}>
             <div className="h-24 w-[1px] bg-black relative">
               <div className="absolute top-0 -left-1 h-2 w-2 bg-black rounded-full" />
@@ -106,7 +123,7 @@ export function SystemLoader() {
           </div>
 
           <div className="w-full max-w-[420px] flex flex-col gap-10 px-8">
-            {/* 1. PROFESSIONAL IDENTITY */}
+            {/* 1. IDENTITY */}
             <div className="relative group">
               <div className={`flex flex-col gap-2 border-black ${isAr ? "border-r-[4px] pr-6" : "border-l-[4px] pl-6"}`}>
                 <span className="text-[11px] font-black uppercase text-zinc-500 tracking-[0.4em]">
@@ -121,7 +138,7 @@ export function SystemLoader() {
               </div>
             </div>
 
-            {/* 2. CORE PROCESSING MODULE */}
+            {/* 2. PROGRESS MODULE */}
             <div className="flex flex-col gap-6 bg-zinc-50/80 p-6 border border-zinc-100 rounded-xl shadow-sm">
               <div className="flex justify-between items-end">
                 <div className="flex gap-2 mb-1">
@@ -130,11 +147,7 @@ export function SystemLoader() {
                       key={i}
                       className="h-6 w-2 bg-black"
                       animate={{ opacity: [0.1, 1, 0.1] }}
-                      transition={{
-                        duration: 0.8,
-                        repeat: Infinity,
-                        delay: i * 0.1,
-                      }}
+                      transition={{ duration: 0.8, repeat: Infinity, delay: i * 0.1 }}
                     />
                   ))}
                 </div>
@@ -148,7 +161,6 @@ export function SystemLoader() {
                 </div>
               </div>
 
-              {/* Progress Bar */}
               <div className="w-full h-4 bg-zinc-200 relative overflow-hidden rounded-full">
                 <motion.div
                   className={`absolute top-0 h-full bg-black ${isAr ? "right-0" : "left-0"}`}
@@ -159,7 +171,7 @@ export function SystemLoader() {
               </div>
             </div>
 
-            {/* 3. DIAGNOSTIC TERMINAL */}
+            {/* 3. TERMINAL */}
             <div className="flex flex-col gap-4">
               <div className="flex items-center gap-3 opacity-30">
                 <div className="h-[1px] flex-1 bg-black" />
@@ -180,7 +192,7 @@ export function SystemLoader() {
               </div>
             </div>
 
-            {/* 4. SYSTEM METADATA FOOTER */}
+            {/* 4. FOOTER */}
             <div className="grid grid-cols-2 gap-6 border-t border-zinc-100 pt-8">
               <div className="flex flex-col gap-1">
                 <span className="text-[9px] font-black text-zinc-400 uppercase tracking-tighter">
@@ -212,7 +224,6 @@ export function SystemLoader() {
               backgroundSize: "50px 50px",
             }}
           />
-          <div className="absolute inset-0 z-[-1] opacity-[0.02] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%] pointer-events-none" />
         </motion.div>
       )}
     </AnimatePresence>

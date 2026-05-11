@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
-import { useAppStore } from "@/store/useStore"; // استيراد المخزن الجديد
+import { useAppStore } from "@/store/useStore";
 
 const navItems = [
   { en: "Home", ar: "الرئيسية", href: "#home" },
@@ -18,13 +18,18 @@ export function Header() {
   const router = useRouter();
   const pathname = usePathname();
   
-  // استخدام Zustand لإدارة الحالة العالمية
   const { lang, setLang, t, activeSection, setActiveSection } = useAppStore();
   const isAr = lang === "ar";
   
   const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-  // مراقب التقاطع (Intersection Observer) لتحديث القسم النشط عالمياً
+  // 1. Hydration Guard: Set mounted to true on client
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Intersection Observer
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -45,7 +50,6 @@ export function Header() {
     return () => observer.disconnect();
   }, [setActiveSection]);
 
-  // قفل التمرير عند فتح القائمة المتنقلة
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "unset";
   }, [isOpen]);
@@ -75,7 +79,7 @@ export function Header() {
 
   const switchLocale = () => {
     const nextLocale = lang === "en" ? "ar" : "en";
-    setLang(nextLocale); // تحديث الحالة في Zustand
+    setLang(nextLocale); 
     
     const pathnameWithoutLocale = pathname === `/${lang}` ? "" : pathname.replace(new RegExp(`^/${lang}`), "");
     const hash = typeof window !== "undefined" ? window.location.hash : "";
@@ -83,13 +87,18 @@ export function Header() {
     router.push(`/${nextLocale}${pathnameWithoutLocale}${hash}`);
   };
 
+  // 2. Prevent rendering until mounted to avoid hydration errors
+  if (!mounted) {
+    return <header className="sticky top-0 z-[100] w-full h-[65px] md:h-[81px] bg-white border-b border-zinc-100" />;
+  }
+
   return (
     <header
       className="sticky top-0 z-[100] w-full border-b border-zinc-100 bg-white/80 backdrop-blur-xl font-mono"
       dir={isAr ? "rtl" : "ltr"}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-6 md:py-4">
-        {/* الهوية البصرية */}
+        {/* Visual Identity */}
         <a href="#home" onClick={(e) => handleScroll(e, "#home")} className="z-[110] group flex items-center gap-2.5">
           <div className="h-8 w-8 rounded-full flex items-center justify-center shrink-0 overflow-hidden relative border border-zinc-200">
             <img
@@ -108,7 +117,7 @@ export function Header() {
           </div>
         </a>
 
-        {/* القائمة المكتبية - مع حركات Zustand */}
+        {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-1 bg-zinc-100/50 p-1 rounded-full border border-zinc-200">
           {navItems.map((item) => {
             const isActive = activeSection === item.href.replace("#", "");
@@ -134,7 +143,7 @@ export function Header() {
           })}
         </nav>
 
-        {/* أزرار التحكم */}
+        {/* Controls */}
         <div className="flex items-center gap-3">
           <button
             onClick={switchLocale}
@@ -162,7 +171,7 @@ export function Header() {
           </button>
         </div>
 
-        {/* مؤشر الموقع (دبي) */}
+        {/* Location Indicator */}
         <div className="hidden xl:block">
           <div className="flex items-center gap-2.5 px-3 py-1.5 border border-zinc-100 rounded-full">
             <span className="text-[10px] font-black uppercase text-zinc-400">{t("Dubai, UAE", "دبي، الإمارات")}</span>
@@ -174,7 +183,7 @@ export function Header() {
         </div>
       </div>
 
-      {/* القائمة المتنقلة */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div

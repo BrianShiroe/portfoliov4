@@ -1,4 +1,5 @@
 "use client";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useAppStore } from "@/store/useStore"; // استخدام Zustand
 import { ProjectItem } from "./ProjectItem";
@@ -6,6 +7,13 @@ import { ProjectItem } from "./ProjectItem";
 export function Projects() {
   const { lang, t } = useAppStore();
   const isAr = lang === "ar";
+
+  // 1. حارس الهدرجة: يمنع تعارض النصوص بين الخادم والعميل
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const projects = [
     {
@@ -90,6 +98,15 @@ export function Projects() {
       ),
     },
   ];
+
+  // 2. إذا لم يتم التحميل بعد على العميل، نرجع حاوية فارغة بنفس الأبعاد لتجنب قفز المحتوى
+  if (!mounted) {
+    return (
+      <section id="projects" className="w-full bg-[#FAFAFA] py-32 px-6">
+        <div className="mx-auto max-w-7xl h-[500px]" />
+      </section>
+    );
+  }
 
   return (
     <section
