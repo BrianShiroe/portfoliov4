@@ -7,11 +7,9 @@ export function SystemLoader() {
   const { lang, t, setLoaded } = useAppStore();
   const isAr = lang === 'ar';
   
-  // 1. حارس الهدرجة لمنع أخطاء الـ Hydration
   const [mounted, setMounted] = useState(false);
-  
   const [progress, setProgress] = useState(0);
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false); // تبدأ بـ false حتى نتحقق من الجلسة
   const [entropy, setEntropy] = useState("0x000000");
   const [currentLog, setCurrentLog] = useState(0);
 
@@ -35,10 +33,23 @@ export function SystemLoader() {
     "System_Stable. Opening_Interface.",
   ];
 
-  // 2. مراقبة التقدم لتحديث الحالة العالمية (Zustand) خارج دورة الصيرورة (Render Cycle)
+  // التحقق من الجلسة عند التحميل الأول
+  useEffect(() => {
+    setMounted(true);
+    const hasSeenLoader = sessionStorage.getItem("hasSeenLoader");
+    
+    if (hasSeenLoader) {
+      setLoaded(true);
+      setIsVisible(false);
+    } else {
+      setIsVisible(true);
+    }
+  }, [setLoaded]);
+
+  // مراقبة التقدم لتحديث الحالة العالمية وإخفاء الـ Loader
   useEffect(() => {
     if (progress >= 100) {
-      // تحديث الحالة العالمية هنا آمن لأننا داخل useEffect
+      sessionStorage.setItem("hasSeenLoader", "true"); // حفظ الحالة في التبويب الحالي
       setLoaded(true); 
       
       const exitTimer = setTimeout(() => {
@@ -49,8 +60,9 @@ export function SystemLoader() {
     }
   }, [progress, setLoaded]);
 
+  // منطق العدادات والأنيميشن
   useEffect(() => {
-    setMounted(true);
+    if (!isVisible) return; // لا تعمل العدادات إذا كان الـ Loader مخفياً
 
     const timer = setInterval(() => {
       setProgress((oldProgress) => {
@@ -65,11 +77,7 @@ export function SystemLoader() {
 
     const hexTimer = setInterval(() => {
       setEntropy(
-        "0x" +
-        Math.floor(Math.random() * 16777215)
-          .toString(16)
-          .toUpperCase()
-          .padStart(6, "0"),
+        "0x" + Math.floor(Math.random() * 16777215).toString(16).toUpperCase().padStart(6, "0")
       );
     }, 100);
 
@@ -82,10 +90,9 @@ export function SystemLoader() {
       clearInterval(hexTimer);
       clearInterval(logTimer);
     };
-  }, [logs.length]);
+  }, [isVisible, logs.length]);
 
-  // لا يتم عرض أي شيء على الخادم لتجنب تعارض النصوص
-  if (!mounted) return null;
+  if (!mounted || !isVisible) return null;
 
   return (
     <AnimatePresence>
