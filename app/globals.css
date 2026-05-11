@@ -13,7 +13,12 @@
   --color-ink-mid: var(--ink-mid);
   --color-ink-soft: var(--ink-soft);
   --color-accent-green: var(--accent-green);
+  
+  /* Mapping Next.js Font Variables to Tailwind v4 Utility Classes */
+  /* This creates font-mono, font-arabic, and font-sans */
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-arabic: var(--font-ibm-plex-arabic), sans-serif;
+  --font-sans: var(--font-inter), sans-serif;
 }
 
 /* --- GLOBAL INTERACTIVE STATES --- */
@@ -31,7 +36,7 @@ select,
   cursor: pointer;
 }
 
-/* Ensure disabled elements don't show the pointer */
+/* Standardizes cursor for disabled states */
 :disabled, 
 [disabled],
 .cursor-not-allowed {
@@ -41,21 +46,30 @@ select,
 body {
   background: var(--background);
   color: var(--ink-mid);
-  font-family: var(--font-mono);
-  /* Smoother scrolling for the anchor links */
+  /* Default to Inter (Sans), switches to IBM Plex in [dir="rtl"] block below */
+  font-family: var(--font-inter), sans-serif;
   scroll-behavior: smooth;
-  /* Standardizes text rendering */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 /* --- ARABIC TYPOGRAPHY OPTIMIZATION --- */
-[lang="ar"] {
+[dir="rtl"] {
+  /* Use the premium IBM Plex Sans Arabic font */
+  font-family: var(--font-ibm-plex-arabic), sans-serif;
+  /* Arabic script requires more vertical space to look professional */
   line-height: 1.6;
 }
 
-[lang="ar"] .tracking-tighter, 
-[lang="ar"] .tracking-widest {
+/* CRITICAL: Reset letter-spacing for Arabic.
+  In your English UI, you use tracking-tighter for a premium look. 
+  Arabic letters are connected; squeezing them makes them unreadable.
+*/
+[dir="rtl"] .tracking-tighter, 
+[dir="rtl"] .tracking-tight,
+[dir="rtl"] .tracking-normal,
+[dir="rtl"] .tracking-wide,
+[dir="rtl"] .tracking-widest {
   letter-spacing: 0 !important;
 }
 
@@ -66,11 +80,12 @@ body {
   transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* RTL-aware Shadow */
+/* RTL-aware Shadow: Shifts the shadow to the left instead of right */
 [dir="rtl"] .retro-border-thick {
   box-shadow: -6px 6px 0px 0px var(--ink-deep);
 }
 
+/* Click/Active State: Button "depresses" into the shadow */
 .retro-border-thick:active {
   box-shadow: 0px 0px 0px 0px var(--ink-deep);
   transform: translate(6px, 6px);
@@ -86,13 +101,13 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-/* Custom Selection Color */
+/* Custom Selection Color using your accent green */
 ::selection {
   background-color: var(--accent-green);
   color: white;
 }
 
-/* Lenis smooth scrolling */
+/* Lenis smooth scrolling compatibility */
 html.lenis,
 html.lenis body {
   height: auto;
