@@ -1,6 +1,5 @@
-﻿// components\home\Skills.tsx
-"use client";
-import React, { useLayoutEffect, useRef } from "react";
+﻿"use client";
+import React, { useLayoutEffect, useRef, useState, useEffect } from "react";
 import { useLocale } from "next-intl";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -13,6 +12,12 @@ export function Skills() {
   const locale = useLocale();
   const isAr = locale === "ar";
   const t = (en: string, ar: string) => (isAr ? ar : en);
+
+  // 1. Hydration Guard
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const groups = [
     {
@@ -56,6 +61,8 @@ export function Skills() {
   const trackRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
+    if (!mounted) return; // Only run GSAP after component is mounted
+
     const section = sectionRef.current;
     const track = trackRef.current;
     if (!section || !track) return;
@@ -64,22 +71,27 @@ export function Skills() {
       const getXDistance = () => track.scrollWidth - window.innerWidth;
 
       gsap.to(track, {
+        // In RTL, we move from a positive scrollWidth down to 0
         x: () => (isAr ? getXDistance() : -getXDistance()),
         ease: "none",
         scrollTrigger: {
           trigger: section,
           start: "top top",
-          end: () => `+=${getXDistance()}`,
+          end: () => `+=${track.scrollWidth}`, // End based on track width
           pin: true,
           pinSpacing: true,
-          scrub: 0.5, // Smoother scrub
+          scrub: 1,
           invalidateOnRefresh: true,
+          // Force refresh on resize to recalculate widths
         },
       });
     });
 
     return () => ctx.revert();
-  }, [isAr]);
+  }, [mounted, isAr]);
+
+  // Prevent flash of unstyled content during hydration
+  if (!mounted) return <section className="h-screen bg-white" />;
 
   return (
     <section
@@ -89,8 +101,10 @@ export function Skills() {
       dir={isAr ? "rtl" : "ltr"}
     >
       {/* BACKGROUND DECOR */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
-           style={{ backgroundImage: `radial-gradient(circle, #000 1px, transparent 1px)`, backgroundSize: '40px 40px' }} />
+      <div 
+        className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+        style={{ backgroundImage: `radial-gradient(circle, #000 1px, transparent 1px)`, backgroundSize: '40px 40px' }} 
+      />
 
       <div className="h-full flex flex-col justify-center">
         {/* --- HEADER --- */}
@@ -121,7 +135,6 @@ export function Skills() {
               key={idx}
               className="flex flex-col min-w-[320px] md:min-w-[450px] shrink-0 group/card"
             >
-              {/* CARD HEADER */}
               <div className="relative mb-10">
                 <div className={`absolute -top-4 ${isAr ? "right-0" : "left-0"} flex items-center gap-2`}>
                   <span className="text-[12px] font-black text-[#00C950]">[{String(idx + 1).padStart(2, '0')}]</span>
@@ -132,8 +145,7 @@ export function Skills() {
                 </h3>
               </div>
 
-              {/* SKILLS GRID */}
-              <div className="grid grid-cols-1 gap-1 border-l-4 border-black pl-6">
+              <div className={`grid grid-cols-1 gap-1 border-black pl-6 ${isAr ? "border-r-4 pr-6 pl-0" : "border-l-4 pl-6 pr-0"}`}>
                 {group.items.map((item, i) => (
                   <div
                     key={i}
@@ -147,13 +159,11 @@ export function Skills() {
                 ))}
               </div>
               
-              {/* DECORATIVE ELEMENT */}
               <div className={`mt-8 h-20 w-full ${group.accent} opacity-10 group-hover/card:opacity-100 transition-opacity duration-500`} 
-                   style={{ clipPath: isAr ? 'polygon(0 0, 100% 0, 85% 100%, 0% 100%)' : 'polygon(0 0, 100% 0, 100% 100%, 15% 100%)' }} />
+                   style={{ clipPath: isAr ? 'polygon(0 0, 100% 0, 100% 100%, 15% 100%)' : 'polygon(0 0, 100% 0, 85% 100%, 0% 100%)' }} />
             </div>
           ))}
           
-          {/* END BUFFER */}
           <div className="w-[20vw] shrink-0" />
         </div>
       </div>
