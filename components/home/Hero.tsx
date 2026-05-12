@@ -111,7 +111,7 @@ export function Hero() {
               />
 
               <div className="mb-6 inline-block bg-black px-4 py-1.5 rounded-full text-[9px] md:text-[11px] font-bold font-mono uppercase tracking-[0.2em] text-white">
-                {t("Full-Stack Developer & Infrastructure Expert", "مطور ويب متكامل وخبير بنية تحتية")}
+                {t("Web Developer", "مطور ويب")}
               </div>
 
               <h1
