@@ -98,6 +98,21 @@ export function AllProjects() {
       href: "https://wazeenlaw.sa/",
     },
     {
+      title: "Al Nibras",
+      category: t("EDUCATIONAL GROUP", "مجموعة تعليمية"),
+      href: "https://www.alnibras.ae/ar",
+    },
+    {
+      title: "J2oud",
+      category: t("PERFUME LUXURY", "عطور فاخرة"),
+      href: "https://j2oud.ae/ar/",
+    },
+    {
+      title: "BareFox",
+      category: t("KINETIC FOOTWEAR", "أحذية حركية هندسية"),
+      href: "https://barefox.vercel.app/",
+    },
+    {
       title: "Al Noblaa Group",
       category: t("HOLDING SITE", "الموقع الرئيسي للمجموعة"),
       href: "https://www.alnoblaa.com/",
@@ -131,21 +146,6 @@ export function AllProjects() {
       title: "Al Noblaa Jedian",
       category: t("SUBSIDIARY DIVISION", "قطاع جديان"),
       href: "https://jedian.alnoblaa.com/",
-    },
-    {
-      title: "J2oud",
-      category: t("PERFUME LUXURY", "عطور فاخرة"),
-      href: "https://j2oud.ae/ar/",
-    },
-    {
-      title: "Al Nibras",
-      category: t("EDUCATIONAL GROUP", "مجموعة تعليمية"),
-      href: "https://www.alnibras.ae/ar",
-    },
-    {
-      title: "BareFox",
-      category: t("KINETIC FOOTWEAR", "أحذية حركية هندسية"),
-      href: "https://barefox.vercel.app/",
     },
     {
       title: "Sanco Group",
@@ -285,8 +285,8 @@ export function AllProjects() {
                     <span className="inline sm:hidden">{t("OPEN //", "فتح //")}</span>
                     <svg
                       className={`w-3 h-3 transform transition-transform duration-300 ${
-                        isAr 
-                          ? "rotate-180 group-hover:-translate-x-1 group-hover:translate-y-1" 
+                        isAr
+                          ? "rotate-180 group-hover:-translate-x-1 group-hover:translate-y-1"
                           : "group-hover:translate-x-1 group-hover:-translate-y-1"
                       }`}
                       fill="none"
