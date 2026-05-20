@@ -249,7 +249,7 @@ export function AllProjects() {
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ x: isAr ? -4 : 4 }} // انزياح جانبي سلس يتوافق مع اتجاه كتابة اللغة
+              whileHover={{ x: isAr ? -4 : 4 }}
               viewport={{ once: true }}
               transition={{ type: "spring", stiffness: 400, damping: 30 }}
               className="flex items-center justify-between p-4 md:px-6 md:py-5 border border-zinc-900 lg:border-x-0 lg:border-t-0 lg:border-b border-b-zinc-800/40 bg-zinc-950/20 lg:bg-transparent hover:bg-zinc-900/60 transition-colors duration-200 group rounded-sm lg:rounded-none cursor-pointer"
@@ -286,17 +286,6 @@ export function AllProjects() {
               </div>
             </motion.a>
           ))}
-        </div>
-
-        {/* Tactical Footer Metrics Module */}
-        <div className="mt-12 pt-6 border-t border-zinc-900 flex flex-col sm:flex-row gap-4 justify-between items-center text-[10px] text-zinc-600 uppercase tracking-widest text-center sm:text-left w-full select-none">
-          <div className="order-2 sm:order-1 font-medium tracking-[0.15em] text-zinc-500">
-            Brian Haw — Web Developer — Dubai, UAE
-          </div>
-          <div className="flex gap-6 order-1 sm:order-2">
-            <div>// TOTAL_RECORDS: {enterpriseList.length}</div>
-            <div className="text-[#00C950] animate-pulse">STATUS: ONLINE_CLUSTER</div>
-          </div>
         </div>
       </div>
     </section>
