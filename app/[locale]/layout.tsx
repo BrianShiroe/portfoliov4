@@ -109,7 +109,7 @@ export default async function LocaleLayout({
       <body className={bodyClasses} suppressHydrationWarning>
         <NextIntlClientProvider messages={messages}>
           <LenisScroll />
-          <SystemLoader />
+          {/* <SystemLoader /> */}
           <Header />
           <main role="main" className="flex-1 w-full">{children}</main>
           <Footer />
