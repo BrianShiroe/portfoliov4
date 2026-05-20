@@ -28,7 +28,7 @@ export function Header() {
     setMounted(true);
   }, []);
 
-  // Intersection Observer للتحقق من القسم النشط
+  // Intersection Observer محسّن لضمان التقاط الأقسام المثبتة (Pinned Sections)
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -38,7 +38,7 @@ export function Header() {
           }
         });
       },
-      { rootMargin: "-45% 0px -45% 0px" },
+      { rootMargin: "-20% 0px -20% 0px" }, // هامش مرن ومستقر يمنع القفزات البرمجية
     );
 
     navItems.forEach((item) => {
@@ -53,7 +53,6 @@ export function Header() {
     document.body.style.overflow = isOpen ? "hidden" : "unset";
   }, [isOpen]);
 
-  // تحديث وظيفة handleScroll لتكون أكثر استقراراً
   const handleScroll = (e: React.MouseEvent, href: string) => {
     e.preventDefault();
     setIsOpen(false);
@@ -64,9 +63,8 @@ export function Header() {
     if (targetId === "home") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else if (elem) {
-      // إزاحة تعويضية لارتفاع الهيدر (Sticky Header Offset)
       const offset = 80;
-      const elementPosition = elem.offsetTop; 
+      const elementPosition = elem.getBoundingClientRect().top + window.scrollY; 
       const offsetPosition = elementPosition - offset;
 
       window.scrollTo({
@@ -75,7 +73,6 @@ export function Header() {
       });
     }
     
-    // تحديث الرابط في المتصفح دون إعادة تحميل الصفحة
     window.history.pushState(null, "", href);
   };
 

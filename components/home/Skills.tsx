@@ -1,5 +1,5 @@
 ﻿"use client";
-import React, { useLayoutEffect, useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useLocale } from "next-intl";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -13,7 +13,6 @@ export function Skills() {
   const isAr = locale === "ar";
   const t = (en: string, ar: string) => (isAr ? ar : en);
 
-  // 1. Hydration Guard
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);
@@ -60,37 +59,45 @@ export function Skills() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
 
-  useLayoutEffect(() => {
-    if (!mounted) return; // Only run GSAP after component is mounted
+  useEffect(() => {
+    if (!mounted) return;
 
-    const section = sectionRef.current;
-    const track = trackRef.current;
-    if (!section || !track) return;
+    let ctx: gsap.Context;
 
-    const ctx = gsap.context(() => {
-      const getXDistance = () => track.scrollWidth - window.innerWidth;
+    // Timeout ensures DOM elements are completely painted before calculating dimensions
+    const ctxTimeout = setTimeout(() => {
+      const section = sectionRef.current;
+      const track = trackRef.current;
+      if (!section || !track) return;
 
-      gsap.to(track, {
-        // In RTL, we move from a positive scrollWidth down to 0
-        x: () => (isAr ? getXDistance() : -getXDistance()),
-        ease: "none",
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: () => `+=${track.scrollWidth}`, // End based on track width
-          pin: true,
-          pinSpacing: true,
-          scrub: 1,
-          invalidateOnRefresh: true,
-          // Force refresh on resize to recalculate widths
-        },
-      });
-    });
+      // Scoping GSAP explicitly to the section wrapper prevents parent node unmounting mismatch crashes
+      ctx = gsap.context(() => {
+        const getXDistance = () => track.scrollWidth - window.innerWidth;
 
-    return () => ctx.revert();
+        gsap.to(track, {
+          x: () => (isAr ? getXDistance() : -getXDistance()),
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: () => `+=${track.scrollWidth}`,
+            pin: true,
+            pinSpacing: true,
+            scrub: 1,
+            invalidateOnRefresh: true,
+          },
+        });
+      }, sectionRef); // Scopes selectors inside this container element safely
+    }, 100);
+
+    return () => {
+      clearTimeout(ctxTimeout);
+      if (ctx) {
+        ctx.revert(); // Reverts DOM layout mutations safely without dropping unattached elements
+      }
+    };
   }, [mounted, isAr]);
 
-  // Prevent flash of unstyled content during hydration
   if (!mounted) return <section className="h-screen bg-white" />;
 
   return (
@@ -145,7 +152,7 @@ export function Skills() {
                 </h3>
               </div>
 
-              <div className={`grid grid-cols-1 gap-1 border-black pl-6 ${isAr ? "border-r-4 pr-6 pl-0" : "border-l-4 pl-6 pr-0"}`}>
+              <div className={`grid grid-cols-1 gap-1 border-black ${isAr ? "border-r-4 pr-6 pl-0" : "border-l-4 pl-6 pr-0"}`}>
                 {group.items.map((item, i) => (
                   <div
                     key={i}
