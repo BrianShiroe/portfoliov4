@@ -19,7 +19,7 @@ export function EnterpriseProjects() {
   }, []);
 
   const enterpriseList: EnterpriseItem[] = [
-    // --- المجموعات والمشاريع الرئيسية الفاخرة (Top Projects) ---
+    // --- Premium Main Collection & Luxury Projects (Top Projects) ---
     {
       title: "GameTree",
       category: t("E-COMMERCE PLATFORM", "منصة تجارة إلكترونية"),
@@ -50,8 +50,13 @@ export function EnterpriseProjects() {
       category: t("MODERN REAL ESTATE", "عقارات عصرية"),
       href: "https://greyscale-real-estate.vercel.app/",
     },
+    {
+      title: "Awards Portfolio",
+      category: t("CREATIVE PORTFOLIO", "ملف أعمال إبداعي"),
+      href: "https://award-winning-website-9d6.pages.dev/",
+    },
 
-    // --- بقية سجل الأنظمة والمنصات المؤسسية ---
+    // --- Enterprise Systems, Custom APIs & Platform Ecosystem ---
     {
       title: "KBH Real Estate",
       category: t("PROPERTY PORTAL", "بوابة عقارية"),
