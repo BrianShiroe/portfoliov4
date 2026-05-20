@@ -55,6 +55,11 @@ export function EnterpriseProjects() {
       category: t("CREATIVE PORTFOLIO", "ملف أعمال إبداعي"),
       href: "https://award-winning-website-9d6.pages.dev/",
     },
+    {
+      title: "Zorene's Portfolio",
+      category: t("CREATIVE PORTFOLIO", "ملف أعمال إبداعي"),
+      href: "https://maria-zorene.vercel.app/",
+    },
 
     // --- Enterprise Systems, Custom APIs & Platform Ecosystem ---
     {
@@ -138,6 +143,11 @@ export function EnterpriseProjects() {
       href: "https://www.alnibras.ae/ar",
     },
     {
+      title: "BareFox",
+      category: t("KINETIC FOOTWEAR", "أحذية حركية هندسية"),
+      href: "https://barefox.vercel.app/",
+    },
+    {
       title: "Sanco Group",
       category: t("HOLDING SITE", "الموقع الرئيسي لمجموعة سانكو"),
       href: "https://darkgoldenrod-gerbil-256214.hostingersite.com/",
@@ -156,6 +166,21 @@ export function EnterpriseProjects() {
       title: "Sanco Facility Management",
       category: t("FACILITY MANAGEMENT", "إدارة المرافق"),
       href: "https://linen-jay-143391.hostingersite.com/",
+    },
+    {
+      title: "WoB & CoB",
+      category: t("CO-OP PUZZLE PLATFORMER", "لعبة منصات وألغاز تعاونية"),
+      href: "https://mun-development.itch.io/wob-cob",
+    },
+    {
+      title: "The Goddess' Trial",
+      category: t("SPEEDJAM PLATFORMER", "لعبة منصات وتحدي سريع"),
+      href: "https://mun-development.itch.io/the-goddess-trial",
+    },
+    {
+      title: "Shadow Monarch: The Cat's Adventure",
+      category: t("2D ACTION ROGUELIKE", "لعبة أكشن ومغامرات ثنائية الأبعاد"),
+      href: "https://mun-development.itch.io/shadow-monarch-the-cats-adventure",
     },
   ];
 

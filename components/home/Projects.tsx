@@ -24,7 +24,7 @@ export function Projects() {
       href: "https://gametree.vercel.app/",
       github: "https://github.com/BrianShiroe/gametree-next.js-supabase-stripe-ecommerce-website",
       image: "/images/gametree/thumbnail.png",
-      isUnderDevelopment: true,
+      isUnderDevelopment: false,
       description: t(
         "A comprehensive e-commerce ecosystem featuring dedicated workflows for visitors, customers, and admins. Includes integrated Stripe payments, dynamic shipping calculations, and a full administrative suite for product management.",
         "نظام متكامل للتجارة الإلكترونية يوفر مسارات عمل مخصصة للزوار والعملاء والمديرين. يتضمن عمليات دفع عبر Stripe، حساب تلقائي لرسوم الشحن، ولوحة تحكم شاملة لإدارة وتعديل المنتجات.",
@@ -52,7 +52,7 @@ export function Projects() {
       href: "https://noor-label.vercel.app/",
       github: "https://github.com/BrianShiroe/noor-label-next.js-shopify-ecommerce-website",
       image: "/images/noor-label/thumbnail.png",
-      isUnderDevelopment: true,
+      isUnderDevelopment: false,
       description: t(
         "A premium fashion portfolio showcasing architectural silhouettes and modest luxury. Focuses on high-end visual storytelling, scroll-based animations, and a minimalist aesthetic rooted in Dubai's design culture.",
         "بورتفوليو متميز للأزياء يعرض تصاميم معمارية وفخامة محتشمة. يركز على السرد البصري الراقي، وتفاعلات التمرير، وجمالية بسيطة مستوحاة من ثقافة التصميم في دبي.",
