@@ -2,8 +2,8 @@ import { Hero } from '@/components/home/Hero';
 import { About } from '@/components/home/About';
 import { Services } from '@/components/home/Services';
 import { Skills } from '@/components/home/Skills';
-import { Projects } from '@/components/home/Projects';
-import { EnterpriseProjects } from '@/components/home/EnterpriseProjects'; 
+import { TopProjects } from '@/components/home/TopProjects';
+import { AllProjects } from '@/components/home/AllProjects'; 
 import { Experience } from '@/components/home/Experience';
 import { Contact } from '@/components/home/Contact';
 import { TechTicker } from '@/components/home/TechTicker'; 
@@ -17,8 +17,8 @@ export default function Home() {
       {/* Divider */}
       <TechTicker />
 
-      <Projects />
-      <EnterpriseProjects />
+      <TopProjects />
+      <AllProjects />
       
       <Skills />
       <Services />

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useAppStore } from "@/store/useStore"; // استخدام Zustand
 import { ProjectItem } from "./ProjectItem";
 
-export function Projects() {
+export function TopProjects() {
   const { lang, t } = useAppStore();
   const isAr = lang === "ar";
 

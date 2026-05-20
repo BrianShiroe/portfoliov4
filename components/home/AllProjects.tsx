@@ -9,7 +9,7 @@ interface EnterpriseItem {
   href: string;
 }
 
-export function EnterpriseProjects() {
+export function AllProjects() {
   const { lang, t } = useAppStore();
   const isAr = lang === "ar";
   const [mounted, setMounted] = useState(false);
@@ -63,11 +63,6 @@ export function EnterpriseProjects() {
 
     // --- Enterprise Systems, Custom APIs & Platform Ecosystem ---
     {
-      title: "KBH Real Estate",
-      category: t("PROPERTY PORTAL", "بوابة عقارية"),
-      href: "https://www.kbhrealestate.ae/",
-    },
-    {
       title: "iDesigns Art",
       category: t("CREATIVE PORTFOLIO", "أرشيف إبداعي"),
       href: "https://idesignsart.com/",
@@ -76,6 +71,11 @@ export function EnterpriseProjects() {
       title: "iDesigns Tech",
       category: t("TECH PORTAL", "بوابة تقنية"),
       href: "https://idesignstech.com/",
+    },
+    {
+      title: "KBH Real Estate",
+      category: t("PROPERTY PORTAL", "بوابة عقارية"),
+      href: "https://www.kbhrealestate.ae/",
     },
     {
       title: "Munem",
