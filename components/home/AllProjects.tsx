@@ -239,53 +239,72 @@ export function AllProjects() {
           </h2>
         </motion.div>
 
-        {/* Two-Column Grid Setup for PC, Single Column for Mobile */}
+        {/* Two-Column Grid Setup (Top-to-Bottom on PC, Perfect Sequential on Mobile) */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-x-8 lg:gap-y-0 w-full">
-          {enterpriseList.map((item, index) => (
-            <motion.a
-              key={index}
-              href={item.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ x: isAr ? -4 : 4 }}
-              viewport={{ once: true }}
-              transition={{ type: "spring", stiffness: 400, damping: 30 }}
-              className="flex items-center justify-between p-4 md:px-6 md:py-5 border border-zinc-900 lg:border-x-0 lg:border-t-0 lg:border-b border-b-zinc-800/40 bg-zinc-950/20 lg:bg-transparent hover:bg-zinc-900/60 transition-colors duration-200 group rounded-sm lg:rounded-none cursor-pointer"
-            >
-              {/* Project ID and Core Title */}
-              <div className={`flex items-start gap-3 w-2/3 ${textAlignmentClass}`}>
-                <span className="text-zinc-600 font-bold text-xs pt-0.5 select-none">
-                  {(index + 1).toString().padStart(2, "0")}.
-                </span>
-                <div className="flex flex-col gap-0.5">
-                  <span className="text-white font-black tracking-tight text-sm md:text-base group-hover:text-[#00C950] transition-colors truncate max-w-[160px] sm:max-w-xs md:max-w-sm">
-                    {item.title}
-                  </span>
-                  <span className="inline-self-start text-[9px] font-bold text-zinc-500 tracking-wider uppercase">
-                    {item.category}
-                  </span>
-                </div>
-              </div>
+          {enterpriseList.map((item, index) => {
+            const halfLength = Math.ceil(enterpriseList.length / 2);
 
-              {/* Secure Launch Status Indicators */}
-              <div className={`w-1/3 ${reverseTextAlignmentClass}`}>
-                <div className="inline-flex items-center gap-1.5 text-[10px] md:text-xs font-bold uppercase tracking-wider text-zinc-400 group-hover:text-[#00C950] transition-colors duration-200">
-                  <span className="hidden sm:inline">{t("LAUNCH //", "زيارة الموقع //")}</span>
-                  <span className="inline sm:hidden">{t("OPEN //", "فتح //")}</span>
-                  <svg
-                    className={`w-3 h-3 transform transition-transform duration-300 ${isAr ? "group-hover:-translate-x-1" : "group-hover:translate-x-1"} group-hover:-translate-y-1`}
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
+            const desktopOrder =
+              index < halfLength
+                ? index * 2 // Left Column layout values
+                : (index - halfLength) * 2 + 1; // Right Column layout values
+
+            return (
+              <motion.a
+                key={index}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ x: isAr ? -4 : 4 }}
+                viewport={{ once: true }}
+                transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                style={{ order: typeof window !== "undefined" && window.innerWidth >= 1024 ? desktopOrder : index }}
+                className="flex items-center justify-between p-4 md:px-6 md:py-5 border border-zinc-900 lg:border-x-0 lg:border-t-0 lg:border-b border-b-zinc-800/40 bg-zinc-950/20 lg:bg-transparent hover:bg-zinc-900/60 transition-colors duration-200 group rounded-sm lg:rounded-none cursor-pointer"
+              >
+                {/* Project ID and Core Title */}
+                <div className={`flex items-start gap-3 w-2/3 ${textAlignmentClass}`}>
+                  <span className="text-zinc-600 font-bold text-xs pt-0.5 select-none">
+                    {(index + 1).toString().padStart(2, "0")}.
+                  </span>
+                  <div className="flex flex-col gap-0.5">
+                    <span className="text-white font-black tracking-tight text-sm md:text-base group-hover:text-[#00C950] transition-colors truncate max-w-[160px] sm:max-w-xs md:max-w-sm">
+                      {item.title}
+                    </span>
+                    <span className="inline-self-start text-[9px] font-bold text-zinc-500 tracking-wider uppercase">
+                      {item.category}
+                    </span>
+                  </div>
                 </div>
-              </div>
-            </motion.a>
-          ))}
+
+                {/* Secure Launch Status Indicators with Responsive Dual-Directional Arrows */}
+                <div className={`w-1/3 ${reverseTextAlignmentClass}`}>
+                  <div className="inline-flex items-center gap-1.5 text-[10px] md:text-xs font-bold uppercase tracking-wider text-zinc-400 group-hover:text-[#00C950] transition-colors duration-200">
+                    <span className="hidden sm:inline">{t("LAUNCH //", "زيارة الموقع //")}</span>
+                    <span className="inline sm:hidden">{t("OPEN //", "فتح //")}</span>
+                    <svg
+                      className={`w-3 h-3 transform transition-transform duration-300 ${
+                        isAr 
+                          ? "rotate-180 group-hover:-translate-x-1 group-hover:translate-y-1" 
+                          : "group-hover:translate-x-1 group-hover:-translate-y-1"
+                      }`}
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2.5}
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </motion.a>
+            );
+          })}
         </div>
       </div>
     </section>
