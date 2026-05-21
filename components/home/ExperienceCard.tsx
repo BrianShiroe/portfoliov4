@@ -1,6 +1,8 @@
 "use client";
 import { motion, Variants } from "framer-motion";
+import { CheckCircle2 } from "lucide-react";
 
+// You must define the interface for the props to resolve the TypeScript error
 interface ExperienceCardProps {
   job: {
     period: string;
@@ -21,64 +23,61 @@ export function ExperienceCard({ job, index, isAr, itemVariants }: ExperienceCar
   return (
     <motion.div
       variants={itemVariants}
-      className={`relative mb-20 md:mb-32 last:mb-0 group ${isAr ? "pr-8 md:pr-24" : "pl-8 md:pl-24"}`}
+      className="relative grid grid-cols-1 md:grid-cols-[200px_auto_1fr] gap-6 md:gap-12 w-full group"
     >
-      {/* Timeline Marker */}
-      <div
-        className={`absolute top-2 h-6 w-6 md:h-8 md:w-8 border-[3px] border-black bg-white rounded-full flex items-center justify-center transition-all group-hover:border-[#00C950] group-hover:scale-110 z-10 ${
-          isAr ? "-right-[15px] md:-right-[20px]" : "-left-[15px] md:-left-[20px]"
-        }`}
-      >
-        <div
-          className={`h-2.5 w-2.5 md:h-3 md:w-3 rounded-full ${index === 0 ? "bg-[#00C950]" : "bg-zinc-200"}`}
-        />
+      {/* 1. TIMELINE PERIOD */}
+      <div className={`flex flex-col md:pt-6 ${isAr ? "md:text-left" : "md:text-right"}`}>
+        <span className="text-xs font-black text-zinc-500 tracking-[0.25em] uppercase">
+          {job.period}
+        </span>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-        {/* Meta Column */}
-        <div className="lg:col-span-4 flex flex-col items-start">
-          <div
-            className={`px-4 py-2 bg-black text-white mb-4 rounded-xl font-black text-[10px] md:text-xs tracking-widest uppercase ${
-              isAr ? "shadow-[-4px_4px_0px_0px_#00C950]" : "shadow-[4px_4px_0px_0px_#00C950]"
-            }`}
-          >
-            {job.period}
+      {/* 2. GLITCH NODE */}
+      <div className="hidden md:flex flex-col items-center relative px-2">
+        <div className="h-5 w-5 rounded-full border-[4px] border-black bg-white group-hover:bg-[#00C950] transition-colors mt-6" />
+        <div className="absolute top-10 bottom-0 w-[3px] bg-black/5" />
+      </div>
+
+      {/* 3. MAIN CONTENT BOX */}
+      <div className="relative pb-20">
+        <div className="absolute -inset-1 bg-[#00C950] opacity-0 group-hover:opacity-10 blur-2xl transition-opacity duration-500" />
+        
+        <div className="relative border-[4px] border-black bg-white p-8 md:p-10 rounded-sm shadow-[8px_8px_0px_0px_rgba(0,0,0,0.05)] transition-all group-hover:-translate-y-1">
+          {/* Company Title Header */}
+          <div className="flex items-center gap-2 mb-8 border-b-4 border-black pb-6">
+            <h2 className="text-2xl font-black uppercase tracking-tighter text-black">
+              {job.company}
+            </h2>
           </div>
 
-          <div className={`flex items-center gap-2 mb-6 ${job.color}`}>
-            <span className="text-[10px] font-black uppercase tracking-widest">{job.status}</span>
-            {index === 0 && <span className="h-2 w-2 bg-[#00C950] rounded-full animate-ping" />}
-          </div>
-
-          <div className="p-5 border-2 border-black/5 bg-zinc-50/50 rounded-2xl w-full group-hover:border-[#00C950]/30 transition-colors">
-            <p className="text-[10px] font-bold text-zinc-500 uppercase leading-relaxed">
-              <span className="text-black font-black block mb-1">{isAr ? "التقنيات" : "Stack"}:</span>
-              {job.stack}
-            </p>
-          </div>
-        </div>
-
-        {/* Content Column */}
-        <div className="lg:col-span-8">
-          <div className="flex flex-wrap items-center gap-3 mb-4 opacity-60">
-            <span className="text-xs font-black text-black uppercase tracking-widest">{job.company}</span>
-            <span className="h-1 w-1 bg-zinc-300 rounded-full" />
-            <span className="text-xs font-bold text-zinc-400 uppercase tracking-widest">{job.location}</span>
-          </div>
-
-          <h3 className={`text-3xl md:text-6xl font-black uppercase tracking-tighter text-black leading-[0.95] mb-10 group-hover:text-[#00C950] transition-colors ${isAr ? "md:leading-[1.2]" : ""}`}>
+          <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tighter text-zinc-900 mb-8 group-hover:italic transition-all leading-tight">
             {job.role}
           </h3>
 
-          <div className="flex flex-wrap gap-2 md:gap-3">
-            {job.tasks.map((task) => (
-              <span
-                key={task}
-                className={`text-[9px] md:text-xs font-black uppercase border-2 border-black px-4 py-2.5 rounded-xl transition-all bg-white hover:bg-black hover:text-[#00C950] ${
-                  isAr ? "shadow-[-3px_3px_0px_0px_#00C950]" : "shadow-[3px_3px_0px_0px_#00C950]"
-                } hover:shadow-none hover:translate-y-0.5`}
+          {/* Task List */}
+          <div className="space-y-5 mb-10">
+            {job.tasks.map((task, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.05 }}
+                className="flex items-start gap-4 text-[14px] font-bold text-zinc-700 leading-relaxed"
               >
-                {task}
+                <CheckCircle2 className="w-5 h-5 text-[#00C950] shrink-0 mt-0.5" />
+                <span>{task}</span>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Tech Stack Bar */}
+          <div className="flex flex-wrap gap-3 pt-6 border-t-2 border-dashed border-black/20">
+            {job.stack.split(" / ").map((tech, tIdx) => (
+              <span
+                key={tIdx}
+                className="text-[11px] font-black uppercase tracking-widest text-zinc-900 bg-zinc-100 border-2 border-zinc-200 px-4 py-2 rounded-sm hover:bg-[#00C950] hover:text-white hover:border-[#00C950] transition-all cursor-default"
+              >
+                {tech.trim()}
               </span>
             ))}
           </div>

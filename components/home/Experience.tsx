@@ -3,45 +3,94 @@ import { motion, Variants } from "framer-motion";
 import { useLocale } from "next-intl";
 import { ExperienceCard } from "./ExperienceCard";
 
+export interface ExperienceItem {
+  period: string;
+  company: string;
+  location: string;
+  role: string;
+  status: string;
+  stack: string;
+  tasks: string[];
+  color: string;
+}
+
 export function Experience() {
   const locale = useLocale();
   const isAr = locale === "ar";
   const t = (en: string, ar: string) => (isAr ? ar : en);
 
-  const history = [
+  const history: ExperienceItem[] = [
     {
       period: t("MAY 2025 – MAY 2026", "مايو ٢٠٢٥ – مايو ٢٠٢٦"),
       company: t("ITD INNOVATION", "آي تي دي للابتكار"),
       location: t("DUBAI, UAE", "دبي، الإمارات"),
-      role: t("Full Stack Developer", "مطور فول ستاك"),
-      status: t("CURRENT", "الحالي"),
+      role: t("Full Stack Developer & IT Operations Specialist", "مطور فول ستاك وأخصائي عمليات تقنية"),
+      status: t("COMPLETED", "مكتمل"),
       stack: "Next.js / Medusa.js / Cloudflare Workers / Odoo API / Agentic AI",
       tasks: [
-        t("20+ Web Projects Delivered", "أكثر من ٢٠ مشروع ويب تم تسليمه"),
-        t("Headless Commerce (Medusa/Shopify/WooCommerce)", "تجارة بلا رأس (ميدوزا/شوبيفاي/ووكومرس)"),
-        t("Infrastructure & DNS Management", "إدارة البنية التحتية والـ DNS"),
-        t("Agentic AI Automation (Cline/Ollama)", "أتمتة الذكاء الاصطناعي (Cline/Ollama)"),
-        t("Custom Odoo ERP Integrations", "تكاملات مخصصة لنظام أودو"),
-        t("Payment Gateway & Serverless Logic", "بوابات الدفع والمنطق البرمجي السحابي"),
-        t("CI/CD & High-Availability Systems", "أنظمة النشر المستمر والجاهزية العالية"),
+        t(
+          "Built fast, component-based, & headless websites for e-commerce, corporate, & landing pages",
+          "بناء مواقع ويب سريعة ومكونة من أجزاء مستقلة (Headless) للتجارة الإلكترونية والشركات",
+        ),
+        t(
+          "Developed backend functionality (Shopify, WordPress, WooCommerce) and Payment Gateways",
+          "تطوير وظائف الخلفية البرمجية لبوابات الدفع وأنظمة شوبيفاي، ووردبريس، وووكومرس",
+        ),
+        t(
+          "Managed deployments & domain infrastructure via AEserver, Cloudflare, and Hostinger",
+          "إدارة عمليات النشر وبنية النطاقات التحتية عبر AEserver وCloudflare وHostinger",
+        ),
+        t(
+          "Set up and customized Odoo ERP via custom APIs, automating cross-platform workflows",
+          "إعداد وتخصيص نظام Odoo ERP بربط برمجيات مخصصة لأتمتة سير العمل عبر المنصات",
+        ),
+        t(
+          "Agentic AI Automation deployment & configuration (Cline/Ollama)",
+          "تطبيق وأتمتة تقنيات الذكاء الاصطناعي الوكيل (Cline/Ollama)",
+        ),
+        t(
+          "Handled digital marketing infrastructure using Google Platform tools & tracking setup",
+          "إدارة البنية التحتية للتسويق الرقمي وإعداد أدوات التتبع من منصة جوجل",
+        ),
+        t(
+          "Managed general IT operations, secure password stores, and comprehensive client presentations",
+          "إدارة العمليات التقنية العامة، مستودعات كلمات المرور الآمنة، وتقديم العروض للعملاء",
+        ),
       ],
       color: "text-black",
     },
     {
-      period: t("JUNE 2022 – AUG 2024", "يونيو ٢٠٢٢ – أغسطس ٢٠٢٤"),
+      period: t("JUNE 2022 – JULY 2024", "يونيو ٢٠٢٢ – يوليو ٢٠٢٤"),
       company: "DPWH - PHILIPPINES",
       location: t("PHILIPPINES", "الفلبين"),
-      role: t("Web Developer & IT Admin", "مطور ويب ومسؤول تقني"),
+      role: t("Web Developer & IT Systems Administrator", "مطور ويب ومسؤول نظم تقنية"),
       status: t("COMPLETED", "مكتمل"),
       stack: "PostgreSQL / REST APIs / Technical SEO / RBAC / UI UX",
       tasks: [
-        t("Asset Management System Interface", "واجهة نظام إدارة الأصول"),
-        t("Full-Stack API Synchronization", "مزامنة البيانات عبر الـ APIs"),
-        t("PostgreSQL Schema & Migrations", "إدارة وتطوير قواعد البيانات"),
-        t("Technical SEO & Accessibility", "السيو التقني ومعايير الوصول"),
-        t("Role-Based Access Control", "نظام التحكم في الوصول القائم على الأدوار"),
-        t("Internal Security & Auth Protocols", "بروتوكولات الأمان والمصادقة"),
-        t("Network & Infrastructure Support", "دعم الشبكات والبنية التحتية"),
+        t(
+          "Designed and developed a Physical Asset Management System with real-time tracking",
+          "تصميم وتطوير نظام إدارة الأصول المادية مع ميزة التتبع الفوري",
+        ),
+        t(
+          "Structured PostgreSQL schemas and synchronized reliable backend API endpoints",
+          "هيكلة مخططات قواعد البيانات PostgreSQL ومزامنة نقاط اتصال برمجية API قوية",
+        ),
+        t(
+          "Implemented Role-Based Access Control (RBAC) and data integrity protection protocols",
+          "تطبيق نظام التحكم بالوصول القائم على الأدوار (RBAC) وبروتوكولات سلامة البيانات",
+        ),
+        t(
+          "Handled setup, hardware maintenance, and active troubleshooting of office IT systems",
+          "إدارة إعداد وصيانة الأجهزة وحل مشكلات أنظمة تقنية المعلومات المكتبية",
+        ),
+        t(
+          "Maintained technical documentation, asset inventory tracking schedules, and reporting layouts",
+          "إشراف وصيانة الوثائق التقنية، تتبع جداول جرد الأصول، وتقارير الأنظمة الميدانية",
+        ),
+        t(
+          "Optimized web properties for technical SEO standards and semantic code layout rules",
+          "تحسين خصائص الويب لتتوافق مع معايير السيو التقني وقواعد الكود الدلالي",
+        ),
       ],
       color: "text-zinc-400",
     },
@@ -51,15 +100,15 @@ export function Experience() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.2, delayChildren: 0.3 },
+      transition: { staggerChildren: 0.15, delayChildren: 0.1 },
     },
   };
 
   const itemVariants: Variants = {
-    hidden: { opacity: 0, x: isAr ? 30 : -30 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
-      x: 0,
+      y: 0,
       transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
     },
   };
@@ -67,7 +116,7 @@ export function Experience() {
   return (
     <section
       id="experience"
-      className="relative w-full bg-white py-16 md:py-24 px-4 md:px-6 overflow-hidden font-mono scroll-mt-20 selection:bg-[#00C950] selection:text-white"
+      className="relative w-full bg-white py-20 md:py-32 px-4 sm:px-6 overflow-hidden font-mono scroll-mt-20 selection:bg-[#00C950] selection:text-white border-t border-zinc-100"
       dir={isAr ? "rtl" : "ltr"}
     >
       <motion.div
@@ -75,21 +124,17 @@ export function Experience() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        className="mx-auto max-w-6xl relative"
+        className="mx-auto max-w-5xl relative z-10"
       >
         {/* --- HEADER --- */}
         <motion.div variants={itemVariants} className="mb-16 md:mb-24">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="h-[3px] w-12 bg-[#00C950] rounded-full shadow-[0_0_8px_#00C950]" />
-            <span
-              className={`text-[11px] md:text-sm font-black text-zinc-500 uppercase tracking-[0.3em] ${isAr ? "mr-2" : "ml-2"}`}
-            >
+          <div className="flex items-center gap-3 mb-4">
+            <div className="h-[2px] w-8 bg-[#00C950] rounded-full shadow-[0_0_8px_#00C950]" />
+            <span className="text-[10px] md:text-xs font-bold text-zinc-400 uppercase tracking-[0.3em]">
               {t("Professional History", "التاريخ المهني")}
             </span>
           </div>
-          <h2
-            className={`font-black uppercase tracking-tighter text-black ${isAr ? "text-4xl md:text-5xl lg:text-6xl leading-[1.2]" : "text-4xl md:text-6xl lg:text-7xl leading-none"}`}
-          >
+          <h2 className={`font-black uppercase tracking-tighter text-black text-4xl md:text-6xl leading-none`}>
             {isAr ? (
               <>
                 مسار_<span className="text-[#00C950]">العمل</span>
@@ -102,24 +147,33 @@ export function Experience() {
           </h2>
         </motion.div>
 
-        {/* --- TIMELINE GRID --- */}
-        <div className={`relative border-black/10 ${isAr ? "border-r-4 mr-1 md:mr-0" : "border-l-4 ml-1 md:ml-0"}`}>
+        {/* --- TIMELINE CONTAINER --- */}
+        <div className="relative w-full space-y-12 md:space-y-0">
           {history.map((job, index) => (
-            <ExperienceCard key={job.company} job={job} index={index} isAr={isAr} itemVariants={itemVariants} />
+            <ExperienceCard
+              key={job.company}
+              job={job}
+              index={index}
+              isAr={isAr}
+              itemVariants={itemVariants}
+            />
           ))}
         </div>
 
         {/* --- DECORATIVE FOOTER --- */}
         <motion.div
           variants={itemVariants}
-          className="mt-32 pt-10 border-t-2 border-zinc-100 flex flex-col md:flex-row justify-between items-center gap-6 opacity-30"
+          className="mt-20 md:mt-32 pt-8 border-t border-zinc-200 flex flex-col sm:flex-row justify-between items-center gap-4 opacity-40 select-none"
         >
-          <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-black">
+          <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] text-zinc-500">
             {isAr ? "دبي // ٢٠٢٦" : "Dubai // 2026"}
           </span>
-          <div className="flex gap-1.5">
-            {[...Array(8)].map((_, i) => (
-              <div key={i} className={`h-5 w-[2.5px] bg-black rounded-full ${i % 4 === 0 ? "h-7 bg-[#00C950]" : ""}`} />
+          <div className="flex gap-1">
+            {[...Array(12)].map((_, i) => (
+              <div
+                key={i}
+                className={`h-4 w-[1px] bg-zinc-400 ${i % 4 === 0 ? "h-6 bg-[#00C950] w-[1.5px]" : ""}`}
+              />
             ))}
           </div>
         </motion.div>
