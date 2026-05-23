@@ -6,8 +6,8 @@ import { useAppStore } from "@/store/useStore";
 
 const navItems = [
   { en: "Home", ar: "الرئيسية", href: "#home" },
-  { en: "Projects", ar: "المشاريع", href: "#projects" },
   { en: "About", ar: "من أنا", href: "#about" },
+  { en: "Projects", ar: "المشاريع", href: "#projects" },
   { en: "Skills", ar: "المهارات", href: "#skills" },
   { en: "Services", ar: "الخدمات", href: "#services" },
   { en: "Experience", ar: "الخبرة", href: "#experience" },
