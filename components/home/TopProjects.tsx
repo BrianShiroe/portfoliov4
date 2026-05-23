@@ -18,20 +18,6 @@ export function TopProjects() {
   const projects = [
     {
       id: "01",
-      title: "GameTree",
-      tag: t("E-COMMERCE PLATFORM", "منصة تجارة إلكترونية"),
-      tech: "Next.js / Supabase / Stripe",
-      href: "https://gametree.vercel.app/",
-      github: "https://github.com/BrianShiroe/gametree-next.js-supabase-stripe-ecommerce-website",
-      image: "/images/gametree/thumbnail.png",
-      isUnderDevelopment: false,
-      description: t(
-        "A comprehensive e-commerce ecosystem featuring dedicated workflows for visitors, customers, and admins. Includes integrated Stripe payments, dynamic shipping calculations, and a full administrative suite for product management.",
-        "نظام متكامل للتجارة الإلكترونية يوفر مسارات عمل مخصصة للزوار والعملاء والمديرين. يتضمن عمليات دفع عبر Stripe، حساب تلقائي لرسوم الشحن، ولوحة تحكم شاملة لإدارة وتعديل المنتجات.",
-      ),
-    },
-    {
-      id: "02",
       title: "AURAX",
       tag: t("LUXURY FOOTWEAR", "أحذية فاخرة"),
       tech: "React / Framer Motion / Tailwind",
@@ -42,6 +28,20 @@ export function TopProjects() {
       description: t(
         "A high-end digital showroom for luxury footwear, featuring immersive scroll-based animations, architectural layouts, and a fluid user experience designed for premium retail storytelling.",
         "معرض رقمي متطور للأحذية الفاخرة، يتميز برسوم متحركة غامرة تعتمد على التمرير، وتنسيقات معمارية، وتجربة مستخدم سلسة مصممة لسرد قصص العلامات التجارية الراقية.",
+      ),
+    },
+    {
+      id: "02",
+      title: "GameTree",
+      tag: t("E-COMMERCE PLATFORM", "منصة تجارة إلكترونية"),
+      tech: "Next.js / Supabase / Stripe",
+      href: "https://gametree.vercel.app/",
+      github: "https://github.com/BrianShiroe/gametree-next.js-supabase-stripe-ecommerce-website",
+      image: "/images/gametree/thumbnail.png",
+      isUnderDevelopment: false,
+      description: t(
+        "A comprehensive e-commerce ecosystem featuring dedicated workflows for visitors, customers, and admins. Includes integrated Stripe payments, dynamic shipping calculations, and a full administrative suite for product management.",
+        "نظام متكامل للتجارة الإلكترونية يوفر مسارات عمل مخصصة للزوار والعملاء والمديرين. يتضمن عمليات دفع عبر Stripe، حساب تلقائي لرسوم الشحن، ولوحة تحكم شاملة لإدارة وتعديل المنتجات.",
       ),
     },
     {

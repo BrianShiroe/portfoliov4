@@ -1,4 +1,3 @@
-// app/[locale]/layout.tsx
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
@@ -7,7 +6,6 @@ import { IBM_Plex_Sans_Arabic, Inter, Geist_Mono } from "next/font/google";
 
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { SystemLoader } from '@/components/SystemLoader';
 import { LenisScroll } from '@/components/LenisScroll';
 import { routing, type AppLocale } from '@/i18n/routing';
 
@@ -20,7 +18,6 @@ const ibmPlexArabic = IBM_Plex_Sans_Arabic({
   display: 'swap',
 });
 
-// Primary Domain Configuration
 const BASE_URL = 'https://brianshiroe.com';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -61,12 +58,10 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
   
-  // Guard clause to catch completely unrecognized locales before executing context rules
   if (!routing.locales.includes(locale as AppLocale)) {
     notFound();
   }
 
-  // Set the request locale context for next-intl server engine
   setRequestLocale(locale);
   const messages = await getMessages();
   const isAr = locale === 'ar';
@@ -85,36 +80,31 @@ export default async function LocaleLayout({
     "description": "Full-Stack Engineer & ERP Specialist in Dubai. Expertise in Next.js and Odoo.",
   };
 
-  const bodyClasses = [
+  // Applied cleanly to our primary wrapper div instead of HTML/Body tags
+  const layoutContainerClasses = [
     inter.variable,
     geistMono.variable,
     ibmPlexArabic.variable,
     isAr ? 'font-arabic' : 'font-mono',
-    'flex flex-col min-h-screen antialiased bg-white text-black selection:bg-[#00C950] selection:text-white'
+    'flex flex-col min-h-screen w-full'
   ].join(' ');
 
   return (
-    <html 
-      lang={locale} 
-      dir={isAr ? "rtl" : "ltr"} 
-      className="scroll-smooth h-full" 
-      suppressHydrationWarning
-    >
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      </head>
-      <body className={bodyClasses} suppressHydrationWarning>
-        <NextIntlClientProvider messages={messages}>
-          <LenisScroll />
-          {/* <SystemLoader /> */}
-          <Header />
-          <main role="main" className="flex-1 w-full">{children}</main>
-          <Footer />
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <NextIntlClientProvider messages={messages}>
+      {/* JSON-LD Script safely renders here without disrupting the root browser <head> tree */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      
+      <div className={layoutContainerClasses} dir={isAr ? "rtl" : "ltr"}>
+        <LenisScroll />
+        <Header />
+        <main role="main" className="flex-1 w-full">
+          {children}
+        </main>
+        <Footer />
+      </div>
+    </NextIntlClientProvider>
   );
 }
