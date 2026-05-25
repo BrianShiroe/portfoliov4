@@ -1,29 +1,12 @@
 "use client";
 import { motion, Transition, Variants } from "framer-motion";
 import { Character } from "./Character";
-import { useEffect, useState } from "react";
 import { useLocale } from "next-intl";
 
 export function Hero() {
   const locale = useLocale();
   const isAr = locale === "ar";
   const t = (en: string, ar: string) => (isAr ? ar : en);
-  const [time, setTime] = useState("");
-
-  // Dubai Time Logic
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTime(
-        new Date().toLocaleTimeString("en-GB", {
-          timeZone: "Asia/Dubai",
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-        }),
-      );
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
 
   const btnTransition: Transition = {
     type: "tween",
@@ -39,7 +22,6 @@ export function Hero() {
     t("ERP Customization", "تخصيص أنظمة ERP"),
   ];
 
-  // --- ANIMATION VARIANTS ---
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -85,6 +67,7 @@ export function Hero() {
         className="relative z-10 mx-auto w-full max-w-7xl px-4 md:px-10 flex flex-col items-center justify-center"
       >
         <div className="flex flex-col lg:flex-row items-center justify-between w-full gap-10 lg:gap-16">
+          
           {/* LEFT SIDE: ACTIVE FOCUS */}
           <motion.div variants={itemVariants} className="hidden xl:flex flex-col gap-10 w-64">
             <div className="space-y-4">
@@ -230,23 +213,30 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* RIGHT SIDE: CHARACTER & TIME */}
+          {/* RIGHT SIDE: CHARACTER & ENHANCED LOCALIZATION BADGE */}
           <motion.div variants={itemVariants} className="flex flex-col items-center relative mt-4 lg:mt-0">
             <div className="bg-white border-2 md:border-4 border-black p-3 md:p-6 rounded-2xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center overflow-hidden cursor-default">
+              
               <div className="scale-[0.5] sm:scale-75 md:scale-90 lg:scale-100 origin-center">
                 <Character />
               </div>
-              <div className="w-full border-t-2 border-black/10 pt-4 mt-2 text-center">
-                <span className="text-xl md:text-2xl font-black text-black tabular-nums tracking-wider font-mono">
-                  {time}
-                </span>
-                <div className="flex items-center justify-center gap-2 mt-1">
-                  <span className="h-1.5 w-1.5 bg-[#00C950] rounded-full animate-pulse" />
-                  <span className="text-[9px] font-black uppercase text-zinc-400">{t("Dubai Time", "توقيت دبي")}</span>
+              
+              {/* Clean, 0.5x Larger Location Badge */}
+              <div className="w-full border-t-2 border-black/10 pt-4 mt-2 text-center flex items-center justify-center">
+                <div className="flex items-center justify-center gap-2.5 scale-150 transform origin-center my-1.5">
+                  <div className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00C950]"></span>
+                  </div>
+                  <span className="text-[9px] font-black uppercase text-black tracking-[0.1em] whitespace-nowrap">
+                    {t("Dubai, UAE", "دبي، الإمارات")}
+                  </span>
                 </div>
               </div>
+
             </div>
           </motion.div>
+
         </div>
       </motion.div>
     </section>
