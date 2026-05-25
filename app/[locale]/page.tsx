@@ -22,7 +22,7 @@ export default function Home() {
       
       <Skills />
       <Services />
-      <Experience />
+      {/* <Experience /> */}
       <Contact />
     </div>
   );

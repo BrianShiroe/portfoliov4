@@ -10,7 +10,6 @@ const navItems = [
   { en: "Projects", ar: "المشاريع", href: "#projects" },
   { en: "Skills", ar: "المهارات", href: "#skills" },
   { en: "Services", ar: "الخدمات", href: "#services" },
-  { en: "Experience", ar: "الخبرة", href: "#experience" },
   { en: "Contact", ar: "اتصل بنا", href: "#contact" },
 ];
 
@@ -28,17 +27,20 @@ export function Header() {
     setMounted(true);
   }, []);
 
-  // Intersection Observer محسّن لضمان التقاط الأقسام المثبتة (Pinned Sections)
+  // Standard Intersection Observer + GSAP Pinning Fallback Validation Engine
   useEffect(() => {
+    if (!mounted) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
+          // Normal vertical sections work fine here
+          if (entry.isIntersecting && entry.target.id !== "skills") {
             setActiveSection(entry.target.id);
           }
         });
       },
-      { rootMargin: "-20% 0px -20% 0px" }, // هامش مرن ومستقر يمنع القفزات البرمجية
+      { rootMargin: "-25% 0px -25% 0px", threshold: 0.1 },
     );
 
     navItems.forEach((item) => {
@@ -46,8 +48,29 @@ export function Header() {
       if (el) observer.observe(el);
     });
 
-    return () => observer.disconnect();
-  }, [setActiveSection]);
+    // Fallback Scroll Validation explicitly handling GSAP pinned horizontal layouts
+    const handleScrollTracking = () => {
+      const skillsElement = document.getElementById("skills");
+      if (!skillsElement) return;
+
+      const rect = skillsElement.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // If the pinned skills layout occupies the viewport center frame, force override state
+      if (rect.top <= windowHeight * 0.3 && rect.bottom >= windowHeight * 0.3) {
+        if (activeSection !== "skills") {
+          setActiveSection("skills");
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScrollTracking, { passive: true });
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", handleScrollTracking);
+    };
+  }, [setActiveSection, mounted, activeSection]);
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "unset";
@@ -82,7 +105,7 @@ export function Header() {
     
     const pathnameWithoutLocale = pathname === `/${lang}` ? "" : pathname.replace(new RegExp(`^/${lang}`), "");
     const hash = typeof window !== "undefined" ? window.location.hash : "";
-    setIsOpen(false);
+    IsOpen(false);
     router.push(`/${nextLocale}${pathnameWithoutLocale}${hash}`);
   };
 

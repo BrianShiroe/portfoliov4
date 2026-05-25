@@ -38,7 +38,7 @@ export function Footer() {
     { name: t("About", "من أنا"), href: "#about" },
     { name: t("Skills", "المهارات"), href: "#skills" },
     { name: t("Services", "الخدمات"), href: "#services" },
-    { name: t("Experience", "الخبرة"), href: "#experience" },
+    // { name: t("Experience", "الخبرة"), href: "#experience" },
     { name: t("Contact", "تواصل معي"), href: "#contact" },
   ];
 
