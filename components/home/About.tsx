@@ -179,8 +179,8 @@ export function About() {
                 }`}
               >
                 {t(
-                  "Full-Stack Developer with 3+ years of experience specializing in high-performance headless e-commerce and AI-accelerated workflows.",
-                  "مطور ويب متكامل بخبرة تزيد عن ٣ سنوات متخصص في التجارة الإلكترونية عالية الأداء وسير العمل المعزز بالذكاء الاصطناعي."
+                  "Full-Stack Developer specializing in high-performance headless e-commerce and AI-accelerated workflows.",
+                  "مطور ويب متكامل متخصص في التجارة الإلكترونية عالية الأداء وسير العمل المعزز بالذكاء الاصطناعي."
                 )}
               </motion.p>
 
@@ -195,7 +195,7 @@ export function About() {
                 <p>
                   {t(
                     '"I bridge the gap between premium frontend design and scalable infrastructure. By leveraging Next.js, Cloudflare, and Agentic AI, I deliver robust e-commerce solutions that move the needle for businesses."',
-                    '"أعمل على سد الفجوة بين التصميم المتميز والبنية التحتية القابلة للتوسع. من خلال الاستفادة من Next.js وCloudflare والذكاء الاصطناعي، أقدم حلولاً قوية للتجارة الإلكترونية تحقق نتائج ملموسة للأعمال."'
+                    '"أعمل على سد الفجوة بين التصميم المتميز والبنية التحتية القابلة للتوسع. من خلال الاستفادة من Next.js وCloudflare والذكاء الاصطناعي, أقدم حلولاً قوية للتجارة الإلكترونية تحقق نتائج ملموسة للأعمال."'
                   )}
                 </p>
                 <p>
