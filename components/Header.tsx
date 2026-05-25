@@ -16,10 +16,10 @@ const navItems = [
 export function Header() {
   const router = useRouter();
   const pathname = usePathname();
-  
+
   const { lang, setLang, t, activeSection, setActiveSection } = useAppStore();
   const isAr = lang === "ar";
-  
+
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -79,7 +79,7 @@ export function Header() {
   const handleScroll = (e: React.MouseEvent, href: string) => {
     e.preventDefault();
     setIsOpen(false);
-    
+
     const targetId = href.replace("#", "");
     const elem = document.getElementById(targetId);
 
@@ -87,7 +87,7 @@ export function Header() {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else if (elem) {
       const offset = 80;
-      const elementPosition = elem.getBoundingClientRect().top + window.scrollY; 
+      const elementPosition = elem.getBoundingClientRect().top + window.scrollY;
       const offsetPosition = elementPosition - offset;
 
       window.scrollTo({
@@ -95,17 +95,18 @@ export function Header() {
         behavior: "smooth",
       });
     }
-    
+
     window.history.pushState(null, "", href);
   };
 
   const switchLocale = () => {
     const nextLocale = lang === "en" ? "ar" : "en";
-    setLang(nextLocale); 
-    
+    setLang(nextLocale);
+
     const pathnameWithoutLocale = pathname === `/${lang}` ? "" : pathname.replace(new RegExp(`^/${lang}`), "");
     const hash = typeof window !== "undefined" ? window.location.hash : "";
-    IsOpen(false);
+
+    setIsOpen(false); // ✅ Fixed: lowercase 's' and prefixed with 'set'
     router.push(`/${nextLocale}${pathnameWithoutLocale}${hash}`);
   };
 
