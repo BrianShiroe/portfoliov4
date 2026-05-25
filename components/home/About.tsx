@@ -118,27 +118,54 @@ export function About() {
               </div>
 
               <div className="space-y-6">
-                {awards.map((award) => (
-                  <motion.div
-                    key={award.title}
-                    variants={awardItemVariants}
-                    className="group flex items-center gap-4"
-                  >
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center border border-zinc-700 bg-zinc-900 rounded-xl group-hover:border-[#00C950] transition-colors group-hover:bg-zinc-800">
-                      <span className="text-xl group-hover:text-[#00C950] transition-colors">
-                        {award.icon}
-                      </span>
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="text-[14px] md:text-[15px] font-black uppercase tracking-tight transition-colors group-hover:text-zinc-100 leading-tight">
-                        {award.title}
-                      </span>
-                      <span className="text-[10px] md:text-[11px] font-bold text-zinc-500 uppercase tracking-widest mt-0.5">
-                        {award.subtitle}
-                      </span>
-                    </div>
-                  </motion.div>
-                ))}
+                {awards.map((award) => {
+                  return (
+                    <motion.div
+                      key={award.title}
+                      variants={awardItemVariants}
+                      className="group flex items-center gap-4 cursor-default"
+                    >
+                      {/* Interactive Icon Box Container */}
+                      <div className="relative flex h-12 w-12 shrink-0 items-center justify-center border border-zinc-700 bg-zinc-900 rounded-xl group-hover:border-[#00C950] transition-colors duration-300 group-hover:bg-zinc-800 overflow-hidden">
+                        
+                        {/* Base White Symbol */}
+                        <span className="text-xl text-white transition-all duration-300 transform group-hover:opacity-0 group-hover:scale-50 absolute select-none">
+                          {award.icon}
+                        </span>
+
+                        {/* Morphing Solid Filled Vectors */}
+                        <div className="opacity-0 scale-50 rotate-45 transition-all duration-300 transform group-hover:opacity-100 group-hover:scale-100 group-hover:rotate-0 absolute flex items-center justify-center w-full h-full text-white">
+                          {award.title.includes("Cum Laude") && (
+                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3c1.706 0 3.199.813 4.155 2.054C12.798 3.813 14.29 3 15.997 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+                            </svg>
+                          )}
+                          {award.title.includes("Thesis") && (
+                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                              <path fillRule="evenodd" d="M5.625 1.5H9a3.75 3.75 0 013.75 3.75v1.875c0 1.036.84 1.875 1.875 1.875H16.5a3.75 3.75 0 013.75 3.75v7.875c0 1.035-.84 1.875-1.875 1.875H5.625a1.875 1.875 0 01-1.875-1.875V3.375c0-1.036.84-1.875 1.875-1.875zM12.75 12a.75.75 0 01.75-.75h2.5a.75.75 0 010 1.5h-2.5a.75.75 0 01-.75-.75zm0 3.25a.75.75 0 01.75-.75h2.5a.75.75 0 010 1.5h-2.5a.75.75 0 01-.75-.75zM8.5 11.5a1 1 0 100-2 1 1 0 000 2zm1 3.5a1 1 0 11-2 0 1 1 0 012 0z" clipRule="evenodd" />
+                              <path d="M14.25 5.25a1.5 1.5 0 00-1.5-1.5H9v4.5h4.5v-1.5z" />
+                            </svg>
+                          )}
+                          {award.title.includes("AppCon") && (
+                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M12.81 4.314a.75.75 0 011.06 0l7.5 7.5a.75.75 0 11-1.06 1.06l-6.22-6.22V21a.75.75 0 01-1.5 0V6.654l-6.22 6.22a.75.75 0 11-1.06-1.06l7.5-7.5z" />
+                            </svg>
+                          )}
+                        </div>
+
+                      </div>
+                      
+                      <div className="flex flex-col">
+                        <span className="text-[14px] md:text-[15px] font-black uppercase tracking-tight transition-colors group-hover:text-zinc-100 leading-tight">
+                          {award.title}
+                        </span>
+                        <span className="text-[10px] md:text-[11px] font-bold text-zinc-500 uppercase tracking-widest mt-0.5">
+                          {award.subtitle}
+                        </span>
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </div>
             </motion.div>
           </div>
@@ -183,6 +210,37 @@ export function About() {
                   "مطور ويب متكامل متخصص في التجارة الإلكترونية عالية الأداء وسير العمل المعزز بالذكاء الاصطناعي."
                 )}
               </motion.p>
+
+              {/* NEW ADDITION: HIGHLIGHT METRICS ROW */}
+              <motion.div 
+                variants={itemVariants}
+                className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2 pb-4"
+              >
+                <div className="border-2 border-black p-3 rounded-xl bg-zinc-50 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+                  <div className="text-xl md:text-2xl font-black text-[#00C950]">30+</div>
+                  <div className="text-[10px] md:text-[11px] font-black text-zinc-500 uppercase tracking-tight mt-0.5">
+                    {t("Websites Built", "موقع تم إنجازه")}
+                  </div>
+                </div>
+                <div className="border-2 border-black p-3 rounded-xl bg-zinc-50 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+                  <div className="text-sm md:text-base font-black text-black uppercase tracking-tighter pt-1">100%</div>
+                  <div className="text-[10px] md:text-[11px] font-black text-zinc-500 uppercase tracking-tight mt-1.5">
+                    {t("Responsive", "متجاوب بالكامل")}
+                  </div>
+                </div>
+                <div className="border-2 border-black p-3 rounded-xl bg-zinc-50 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+                  <div className="text-sm md:text-base font-black text-black uppercase tracking-tighter pt-1">SEO</div>
+                  <div className="text-[10px] md:text-[11px] font-black text-zinc-500 uppercase tracking-tight mt-1.5">
+                    {t("Optimized", "محسن محركات البحث")}
+                  </div>
+                </div>
+                <div className="border-2 border-black p-3 rounded-xl bg-zinc-50 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+                  <div className="text-sm md:text-base font-black text-black uppercase tracking-tighter pt-1">Modular</div>
+                  <div className="text-[10px] md:text-[11px] font-black text-zinc-500 uppercase tracking-tight mt-1.5">
+                    {t("Component Based", "مبني على المكونات")}
+                  </div>
+                </div>
+              </motion.div>
 
               <motion.div
                 variants={itemVariants}
