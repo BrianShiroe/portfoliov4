@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useTransition } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
 import { useAppStore } from "@/store/useStore";
@@ -16,6 +16,7 @@ const navItems = [
 export function Header() {
   const router = useRouter();
   const pathname = usePathname();
+  const [isPending, startTransition] = useTransition();
 
   const { lang, setLang, t, activeSection, setActiveSection } = useAppStore();
   const isAr = lang === "ar";
@@ -101,13 +102,16 @@ export function Header() {
 
   const switchLocale = () => {
     const nextLocale = lang === "en" ? "ar" : "en";
-    setLang(nextLocale);
-
     const pathnameWithoutLocale = pathname === `/${lang}` ? "" : pathname.replace(new RegExp(`^/${lang}`), "");
     const hash = typeof window !== "undefined" ? window.location.hash : "";
 
-    setIsOpen(false); // ✅ Fixed: lowercase 's' and prefixed with 'set'
-    router.push(`/${nextLocale}${pathnameWithoutLocale}${hash}`);
+    setIsOpen(false);
+    
+    // Use transition to synchronize both the store update and router push
+    startTransition(() => {
+      setLang(nextLocale);
+      router.push(`/${nextLocale}${pathnameWithoutLocale}${hash}`);
+    });
   };
 
   if (!mounted) {
