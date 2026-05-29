@@ -80,7 +80,7 @@ export function Skills() {
           scrollTrigger: {
             trigger: section,
             start: "top top",
-            end: () => `+=${track.scrollWidth}`,
+            end: () => `+=${track.scrollWidth + window.innerWidth}`,
             pin: true,
             pinSpacing: true,
             scrub: 1,
